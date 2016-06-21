@@ -13,7 +13,7 @@ passport.serializeUser(function(user, done) {
 //Runs on every req after user is authenticated
 //Look up user id in the session and find them in the db
 //Result is stored on req.user
-passport.deserializerUser(function(id, done) {
+passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     if(err) {
       done(err);

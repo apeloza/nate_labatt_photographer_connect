@@ -6,9 +6,10 @@
   "dependencies": {
     "angular": "^1.5.7",
     "angular-animate": "^1.5.7",
-    "angular-route": "^1.5.7",
     "angular-aria": "^1.5.7",
     "angular-material": "^1.1.0-rc.5",
+    "angular-route": "^1.5.7",
+    "express-session": "^1.13.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {},
