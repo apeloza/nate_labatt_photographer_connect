@@ -1,12 +1,9 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('app', ['ngRoute']);
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/', {
-      templateUrl: '/views/index.html',
-      controller : 'IndexController'
-    })
+
     .when('/map', {
       templateUrl: '/views/login.html',
       controller : 'MapController'
@@ -30,8 +27,7 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/createJob', {
       templateUrl: 'views/createJob.html',
       controller : 'CreateJobController'
-    })
-    .otherwise({
-      redirectTo: '/'
-    })
+
+    });
+
 }]);
