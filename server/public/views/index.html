@@ -16,6 +16,7 @@
     <script type="text/javascript" src="../vendors/angular-aria.min.js"></script>
     <script type="text/javascript" src="../vendors/angular-material.min.js"></script>
     <script type="text/javascript" src="../vendors/angular-route.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkpr2aMQ6HS76Y6e10NuwRWc8p9ew6_Wo"></script>
     <script type="text/javascript" src="../vendors/angular-google-maps.min.js"></script>
     <script type="text/javascript" src="../scripts/clientapp.js"></script>
     <script type="text/javascript" src="../scripts/controllers/mapController.js"></script>
@@ -36,6 +37,15 @@
 
 <body ng-app="app">
     <!--<div ng-include="'/views/templates/nav.html'"></div>-->
+    <div id="map">
+
+    </div>
+    <script>
+    var map;
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });</script>
     <main ng-view></main>
 </body>
 
