@@ -1,0 +1,29 @@
+
+{
+  "name": "natelabatt",
+  "version": "1.0.0",
+  "description": "Team Nate Labatt Realty",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.1.0-rc.5",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apeloza/nate_labatt_photographer_connect.git"
+  },
+  "author": "Team Nate Labatt Realty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apeloza/nate_labatt_photographer_connect/issues"
+  },
+  "homepage": "https://github.com/apeloza/nate_labatt_photographer_connect#readme"
+}
