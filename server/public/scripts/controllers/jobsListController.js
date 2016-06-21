@@ -1,4 +1,4 @@
-app.controller('JobsListController', [function () {
+app.controller('JobsListController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
   console.log('Jobs list Controller running');
 
 }]);
