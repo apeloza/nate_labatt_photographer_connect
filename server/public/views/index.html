@@ -1,38 +1,41 @@
 <h1>Index</h1>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>Nate Labatt : Photographer Connect</title>
 
     <!-- Styling -->
 
-    <link rel="stylesheet" href="/vendors/angular-material.min.css" />
-    <link rel="stylesheet" href="/assets/styles/main.css" />
+    <link rel="stylesheet" href="../vendors/angular-material.min.css" />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
 
     <!-- Vendors -->
-
-    <script type="text/javascript" src="/vendors/angular-animate.min.js"></script>
-    <script type="text/javascript" src="/vendors/angular-aria.min.js"></script>
-    <script type="text/javascript" src="/vendors/angular-material.min.js"></script>
-    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
-    <script type="text/javascript" src="/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/mapController.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/createJobController.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/indexController.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/jobsListController.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/myJobsController.js"></script>
+    <script type="text/javascript" src="../vendors/angular.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-aria.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-material.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular-google-maps.min.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/mapController.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/createJobController.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/indexController.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/jobsListController.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/myJobsController.js"></script>
 
     <!-- Scripts -->
 
-    <script type="text/javascript" src="/assets/scripts/ang-app.js"></script>
+    <script type="text/javascript" src="../scripts/clientapp.js"></script>
 
     <!-- Controllers -->
 
     <!-- <script type="text/javascript" src="/scripts/controllers/loginController.js"></script> -->
 
 </head>
+
 <body ng-app="myApp">
     <div ng-include="'/views/templates/nav.html'"></div>
     <main ng-view></main>
 </body>
+
 </html>
