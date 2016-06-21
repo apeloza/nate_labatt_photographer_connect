@@ -12,7 +12,12 @@ var session = require('express-session');
 //Body Parser
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, './public')));
+//app.use(express.static(path.join(__dirname, './public')));
+app.get('/*', function(req, res) {
+  console.log('request params', req.params);
+var file = req.params[0] || 'views/index.html';
+res.sendFile(path.join(__dirname, "./public", file));
+});
 
 //Passport Configuration
 
