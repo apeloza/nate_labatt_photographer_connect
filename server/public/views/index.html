@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../vendors/angular-material.min.js"></script>
     <script type="text/javascript" src="../vendors/angular-route.min.js"></script>
     <script type="text/javascript" src="../vendors/angular-google-maps.min.js"></script>
+    <script type="text/javascript" src="../scripts/clientapp.js"></script>
     <script type="text/javascript" src="../scripts/controllers/mapController.js"></script>
     <script type="text/javascript" src="../scripts/controllers/createJobController.js"></script>
     <script type="text/javascript" src="../scripts/controllers/indexController.js"></script>
@@ -34,7 +35,11 @@
 </head>
 
 <body ng-app="app">
+
     <div ng-include="'/views/templates/nav.html'"></div>
+
+    <!--<div ng-include="'/views/templates/nav.html'"></div>-->
+
     <main ng-view></main>
 </body>
 
