@@ -8,31 +8,33 @@
   <form>
     <md-input-container>
       <label>Client Name</label>
-      <input type="text" ng-model="client.name" />
+      <input type="text" ng-model="name" />
     </md-input-container>
 
     <md-input-container>
       <label>Email</label>
-      <input type="text" ng-model="client.email"/>
+      <input type="text" ng-model="email"/>
     </md-input-container>
 
     <md-input-container>
       <label>Phone #</label>
-      <input type="text" ng-model="client.phone"/>
+      <input type="text" ng-model="phone"/>
     </md-input-container>
 
     <md-input-container>
       <label>Address</label>
-      <input type="text" ng-model="client.address"/>
+      <input type="text" ng-model="address"/>
     </md-input-container>
 
+    <div>
+      <label>Square Footage</label>
+      <select ng-model="squareFeet" aria-label="squareFeet"
+              ng-options="item.sqft for item in sf" ng-change="total()">
+      </select>
+    </div>
+
     <md-input-container>
-      <label>Square Feet</label>
-      <md-select ng-model="squareFeet" aria-label="squareFeet">
-        <md-option ng-repeat="item in sf track by $index">
-          {{item}}
-        </md-option>
-      </md-select>
+      <md-checkbox ng-model="tenThousandSqFt">10,000+ sq ft</md-checkbox>
     </md-input-container>
 
     <md-datepicker ng-model="dueDate"  md-placeholder="Due Date">
@@ -42,54 +44,23 @@
     </md-datepicker>
 
     <md-input-container>
-      <label>Preferred timeFrame</label>
-      <md-select ng-model="newJob.timeFrame" aria-label="Timeframe">
-        <md-option ng-repeat="item in time track by $index">
-          {{item}}
-        </md-option>
+      <label>Preferred Timeframe</label>
+      <md-select ng-model="timeFrame" aria-label="Timeframe">
+        <md-option ng-repeat="item in time">{{item}}</md-option>
       </md-select>
     </md-input-container>
 
     <!-- ADD ONS -->
     <div>
-      <md-menu-bar>
-        <h3>Add Ons</h3>
-      </md-menu-bar>
-
-      <md-input-container>
-        <label>Aerial</label>
-          <md-select ng-model="aerial" aria-label="aerial">
-          <md-option ng-repeat="item in aerialOptions track by $index">
-            {{item}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-
-      <md-input-container>
+      <div>
         <label>After Dark</label>
-        <md-select ng-model="afterDark" aria-label="afterDark">
-          <md-option ng-repeat="item in ad track by $index">
-            {{item}}
-          </md-option>
-        </md-select>
-      </md-input-container>
+        <select ng-model="afterDark" aria-label="afterDark"
+                ng-options="item.option for item in ad" ng-change="total()">
+        </select>
+      </div>
 
       <md-input-container>
-        <label>Video</label>
-        <md-select ng-model="newJob.video" aria-label="video">
-          <md-option ng-repeat="item in vid track by $index">
-            {{item}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-
-      <md-input-container>
-        <label>Drive By</label>
-        <md-select ng-model="driveBy" aria-label="driveBy">
-          <md-option ng-repeat="item in drive track by $index">
-            {{item}}
-          </md-option>
-        </md-select>
+        <md-checkbox ng-model="checkbox">Lakeshore and Acreage - $100</md-checkbox>
       </md-input-container>
 
       <div>
@@ -105,9 +76,9 @@
     <div>
       <md-input-container>
         <label>Total Price</label>
-        <input type="text" ng-model="totalPrice"/>
+        <input type="text" ng-model="totalPrice" | currency/>
       </md-input-container>
-      <md-button class="md-raised md-primary">Create Job</md-button>
+      <md-button class="md-raised md-primary" ng-click="saveNewJob()">Create Job</md-button>
     </div>
   </form>
 </md-card>
