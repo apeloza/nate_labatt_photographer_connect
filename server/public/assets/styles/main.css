@@ -8,3 +8,9 @@
   margin: auto;
   margin-bottom:15px;
 }
+
+/*----------------------------------------------------Login Page----------------------------------------------------*/
+.signIn {
+  border: 1px solid black;     /*----------------remove after styling is done********/
+  margin-top: 10%;
+}
