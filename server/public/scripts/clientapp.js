@@ -2,6 +2,7 @@ var app = angular.module('app', ['ngRoute', 'ngMaterial']);
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
+
     $routeProvider
         .when('/map', {
             templateUrl: '/views/map.html',
@@ -31,4 +32,5 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         });
+
 }]);
