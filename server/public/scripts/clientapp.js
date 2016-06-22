@@ -27,4 +27,8 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/createJob.html',
       controller : 'CreateJobController'
     })
+    .when('/', {
+      templateUrl: 'views/login.html',
+      controller : 'LoginController'
+    })
 }]);
