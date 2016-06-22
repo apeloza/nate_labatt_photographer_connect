@@ -1,82 +1,113 @@
-<h1>New Job</h1>
+
 <md-card>
+
+  <md-menu-bar>
+    <h1>New Job</h1>
+  </md-menu-bar>
+
   <form>
     <md-input-container>
       <label>Client Name</label>
-      <input type="text" />
+      <input type="text" ng-model="client.name" />
     </md-input-container>
 
     <md-input-container>
       <label>Email</label>
-      <input type="text" />
+      <input type="text" ng-model="client.email"/>
     </md-input-container>
 
     <md-input-container>
       <label>Phone #</label>
-      <input type="text" />
+      <input type="text" ng-model="client.phone"/>
     </md-input-container>
 
     <md-input-container>
       <label>Address</label>
-      <input type="text" />
+      <input type="text" ng-model="client.address"/>
     </md-input-container>
 
     <md-input-container>
-      <label>Property S.F.</label>
-      <input type="text" />
+      <label>Square Feet</label>
+      <md-select ng-model="squareFeet" aria-label="squareFeet">
+        <md-option ng-repeat="item in sf track by $index">
+          {{item}}
+        </md-option>
+      </md-select>
     </md-input-container>
 
-    <md-datepicker ng-model="newJob.dueDate"  md-placeholder="Due Date">
+    <md-datepicker ng-model="dueDate"  md-placeholder="Due Date">
     </md-datepicker>
 
-    <md-datepicker ng-model="newJob.preferredDate"  md-placeholder="Preferred Date">
+    <md-datepicker ng-model="preferredDate"  md-placeholder="Preferred Date">
     </md-datepicker>
 
     <md-input-container>
-      <md-select ng-model="newJob.timeFrame">
-        <md-option ng-repeat="" value="{{}}">
-          {{}}
+      <label>Preferred timeFrame</label>
+      <md-select ng-model="newJob.timeFrame" aria-label="Timeframe">
+        <md-option ng-repeat="item in time track by $index">
+          {{item}}
         </md-option>
       </md-select>
     </md-input-container>
 
     <!-- ADD ONS -->
     <div>
-      <h4>Add Ons</h4>
+      <md-menu-bar>
+        <h3>Add Ons</h3>
+      </md-menu-bar>
 
-      <label>Aerial</label>
-        <md-select ng-model="newJob.aerial">
-          <md-option ng-repeat="" value="{{}}">
-            {{}}
+      <md-input-container>
+        <label>Aerial</label>
+          <md-select ng-model="aerial" aria-label="aerial">
+          <md-option ng-repeat="item in aerialOptions track by $index">
+            {{item}}
           </md-option>
         </md-select>
       </md-input-container>
 
-      <label>After Dark</label>
-        <md-select ng-model="newJob.afterDark">
-          <md-option ng-repeat="" value="{{}}">
-            {{}}
+      <md-input-container>
+        <label>After Dark</label>
+        <md-select ng-model="afterDark" aria-label="afterDark">
+          <md-option ng-repeat="item in ad track by $index">
+            {{item}}
           </md-option>
         </md-select>
       </md-input-container>
 
-      <label>Video</label>
-        <md-select ng-model="newJob.video">
-          <md-option ng-repeat="" value="{{}}">
-            {{}}
+      <md-input-container>
+        <label>Video</label>
+        <md-select ng-model="newJob.video" aria-label="video">
+          <md-option ng-repeat="item in vid track by $index">
+            {{item}}
           </md-option>
         </md-select>
       </md-input-container>
 
-      <label>Drive By</label>
-        <md-select ng-model="newJob.afterDark">
-          <md-option ng-repeat="" value="{{}}">
-            {{}}
+      <md-input-container>
+        <label>Drive By</label>
+        <md-select ng-model="driveBy" aria-label="driveBy">
+          <md-option ng-repeat="item in drive track by $index">
+            {{item}}
           </md-option>
         </md-select>
       </md-input-container>
 
-      
+      <div>
+        <label>Entry Method:</label>
+        <textarea></textarea>
+
+        <label>Notes:</label>
+        <textarea></textarea>
+
+      </div>
+    </div>
+
+    <div>
+      <md-input-container>
+        <label>Total Price</label>
+        <input type="text" ng-model="totalPrice"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary">Create Job</md-button>
     </div>
   </form>
 </md-card>

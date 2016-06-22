@@ -29,3 +29,8 @@
   min-height: 50px;
   border: 1px solid black;     /*----------------remove after styling is done********/
 }
+
+/*----------------------------------------------------New Job Page----------------------------------------------------*/
+md-input-container {
+  margin: 20px;
+}
