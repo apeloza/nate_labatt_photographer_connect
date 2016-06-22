@@ -8,6 +8,8 @@ var passport = require('./strategies/userStrategy');
 var session = require('express-session');
 
 // Route includes
+var createuser = require('./routes/createuser');
+var login = require('./routes/login');
 
 //Body Parser
 app.use(bodyParser.json());
@@ -34,8 +36,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes
-
+app.use('/createuser', createuser);
+app.use('/login', login);
 //Mongo Connection
+var databaseURI = 'mongodb://admin:natelabatt@ds011873.mlab.com:11873/photographerconnectusers';
+mongoose.connect(databaseURI);
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose connection open ', databaseURI);
+});
+mongoose.connection.on('error', function (err) {
+  console.log('Mongoose error connecting ', err);
+});
 
 //Port
 app.set('port', (process.env.PORT || 3000));

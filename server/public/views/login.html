@@ -1,21 +1,39 @@
-<div class="signIn">
-  <h1 class="loginHeader">Login</h1>
-    <h1 class="" role="alert" ng-if="message != ''">{{message}}</h2>
-
+<div class="signIn" layout="row" layout-align="center center">
     <form class="logInForm" ng-submit="login()">
 
+
       <div class="usernameField">
-          <input type="text" class="" placeholder="Username"  />
+          <input type="text" class="" placeholder="Username" ng-model="user.username" />
       </div>
 
       <div class="passwordField">
-          <input type="password" class="" placeholder="Password"  />
+          <input type="password" class="" placeholder="Password" ng-model="user.password"  />
       </div>
 
-      <div class="loginRegister">
-          <input class="" type="submit" name="submit" value="Log In" />
+      <md-input-container>
+        <label>Username</label>
+        <input name="username" ng-model="username" required md-maxlength="15" minlength="4">
+        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+          <div ng-message="minlength">That's too short!</div>
+        </div> -->
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input name="password" ng-model="password" required md-maxlength="25" minlength="4">
+        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+          <div ng-message="minlength">That's too short!</div>
+        </div> -->
+      </md-input-container>
+
+
+      <div class="loginSubmit">
+        <md-button class="md-raised md-primary loginButton"> Log In </md-button>
       </div>
 
     </form>
-
-</div>
+  </div>
