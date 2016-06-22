@@ -10,6 +10,7 @@ var session = require('express-session');
 // Route includes
 var createuser = require('./routes/createuser');
 var login = require('./routes/login');
+var user = require('./routes/user');
 
 //Body Parser
 app.use(bodyParser.json());
@@ -20,6 +21,7 @@ app.get('/*', function(req, res) {
 var file = req.params[0] || 'views/index.html';
 res.sendFile(path.join(__dirname, "./public", file));
 });
+
 
 //Passport Configuration
 
@@ -37,7 +39,9 @@ app.use(passport.session());
 
 //Routes
 app.use('/createuser', createuser);
+app.use('/user', user);
 app.use('/login', login);
+
 //Mongo Connection
 var databaseURI = 'mongodb://admin:natelabatt@ds011873.mlab.com:11873/photographerconnectusers';
 mongoose.connect(databaseURI);
