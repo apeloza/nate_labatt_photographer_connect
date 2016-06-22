@@ -4,7 +4,7 @@ var app = angular.module('app', ['ngRoute', 'ngMaterial']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/map', {
-      templateUrl: '/views/login.html',
+      templateUrl: '/views/map.html',
       controller : 'MapController'
     })
     .when('/myJobs', {
