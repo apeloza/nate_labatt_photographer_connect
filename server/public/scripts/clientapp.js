@@ -18,7 +18,7 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/createUser', {
             templateUrl: '/views/createUser.html',
-            controller: 'CreateUserController'
+            controller: 'UserController'
         })
         .when('/userList', {
             templateUrl: 'views/userList.html',
