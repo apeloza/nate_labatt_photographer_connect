@@ -1,5 +1,13 @@
 app.controller('UserController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
   console.log('Create User Controller running');
+  $http.get('/user').then(function(response) {
+      if(response.data.username) {
+          $scope.userName = response.data.username;
+          console.log('User Data: ', $scope.userName);
+      } else {
+          $location.path("/");
+      }
+  });
 $scope.user = {
   username: '',
   password: '',
@@ -8,11 +16,11 @@ $scope.user = {
   level: 'user'
 };
 $scope.registerUser = function() {
-  if($scope.user.username == '' || $scope.user.password == '' || $scope.user.email == ''){
+  if($scope.user.username === '' || $scope.user.password === '' || $scope.user.email === ''){
     $scope.message = "Please fill out all required fields.";
   } else {
     console.log('sending to server . . .', $scope.user);
-    $http.post('/createuser', $scope.user).then(function(response) {
+    $http.post('/register', $scope.user).then(function(response) {
       console.log('Success!');
       $location.path('/');
     },
@@ -21,5 +29,8 @@ $scope.registerUser = function() {
     $scope.message = 'Please try again.';
   });
   }
+};
+$scope.toCreateUser = function(){
+  $location.path('/createUser');
 };
 }]);
