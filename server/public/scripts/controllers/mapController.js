@@ -10,7 +10,7 @@ app.controller('MapController', ['$scope', '$http', '$location', function ($scop
   console.log('Map Controller running');
   var map;
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    center: {lat: 44.986, lng: -93.258},
+    zoom: 10
   });
 }]);

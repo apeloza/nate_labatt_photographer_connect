@@ -30,7 +30,5 @@ $scope.registerUser = function() {
   });
   }
 };
-$scope.toCreateUser = function(){
-  $location.path('/createUser');
-};
+
 }]);

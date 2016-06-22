@@ -39,4 +39,10 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
           });
         }
       };
+      $scope.logout = function() {
+    $http.get('/user/logout').then(function(response) {
+      console.log('logged out');
+      $location.path("/");
+    });
+  };
   }]);
