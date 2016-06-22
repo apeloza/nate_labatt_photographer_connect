@@ -1,4 +1,8 @@
-
+#map{
+  width: 70%;
+  height: 50%;
+  margin: 20px auto;
+}
 
 .container {
   width: 90%;
