@@ -12,6 +12,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
   $scope.afterDark = 0;
   $scope.totalPrice = 0;
   $scope.checkbox;
+  $scope.notes;
+  $scope.entryMethod;
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
 
@@ -32,11 +34,11 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
 $scope.total = function () {
-  console.log('sqft price: ', $scope.squareFeet.price);
-  console.log('after Dark price: ', $scope.afterDark.price);
+
   if (checkbox = true) {
     $scope.totalPrice = 'Call for price';
   }
+
   $scope.totalPrice = $scope.squareFeet.price + $scope.afterDark.price;
 };
 
@@ -52,7 +54,9 @@ $scope.saveNewJob = function () {
     squareFeet: $scope.squareFeet,
     afterDark : $scope.afterDark,
     totalPrice: $scope.totalPrice,
-    preferredDate: $scope.preferredDate
+    preferredDate: $scope.preferredDate,
+    notes      : $scope.notes,
+    entryMethod: $scope.entryMethod
   };
   console.log("newJobData: ", newJob);
 
