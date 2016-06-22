@@ -13,5 +13,11 @@ app.controller('NavController', ['$scope', '$http', '$location', function ($scop
     });
   }
 
+  $scope.logOut = function() {
+$http.get('/user/logout').then(function(response) {
+  console.log('logged out');
+  $location.path("/");
+});
+};
 
   }]);

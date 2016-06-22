@@ -2,7 +2,7 @@
 
   <div ng-show="userLevel.level == 'user'">
     <md-nav-bar md-selected-nav-item="currentNavItem">
-      <md-nav-item md-nav-href="#map" name="map">Job Map</md-nav-item>
+      <md-nav-item md-nav-href="#user" name="map">Job Map</md-nav-item>
       <md-nav-item md-nav-href="#myJobs" name="myJobs" >My Jobs</md-nav-item>
       <md-nav-item md-nav-click="logOut()" name="logOut">Log Out</md-nav-item>
       <p>Nav Bar ng-if User is Photographer</p>
@@ -10,8 +10,8 @@
   </div>
 
   <div ng-show="userLevel.level == 'admin'">
-    <md-nav-bar md-selected-nav-item="currentNavItem" >
-      <md-nav-item md-nav-href="#map" name="map">Job Map</md-nav-item>
+    <md-nav-bar md-selected-nav-item="currentNavItem">
+      <md-nav-item md-nav-href="#user" name="map">Job Map</md-nav-item>
       <md-nav-item md-nav-href="#jobsList" name="jobslist">Jobs</md-nav-item>
       <md-nav-item md-nav-href="#userList" name="userList">User List</md-nav-item>
       <md-nav-item md-nav-click="logOut()" name="logOut">Log Out</md-nav-item>
