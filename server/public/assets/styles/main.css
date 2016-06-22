@@ -2,3 +2,9 @@
   width: 500px;
   height: 500px;
 }
+
+.container {
+  width: 90%;
+  margin: auto;
+  margin-bottom:15px;
+}
