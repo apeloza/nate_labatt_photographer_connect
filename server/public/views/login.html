@@ -1,18 +1,11 @@
 <div class="signIn" layout="row" layout-align="center center">
     <form class="logInForm" ng-submit="login()">
+      <h1 ng-if="message !=''">{{message}}</h1>
 
-
-      <div class="usernameField">
-          <input type="text" class="" placeholder="Username" ng-model="user.username" />
-      </div>
-
-      <div class="passwordField">
-          <input type="password" class="" placeholder="Password" ng-model="user.password"  />
-      </div>
 
       <md-input-container>
         <label>Username</label>
-        <input name="username" ng-model="username" required md-maxlength="15" minlength="4">
+        <input name="username"  required md-maxlength="15" minlength="4" ng-model="user.username">
         <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
           <div ng-message="required">This is required!</div>
           <div ng-message="md-maxlength">That's too long!</div>
@@ -22,7 +15,7 @@
 
       <md-input-container>
         <label>Password</label>
-        <input name="password" ng-model="password" required md-maxlength="25" minlength="4">
+        <input type="password" name="password"  required md-maxlength="25"  ng-model="user.password">
         <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
           <div ng-message="required">This is required!</div>
           <div ng-message="md-maxlength">That's too long!</div>
@@ -32,7 +25,7 @@
 
 
       <div class="loginSubmit">
-        <md-button class="md-raised md-primary loginButton"> Log In </md-button>
+        <md-button class="md-raised md-primary loginButton" ng-click="login()"> Log In </md-button>
       </div>
 
     </form>

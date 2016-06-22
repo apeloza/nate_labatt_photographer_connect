@@ -4,9 +4,10 @@ var app = angular.module('app', ['ngRoute', 'ngMaterial']);
 app.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
-        .when('/map', {
-            templateUrl: '/views/map.html',
-            controller: 'MapController'
+
+        .when('/user', {
+          templateUrl: '/views/map.html',
+          controller: 'MapController'
         })
         .when('/myJobs', {
             templateUrl: '/views/myJobs.html',
@@ -14,11 +15,11 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/createUser', {
             templateUrl: '/views/createUser.html',
-            controller: 'CreateUserController'
+            controller: 'UserController'
         })
         .when('/userList', {
             templateUrl: 'views/userList.html',
-            controller: 'UserListController'
+            controller: 'UserController'
         })
         .when('/jobsList', {
             templateUrl: 'views/jobsList.html',

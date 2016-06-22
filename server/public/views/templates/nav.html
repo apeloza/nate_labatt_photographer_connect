@@ -1,5 +1,22 @@
-<md-nav-bar md-selected-nav-item="currentNavItem">
-  <md-nav-item md-nav-href="#map" name="page1">Job Map</md-nav-item>
-  <md-nav-item md-nav-sref="app.page2" name="page2">Page Two</md-nav-item>
-  <md-nav-item md-nav-href="#page3" name="page3">Page Three</md-nav-item>
-</md-nav-bar>
+<div ng-controller="LoginController">
+
+  <div ng-if="$scope.user.level == user">
+    <md-nav-bar md-selected-nav-item="currentNavItem" >
+      <md-nav-item md-nav-href="#map" name="map">Job Map</md-nav-item>
+      <md-nav-item md-nav-href="#myJobs" name="myJobs">My Jobs</md-nav-item>
+      <md-nav-item md-nav-click="logOut()" name="logOut">Log Out</md-nav-item>
+      <p>Nav Bar ng-if User is Photographer</p>
+    </md-nav-bar>
+  </div>
+
+  <div ng-if="$scope.user.level == admin">
+    <md-nav-bar md-selected-nav-item="currentNavItem" >
+      <md-nav-item md-nav-href="#map" name="map">Job Map</md-nav-item>
+      <md-nav-item md-nav-href="#jobsList" name="jobslist">Jobs</md-nav-item>
+      <md-nav-item md-nav-href="#userList" name="userList">User List</md-nav-item>
+      <md-nav-item md-nav-click="logOut()" name="logOut">Log Out</md-nav-item>
+      <p>Nav Bar ng-if User is Admin</p>
+    </md-nav-bar>
+  </div>
+
+</div>

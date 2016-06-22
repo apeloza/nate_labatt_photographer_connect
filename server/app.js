@@ -8,18 +8,20 @@ var passport = require('./strategies/userStrategy');
 var session = require('express-session');
 
 // Route includes
-var createuser = require('./routes/createuser');
-var login = require('./routes/login');
+var index = require('./routes/index');
+var user = require('./routes/user');
+var register = require('./routes/register');
+
 
 //Body Parser
 app.use(bodyParser.json());
 
-// app.use(express.static(path.join(__dirname, './public')));
-app.get('/*', function(req, res) {
-  console.log('request params', req.params);
-var file = req.params[0] || 'views/index.html';
-res.sendFile(path.join(__dirname, "./public", file));
-});
+// Catch direct requests and make sure the user can view this page
+// app.use('/views/user.html', user)
+
+app.use(express.static(path.join(__dirname, './public')));
+
+
 
 //Passport Configuration
 
@@ -36,8 +38,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes
-app.use('/createuser', createuser);
-app.use('/login', login);
+app.use('/register', register);
+app.use('/user', user);
+app.use('/*', index);
+
 //Mongo Connection
 var databaseURI = 'mongodb://admin:natelabatt@ds011873.mlab.com:11873/photographerconnectusers';
 mongoose.connect(databaseURI);
