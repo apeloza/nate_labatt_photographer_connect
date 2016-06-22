@@ -4,15 +4,27 @@
 
     <form class="logInForm" ng-submit="login()">
 
-      <div class="usernameField">
-          <input type="text" class="" placeholder="Username"  />
-      </div>
+      <md-input-container>
+        <label>Username</label>
+        <input name="username" ng-model="username" required md-maxlength="15" minlength="4">
+        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+          <div ng-message="minlength">That's too short!</div>
+        </div> -->
+      </md-input-container>
 
-      <div class="passwordField">
-          <input type="password" class="" placeholder="Password"  />
-      </div>
+      <md-input-container>
+        <label>Password</label>
+        <input name="password" ng-model="password" required md-maxlength="25" minlength="4">
+        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+          <div ng-message="minlength">That's too short!</div>
+        </div> -->
+      </md-input-container>
 
-      <div class="loginRegister">
+      <div class="loginSubmit">
           <input class="" type="submit" name="submit" value="Log In" />
       </div>
 
