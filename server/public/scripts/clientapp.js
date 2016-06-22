@@ -9,7 +9,7 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'MapController'
         })
         .when('/user', {
-          templateUrl: '/views/user.html',
+          templateUrl: '/views/map.html',
           controller: 'MapController'
         })
         .when('/myJobs', {
