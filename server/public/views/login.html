@@ -5,11 +5,11 @@
     <form class="logInForm" ng-submit="login()">
 
       <div class="usernameField">
-          <input type="text" class="" placeholder="Username"  />
+          <input type="text" class="" placeholder="Username" ng-model="user.username" />
       </div>
 
       <div class="passwordField">
-          <input type="password" class="" placeholder="Password"  />
+          <input type="password" class="" placeholder="Password" ng-model="user.password"  />
       </div>
 
       <div class="loginRegister">
