@@ -1,4 +1,4 @@
-app.controller('CreateUserController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('UserController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
   console.log('Create User Controller running');
 $scope.user = {
   username: '',
