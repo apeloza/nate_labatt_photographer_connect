@@ -22,7 +22,7 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/userList', {
             templateUrl: 'views/userList.html',
-            controller: 'UserListController'
+            controller: 'UserController'
         })
         .when('/jobsList', {
             templateUrl: 'views/jobsList.html',
