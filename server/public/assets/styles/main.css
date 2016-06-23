@@ -88,7 +88,6 @@ md-toolbar {
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
-  border: 1px solid black;         /*----------------remove after styling is done********/
   display: inline-block;
 }
 
