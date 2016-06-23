@@ -11,6 +11,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
+var jobs = require('./routes/jobs');
 
 
 //Body Parser
@@ -40,6 +41,7 @@ app.use(passport.session());
 //Routes
 app.use('/register', register);
 app.use('/user', user);
+app.use('/jobs', jobs);
 app.use('/*', index);
 
 //Mongo Connection
