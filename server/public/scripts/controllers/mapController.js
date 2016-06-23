@@ -26,7 +26,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', fun
         due: ''
     };
     console.log('Map Controller running');
-    $scope.showData = function(mapmarker) {
+    $scope.showData = function(event, mapmarker) {
       console.log("Fired");
 console.log(mapmarker);
         $scope.selectedPin.address = mapmarker.position;
