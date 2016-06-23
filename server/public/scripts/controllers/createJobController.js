@@ -1,20 +1,20 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
   console.log('Create Job Controller running');
 
-  $scope.name;
-  $scope.email;
-  $scope.phone;
-  $scope.address;
+  $scope.name = '';
+  $scope.email = '';
+  $scope.phone = '';
+  $scope.address = '';
   $scope.squareFeet = 0;
-  $scope.dueDate;
-  $scope.preferredDate;
-  $scope.timeFrame;
+  $scope.dueDate = 0;
+  $scope.preferredDate = 0;
+  $scope.timeFrame = '';
   $scope.afterDark = 0;
   $scope.totalPrice = 0;
   $scope.tenThousandSqFt = false;
   $scope.lakeAndAcreage = false;
-  $scope.notes;
-  $scope.entryMethod;
+  $scope.notes = '';
+  $scope.entryMethod = '';
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
 
@@ -68,7 +68,7 @@ $scope.saveNewJob = function () {
   };
   console.log("newJobData: ", newJob);
 
-  $http.put('/saveNewJob', newJob).then(function (req, res) {
+  $http.post('/jobs', newJob).then(function (req, res) {
 
     $location.path('/jobsList');
   });
