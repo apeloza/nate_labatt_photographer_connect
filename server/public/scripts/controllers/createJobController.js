@@ -54,11 +54,10 @@ $scope.saveNewJob = function () {
     email     : $scope.email,
     phone     : $scope.phone,
     address   : $scope.address,
-    squareFeet: $scope.squareFeet,
     dueDate   : $scope.dueDate,
     timeFrame : $scope.timeFrame,
-    squareFeet: $scope.squareFeet,
-    afterDark : $scope.afterDark,
+    squareFeet: $scope.squareFeet.price,
+    afterDark : $scope.afterDark.price,
     totalPrice: $scope.totalPrice,
     preferredDate: $scope.preferredDate,
     notes      : $scope.notes,
@@ -66,7 +65,7 @@ $scope.saveNewJob = function () {
   };
   console.log("newJobData: ", newJob);
 
-  $http.put('saveNewJob', newJob).then(function (req, res) {
+  $http.put('/saveNewJob', newJob).then(function (req, res) {
 
     $location.path('/jobsList');
   });
