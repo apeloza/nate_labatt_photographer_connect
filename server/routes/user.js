@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/allusers', function(req, res) {
-      User.find({}, function (err, user) {
+      User.find({level: 'user'}, function (err, user) {
     res.send(user);
     });
   })
@@ -30,7 +30,15 @@ router.get('/allusers', function(req, res) {
 //   console.log('not logged in');
 //   res.send(false);
 //   });
-
+router.delete('/:id', function (req, res) {
+  User.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+    res.sendStatus(204);
+  });
+});
 
 
 // clear all server session information about this user

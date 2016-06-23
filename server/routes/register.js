@@ -15,6 +15,7 @@ router.post('/', function(req, res, next) {
          if(err) {
              next(err);
          } else {
+
              res.redirect('/');
          }
     });

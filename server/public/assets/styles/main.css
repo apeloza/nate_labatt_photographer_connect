@@ -138,6 +138,10 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
+.repeatJobsList {
+  text-align: center;
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
   display: inline-block;
@@ -169,4 +173,9 @@ md-toolbar {
 
 .createUserCard {
   background-color: #E0F7FA;
+}
+
+
+.createUserButton, .registerUserButton, .userListButton, .createJobButton, .jobListButton {
+  color: white !important;
 }
