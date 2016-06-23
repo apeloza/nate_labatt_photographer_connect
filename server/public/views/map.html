@@ -1,14 +1,20 @@
 <md-toolbar>
-  <h1 class="toolbarText">Find a Job</h1>
+    <h1 class="toolbarText">Find a Job</h1>
 </md-toolbar>
 
 <ng-map zoom="10" center="[44.886656, -93.2258133]">
-  <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
+    <div class="mapmodal" ng-show="pinSelected">
+        <button class="closebtn" ng-click="closeModal()">X</button>
+        <p>Address: {{selectedPin.address}}</p>
+        <p>Preferred Time: {{selectedPin.date}}, {{selectedPin.time}}</p>
+        <p>Due: {{selectedPin.due}}</p>
+        <p>Pay: {{selectedPin.price}}</p>
+        <button class="jobbtn" ng-click="takeJob()">Accept Job</button>
+    </div>
+    <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
-<div ng-show="selectedPin.address != ''">
-  {{selectedPin.address}}
-</div>
+
 
 <div class="jobsOnMap">
-  <p>Job list here. Height set to auto. min-height to 50px.</p>
+    <p>Job list here. Height set to auto. min-height to 50px.</p>
 </div>
