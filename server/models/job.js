@@ -14,7 +14,7 @@ var JobSchema = new Schema({
     squareFeet: {type: String},
     timeFrame: {type: String},
     totalPrice: {type: Number},
-    afterDark: {type: Number},
+    afterDark: {type: String},
     preferredDate: {type: Date},
     notes: {type: String},
     entryMethod: {type: String},

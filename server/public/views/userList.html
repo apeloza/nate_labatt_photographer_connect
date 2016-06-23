@@ -5,9 +5,9 @@
 <md-button class="md-raised md-primary createUserButton" href="#createUser"> Create User </md-button>
 </div>
 
-<md-card>
+<md-card class="adminUserPage">
 
-  <div class="adminUserPage">
+  <div>
     <md-toolbar>
       <h1 class="toolbarText">Users</h1>
     </md-toolbar>
@@ -24,7 +24,7 @@
         <div  class="userListCardsPhone">
           <p>Phone #: <span style="font-weight: bold">{{user.phoneNumber}}</span></p>
         </div>
-        <md-button class="md-raised md-primary userDeleteButton" ng-click="deleteUser()">Delete User</md-button>
+        <md-button class="md-raised md-warn userDeleteButton" ng-click="deleteUser()">Delete User</md-button>
       </div>
     </md-card>
 </md-card>

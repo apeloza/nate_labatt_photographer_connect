@@ -24,8 +24,17 @@
 
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 .signIn {
-  border: 1px solid black;     /*----------------remove after styling is done********/
+  width: 300px;
+  margin:auto;
   margin-top: 10%;
+  background-color: #E0F7FA;
+}
+
+.signIn md-input-container{
+  padding:30px;
+}
+.loginButton{
+  margin-left: 100px;
 }
 
 
@@ -64,6 +73,10 @@ md-input-container {
   margin-left:20px;
 }
 
+.addEmail {
+  margin-left:20px;
+}
+
 .notes {
   margin-top:30px;
   margin-bottom:30px;
@@ -89,7 +102,6 @@ md-toolbar {
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
-  border: 1px solid black;         /*----------------remove after styling is done********/
   display: inline-block;
 }
 
@@ -108,4 +120,15 @@ md-toolbar {
 
 .userDeleteButton {
   float: right;
+}
+
+.adminUserPage {
+  background-color: #E0F7FA;
+}
+
+
+/*----------------------------------------------------Create User Page----------------------------------------------------*/
+
+.createUserCard {
+  background-color: #E0F7FA;
 }

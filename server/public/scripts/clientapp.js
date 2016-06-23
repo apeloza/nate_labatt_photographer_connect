@@ -46,6 +46,6 @@ app.config(function($mdThemingProvider) {
       'default': 'A700'
     })
     .warnPalette('red', {
-      'default': 'A700'
+      'default': 'A200'
     });
 });
