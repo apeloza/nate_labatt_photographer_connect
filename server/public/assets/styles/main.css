@@ -102,6 +102,10 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
+.repeatJobsList {
+  text-align: center;
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
   display: inline-block;
