@@ -16,7 +16,16 @@
     <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
 
-
-<div class="jobsOnMap">
-    <p>Job list here. Height set to auto. min-height to 50px.</p>
-</div>
+<md-card>
+  <md-toolbar>
+    <h1 class="toolbarText">Jobs Available</h1>
+  </md-toolbar>
+  <div ng-repeat="job in mapMarkers">
+    <md-card class="mapJobList">
+    <p>Address: <span style="font-weight: bold">{{job.position}}</span></p>
+    <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
+    <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
+    <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
+  </div>
+</md-card>
+</md-card>
