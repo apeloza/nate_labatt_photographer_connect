@@ -8,7 +8,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', fun
         }
     });
 $scope.mapMarkers = [];
-$http.get('/jobs').then(function(response){
+$http.get('/jobs/alljobs').then(function(response){
   console.log(response);
 for (var i = 0; i < response.data.length; i++){
   var mapmarker = {
