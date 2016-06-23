@@ -46,7 +46,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
-  $scope.emails = [];
+  $scope.emails = [''];
 
 // Add up total price
 $scope.total = function () {
