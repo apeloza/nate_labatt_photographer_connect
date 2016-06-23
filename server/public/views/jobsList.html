@@ -11,7 +11,7 @@
     <md-card ng-repeat="job in job">
       <p>Owner: <span style="font-weight: bold">{{job.name}}</span></p>
       <p>Address: <span style="font-weight: bold">{{job.address}}</span></p>
-      <p>Due Date: <span style="font-weight: bold">{{job.dueDate}}</span></p>
+      <p>Due Date: <span style="font-weight: bold">{{job.dueDate | date : format : longDate}}</span></p>
       <p>Price: <span style="font-weight: bold">${{job.totalPrice}}</span></p>
       <p>Photographer: <span style="font-weight: bold">{{job.jobAcceptedBy}}</span></p>
     </md-card>
