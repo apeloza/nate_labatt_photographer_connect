@@ -87,8 +87,5 @@ md-toolbar {
 
 .userListCardsUsername, .userListCardsEmail, .userListCardsPhone {
   border: 1px solid black;         /*----------------remove after styling is done********/
-}
-
-.userListCards {
-  text-align: center;
+  margin-right: 5%;
 }
