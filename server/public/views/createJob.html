@@ -5,32 +5,41 @@
   <md-toolbar>
     <h1 class="toolbarText">New Job</h1>
   </md-toolbar>
-  
+
   <div layout="row">
   <div layout="column">
     <form>
       <div flex>
         <md-input-container required>
           <label>Client Name</label>
-          <input type="text" ng-model="name" />
+          <input type="text" ng-model="name" required/>
         </md-input-container>
 
         <md-input-container>
+          <label>Phone #</label>
+          <input type="text" ng-model="phone"/>
+        </md-input-container>
+      </div>
+
+      <!-- Email fields -------------------------------------------------->
+      <div flex class="email">
+        <md-input-container ng-repeat="email in emails track by $index">
           <label>Email</label>
-          <input type="text" ng-model="email"/>
+          <input type="text" ng-model="emails[$index]" ng-change="addEmail()"/>
         </md-input-container>
       </div>
 
       <div flex>
         <md-input-container>
-          <label>Phone #</label>
-          <input type="text" ng-model="phone"/>
+          <label>Address</label>
+          <input type="text" ng-model="address" required/>
         </md-input-container>
 
-        <md-input-container required>
-          <label>Address</label>
-          <input type="text" ng-model="address"/>
+        <md-input-container>
+          <label>Zip Code</label>
+          <input type="text" ng-model="zip" required/>
         </md-input-container>
+
       </div>
 
       <div flex>

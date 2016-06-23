@@ -5,16 +5,17 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
   $scope.email = '';
   $scope.phone = '';
   $scope.address = '';
-  $scope.squareFeet = 0;
+  $scope.squareFeet = '';
   $scope.dueDate = 0;
   $scope.preferredDate = 0;
   $scope.timeFrame = '';
-  $scope.afterDark = 0;
+  $scope.afterDark = '';
   $scope.totalPrice = 0;
   $scope.tenThousandSqFt = false;
   $scope.lakeAndAcreage = false;
   $scope.notes = '';
   $scope.entryMethod = '';
+  $scope.zip = '';
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
 
@@ -34,6 +35,9 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
+  $scope.emails = ["", "", "", ""];
+
+// Add up total price
 $scope.total = function () {
 
   $scope.totalPrice = $scope.squareFeet.price
@@ -49,18 +53,26 @@ $scope.total = function () {
     $scope.totalPrice = 'Call for price';
   }
 
+// Push entered emails into emails array
+$scope.addEmail = function () {
+  for (var i = 0; i < $scope.emails.length; i++){
+    $scope.emails[i] = emails[$index];
+  }
+}
+
 };
 
 $scope.saveNewJob = function () {
   var newJob = {
     name      : $scope.name,
-    email     : $scope.email,
+    emails    : $scope.emails,
     phone     : $scope.phone,
     address   : $scope.address,
+    zipCode   : $scope.zip,
     dueDate   : $scope.dueDate,
     timeFrame : $scope.timeFrame,
-    squareFeet: $scope.squareFeet.price,
-    afterDark : $scope.afterDark.price,
+    squareFeet: $scope.squareFeet.sqft,
+    afterDark : $scope.afterDark.option,
     totalPrice: $scope.totalPrice,
     preferredDate: $scope.preferredDate,
     notes      : $scope.notes,
