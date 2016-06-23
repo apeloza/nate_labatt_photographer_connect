@@ -12,7 +12,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
       }
   });
   $scope.name = '';
-  $scope.email = '';
   $scope.phone = '';
   $scope.address = '';
   $scope.squareFeet = '';
@@ -26,6 +25,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
   $scope.notes = '';
   $scope.entryMethod = '';
   $scope.zip = '';
+  $scope.state = 'MN';
+  $scope.city = '';
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
 
@@ -45,7 +46,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
-  $scope.emails = ["", "", "", ""];
+  $scope.emails = [];
 
 // Add up total price
 $scope.total = function () {
@@ -79,8 +80,12 @@ $scope.saveNewJob = function () {
     name      : $scope.name,
     emails    : $scope.emails,
     phone     : $scope.phone,
-    address   : $scope.address,
-    zipCode   : $scope.zip,
+    address   : {
+                  line1: $scope.address,
+                  city: $scope.city,
+                  zip: $scope.zip,
+                  state: $scope.state
+                },
     dueDate   : $scope.dueDate,
     timeFrame : $scope.timeFrame,
     squareFeet: $scope.squareFeet.sqft,

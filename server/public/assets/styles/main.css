@@ -1,3 +1,11 @@
+.mapmodal {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  position: fixed;
+  left: 40%;
+  z-index: 2;
+}
 
 .mapcontainer{
   width: 100%;
@@ -77,9 +85,7 @@ md-toolbar {
 }
 
 /*----------------------------------------------------Admin Job List Page----------------------------------------------------*/
-.adminJobListPage {
-  margin: 20px;
-}
+
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
@@ -93,6 +99,13 @@ md-toolbar {
 }
 
 .userListCardsUsername, .userListCardsEmail, .userListCardsPhone {
-  border: 1px solid black;         /*----------------remove after styling is done********/
-  margin-right: 5%;
+  width: 25%;
+}
+
+.userListCardsUsername {
+  margin-left: 2%;
+}
+
+.userDeleteButton {
+  float: right;
 }
