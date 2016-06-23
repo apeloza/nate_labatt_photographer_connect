@@ -1,4 +1,4 @@
-app.controller('UserController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('UserController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
 
   console.log('Create User Controller running');
   $http.get('/user').then(function(response) {

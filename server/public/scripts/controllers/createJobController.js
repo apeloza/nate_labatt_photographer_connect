@@ -1,4 +1,4 @@
-app.controller('CreateJobController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
   console.log('Create Job Controller running');
   $http.get('/user').then(function(response) {
     if(response.data.level == 'user'){

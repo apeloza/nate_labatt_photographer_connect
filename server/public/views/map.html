@@ -4,17 +4,29 @@
 
 <ng-map zoom="10" center="[44.886656, -93.2258133]">
     <div class="mapmodal" ng-show="pinSelected">
-        <button class="closebtn" ng-click="closeModal()">X</button>
-        <p>Address: {{selectedPin.address}}</p>
-        <p>Preferred Time: {{selectedPin.date}}, {{selectedPin.time}}</p>
-        <p>Due: {{selectedPin.due}}</p>
-        <p>Pay: {{selectedPin.price}}</p>
-        <button class="jobbtn" ng-click="takeJob()">Accept Job</button>
+        <i class="material-icons closebtn" ng-click="closeModal()">clear</i>
+        <div class="modalText">
+          <p><strong>Address:</strong> {{selectedPin.address}}</p>
+          <p><strong>Preferred Time:</strong> {{selectedPin.date}}, {{selectedPin.time}}</p>
+          <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
+          <p class="pay"><strong>Pay:</strong> {{selectedPin.price}}</p>
+        </div>
+        <md-button class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
     </div>
     <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
 
-
-<div class="jobsOnMap">
-    <p>Job list here. Height set to auto. min-height to 50px.</p>
-</div>
+<md-card>
+  <md-toolbar>
+    <h1 class="toolbarText">Jobs Available</h1>
+  </md-toolbar>
+  <div ng-repeat="job in mapMarkers">
+    <md-card class="mapJobList">
+    <p>Address: <span style="font-weight: bold">{{job.position}}</span></p>
+    <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
+    <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
+    <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
+    <md-button class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
+  </div>
+</md-card>
+</md-card>
