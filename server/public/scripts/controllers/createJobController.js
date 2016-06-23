@@ -54,6 +54,8 @@ $scope.total = function () {
   $scope.totalPrice = $scope.squareFeet.price
   if ($scope.afterDark.price != undefined) {
     $scope.totalPrice += $scope.afterDark.price;
+  } else {
+    $scope.totalPrice;
   }
 
   if ($scope.lakeAndAcreage == true) {
