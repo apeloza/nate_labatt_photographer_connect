@@ -1,4 +1,5 @@
 app.controller('UserController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+
   console.log('Create User Controller running');
   $http.get('/user').then(function(response) {
     if (response.data.level == 'user'){
@@ -8,11 +9,13 @@ app.controller('UserController', ['$scope', '$http', '$location', function ($sco
         console.log(response.data);
           $scope.userName = response.data.username;
           console.log('User Data: ', $scope.userName);
+          getAllUsers();
       } else {
           $location.path("/");
       }
   });
 
+function getAllUsers () {
   $http.get('/user/allusers').then(function(response) {
     if(response.data) {
       $scope.allUsers = response.data;
@@ -21,7 +24,7 @@ app.controller('UserController', ['$scope', '$http', '$location', function ($sco
       alert('No Users');
     }
   });
-
+}
 
 $scope.user = {
   username: '',
@@ -43,6 +46,18 @@ $scope.registerUser = function() {
     console.log('Error');
     $scope.message = 'Please try again.';
   });
+  }
+};
+
+$scope.deleteUser = function(id) {
+
+  if (confirm("Remove user?")) {
+      $http.delete('/user/' + id)
+          .then(function(response) {
+
+              getAllUsers();
+
+          });
   }
 };
 
