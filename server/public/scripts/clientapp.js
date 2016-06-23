@@ -35,3 +35,17 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 
 }]);
+
+// Theme palette
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('teal',{
+      'default': 'A700'
+    })
+    .accentPalette('cyan', {
+      'default': 'A700'
+    })
+    .warnPalette('red', {
+      'default': 'A700'
+    });
+});
