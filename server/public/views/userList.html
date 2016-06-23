@@ -1,6 +1,16 @@
+<md-button class="md-raised md-primary userListButton" href="#userList"> User List </md-button>
+<md-button class="md-raised md-primary createUserButton" href="#createUser"> Create User </md-button>
+
 
 <md-card>
   <div class="adminUserPage">
     <h1>Admin user list view</h1>
+  </div>
+  <div>
+    <md-card class="userListCards" ng-repeat="user in allUsers">
+      <p>{{user.username}}</p>
+      <p>{{user.email}}</p>
+      <p>{{user.phoneNumber}}</p>
+    </md-card>
   </div>
 </md-card>

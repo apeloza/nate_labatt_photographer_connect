@@ -1,4 +1,4 @@
-app.controller('MapController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('MapController', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           $scope.userName = response.data.username;
@@ -8,9 +8,8 @@ app.controller('MapController', ['$scope', '$http', '$location', function ($scop
       }
   });
   console.log('Map Controller running');
-  var map;
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 44.986, lng: -93.258},
-    zoom: 10
-  });
+  $scope.showData = function(){
+console.log("Yep");
+  };
+
 }]);
