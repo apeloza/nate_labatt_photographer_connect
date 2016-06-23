@@ -4,10 +4,19 @@
 <md-card>
   <div class="adminJobListPage">
     <md-toolbar>
-
       <h1 class="toolbarText">Job List</h1>
-
-
     </md-toolbar>
+  </div>
+  <div class="repeatJobsList">
+    <md-card ng-repeat="job in job">
+      <p>{{job.name}}</p>
+      <p>{{job.address}}</p>
+      <p>{{job.addressZIP}}</p>
+      <p>{{job.addressCity}}</p>
+      <p>{{job.addressState}}</p>
+      <p>{{job.dueDate}}</p>
+      <p>{{job.totalPrice}}</p>
+      <p>{{job.jobAcceptedBy}}</p>
+    </md-card>
   </div>
 </md-card>
