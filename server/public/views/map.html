@@ -1,10 +1,11 @@
 <h1>Map</h1>
 
 <ng-map zoom="10" center="[44.886656, -93.2258133]">
-  <marker position="32 Spruce Place Minneapolis MN" title="Hello World"></marker>
-  <marker position="1000 Devonshire Lane Bloomington MN" on-click="showData()" title="Hello World"></marker>
+  <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" ng-click="showData(mapmarker)"></marker>
 </ng-map>
-
+<div ng-show="selectedPin.address != ''">
+  {{selectedPin.address}}
+</div>
 
 <div class="jobsOnMap">
   <p>Job list here. Height set to auto. min-height to 50px.</p>
