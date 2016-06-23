@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/allusers', function(req, res) {
-      User.find({}, function (err, user) {
+      User.find({level: 'user'}, function (err, user) {
     res.send(user);
     });
   })
