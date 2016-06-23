@@ -7,6 +7,42 @@
   z-index: 2;
 }
 
+ng-map {
+  border:2px solid #ebebeb;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.mapmodal {
+  border-radius: 5px;
+  border: 2px solid #E0F7FA;
+}
+
+.closebtn {
+  cursor:pointer;
+  margin: 3px;
+  color:#00BFA5;
+}
+
+.closebtn:hover {
+  color:#00695C;
+}
+
+.modalText {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.due {
+  text-align:center;
+}
+.pay {
+  text-align:center;
+}
+
+.jobbtn {
+  margin-left:100px;
+}
+
 .mapcontainer{
   width: 100%;
   height: 80%;
@@ -137,4 +173,9 @@ md-toolbar {
 
 .createUserCard {
   background-color: #E0F7FA;
+}
+
+
+.md-raised {
+  color: white !important;
 }
