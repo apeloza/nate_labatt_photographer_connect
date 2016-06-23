@@ -140,6 +140,6 @@ md-toolbar {
 }
 
 
-.createUserButton, .registerUserButton, .userListButton {
+.createUserButton, .registerUserButton, .userListButton, .createJobButton, .jobListButton {
   color: white !important;
 }
