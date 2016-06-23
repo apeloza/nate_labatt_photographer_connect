@@ -1,9 +1,12 @@
-#map{
-  width: 70%;
-  height: 50%;
+.mapcontainer{
+  width: 100%;
+  height: 80%;
   margin: 20px auto;
 }
-
+.map{
+  width: 100%;
+  height: 80%;
+}
 .container {
   width: 90%;
   margin: auto;
