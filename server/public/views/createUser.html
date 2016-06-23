@@ -1,25 +1,10 @@
 <md-button class="md-raised md-primary userListButton" href="#userList"> User List </md-button>
 <md-button class="md-raised md-primary createUserButton" href="#createUser"> Create User </md-button>
 
-<md-toolbar>
-  <h1 class="toolbarText">Create User</h1>
-</md-toolbar>
-<h1 ng-if="message !=''">{{message}}</h1>
-<form>
-<label for="username">Username:</label>
-<input type="text" ng-model="user.username" />
-<label for="password">Password:</label>
-<input type="password" ng-model="user.password" />
-<label for="email">Email:</label>
-<input type="text" ng-model="user.email" />
-<label for="phone">Phone #:</label>
-<input type="text" ng-model="user.phoneNumber" />
-<button class="btn btn-default" ng-click="registerUser()">Register</button>
-</form>
-
-
 <md-card class="createUserCard">
-  <h1>Create User</h1>
+  <md-toolbar>
+    <h1 class="toolbarText">Create User</h1>
+  </md-toolbar>
   <h1 ng-if="message !=''">{{message}}</h1>
     <div layout="row">
       <div layout="column">

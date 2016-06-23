@@ -1,6 +1,16 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
   console.log('Create Job Controller running');
-
+  $http.get('/user').then(function(response) {
+    if(response.data.level == 'user'){
+      $location.path('/user');
+    }
+      if (response.data.username) {
+          $scope.userName = response.data.username;
+          console.log('User Data: ', $scope.userName);
+      } else {
+          $location.path("/");
+      }
+  });
   $scope.name = '';
   $scope.email = '';
   $scope.phone = '';
