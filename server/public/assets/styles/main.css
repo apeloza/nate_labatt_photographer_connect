@@ -108,3 +108,14 @@ md-toolbar {
 .userDeleteButton {
   float: right;
 }
+
+.adminUserPage {
+  background-color: #E0F7FA;
+}
+
+
+/*----------------------------------------------------Create User Page----------------------------------------------------*/
+
+.createUserCard {
+  background-color: #E0F7FA;
+}
