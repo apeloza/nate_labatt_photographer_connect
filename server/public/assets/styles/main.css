@@ -75,7 +75,20 @@ md-toolbar {
 }
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
-
-.userListCards > p {
+.adminUserListNavButtons {
+  border: 1px solid black;         /*----------------remove after styling is done********/
   display: inline-block;
+}
+
+
+.userListCards > div {
+  display: inline-block;
+}
+
+.userListCardsUsername, .userListCardsEmail, .userListCardsPhone {
+  border: 1px solid black;         /*----------------remove after styling is done********/
+}
+
+.userListCards {
+  text-align: center;
 }

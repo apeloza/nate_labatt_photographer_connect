@@ -6,7 +6,7 @@ var EmailSchema = require('./email').schema;
 var JobSchema = new Schema({
     name: {type: String, required: true, index: {unique: true}},
     email: [EmailSchema],
-    phoneNumber: {type: String, required: true},
+    phone: {type: String, required: true},
     squareFeet: {type: String},
     dueDate: {type: Date},
     timeFrame: {type: String},
