@@ -22,6 +22,7 @@
       </div>
 
       <!-- Email fields -------------------------------------------------->
+      <md-button class="md-raised md-primary" ng-click="addEmailField()">Add Email</md-button>
       <div flex class="email">
         <md-input-container ng-repeat="email in emails track by $index">
           <label>Email</label>
@@ -70,6 +71,7 @@
             <md-option ng-repeat="item in time">{{item}}</md-option>
           </md-select>
         </md-input-container>
+
       </div>
 
       <!-- ADD ONS -->

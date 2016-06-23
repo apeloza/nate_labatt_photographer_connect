@@ -45,8 +45,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
                {sqft: '7,001-8,000 sq ft - $450', price: 450},
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
-
-  $scope.emails = [];
+  $scope.email = '';
+  $scope.emails = [''];
 
 // Add up total price
 $scope.total = function () {
@@ -65,15 +65,21 @@ $scope.total = function () {
   if ($scope.tenThousandSqFt == true) {
     $scope.totalPrice = 'Call for price';
   }
+};
+
+$scope.addEmailField = function () {
+  $scope.emails.push('');
+};
 
 // Push entered emails into emails array
 $scope.addEmail = function () {
   for (var i = 0; i < $scope.emails.length; i++){
-    $scope.emails[i] = emails[$index];
+    $scope.emails[i] = $scope.emails[$index];
   }
-}
-
+  console.log($scope.emails);
 };
+
+
 
 $scope.saveNewJob = function () {
   var newJob = {
