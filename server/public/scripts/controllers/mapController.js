@@ -7,18 +7,16 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', fun
             $location.path("/");
         }
     });
+
     $scope.mapMarkers = [{
         position: '32 Spruce Place Minneapolis MN',
-        data: {
-          address: '32 Spruce Place Minneapolis MN',
-          price: '350$'
-        }
+        price: '350$',
+        due: 'July 5th, 2016'
+
     }, {
         position: '1000 Devonshire Lane Bloomington MN',
-        data: {
-          address: '1000 Devonshire Lane Bloomington MN',
-          price: '300$'
-        }
+        price: '300$',
+        due: 'July 10th, 2016'
     }];
     $scope.selectedPin = {
         address: '',
@@ -27,11 +25,13 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', fun
     };
     console.log('Map Controller running');
     $scope.showData = function(event, mapmarker) {
-      console.log("Fired");
-console.log(mapmarker);
+      $scope.pinSelected = true;
+        console.log(mapmarker);
         $scope.selectedPin.address = mapmarker.position;
-        console.log($scope.selectedPin.address);
-
+        $scope.selectedPin.price = mapmarker.price;
+        $scope.selectedPin.due = mapmarker.due;
     };
-
+$scope.closeModal = function(){
+  $scope.pinSelected = false;
+};
 }]);
