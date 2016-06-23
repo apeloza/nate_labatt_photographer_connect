@@ -138,3 +138,8 @@ md-toolbar {
 .createUserCard {
   background-color: #E0F7FA;
 }
+
+
+.createUserButton, .registerUserButton, .userListButton {
+  color: white !important;
+}
