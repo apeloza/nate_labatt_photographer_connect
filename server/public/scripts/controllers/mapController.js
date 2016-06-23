@@ -1,4 +1,4 @@
-app.controller('MapController', ['$scope', '$http', '$location', '$timeout', function($scope, $http, $location, $timeout) {
+app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'DataFactory', function($scope, $http, $location, $timeout, DataFactory) {
     $http.get('/user').then(function(response) {
         if (response.data.username) {
             $scope.userName = response.data.username;

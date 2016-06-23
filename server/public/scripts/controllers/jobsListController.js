@@ -1,4 +1,4 @@
-app.controller('JobsListController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
   $http.get('/user').then(function(response) {
     if (response.data.level == 'user'){
       $location.path('/user');
