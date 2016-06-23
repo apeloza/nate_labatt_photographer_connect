@@ -8,6 +8,17 @@ app.controller('UserController', ['$scope', '$http', '$location', function ($sco
           $location.path("/");
       }
   });
+
+  $http.get('/user/allusers').then(function(response) {
+    if(response.data) {
+      $scope.allUsers = response.data;
+      console.log($scope.allUsers);
+    } else {
+      alert('No Users');
+    }
+  });
+
+
 $scope.user = {
   username: '',
   password: '',

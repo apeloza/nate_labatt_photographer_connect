@@ -21,17 +21,17 @@ router.get('/', function(req, res) {
 });
 
 router.get('/allusers', function(req, res) {
-    if(req.isAuthenticated()) {
       User.find({}, function (err, user) {
     res.send(user);
-  });
-} else {
-  // failure best handled on the server. do redirect here.
-  console.log('not logged in');
-  res.send(false);
-}
-});
-})
+    });
+  })
+// } else {
+//   // failure best handled on the server. do redirect here.
+//   console.log('not logged in');
+//   res.send(false);
+//   });
+
+
 
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
