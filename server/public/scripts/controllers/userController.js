@@ -40,7 +40,7 @@ $scope.registerUser = function() {
     console.log('sending to server . . .', $scope.user);
     $http.post('/register', $scope.user).then(function(response) {
       console.log('Success!');
-      $location.path('/');
+      $location.path('/userList');
     },
   function(response) {
     console.log('Error');
