@@ -100,4 +100,9 @@ md-toolbar {
 .userListCardsUsername, .userListCardsEmail, .userListCardsPhone {
   border: 1px solid black;         /*----------------remove after styling is done********/
   margin-right: 5%;
+  margin-left: 5%;
+}
+
+.userDeleteButton {
+  float: right;
 }
