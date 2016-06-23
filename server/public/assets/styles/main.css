@@ -40,9 +40,16 @@
 /*----------------------------------------------------New Job Page----------------------------------------------------*/
 .createJob md-input-container {
   margin: 20px;
+<<<<<<< HEAD
+}
+
+.textareaContainer {
+
+=======
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 3px;
+>>>>>>> 0c6ddd12d186d927e1c93181f7f77e608b1e44a4
 }
 
 .notes {
@@ -57,4 +64,10 @@
 /*----------------------------------------------------Admin Job List Page----------------------------------------------------*/
 .adminJobListPage {
   margin: 20px;
+}
+
+/*----------------------------------------------------Admin User List Page----------------------------------------------------*/
+
+.userListCards > p {
+  display: inline-block;
 }

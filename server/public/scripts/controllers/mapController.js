@@ -8,6 +8,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', fun
       }
   });
   console.log('Map Controller running');
-  
+  $scope.showData = function(){
+console.log("Yep");
+  };
 
 }]);
