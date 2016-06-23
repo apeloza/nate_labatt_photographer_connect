@@ -51,15 +51,15 @@
   margin: 20px;
 }
 
+.createJob {
+  background-color: #E0F7FA;
+}
+
 md-input-container {
   padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 3px;
-
 }
 
 .email {
-  background-color:#f5f5f5;
   width: 80%;
   margin-left:20px;
 }
@@ -67,11 +67,12 @@ md-input-container {
 .notes {
   margin-top:30px;
   margin-bottom:30px;
+  margin-right:30px;
   height: 200px;
   width: 375px;
   border-radius:5px;
-  border: 3px solid #cccccc;
-  background-color: #f5f5f5;
+  border: 2px solid #E0F2F1;
+  background-color: white;
 }
 
 md-toolbar {
@@ -88,7 +89,6 @@ md-toolbar {
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
-  border: 1px solid black;         /*----------------remove after styling is done********/
   display: inline-block;
 }
 
@@ -98,11 +98,24 @@ md-toolbar {
 }
 
 .userListCardsUsername, .userListCardsEmail, .userListCardsPhone {
-  border: 1px solid black;         /*----------------remove after styling is done********/
-  margin-right: 5%;
-  margin-left: 5%;
+  width: 25%;
+}
+
+.userListCardsUsername {
+  margin-left: 2%;
 }
 
 .userDeleteButton {
   float: right;
+}
+
+.adminUserPage {
+  background-color: #E0F7FA;
+}
+
+
+/*----------------------------------------------------Create User Page----------------------------------------------------*/
+
+.createUserCard {
+  background-color: #E0F7FA;
 }
