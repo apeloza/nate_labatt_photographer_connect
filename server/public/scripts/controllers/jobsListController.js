@@ -10,6 +10,15 @@ app.controller('JobsListController', ['$scope', '$http', '$location', function (
           $location.path("/");
       }
   });
+
+  $http.get('/jobs/alljobs').then(function(response) {
+    if(response.data) {
+      $scope.job = response.data;
+      console.log($scope.job);
+    } else {
+      alert("No Jobs in Database");
+    }
+  });
   console.log('Jobs list Controller running');
   console.log($location.path());
 }]);

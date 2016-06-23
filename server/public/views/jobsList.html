@@ -1,7 +1,7 @@
 <md-button class="md-raised md-primary jobListButton" href="#jobsList"> Job List </md-button>
 <md-button class="md-raised md-primary createJobButton" href="#createJob"> Create a Job </md-button>
 
-<md-card>
+<md-card class="jobsListCard">
 
     <md-toolbar>
       <h1 class="toolbarText">Job List</h1>
@@ -9,11 +9,11 @@
 
   <div class="repeatJobsList">
     <md-card ng-repeat="job in job">
-      <p>{{job.name}}</p>
-      <p>{{job.address}}</p>
-      <p>{{job.dueDate}}</p>
-      <p>{{job.totalPrice}}</p>
-      <p>{{job.jobAcceptedBy}}</p>
+      <p>Owner: <span style="font-weight: bold">{{job.name}}</span></p>
+      <p>Address: <span style="font-weight: bold">{{job.address}}</span></p>
+      <p>Due Date: <span style="font-weight: bold">{{job.dueDate | date : format : longDate}}</span></p>
+      <p>Price: <span style="font-weight: bold">${{job.totalPrice}}</span></p>
+      <p>Photographer: <span style="font-weight: bold">{{job.jobAcceptedBy}}</span></p>
     </md-card>
   </div>
 </md-card>
