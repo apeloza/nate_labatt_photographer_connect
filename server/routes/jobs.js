@@ -5,7 +5,9 @@ var Job = require('../models/job');
 var path = require('path');
 
 router.get('/', function(req, res, next) {
-
+  Job.find({}, function (err, jobs) {
+  res.send(jobs);
+  });
 });
 
 // Handles POST request with job data
