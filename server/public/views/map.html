@@ -6,6 +6,7 @@
     <div class="mapmodal" ng-show="pinSelected">
         <button class="closebtn" ng-click="closeModal()">X</button>
         <p>Address: {{selectedPin.address}}</p>
+        <p>Preferred Time: {{selectedPin.date}}, {{selectedPin.time}}</p>
         <p>Due: {{selectedPin.due}}</p>
         <p>Pay: {{selectedPin.price}}</p>
         <button class="jobbtn" ng-click="takeJob()">Accept Job</button>
