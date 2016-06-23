@@ -6,11 +6,13 @@
   <div class="adminUserPage">
     <h1>Admin user list view</h1>
   </div>
-  <div>
-    <md-card class="userListCards" ng-repeat="user in allUsers">
-      <p>{{user.username}}</p>
-      <p>{{user.email}}</p>
-      <p>{{user.phoneNumber}}</p>
+
+    <md-card ng-repeat="user in allUsers">
+      <div class="userListCards">
+        <p>{{user.username}}</p>
+        <p>{{user.email}}</p>
+        <p>{{user.phoneNumber}}</p>
+      </div>
     </md-card>
-  </div>
+
 </md-card>
