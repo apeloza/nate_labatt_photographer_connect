@@ -2,6 +2,7 @@ app.controller('UserController', ['$scope', '$http', '$location', function ($sco
   console.log('Create User Controller running');
   $http.get('/user').then(function(response) {
       if(response.data.username) {
+        console.log(response.data);
           $scope.userName = response.data.username;
           console.log('User Data: ', $scope.userName);
       } else {
