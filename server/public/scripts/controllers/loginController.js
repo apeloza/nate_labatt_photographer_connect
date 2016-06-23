@@ -14,10 +14,9 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
           $http.post('/', $scope.user).then(function(response) {
             if(response.data.username) {
               console.log('success: ', response.data);
-              $scope.userLevel = response.data.level;
-              console.log($scope.userLevel);
               // location works with SPA (ng-route)
               $location.path('/user');
+              window.location.reload();
             } else {
               console.log('failure: ', response);
               $scope.message = "Wrong!!";
@@ -41,5 +40,5 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
           });
         }
       };
-  
+
   }]);
