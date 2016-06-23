@@ -54,9 +54,7 @@ $scope.deleteUser = function(id) {
   if (confirm("Remove user?")) {
       $http.delete('/user/' + id)
           .then(function(response) {
-
               getAllUsers();
-
           });
   }
 };
