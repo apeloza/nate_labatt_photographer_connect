@@ -1,6 +1,7 @@
+<div class="adminUserListNavButtons">
 <md-button class="md-raised md-primary userListButton" href="#userList"> User List </md-button>
 <md-button class="md-raised md-primary createUserButton" href="#createUser"> Create User </md-button>
-
+</div>
 
 <md-card>
   <div class="adminUserPage">
@@ -9,9 +10,15 @@
 
     <md-card ng-repeat="user in allUsers">
       <div class="userListCards">
-        <p>{{user.username}}</p>
-        <p>{{user.email}}</p>
-        <p>{{user.phoneNumber}}</p>
+        <div class="userListCardsUsername">
+          <p>Username: <span style="font-weight: bold">{{user.username}}</span></p>
+        </div>
+        <div class="userListCardsEmail">
+          <p>Email: <span style="font-weight: bold">{{user.email}}</span></p>
+        </div>
+        <div  class="userListCardsPhone">
+          <p>Phone #: <span style="font-weight: bold">{{user.phoneNumber}}</span></p>
+        </div>
       </div>
     </md-card>
 
