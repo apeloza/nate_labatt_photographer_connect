@@ -1,7 +1,7 @@
 <md-button class="md-raised md-primary jobListButton" href="#jobsList"> Job List </md-button>
 <md-button class="md-raised md-primary createJobButton" href="#createJob"> Create a Job </md-button>
 
-<md-card>
+<md-card class="createJob">
   <md-menu-bar>
     <h1>New Job</h1>
   </md-menu-bar>
@@ -9,7 +9,7 @@
   <div layout="column">
     <form>
       <div flex>
-        <md-input-container>
+        <md-input-container required>
           <label>Client Name</label>
           <input type="text" ng-model="name" />
         </md-input-container>
@@ -26,29 +26,33 @@
           <input type="text" ng-model="phone"/>
         </md-input-container>
 
-        <md-input-container>
+        <md-input-container required>
           <label>Address</label>
           <input type="text" ng-model="address"/>
         </md-input-container>
       </div>
 
       <div flex>
-        <label>Square Footage</label>
-        <select ng-model="squareFeet" aria-label="squareFeet"
-                ng-options="item.sqft for item in sf" ng-change="total()">
-        </select>
-
         <md-input-container>
-          <md-checkbox ng-model="tenThousandSqFt">10,000+ sq ft</md-checkbox>
+          Square Footage
+          <select ng-model="squareFeet" aria-label="squareFeet"
+                  ng-options="item.sqft for item in sf" ng-change="total()">
+          </select>
         </md-input-container>
       </div>
 
       <div flex>
-        <md-datepicker ng-model="dueDate"  md-placeholder="Due Date">
-        </md-datepicker>
+        <md-input-container>
+          <md-checkbox ng-model="tenThousandSqFt" ng-change="total()">10,000+ sq ft</md-checkbox>
+        </md-input-container>
+      </div>
 
-        <md-datepicker ng-model="preferredDate"  md-placeholder="Preferred Date">
-        </md-datepicker>
+      <div flex>
+          <md-datepicker ng-model="dueDate" md-placeholder="Due Date">
+          </md-datepicker>
+
+          <md-datepicker ng-model="preferredDate" md-placeholder="Preferred Date">
+          </md-datepicker>
 
         <md-input-container>
           <label>Preferred Timeframe</label>
@@ -60,14 +64,16 @@
 
       <!-- ADD ONS -->
         <div flex>
-          <label>After Dark</label>
-          <select ng-model="afterDark" aria-label="afterDark"
-                  ng-options="item.option for item in ad" ng-change="total()">
-          </select>
+          <md-input-container>
+            After Dark
+            <select ng-model="afterDark" aria-label="afterDark"
+                    ng-options="item.option for item in ad" ng-change="total()">
+            </select>
+          </md-input-container>
         </div>
       <div flex>
         <md-input-container>
-          <md-checkbox ng-model="checkbox">Lakeshore and Acreage - $100</md-checkbox>
+          <md-checkbox ng-model="lakeAndAcreage" ng-change="total()">Lakeshore and Acreage - $100</md-checkbox>
         </md-input-container>
       </div>
 
