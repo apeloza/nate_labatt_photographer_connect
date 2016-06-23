@@ -11,7 +11,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
   $scope.timeFrame;
   $scope.afterDark = 0;
   $scope.totalPrice = 0;
-  $scope.checkbox;
+  $scope.tenThousandSqFt = false;
+  $scope.lakeAndAcreage = false;
   $scope.notes;
   $scope.entryMethod;
 
@@ -35,11 +36,16 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', function 
 
 $scope.total = function () {
 
-  if (checkbox = true) {
+  $scope.totalPrice = $scope.squareFeet.price + $scope.afterDark.price;
+
+  if ($scope.lakeAndAcreage == true) {
+    $scope.totalPrice += 100;
+  }
+
+  if ($scope.tenThousandSqFt == true) {
     $scope.totalPrice = 'Call for price';
   }
 
-  $scope.totalPrice = $scope.squareFeet.price + $scope.afterDark.price;
 };
 
 $scope.saveNewJob = function () {
