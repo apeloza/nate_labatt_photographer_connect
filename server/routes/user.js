@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
+var User = require('../models/user');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -18,6 +19,19 @@ router.get('/', function(req, res) {
     res.send(false);
   }
 });
+
+router.get('/allusers', function(req, res) {
+      User.find({}, function (err, user) {
+    res.send(user);
+    });
+  })
+// } else {
+//   // failure best handled on the server. do redirect here.
+//   console.log('not logged in');
+//   res.send(false);
+//   });
+
+
 
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
