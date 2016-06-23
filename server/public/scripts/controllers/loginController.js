@@ -5,7 +5,7 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
     password: ''
   };
   $scope.message = '';
-
+  $scope.userLevel = '';
   $scope.login = function() {
         if($scope.user.username === '' || $scope.user.password === '') {
           $scope.message = "Enter your username and password!";
@@ -16,6 +16,7 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
               console.log('success: ', response.data);
               // location works with SPA (ng-route)
               $location.path('/user');
+              window.location.reload();
             } else {
               console.log('failure: ', response);
               $scope.message = "Wrong!!";
@@ -39,10 +40,5 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
           });
         }
       };
-      $scope.logout = function() {
-    $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
-      $location.path("/");
-    });
-  };
+
   }]);
