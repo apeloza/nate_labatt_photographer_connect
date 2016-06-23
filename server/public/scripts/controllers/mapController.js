@@ -16,8 +16,12 @@ for (var i = 0; i < response.data.length; i++){
     price: response.data[i].totalPrice,
     due: response.data[i].dueDate,
     time: response.data[i].timeFrame,
-    date: response.data[i].preferredDate
+    date: response.data[i].preferredDate.substring(0,10)
   };
+  mapmarker.due = new Date(mapmarker.due);
+  mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
+  mapmarker.date = new Date(mapmarker.date);
+  mapmarker.date = mapmarker.date.toLocaleDateString("en-US");
   $scope.mapMarkers.push(mapmarker);
 }
 console.log($scope.mapMarkers);
