@@ -1,3 +1,30 @@
-<md-toolbar>
-  <h1 class="toolbarText">My Jobs</h1>
-</md-toolbar>
+<md-card class="myJobsCard">
+  <md-toolbar>
+    <h1 class="toolbarText">My Jobs</h1>
+  </md-toolbar>
+  <div>
+    <md-card ng-repeat="job in userJobs">
+      <div>
+        <p>Address: <strong>{{job.address}}</strong></p>
+      </div>
+      <div>
+        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
+      </div>
+      <div>
+        <p>Primary Email: <strong>{{job.emails[0]}}</strong></p>
+      </div>
+      <div>
+        <p>Phone: <strong>{{job.phone}}</strong></p>
+      </div>
+      <div>
+        <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
+      </div>
+      <div>
+        <p>TimeFrame: <strong>{{job.timeFrame}}</strong></p>
+      </div>
+      <div>
+        <p>Pay: <strong>${{job.totalPrice}}</strong></p>
+      </div>
+    </md-card>
+  </div>
+</md-card>
