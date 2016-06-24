@@ -1,12 +1,12 @@
 app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'DataFactory', function($scope, $http, $location, $timeout, DataFactory) {
     $scope.user = {};
     $scope.isUser = false;
+    $scope.mapMarkers = [];
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
         $scope.user.userLevel = DataFactory.storeUserLevel();
         if ($scope.user.userLevel == 'user') {
             $scope.isUser = true;
-            console.log($scope.isUser);
         }
         if ($scope.user.username) {
             console.log('User Data: ', $scope.user.username);
@@ -17,7 +17,6 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     $scope.mapMarkers = [];
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
-        console.log($scope.openJobs[0].address);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address,
@@ -46,7 +45,6 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     console.log('Map Controller running');
     $scope.showData = function(event, mapmarker) {
         $scope.pinSelected = true;
-        console.log(mapmarker);
         $scope.selectedPin.address = mapmarker.position;
         $scope.selectedPin.price = mapmarker.price;
         $scope.selectedPin.due = mapmarker.due;

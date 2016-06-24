@@ -20,6 +20,7 @@ app.factory('DataFactory', ['$http', function($http) {
         return promise;
     }
 function findOpenJobs() {
+  openJobs = [];
   for (var i = 0; i < jobs.length; i++){
     if(jobs[i].jobStatus == 'open'){
 openJobs.push(jobs[i]);
