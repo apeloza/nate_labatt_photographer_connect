@@ -16,7 +16,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   });
   $scope.name = '';
   $scope.phone = '';
-  $scope.address = '';
+  $scope.address;
   $scope.squareFeet = '';
   $scope.dueDate = 0;
   $scope.preferredDate = 0;
