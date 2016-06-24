@@ -5,7 +5,7 @@ var AddressSchema = new Schema({
   line1: { type: String},
   city: { type: String},
   zip: { type: Number},
-  state: { type: String}
+  state: { type: String},
 });
 
 var Address = mongoose.model('Address', AddressSchema);
