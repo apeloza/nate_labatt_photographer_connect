@@ -16,7 +16,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   });
   $scope.name = '';
   $scope.phone = '';
-  $scope.address = '';
+  $scope.address;
   $scope.squareFeet = '';
   $scope.dueDate = 0;
   $scope.preferredDate = 0;
@@ -50,9 +50,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
-  $scope.email = '';
-
-  $scope.emails = [''];
 
 // Add up total price
 $scope.total = function () {
@@ -73,6 +70,7 @@ $scope.total = function () {
   }
 };
 
+$scope.emails = [''];
 $scope.addEmailField = function () {
   $scope.emails.push('');
 };
@@ -80,7 +78,7 @@ $scope.addEmailField = function () {
 // Push entered emails into emails array
 $scope.addEmail = function () {
   for (var i = 0; i < $scope.emails.length; i++){
-    $scope.emails[i] = $scope.emails[$index];
+    $scope.emails[i] = push($scope.emails[$index]);
   }
   console.log($scope.emails);
 };
