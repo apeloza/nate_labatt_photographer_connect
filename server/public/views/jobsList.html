@@ -8,7 +8,7 @@
     </md-toolbar>
 
   <div class="repeatJobsList">
-    <md-card ng-repeat="job in job track by $index" layout="row">
+    <md-card ng-repeat="job in jobs track by $index" ng-class="{{job.jobStatus}}" layout="row">
       <div flex class="repeatClientInfo">
         <p>Client: <strong>{{job.name}}</strong></p>
         <p>Address: <strong>{{job.address}}</strong></p>

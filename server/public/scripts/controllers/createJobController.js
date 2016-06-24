@@ -104,7 +104,7 @@ $scope.saveNewJob = function () {
     preferredDate: $scope.preferredDate,
     notes      : $scope.notes,
     entryMethod: $scope.entryMethod,
-    jobStatus  : "Open"
+    jobStatus  : "open"
   };
   console.log("newJobData: ", newJob);
 

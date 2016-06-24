@@ -1,55 +1,61 @@
-app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
-  $scope.user = {};
+app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
+    $scope.user = {};
 
-  DataFactory.authenticate().then(function(){
-    $scope.user.username = DataFactory.storeUsername();
-    $scope.user.userLevel = DataFactory.storeUserLevel();
-    if($scope.user.userLevel == 'user'){
-      $location.path('/user');
-    }
-    if($scope.user.username){
-      console.log('User Data: ', $scope.username);
-    } else {
-      $location.path('/');
-    }
-  });
-
-  $http.get('/jobs/alljobs').then(function(response) {
-    if(response.data) {
-      $scope.job = response.data;
-      console.log($scope.job);
-    } else {
-      alert("No Jobs in Database");
-    }
-  });
-
-  // Change job status to finished
-  $scope.finish = function (id) {
-    $http.put('/jobs/finish', id).then(function(response) {
-      if (response === 200){
-        console.log("Job finished");
-      }
+    DataFactory.authenticate().then(function() {
+        $scope.user.username = DataFactory.storeUsername();
+        $scope.user.userLevel = DataFactory.storeUserLevel();
+        if ($scope.user.userLevel == 'user') {
+            $location.path('/user');
+        }
+        if ($scope.user.username) {
+            console.log('User Data: ', $scope.user.username);
+            updateJobs();
+        } else {
+            $location.path('/');
+        }
     });
-  }
 
-  // Change job status back to open
-  $scope.reopen = function (id) {
-    $http.put('/jobs/reopen', id).then(function(response) {
-      if (response === 200){
-        console.log("Job re-opened");
-      }
-    });
-  }
+    function updateJobs() {
+        DataFactory.getAllJobs().then(function() {
 
-  // Delete job
-  $scope.delete = function (id) {
-    $http.post('/jobs/delete', id).then(function(response) {
-      if (response === 200){
-        console.log("Job deleted");
-      }
-    });
-  }
+            $scope.jobs = DataFactory.findAllJobs();
+            console.log($scope.jobs);
+            if ($scope.jobs === undefined) {
+                alert("No Jobs in Database");
+            }
+        });
+    }
 
-  console.log('Jobs list Controller running');
-  console.log($location.path());
+
+    // Change job status to finished
+    $scope.finish = function(id) {
+        $http.put('/jobs/finish', id).then(function(response) {
+            if (response === 204) {
+                console.log("Job finished");
+            }
+        });
+    };
+
+    // Change job status back to open
+    $scope.reopen = function(id) {
+        $http.put('/jobs/reopen', id).then(function(response) {
+            if (response === 204) {
+                console.log("Job re-opened");
+            }
+            updateJobs();
+        });
+    };
+
+    // Delete job
+    $scope.delete = function(id) {
+        $http.delete('/jobs/' + id).then(function(response) {
+            if (response === 204) {
+                console.log("Job deleted");
+            }
+            updateJobs();
+        });
+    };
+
+    console.log('Jobs list Controller running');
+    console.log($location.path());
 }]);
