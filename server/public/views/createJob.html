@@ -45,6 +45,13 @@
 
       <div flex>
         <md-input-container>
+          <label>City</label>
+          <input type="text" ng-model="city" required/>
+        </md-input-container>
+      </div>
+
+      <div flex>
+        <md-input-container>
           Square Footage
           <select ng-model="squareFeet" aria-label="squareFeet"
                   ng-options="item.sqft for item in sf" ng-change="total()">

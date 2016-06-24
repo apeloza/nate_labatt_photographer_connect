@@ -96,7 +96,7 @@ $scope.saveNewJob = function () {
                   line1: $scope.address,
                   city: $scope.city,
                   zip: $scope.zip,
-                  state: $scope.state
+                  state: "MN"
                 },
     dueDate   : $scope.dueDate,
     timeFrame : $scope.timeFrame,
