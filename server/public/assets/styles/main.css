@@ -78,10 +78,19 @@ ng-map {
 }
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 
+.logocontainer{
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
+.logo{
+  height: 100%;
+  width: 100%;
+}
 .signIn {
   width: 300px;
   margin:auto;
-  margin-top: 10%;
+  margin-top: 0;
   background-color: #E0F7FA;
 }
 

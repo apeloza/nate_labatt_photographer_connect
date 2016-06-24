@@ -1,7 +1,9 @@
+<div class="logocontainer">
+  <img class="logo" src=".././assets/images/logo.png" />
+</div>
 <md-card class="signIn" layout="row">
     <form class="logInForm" ng-submit="login()">
       <h1 ng-if="message !=''">{{message}}</h1>
-
       <md-input-container>
         <label>Username</label>
         <input name="username"  required md-maxlength="15" minlength="4" ng-model="user.username">
