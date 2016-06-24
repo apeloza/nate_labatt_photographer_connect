@@ -4,6 +4,7 @@ app.factory('DataFactory', ['$http', function($http) {
     var user;
     var jobs;
     var userJobs = [];
+    var openJobs = [];
     //PRIVATE
     function authenticate() {
         var promise = $http.get('/user').then(function(response) {
@@ -18,9 +19,16 @@ app.factory('DataFactory', ['$http', function($http) {
         });
         return promise;
     }
-
+function findOpenJobs() {
+  for (var i = 0; i < jobs.length; i++){
+    if(jobs[i].jobStatus == 'open'){
+openJobs.push(jobs[i]);
+    }
+  }
+  return openJobs;
+}
     function findUserJobs() {
-        for (var i = 0; i < jobs.length; i++) {
+        for ( i = 0; i < jobs.length; i++) {
             if (jobs[i].jobAcceptedBy == user.username) {
                 userJobs.push(jobs[i]);
             }
@@ -41,7 +49,8 @@ app.factory('DataFactory', ['$http', function($http) {
         storeUsername: storeUsername,
         storeUserLevel: storeUserLevel,
         getAllJobs: getAllJobs,
-        findUserJobs: findUserJobs
+        findUserJobs: findUserJobs,
+        findOpenJobs: findOpenJobs
     };
     return publicFunctions;
 }]);

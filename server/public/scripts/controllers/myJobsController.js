@@ -17,5 +17,6 @@ $scope.userJobs = {};
   });
   DataFactory.getAllJobs().then(function(){
 $scope.userJobs = DataFactory.findUserJobs();
+console.log($scope.userJobs);
   });
 }]);
