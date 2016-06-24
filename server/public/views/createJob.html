@@ -17,7 +17,7 @@
 
         <md-input-container>
           <label>Phone #</label>
-          <input type="text" ng-model="phone"/>
+          <input type="number" ng-model="phone" required/>
         </md-input-container>
       </div>
 
@@ -26,7 +26,7 @@
       <div flex class="email">
         <md-input-container ng-repeat="email in emails track by $index">
           <label>Email</label>
-          <input type="text" ng-model="emails[$index]" ng-change="addEmail()"/>
+          <input type="text" ng-model="emails[$index]" ng-change="addEmail()" required/>
         </md-input-container>
       </div>
 
@@ -38,7 +38,7 @@
 
         <md-input-container>
           <label>Zip Code</label>
-          <input type="text" ng-model="zip" required/>
+          <input type="text" ng-model="zip" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5"/>
         </md-input-container>
 
       </div>
@@ -75,14 +75,14 @@
       </div>
 
       <!-- ADD ONS -->
-        <div flex>
-          <md-input-container>
-            After Dark
-            <select ng-model="afterDark" aria-label="afterDark"
-                    ng-options="item.option for item in ad" ng-change="total()">
-            </select>
-          </md-input-container>
-        </div>
+      <div flex>
+        <md-input-container>
+          After Dark
+          <select ng-model="afterDark" aria-label="afterDark"
+                  ng-options="item.option for item in ad" ng-change="total()">
+          </select>
+        </md-input-container>
+      </div>
       <div flex>
         <md-input-container>
           <md-checkbox ng-model="lakeAndAcreage" ng-change="total()">Lakeshore and Acreage - $100</md-checkbox>
