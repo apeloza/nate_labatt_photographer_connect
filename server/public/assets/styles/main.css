@@ -171,6 +171,9 @@ md-toolbar {
   color:#00695C;
   cursor:pointer;
 }
+.open {
+  color: green;
+}
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
   display: inline-block;
