@@ -5,23 +5,12 @@
       <md-input-container>
         <label>Username</label>
         <input name="username"  required md-maxlength="20" minlength="4" ng-model="user.username">
-        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
-          <div ng-message="required">This is required!</div>
-          <div ng-message="md-maxlength">That's too long!</div>
-          <div ng-message="minlength">That's too short!</div>
-        </div> -->
       </md-input-container>
 
       <md-input-container>
         <label>Password</label>
         <input type="password" name="password"  required md-maxlength="25"  ng-model="user.password">
-        <!-- <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
-          <div ng-message="required">This is required!</div>
-          <div ng-message="md-maxlength">That's too long!</div>
-          <div ng-message="minlength">That's too short!</div>
-        </div> -->
       </md-input-container>
-
 
       <div class="loginSubmit">
         <md-button class="md-raised md-primary loginButton" ng-click="login()"> Log In </md-button>
