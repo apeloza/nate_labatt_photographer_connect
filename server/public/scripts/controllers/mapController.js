@@ -17,13 +17,15 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     $scope.mapMarkers = [];
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
+        console.log($scope.openJobs);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address,
                 price: $scope.openJobs[i].totalPrice,
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
-                date: $scope.openJobs[i].preferredDate
+                date: $scope.openJobs[i].preferredDate,
+                id: $scope.openJobs[i]._id
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
@@ -40,23 +42,27 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         price: '',
         due: '',
         time: '',
-        date: ''
+        date: '',
+        id: ''
     };
     console.log('Map Controller running');
     $scope.showData = function(event, mapmarker) {
+      console.log($scope.selectedPin);
         $scope.pinSelected = true;
         $scope.selectedPin.address = mapmarker.position;
         $scope.selectedPin.price = mapmarker.price;
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
+        $scope.selectedPin.id = mapmarker.id;
     };
     $scope.closeModal = function() {
         $scope.pinSelected = false;
     };
-    $scope.takeJob = function() {
+    $scope.takeJob = function(jobID) {
         console.log("Taken!");
-        $http.put('/jobs/takejob').then(function(response) {
+        console.log(jobID);
+        $http.put('/jobs/' + jobID, $scope.user.username).then(function(response) {
             console.log('Updated!');
         });
     };
