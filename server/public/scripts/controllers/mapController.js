@@ -60,10 +60,14 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.pinSelected = false;
     };
     $scope.takeJob = function(jobID) {
+      var credentials = {
+        username: $scope.user.username
+      };
         console.log("Taken!");
         console.log(jobID);
-        $http.put('/jobs/' + jobID, $scope.user.username).then(function(response) {
+        $http.put('/jobs/' + jobID, credentials).then(function(response) {
             console.log('Updated!');
+            console.log(response);
         });
     };
 
