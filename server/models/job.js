@@ -8,7 +8,7 @@ var AddressSchema = require('./address').schema;
 var JobSchema = new Schema({
     name: {type: String, required: true},
     emails: {type: Array, required: true},
-    phone: {type: String, required: true},
+    phone: {type: String},
     address: {AddressSchema},
     dueDate: {type: Date},
     squareFeet: {type: String},
