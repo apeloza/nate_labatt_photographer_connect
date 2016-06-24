@@ -1,7 +1,6 @@
-<div class="logocontainer">
-  <img class="logo" src=".././assets/images/logo.png" />
-</div>
-<md-card class="signIn" layout="row">
+
+<div class="signIn" layout="row">
+  <md-card class="loginCard">
     <form class="logInForm" ng-submit="login()">
       <h1 ng-if="message !=''">{{message}}</h1>
       <md-input-container>
@@ -12,11 +11,8 @@
       <md-input-container>
         <label>Password</label>
         <input type="password" name="password"  required md-maxlength="25"  ng-model="user.password">
-      </md-input-container>
-
-      <div class="loginSubmit">
         <md-button class="md-raised md-primary loginButton" ng-click="login()"> Log In </md-button>
-      </div>
-
+      </md-input-container>
     </form>
-  </md-card>
+    </md-card>
+  </div>
