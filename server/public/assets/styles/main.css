@@ -172,7 +172,7 @@ md-toolbar {
   cursor:pointer;
 }
 .open {
-  color: green;
+  background-color: green;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
