@@ -30,6 +30,7 @@ ng-map {
   cursor:pointer;
   margin: 3px;
   color:#00BFA5;
+  transition:2s;
 }
 
 .closebtn:hover {
@@ -151,6 +152,17 @@ md-toolbar {
 
 .repeatJobButtons {
   margin-top: 1em;
+}
+
+.jobsListArrow {
+  margin-top:3em;
+  color:#00BFA5;
+  transition:2s;
+  margin-right:10px;
+}
+.jobsListArrow:hover {
+  color:#00695C;
+  cursor:pointer;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {

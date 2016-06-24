@@ -34,7 +34,7 @@
           <div>
             <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
           </div>
-          <md-button class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
+          <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
         </div>
       </md-card>
 </md-card>
