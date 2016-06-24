@@ -17,7 +17,7 @@
 
         <md-input-container>
           <label>Phone #</label>
-          <input type="number" ng-model="phone" required/>
+          <input type="number" ng-model="phone"/>
         </md-input-container>
       </div>
 
@@ -26,7 +26,7 @@
       <div flex class="email">
         <md-input-container ng-repeat="email in emails track by $index">
           <label>Email</label>
-          <input type="text" ng-model="emails[$index]" ng-change="addEmail()" required/>
+          <input type="text" ng-model="emails[$index]" required/>
         </md-input-container>
       </div>
 
