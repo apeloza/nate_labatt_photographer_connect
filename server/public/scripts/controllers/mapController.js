@@ -1,7 +1,13 @@
 app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'DataFactory', function($scope, $http, $location, $timeout, DataFactory) {
 $scope.user = {};
+$scope.isUser = false;
     DataFactory.authenticate().then(function(){
       $scope.user.username = DataFactory.storeUsername();
+      $scope.user.userLevel = DataFactory.storeUserLevel();
+      if ($scope.user.userLevel == 'user'){
+        $scope.isUser = true;
+        console.log($scope.isUser);
+      }
       if($scope.user.username){
         console.log('User Data: ', $scope.user.username);
       } else {

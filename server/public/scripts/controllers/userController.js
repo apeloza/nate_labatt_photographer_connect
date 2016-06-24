@@ -1,16 +1,17 @@
 app.controller('UserController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
 
   console.log('Create User Controller running');
-  $scope.user = {};
+  $scope.loggedUser = {};
 
   DataFactory.authenticate().then(function(){
-    $scope.user.username = DataFactory.storeUsername();
-    $scope.user.userLevel = DataFactory.storeUserLevel();
-    if($scope.user.userLevel == 'user'){
+    $scope.loggedUser.username = DataFactory.storeUsername();
+    $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
+    if($scope.loggedUser.userLevel == 'user'){
       $location.path('/user');
     }
-    if($scope.user.username){
-      console.log('User Data: ', $scope.username);
+    if($scope.loggedUser.username){
+      console.log('User Data: ', $scope.loggedUser.username);
+      getAllUsers();
     } else {
       $location.path('/');
     }
