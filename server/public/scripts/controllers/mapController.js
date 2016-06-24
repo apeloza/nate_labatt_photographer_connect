@@ -1,11 +1,12 @@
 app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'DataFactory', function($scope, $http, $location, $timeout, DataFactory) {
-    $http.get('/user').then(function(response) {
-        if (response.data.username) {
-            $scope.userName = response.data.username;
-            console.log('User Data: ', $scope.userName);
-        } else {
-            $location.path("/");
-        }
+$scope.user = {};
+    DataFactory.authenticate().then(function(){
+      $scope.user.username = DataFactory.storeUsername();
+      if($scope.user.username){
+        console.log('User Data: ', $scope.user.username);
+      } else {
+        $location.path('/');
+      }
     });
 $scope.mapMarkers = [];
 $http.get('/jobs/alljobs').then(function(response){

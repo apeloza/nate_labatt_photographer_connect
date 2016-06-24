@@ -1,11 +1,27 @@
-app.factory('DataFactory', ['$http', function($http){
-  console.log('Data Factory running.');
+app.factory('DataFactory', ['$http', function($http) {
+    console.log('Data Factory running.');
 
-  //PRIVATE
+    var user;
+    //PRIVATE
+    function authenticate() {
+        var promise = $http.get('/user').then(function(response) {
+            user = response.data;
+        });
+        return promise;
+    }
 
-  //PUBLIC
-  var publicFunctions = {
+    function storeUsername() {
+        return user.username;
+    }
 
-  };
-  return publicFunctions;
+    function storeUserLevel() {
+        return user.level;
+    }
+    //PUBLIC
+    var publicFunctions = {
+        authenticate: authenticate,
+        storeUsername: storeUsername,
+        storeUserLevel: storeUserLevel
+    };
+    return publicFunctions;
 }]);

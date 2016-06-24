@@ -1,14 +1,17 @@
 app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
-  $http.get('/user').then(function(response) {
-    if (response.data.level == 'user'){
+  $scope.user = {};
+
+  DataFactory.authenticate().then(function(){
+    $scope.user.username = DataFactory.storeUsername();
+    $scope.user.userLevel = DataFactory.storeUserLevel();
+    if($scope.user.userLevel == 'user'){
       $location.path('/user');
     }
-      if(response.data.username) {
-          $scope.userName = response.data.username;
-          console.log('User Data: ', $scope.userName);
-      } else {
-          $location.path("/");
-      }
+    if($scope.user.username){
+      console.log('User Data: ', $scope.username);
+    } else {
+      $location.path('/');
+    }
   });
 
   $http.get('/jobs/alljobs').then(function(response) {
