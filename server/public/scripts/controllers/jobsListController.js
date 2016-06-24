@@ -32,6 +32,15 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
     });
   }
 
+  // Change job status back to open
+  $scope.reopen = function (id) {
+    $http.put('/jobs/reopen', id).then(function(response) {
+      if (response === 200){
+        console.log("Job re-opened");
+      }
+    });
+  }
+
   // Delete job
   $scope.delete = function (id) {
     $http.post('/jobs/delete', id).then(function(response) {
