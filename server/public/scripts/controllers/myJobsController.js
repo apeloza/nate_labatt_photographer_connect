@@ -1,18 +1,21 @@
 
 app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
   console.log('My Jobs Controller running');
-  $scope.user = {};
-
+  $scope.loggedUser = {};
+$scope.userJobs = {};
   DataFactory.authenticate().then(function(){
-    $scope.user.username = DataFactory.storeUsername();
-    $scope.user.userLevel = DataFactory.storeUserLevel();
-    if($scope.user.userLevel == 'admin'){
+    $scope.loggedUser.username = DataFactory.storeUsername();
+    $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
+    if($scope.loggedUser.userLevel == 'admin'){
       $location.path('/user');
     }
-    if($scope.user.username){
-      console.log('User Data: ', $scope.username);
+    if($scope.loggedUser.username){
+      console.log('User Data: ', $scope.loggedUser.username);
     } else {
       $location.path('/');
     }
+  });
+  DataFactory.getAllJobs().then(function(){
+$scope.userJobs = DataFactory.findUserJobs();
   });
 }]);

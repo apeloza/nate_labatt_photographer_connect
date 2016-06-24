@@ -1,7 +1,13 @@
 app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'DataFactory', function($scope, $http, $location, $timeout, DataFactory) {
 $scope.user = {};
+$scope.isUser = false;
     DataFactory.authenticate().then(function(){
       $scope.user.username = DataFactory.storeUsername();
+      $scope.user.userLevel = DataFactory.storeUserLevel();
+      if ($scope.user.userLevel == 'user'){
+        $scope.isUser = true;
+        console.log($scope.isUser);
+      }
       if($scope.user.username){
         console.log('User Data: ', $scope.user.username);
       } else {
@@ -27,18 +33,7 @@ for (var i = 0; i < response.data.length; i++){
 }
 console.log($scope.mapMarkers);
 });
-    /*$scope.mapMarkers = [{
-        position: '32 Spruce Place Minneapolis MN',
-        price: '350$',
-        due: 'July 5th, 2016',
-        time: 'Morning'
 
-    }, {
-        position: '1000 Devonshire Lane Bloomington MN',
-        price: '300$',
-        due: 'July 10th, 2016',
-        time: 'Evening'
-    }];*/
 
     $scope.selectedPin = {
         address: '',
@@ -60,4 +55,11 @@ console.log($scope.mapMarkers);
 $scope.closeModal = function(){
   $scope.pinSelected = false;
 };
+$scope.takeJob = function(){
+  console.log("Taken!");
+  $http.put('/jobs/takejob').then(function(response){
+    console.log('Updated!');
+  });
+};
+
 }]);
