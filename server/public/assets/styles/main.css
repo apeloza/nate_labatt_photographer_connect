@@ -78,27 +78,24 @@ ng-map {
 }
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 
-.logocontainer{
-  height: 400px;
-  width: 400px;
-  margin: 0 auto;
-}
-.logo{
-  height: 100%;
-  width: 100%;
-}
 .signIn {
-  width: 300px;
+  width: 100%;
+  height:100%;
+  background: url('../images/logo.png') no-repeat center center fixed;
+}
+.loginCard {
+  height:300px;
+  width:300px;
   margin:auto;
-  margin-top: 0;
-  background-color: #E0F7FA;
+  opacity:0.9;
 }
 
 .signIn md-input-container{
   padding:30px;
 }
-.loginButton{
-  margin-left: 100px;
+.loginButton {
+  margin-top:20px;
+  margin-left:75px;
 }
 
 /*----------------------------------------------------New Job Page----------------------------------------------------*/
