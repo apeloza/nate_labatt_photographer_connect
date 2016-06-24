@@ -40,6 +40,15 @@ router.put('/:id', function(req, res) {
     });
 });
 
+router.delete('/:id', function(req, res) {
+  Job.findByIdAndRemove(req.params.id, function(err){
+    if (err){
+      res.sendStatus(500);
+      return;
+    }
+    res.sendStatus(204);
+  });
+});
 router.get('/alljobs', function(req, res) {
     Job.find({}, function(err, data) {
         if (err) {

@@ -19,6 +19,9 @@ app.factory('DataFactory', ['$http', function($http) {
         });
         return promise;
     }
+    function findAllJobs() {
+      return jobs;
+    }
 function findOpenJobs() {
   openJobs = [];
   for (var i = 0; i < jobs.length; i++){
@@ -52,7 +55,8 @@ openJobs.push(jobs[i]);
         storeUserLevel: storeUserLevel,
         getAllJobs: getAllJobs,
         findUserJobs: findUserJobs,
-        findOpenJobs: findOpenJobs
+        findOpenJobs: findOpenJobs,
+        findAllJobs: findAllJobs
     };
     return publicFunctions;
 }]);
