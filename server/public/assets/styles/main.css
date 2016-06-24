@@ -68,6 +68,15 @@ ng-map {
   margin-bottom:15px;
 }
 
+.mapJobList > div {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+}
+
+.jobbtn {
+  float: right;
+}
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 .signIn {
   width: 300px;
