@@ -28,6 +28,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.state = 'MN';
   $scope.city = '';
 
+
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
 
   $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
@@ -101,7 +102,8 @@ $scope.saveNewJob = function () {
     totalPrice: $scope.totalPrice,
     preferredDate: $scope.preferredDate,
     notes      : $scope.notes,
-    entryMethod: $scope.entryMethod
+    entryMethod: $scope.entryMethod,
+    jobStatus  : "Open"
   };
   console.log("newJobData: ", newJob);
 
