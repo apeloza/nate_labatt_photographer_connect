@@ -11,7 +11,7 @@
           <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
           <p class="pay"><strong>Pay:</strong> {{selectedPin.price}}</p>
         </div>
-        <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
+        <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.id)">Accept Job</md-button>
     </div>
     <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
