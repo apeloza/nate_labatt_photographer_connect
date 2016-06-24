@@ -24,6 +24,9 @@ router.post('/', function(req, res, next) {
       res.sendStatus(201);
     });
 });
+router.put('/takejob', function(req, res) {
+
+});
 
 router.get('/alljobs', function (req, res) {
   Job.find({}, function (err, data) {
