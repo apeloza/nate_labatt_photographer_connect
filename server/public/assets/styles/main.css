@@ -140,9 +140,20 @@ md-toolbar {
 }
 
 .repeatJobsList {
-  text-align: center;
+
 }
 
+.repeatClientInfo {
+  margin-left:20px;
+}
+
+.repeatJobInfo {
+  margin-left:20px;
+}
+
+.repeatJobButtons {
+  margin-top: 1em;
+}
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
   display: inline-block;
