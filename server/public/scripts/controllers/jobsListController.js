@@ -22,6 +22,25 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
       alert("No Jobs in Database");
     }
   });
+
+  // Change job status to finished
+  $scope.finish = function (id) {
+    $http.put('/jobs/finish', id).then(function(response) {
+      if (response === 200){
+        console.log("Job finished");
+      }
+    });
+  }
+
+  // Delete job
+  $scope.delete = function (id) {
+    $http.post('/jobs/delete', id).then(function(response) {
+      if (response === 200){
+        console.log("Job deleted");
+      }
+    });
+  }
+
   console.log('Jobs list Controller running');
   console.log($location.path());
 }]);

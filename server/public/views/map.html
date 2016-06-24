@@ -20,13 +20,21 @@
   <md-toolbar>
     <h1 class="toolbarText">Jobs Available</h1>
   </md-toolbar>
-  <div ng-repeat="job in mapMarkers">
-    <md-card class="mapJobList">
-    <p>Address: <span style="font-weight: bold">{{job.position}}</span></p>
-    <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
-    <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
-    <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
-    <md-button class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
-  </div>
+    <md-card  ng-repeat="job in mapMarkers">
+      <div class="mapJobList">
+          <div>
+            <p>Address: <span style="font-weight: bold">{{job.position}}</span></p>
+          </div>
+          <div>
+            <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
+          </div>
+          <div>
+            <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
+          </div>
+          <div>
+            <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
+          </div>
+          <md-button class="jobbtn md-raised md-primary" ng-click="takeJob()">Accept Job</md-button>
+        </div>
 </md-card>
 </md-card>
