@@ -25,16 +25,19 @@ router.post('/', function(req, res, next) {
     });
 });
 router.put('/:id', function(req, res) {
+  console.log(req.body);
     Job.findOne({
         _id: req.params.id
     }, function(err, job) {
         job.jobStatus = "accepted";
-        job.jobAcceptedBy = req.body;
+        job.jobAcceptedBy = req.body.username;
         job.save(function(err) {
-
+          if(err){
+            console.log(err);
+          }
+          res.send(job);
         });
     });
-    res.send(job);
 });
 
 router.get('/alljobs', function(req, res) {
