@@ -29,6 +29,7 @@ openJobs.push(jobs[i]);
   return openJobs;
 }
     function findUserJobs() {
+      userJobs = [];
         for ( i = 0; i < jobs.length; i++) {
             if (jobs[i].jobAcceptedBy == user.username) {
                 userJobs.push(jobs[i]);
