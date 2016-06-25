@@ -40,6 +40,22 @@ router.put('/:id', function(req, res) {
     });
 });
 
+router.put('/reopen/:id', function(req, res) {
+  console.log(req.body);
+    Job.findOne({ //can use findById too
+        _id: req.params.id
+    }, function(err, job) {
+        job.jobStatus = 'open';
+        job.jobAcceptedBy = '';
+        job.save(function(err) {
+          if(err){
+            console.log(err);
+          }
+          res.send(job);
+        });
+    });
+});
+
 router.delete('/:id', function(req, res) {
   Job.findByIdAndRemove(req.params.id, function(err){
     if (err){
