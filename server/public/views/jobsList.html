@@ -22,7 +22,7 @@
       </div>
       <div flex class="repeatJobButtons">
         <md-button class="md-raised md-primary" ng-click="finish(job._id)">Finish</md-button>
-        <md-button class="md-raised md-primary" ng-click="reopen(job._id)">Re-Open</md-button>
+        <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.status!='open'">Re-Open</md-button>
         <md-button class="md-raised md-warn" ng-click="delete(job._id)">Delete</md-button>
       </div>
       <i class="material-icons jobsListArrow">keyboard_arrow_down</i>
