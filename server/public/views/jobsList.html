@@ -18,11 +18,11 @@
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
       <div flex class="repeatStatus">
-        <p><strong>{{job.status}}</strong></p>
+        <p><strong>{{job.jobStatus}}</strong></p>
       </div>
       <div flex class="repeatJobButtons">
         <md-button class="md-raised md-primary" ng-click="finish(job._id)">Finish</md-button>
-        <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.status!='open'">Re-Open</md-button>
+        <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">Re-Open</md-button>
         <md-button class="md-raised md-warn" ng-click="delete(job._id)">Delete</md-button>
       </div>
       <i class="material-icons jobsListArrow">keyboard_arrow_down</i>
