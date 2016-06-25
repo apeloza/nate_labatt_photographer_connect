@@ -20,7 +20,9 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         console.log($scope.openJobs);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
-                position: $scope.openJobs[i].address,
+                position: $scope.openJobs[i].address.line1 + ' ' +
+                $scope.openJobs[i].address.city + ' ' + $scope.openJobs[i].address.state + ' ' +
+                 $scope.openJobs[i].address.zip,
                 price: $scope.openJobs[i].totalPrice,
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
