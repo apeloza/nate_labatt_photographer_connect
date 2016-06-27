@@ -30,7 +30,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
 
     // Change job status to finished
     $scope.finish = function(id) {
-        $http.put('/jobs/finish', id).then(function(response) {
+        $http.put('/jobs/finish/' + id).then(function(response) {
             if (response === 204) {
                 console.log("Job finished");
             }
