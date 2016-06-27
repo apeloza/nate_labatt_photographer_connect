@@ -192,17 +192,39 @@ md-toolbar {
   color:#00695C;
   cursor:pointer;
 }
-.open {
+.open p {
   background-color: #E57373;
+  width:100px;
+  margin-left:10px;
+  padding:5px;
+  border-radius: 3px;
+  text-align:center;
+  color:white;
 }
-.accepted {
+.accepted p {
   background-color: #FFF176;
+  width:100px;
+  margin-left:10px;
+  padding:5px;
+  border-radius: 3px;
+  text-align:center;
 }
-.finalized {
+.finalized p {
   background-color: #81C784;
+  width:100px;
+  margin-left:10px;
+  padding:5px;
+  border-radius: 3px;
+  text-align:center;
+  color:white;
 }
-.finished {
+.finished p {
   background-color: #E0E0E0;
+  width:100px;
+  margin-left:10px;
+  padding:5px;
+  border-radius: 3px;
+  text-align:center;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
