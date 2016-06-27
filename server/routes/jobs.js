@@ -52,11 +52,6 @@ router.put('/:id', function(req, res) {
           }
           res.send(job);
 
-            if (err) {
-                console.log(err);
-            }
-            res.send(job);
-
         });
     });
   } else {
@@ -85,9 +80,9 @@ router.put('/reopen/:id', function(req, res) {
   var id = req.params.id;
   if(req.isAuthenticated()){
     console.log(req.body);
-    
+
     Job.findOne({
-        _id: req.params.id
+        _id: id
     }, function(err, job) {
         job.jobStatus = "open";
         job.jobAcceptedBy = '';
@@ -96,12 +91,7 @@ router.put('/reopen/:id', function(req, res) {
           if(err){
             console.log(err);
           }
-          res.send(job);
-
-            if (err) {
-                console.log(err);
-            }
-            res.send(job);
+            res.sendStatus(204);
 
         });
     });
