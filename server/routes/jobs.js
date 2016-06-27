@@ -26,6 +26,7 @@ router.post('/', function(req, res, next) {
 });
 router.put('/:id', function(req, res) {
   console.log(req.body);
+
     Job.findOne({
         _id: req.params.id
     }, function(err, job) {
@@ -35,7 +36,7 @@ router.put('/:id', function(req, res) {
           if(err){
             console.log(err);
           }
-          res.send(job);
+          //res.send(job);
         });
     });
 });
