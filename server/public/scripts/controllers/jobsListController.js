@@ -39,7 +39,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
 
     // Change job status back to open
     $scope.reopen = function(id) {
-        $http.put('/jobs/reopen', id).then(function(response) {
+        $http.put('/jobs/reopen/' + id).then(function(response) {
             if (response === 204) {
                 console.log("Job re-opened");
             }
