@@ -52,7 +52,28 @@ router.delete('/:id', function(req, res) {
     }
 });
 
-
+router.put('/update/:id', function(req, res) {
+    if (req.isAuthenticated()) {
+        User.findOne({
+            _id: req.params.id
+        }, function(err, user) {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+            }
+            user = req.body;
+            user.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                res.send(user);
+            });
+        });
+    } else {
+        res.send(false);
+    }
+});
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
     // Use passport's built-in method to log out the user

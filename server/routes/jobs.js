@@ -33,38 +33,66 @@ router.post('/', function(req, res, next) {
     }
 });
 router.put('/:id', function(req, res) {
+
+  console.log(req.body);
+
+
   if(req.isAuthenticated()){
     console.log(req.body);
+
     Job.findOne({
         _id: req.params.id
     }, function(err, job) {
         job.jobStatus = "accepted";
         job.jobAcceptedBy = req.body.username;
         job.save(function(err) {
-            if (err) {
-                console.log(err);
-            }
-            res.send(job);
+
+          if(err){
+            console.log(err);
+          }
+          res.send(job);
+
         });
     });
   } else {
     res.send(false);
   }
 });
-
+router.put('/finish/:id', function(req, res) {
+    if (req.isAuthenticated()) {
+        Job.findOne({
+            _id: req.params.id
+        }, function(err, job) {
+            job.jobStatus = 'finished';
+            job.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                res.send(job);
+            });
+        });
+    } else {
+        res.send(false);
+    }
+});
 router.put('/reopen/:id', function(req, res) {
+  var id = req.params.id;
   if(req.isAuthenticated()){
     console.log(req.body);
-    Job.findOne({ //can use findById too
-        _id: req.params.id
+
+    Job.findOne({
+        _id: id
     }, function(err, job) {
-        job.jobStatus = 'open';
+        job.jobStatus = "open";
         job.jobAcceptedBy = '';
         job.save(function(err) {
-            if (err) {
-                console.log(err);
-            }
-            res.send(job);
+
+          if(err){
+            console.log(err);
+          }
+            res.sendStatus(204);
+
         });
     });
   } else {
