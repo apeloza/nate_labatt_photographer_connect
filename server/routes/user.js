@@ -61,7 +61,11 @@ router.put('/update/:id', function(req, res) {
                 console.log(err);
                 res.sendStatus(500);
             }
-            user = req.body;
+
+            user.username = req.body.username;
+            user.email = req.body.email;
+            user.phoneNumber = req.body.phone;
+
             user.save(function(err) {
                 if (err) {
                     console.log(err);

@@ -55,17 +55,16 @@ $scope.updateUser = function(username, email, phoneNumber, id) {
     username: username,
     email: email,
     phone: phoneNumber
-    level: 'user'
   }
     console.log('sending to server . . .', $scope.userUpdate);
-  //   $http.post('/user/update/' + id, $scope.userUpdate).then(function(response) {
-  //     console.log('Success!');
-  //     $location.path('/userList');
-  //   },
-  // function(response) {
-  //   console.log('Error');
-  //   $scope.message = 'Please try again.';
-  // });
+    $http.post('/user/update/' + id, $scope.userUpdate).then(function(response) {
+      console.log('Success!');
+      $location.path('/userList');
+    },
+  function(response) {
+    console.log('Error');
+    $scope.message = 'Please try again.';
+  });
 }
 
 $scope.deleteUser = function(id) {
