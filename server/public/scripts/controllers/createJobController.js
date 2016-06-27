@@ -14,6 +14,12 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
       $location.path('/');
     }
   });
+  $scope.myDate = new Date();
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth(),
+    $scope.myDate.getDate());
+
   $scope.name = '';
   $scope.phone = '';
   $scope.address = '';
