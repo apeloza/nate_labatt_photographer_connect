@@ -55,7 +55,24 @@ router.put('/:id', function(req, res) {
         res.send(false);
     }
 });
-
+router.put('/finish/:id', function(req, res) {
+    if (req.isAuthenticated()) {
+        Job.findOne({
+            _id: req.params.id
+        }, function(err, job) {
+            job.jobStatus = 'finished';
+            job.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                res.send(job);
+            });
+        });
+    } else {
+        res.send(false);
+    }
+});
 router.put('/reopen/:id', function(req, res) {
     if (req.isAuthenticated()) {
         console.log(req.body);
