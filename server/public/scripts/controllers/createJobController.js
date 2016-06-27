@@ -34,7 +34,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.notes = '';
   $scope.entryMethod = '';
   $scope.zip = '';
-  $scope.state = 'MN';
+  $scope.state = '';
   $scope.city = '';
 
 
@@ -44,6 +44,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
                {option: 'Front and Back (6 - 10 images) - $300', price: 300}];
 
   $scope.time = ['Morning', 'Afternoon', 'Evening'];
+
+  $scope.states = ['MN', 'WI'];
 
   $scope.sf = [{sqft: '1,000 sq ft - $175', price: 175},
                {sqft: '1,001-2,000 sq ft - $200', price: 200},
@@ -100,7 +102,7 @@ $scope.saveNewJob = function () {
                   line1: $scope.address,
                   city: $scope.city,
                   zip: $scope.zip,
-                  state: "MN"
+                  state: $scope.state
                 },
     dueDate   : $scope.dueDate,
     timeFrame : $scope.timeFrame,

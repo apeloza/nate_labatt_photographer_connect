@@ -39,7 +39,7 @@
 
         <md-input-container>
           <label>Zip Code</label>
-          <input type="text" ng-model="zip" required md-maxlength="5"/>
+          <input type="number" ng-model="zip" required md-maxlength="5"/>
         </md-input-container>
 
       </div>
@@ -48,6 +48,13 @@
         <md-input-container>
           <label>City</label>
           <input type="text" ng-model="city" required/>
+        </md-input-container>
+
+        <md-input-container>
+          State
+          <md-select ng-model="state" aria-label="state">
+            <md-option ng-repeat="item in states">{{item}}</md-option>
+          </md-select>
         </md-input-container>
       </div>
 
