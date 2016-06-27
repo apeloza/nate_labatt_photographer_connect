@@ -10,7 +10,7 @@
           <p><strong>Address:</strong> {{selectedPin.address}}</p>
           <p><strong>Preferred Time:</strong> {{selectedPin.date}}, {{selectedPin.time}}</p>
           <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
-          <p class="pay"><strong>Pay:</strong> {{selectedPin.price}}</p>
+          <p class="pay"><strong>Pay:</strong> ${{selectedPin.price}}</p>
         </div>
         <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.jobID)">Accept Job</md-button>
     </div>

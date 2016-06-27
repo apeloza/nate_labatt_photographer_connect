@@ -65,13 +65,10 @@ router.put('/:id', function(req, res) {
 });
 
 router.put('/reopen/:id', function(req, res) {
-
-  console.log(req.body);
-
-
-//  if(req.isAuthenticated()){
+  var id = req.params.id;
+  if(req.isAuthenticated()){
     console.log(req.body);
-
+    
     Job.findOne({
         _id: req.params.id
     }, function(err, job) {
@@ -91,9 +88,9 @@ router.put('/reopen/:id', function(req, res) {
 
         });
     });
-  // } else {
-  //   res.send(false);
-  // }
+  } else {
+    res.send(false);
+  }
 });
 
 router.delete('/:id', function(req, res) {
