@@ -21,7 +21,6 @@ function getAllUsers () {
   $http.get('/user/allusers').then(function(response) {
     if(response.data) {
       $scope.allUsers = response.data;
-      console.log($scope.allUsers);
     } else {
       alert('No Users');
     }
@@ -50,6 +49,21 @@ $scope.registerUser = function() {
   });
   }
 };
+
+$scope.updateUser = function(id) {
+  $scope.userUpdate = {
+    
+  }
+    console.log('sending to server . . .', $scope.userUpdate);
+    $http.post('/user/update/' + id, $scope.userUpdate).then(function(response) {
+      console.log('Success!');
+      $location.path('/userList');
+    },
+  function(response) {
+    console.log('Error');
+    $scope.message = 'Please try again.';
+  });
+}
 
 $scope.deleteUser = function(id) {
 

@@ -16,15 +16,23 @@
 
     <md-card ng-repeat="user in allUsers">
       <div class="userListCards">
-        <div class="userListCardsUsername">
-          <p>Username: <span style="font-weight: bold">{{user.username}}</span></p>
-        </div>
-        <div class="userListCardsEmail">
-          <p>Email: <span style="font-weight: bold">{{user.email}}</span></p>
-        </div>
-        <div  class="userListCardsPhone">
-          <p>Phone #: <span style="font-weight: bold">{{user.phoneNumber}}</span></p>
-        </div>
+
+        <md-input-container>
+          <label>Username</label>
+          <input type="text" value="{{user.username}}" model="user.username"/>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Email</label>
+          <input type="text" value="{{user.email}}" model="user.email"/>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Phone</label>
+          <input type="text" value="{{user.phoneNumber}}" model="user.phoneNumber"/>
+        </md-input-container>
+        
+        <md-button class="md-raised md-primary userUpdateButton" ng-click="updateUser(user._id)">Update User</md-button>
         <md-button class="md-raised md-warn userDeleteButton" ng-click="deleteUser(user._id)">Delete User</md-button>
       </div>
     </md-card>

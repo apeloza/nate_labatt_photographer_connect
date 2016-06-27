@@ -222,6 +222,10 @@ md-toolbar {
   float: right;
 }
 
+.userUpdateButton {
+  float: right;
+}
+
 .adminUserPage {
   background-color: #E0F7FA;
 }
