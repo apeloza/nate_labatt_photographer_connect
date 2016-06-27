@@ -16,7 +16,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   });
   $scope.name = '';
   $scope.phone = '';
-  $scope.address;
+  $scope.address = '';
   $scope.squareFeet = '';
   $scope.dueDate = 0;
   $scope.preferredDate = 0;
@@ -90,7 +90,7 @@ $scope.saveNewJob = function () {
     name      : $scope.name,
     emails    : $scope.emails,
     phone     : $scope.phone,
-    address   : {
+    address: {
                   line1: $scope.address,
                   city: $scope.city,
                   zip: $scope.zip,
@@ -109,7 +109,6 @@ $scope.saveNewJob = function () {
   console.log("newJobData: ", newJob);
 
   $http.post('/jobs', newJob).then(function (req, res) {
-
     $location.path('/jobsList');
   });
 }

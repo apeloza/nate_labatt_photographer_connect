@@ -48,4 +48,5 @@ app.config(function($mdThemingProvider) {
     .warnPalette('red', {
       'default': 'A200'
     });
+
 });

@@ -16,7 +16,6 @@ app.controller('LoginController', ['$scope', '$http', '$location', function ($sc
               console.log('success: ', response.data);
               // location works with SPA (ng-route)
               $location.path('/user');
-              window.location.reload();
             } else {
               console.log('failure: ', response);
               $scope.message = "Incorrect credentials.";

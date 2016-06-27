@@ -4,6 +4,15 @@
   color: white !important;
 }
 
+.md-nav-bar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+html, body {
+  background-color:#E1F5FE;
+}
+
 /*----------------------------------------------------Map Page----------------------------------------------------*/
 
 .mapmodal {
@@ -98,6 +107,14 @@ ng-map {
   margin-left:75px;
 }
 
+.flashMessage {
+  position:fixed;
+  padding:10px;
+  border-radius:3px;
+  color:white;
+  background-color:#E57373;
+}
+
 /*----------------------------------------------------New Job Page----------------------------------------------------*/
 .createJob md-input-container {
   margin: 20px;
@@ -172,16 +189,16 @@ md-toolbar {
   cursor:pointer;
 }
 .open {
-  background-color: red;
+  background-color: #E57373;
 }
 .accepted {
-  background-color: yellow;
+  background-color: #FFF176;
 }
 .finalized {
-  background-color: green;
+  background-color: #81C784;
 }
 .finished {
-  background-color: gray;
+  background-color: #E0E0E0;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {
