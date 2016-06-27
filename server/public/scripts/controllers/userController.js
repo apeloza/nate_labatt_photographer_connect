@@ -54,7 +54,7 @@ $scope.updateUser = function(username, email, phoneNumber, id) {
   $scope.userUpdate = {
     username: username,
     email: email,
-    phone: phoneNumber
+    phone: phoneNumber,
     level: 'user'
   }
     console.log('sending to server . . .', $scope.userUpdate);
