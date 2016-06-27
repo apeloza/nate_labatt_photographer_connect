@@ -1,5 +1,6 @@
 app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
     $scope.user = {};
+    $scope.jobs = [];
 
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();

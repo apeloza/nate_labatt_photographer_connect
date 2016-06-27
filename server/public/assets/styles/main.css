@@ -177,7 +177,16 @@ md-toolbar {
   cursor:pointer;
 }
 .open {
-  color: green;
+  background-color: red;
+}
+.accepted {
+  background-color: yellow;
+}
+.finalized {
+  background-color: green;
+}
+.finished {
+  background-color: gray;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .adminUserListNavButtons {

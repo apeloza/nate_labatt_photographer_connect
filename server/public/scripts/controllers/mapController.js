@@ -15,17 +15,20 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         }
     });
     $scope.mapMarkers = [];
+
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
         console.log($scope.openJobs);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
-                position: $scope.openJobs[i].address,
+                position: $scope.openJobs[i].address.line1 + ' ' +
+                $scope.openJobs[i].address.city + ' ' + $scope.openJobs[i].address.state + ' ' +
+                 $scope.openJobs[i].address.zip,
                 price: $scope.openJobs[i].totalPrice,
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
                 date: $scope.openJobs[i].preferredDate,
-                id: $scope.openJobs[i]._id
+                jobID: $scope.openJobs[i]._id
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
@@ -43,7 +46,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         due: '',
         time: '',
         date: '',
-        id: ''
+        jobID: ''
     };
     console.log('Map Controller running');
     $scope.showData = function(event, mapmarker) {
@@ -54,7 +57,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
-        $scope.selectedPin.id = mapmarker.id;
+        $scope.selectedPin.jobID = mapmarker.jobID;
     };
     $scope.closeModal = function() {
         $scope.pinSelected = false;
@@ -65,9 +68,13 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
       };
         console.log("Taken!");
         console.log(jobID);
+        console.log(credentials);
         $http.put('/jobs/' + jobID, credentials).then(function(response) {
             console.log('Updated!');
             console.log(response);
+            $location.path('/myJobs');
+            //getAllJobs();
+
         });
     };
 

@@ -9,7 +9,7 @@ var JobSchema = new Schema({
     name: {type: String, required: true},
     emails: {type: Array, required: true},
     phone: {type: String},
-    address: {AddressSchema},
+    address: AddressSchema,
     dueDate: {type: Date},
     squareFeet: {type: String},
     timeFrame: {type: String},
