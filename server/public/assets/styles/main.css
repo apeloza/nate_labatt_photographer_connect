@@ -85,6 +85,10 @@ ng-map {
 .jobbtn {
   float: right;
 }
+
+.jobsCardMapPage {
+  background-color: #E0F7FA;
+}
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 
 .signIn {
@@ -243,4 +247,19 @@ md-toolbar {
 
 .myJobsCard {
   background-color: #E0F7FA;
+}
+
+.chatBox {
+  border: 2px solid black;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 800px;
+  min-height: 300px;
+  height: auto;
+}
+
+.chatText {
+  margin-left: 5px;
+  margin-right: 10px;
 }
