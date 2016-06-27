@@ -15,7 +15,7 @@
   </div>
 
     <md-card ng-repeat="user in allUsers">
-      <div class="userListCards">
+      <div ng-click="setActive(user)" class="userListCards">
 
         <md-input-container>
           <label>Username</label>
@@ -32,7 +32,7 @@
           <input type="text" value="{{user.phoneNumber}}" ng-model="user.phoneNumber"/>
         </md-input-container>
 
-        <md-button class="md-raised md-primary userUpdateButton" ng-click="updateUser(user.username, user.email, user.phoneNumber, user._id)">Update User</md-button>
+        <md-button class="md-raised md-primary userUpdateButton" ng-click="updateUser(user._id)">Update User</md-button>
         <md-button class="md-raised md-warn userDeleteButton" ng-click="deleteUser(user._id)">Delete User</md-button>
       </div>
     </md-card>

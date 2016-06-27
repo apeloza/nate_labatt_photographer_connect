@@ -2,6 +2,10 @@ app.controller('UserController', ['$scope', '$http', '$location', 'DataFactory',
 
   console.log('Create User Controller running');
   $scope.loggedUser = {};
+  $scope.allUsers = [];
+
+  //the user that is being clicked on or edited
+  $scope.activeUser = {};
 
   DataFactory.authenticate().then(function(){
     $scope.loggedUser.username = DataFactory.storeUsername();
@@ -49,15 +53,20 @@ $scope.registerUser = function() {
   });
   }
 };
+$scope.setActive = function (obj) {
+  $scope.activeUser = obj;
+  console.log(obj);
+}
 
-$scope.updateUser = function(username, email, phoneNumber, id) {
+$scope.updateUser = function(id) {
+
   $scope.userUpdate = {
-    username: username,
-    email: email,
-    phone: phoneNumber
+    username: $scope.activeUser.username,
+    email: $scope.activeUser.email,
+    phone: $scope.activeUser.phoneNumber
   }
     console.log('sending to server . . .', $scope.userUpdate);
-    $http.post('/user/update/' + id, $scope.userUpdate).then(function(response) {
+    $http.put('/user/update/' + id, $scope.userUpdate).then(function(response) {
       console.log('Success!');
       $location.path('/userList');
     },
