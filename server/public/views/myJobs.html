@@ -27,6 +27,35 @@
       <div>
         <p>Pay: <strong>${{job.totalPrice}}</strong></p>
       </div>
+          <md-button class="md-raised md-primary" ng-click="showme=true">Show Chat</md-button>
+          <md-button class="md-raised md-primary" ng-click="showme=false">Hide Chat</md-button>
+
+
+<!-- ***************************** CHAT BOX **************************************** -->
+      <div ng-show="showme" class="chatCard">
+        <md-card>
+          <h3>Homeowner Chat</h3>
+          <div class="chatBox">
+            <div class="chatText">
+              <p>Photographer: Would 6:30 PM work for you.</p>
+              <p>Homeowner: That would work. Key code is 1234.</p>
+            </div>
+          </div>
+          <div class="sendMessage">
+            <form class="userMessageForm">
+              <md-input-container class="md-block">
+                <label>Send Message</label>
+                <textarea type="text"></textarea>
+              </md-input-container>
+                <md-button class="md-raised md-primary sendMessageUser" type="submit" name="submit">Send</md-button>
+            </form>
+          </div>
+        </md-card>
+<!-- ********************************************************************* -->
+      </div>
     </md-card>
   </div>
+
+
+
 </md-card>
