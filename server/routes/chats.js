@@ -23,15 +23,16 @@ router.get('/:id', function(req, res) {
 
 router.put('/date/:id', function(req, res, next) {
     if (req.isAuthenticated()) {
-        Chat.findOne({
+        Job.findOne({
             _id: req.params.id
-        }, function(err, chat) {
-            chat.date = req.body.date;
-            chat.save(function(err) {
+        }, function(err, job) {
+            job.chat.date = req.body.date;
+            job.chat.time = req.body.time;
+            job.save(function(err) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(chat);
+                res.send(job);
             });
         });
     } else {
