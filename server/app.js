@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var jobs = require('./routes/jobs');
+var chats = require('./routes/chats');
 
 
 //Body Parser
