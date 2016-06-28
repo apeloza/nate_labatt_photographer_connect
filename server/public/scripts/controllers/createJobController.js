@@ -61,8 +61,9 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
 // Add up total price
 $scope.total = function () {
-
-  $scope.totalPrice = $scope.squareFeet.price
+console.log($scope.totalPrice);
+console.log($scope.squareFeet);
+  $scope.totalPrice = $scope.squareFeet.price;
   if ($scope.afterDark.price != undefined) {
     $scope.totalPrice += $scope.afterDark.price;
   } else {

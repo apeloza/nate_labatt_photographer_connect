@@ -322,6 +322,17 @@ md-toolbar {
 
 /*----------------------------------------------------Landing Page----------------------------------------------------*/
 
+.md-nav-item {
+
+}
+
+.pixelHouzLogo {
+
+}
+
+.landingPageNavBar {
+
+}
 
 .jk-carousel img{
   width: 1400px;
@@ -330,4 +341,20 @@ md-toolbar {
 
 .landingPageMapImage img {
   width: 100%;
+}
+
+.landingPageMapImage {
+  margin-top: 50px;
+  height: auto;
+  display: inline-block;
+  width: 50%;
+  border: 1px solid black;
+}
+
+.landingPageAbout {
+  margin-top: 50px;
+  margin-left: 10px;
+  vertical-align: top;
+  display: inline-block;
+  border: 1px solid black;
 }
