@@ -14,4 +14,6 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
     }
   });
 
+  
+
 }]);
