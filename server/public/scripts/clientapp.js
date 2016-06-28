@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel']);
-=======
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'ngMessages']);
->>>>>>> 664f29fe554441c9ced71a89bda4212ecb6be0c9
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
@@ -48,7 +45,11 @@ app.config(['$routeProvider', function($routeProvider) {
         .when('/login', {
           templateUrl: 'views/login.html',
           controller: 'LoginController'
-      });
+        })
+        .when('/updatePrices', {
+          templateUrl: 'views/updatePrices.html',
+          controller: 'UpdatePrices'
+        })
 }]);
 
 // Theme palette
@@ -89,5 +90,9 @@ app.controller('FabCtrl', ['$scope', '$location', function ($scope, $location) {
 
   $scope.createUser = function () {
     $location.path('/createUser');
+  }
+
+  $scope.updatePrices = function () {
+    $location.path('/updatePrices');
   }
 }]);
