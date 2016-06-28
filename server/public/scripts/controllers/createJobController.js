@@ -36,6 +36,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.zip = '';
   $scope.state = '';
   $scope.city = '';
+  $scope.chat = {};
 
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
