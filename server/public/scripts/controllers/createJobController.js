@@ -37,9 +37,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.state = '';
   $scope.city = '';
 
-
-  $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
-
   $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
                {option: 'Front and Back (6 - 10 images) - $300', price: 300}];
 
@@ -61,12 +58,11 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
 // Add up total price
 $scope.total = function () {
-
-  $scope.totalPrice = $scope.squareFeet.price
+console.log($scope.totalPrice);
+console.log($scope.squareFeet);
+  $scope.totalPrice = $scope.squareFeet.price;
   if ($scope.afterDark.price != undefined) {
     $scope.totalPrice += $scope.afterDark.price;
-  } else {
-    $scope.totalPrice;
   }
 
   if ($scope.lakeAndAcreage == true) {
