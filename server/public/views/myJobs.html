@@ -47,16 +47,16 @@
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
             <div class="chatTimeSet">
               <form>
-                <md-datepicker  ng-model="preferredDate" md-placeholder="Photoshoot Date">
+                <md-datepicker  class="chatDatePicker md-block" ng-model="preferredDate" md-placeholder="Photoshoot Date">
                 </md-datepicker>
 
-                <md-input-container>
-                  <label>Preferred Timeframe</label>
+                <md-input-container class="chatTimePicker md-block">
+                  <label>Preferred Time</label>
                   <md-select ng-model="timeFrame" aria-label="Timeframe">
                     <md-option ng-repeat="item in preferredTime">{{item}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-button class="md-raised md-primary photoshootTimeSetButton" type="submit" name="setTimeAndDate">Confirm</md-button>
+                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
             </div>
               <!-- ******************************************** -->

@@ -284,6 +284,8 @@ md-toolbar {
 }
 
 .chatBox {
+  display: inline-block;
+  vertical-align:top;
   border: 2px solid black;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -308,5 +310,23 @@ md-toolbar {
 }
 
 .messageTextArea {
-  width: 800px;
+  width: 650px;
+}
+
+.chatTimeSet {
+  display: inline-block;
+  width: 250px;
+  min-height: 300px;
+  margin-left: 65px;
+  /*border: 2px solid black;*/
+}
+
+.chatDatePicker, .chatTimePicker {
+  margin-left: auto;
+  margin-right: auto;
+  /*border: 1px solid black;*/
+}
+
+.photoshootTimeSetButton {
+  margin-left: 80px;
 }
