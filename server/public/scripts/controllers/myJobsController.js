@@ -3,6 +3,9 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.loggedUser = {};
     $scope.userJobs = {};
     $scope.timeFrame = {};
+    $scope.messageObject = {};
+    $scope.messages = [];
+    $scope.messageContainer = {};
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
@@ -51,11 +54,42 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         '8:30 PM',
         '9:00 PM'
     ];
-    function combineDateAndTime (){
-      
+
+    function combineDateAndTime(date, time) {
+        timeString = time;
+        console.log(timeString);
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var dateString = '' + year + '-' + month + '-' + day;
+        var combined = new Date(dateString + ' ' + timeString);
+        return combined;
     }
-    $scope.submitDate = function() {
-        console.log($scope.timeFrame.time);
-        console.log($scope.timeFrame.date);
+    $scope.submitDate = function(id) {
+
+        var dateHolder = {
+            date: $scope.timeFrame.date,
+            time: $scope.timeFrame.time
+        };
+        $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
+            $scope.userJobs = DataFactory.findUserJobs();
+        });
+    };
+    $scope.submitMessage = function(id) {
+        console.log(id);
+        console.log($scope.messageContainer.message);
+
+        $http.get('/chats/' + id).then(function(response) {
+            console.log(response);
+            $scope.messages = response.data.messages;
+            $scope.messages.push($scope.messageContainer.message);
+            $scope.messageObject = {
+                messages: $scope.messages
+            };
+            $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
+                console.log('Success');
+            });
+        });
+
     };
 }]);

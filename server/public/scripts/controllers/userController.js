@@ -78,6 +78,7 @@ app.controller('UserController', ['$scope', '$http', '$location', 'DataFactory',
                     $scope.message = 'Please try again.';
                 });
         }
+        $location.path('/userList');
     };
 
     $scope.approveUser = function(id) {

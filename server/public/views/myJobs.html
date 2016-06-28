@@ -40,8 +40,7 @@
             <h3>Homeowner Chat</h3>
             <div class="chatBox">
               <div class="chatText">
-                <p>Photographer: Would 6:30 PM work for you?</p>
-                <p>Homeowner: That would work. Key code is 1234.</p>
+                {{job.chat.messages}}
               </div>
             </div>
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
@@ -56,17 +55,23 @@
                     <md-option ng-repeat="item in preferredTime">{{item}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate()" type="submit" name="setTimeAndDate">Confirm</md-button>
+                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
+              <div ng-show="job.chat.date != undefined">
+<p>CURRENTLY CONFIRMED</p>
+                <p>{{job.chat.date | date : format : longDate}}</p>
+                <p>{{job.chat.time}}</p>
+              </div>
+
             </div>
               <!-- ******************************************** -->
             <div class="sendUserMessageDiv">
               <form>
                 <md-input-container class="md-block messageTextArea">
                   <label>Send Message</label>
-                  <textarea type="text"></textarea>
+                  <textarea type="text" ng-model="messageContainer.message"></textarea>
                 </md-input-container>
-                  <md-button class="md-raised md-primary sendMessageUser" type="submit" name="sendUserMessage">Send</md-button>
+                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job._id)" type="submit" name="sendUserMessage">Send</md-button>
                 </form>
               </div>
           </div>

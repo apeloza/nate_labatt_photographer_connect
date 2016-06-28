@@ -1,0 +1,71 @@
+<div ng-include="'/views/templates/nav.html'"></div>
+
+<md-card class="createJob" ng-controller="FabCtrl as fab">
+
+  <!-- Toolbar ---------------------------------------------------------->
+      <md-toolbar layout="row">
+        <h1 class="toolbarText" flex="80">Update Prices</h1>
+        <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
+                           ng-class="fab.selectedMode" flex="22">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-accent">
+              <i class="material-icons">menu</i>
+            </md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <md-button aria-label="Job list" class="md-fab md-raised md-mini md-accent" ng-click="jobsList()">
+              <i class="material-icons">list</i>
+              <md-tooltip  md-direction="bottom">
+                Job List
+              </md-tooltip>
+            </md-button>
+            <md-button aria-label="create a job" class="md-fab md-raised md-mini md-accent" ng-click="createJob()">
+              <i class="material-icons">add_circle_outline</i>
+              <md-tooltip  md-direction="bottom">
+                Create a Job
+              </md-tooltip>
+            </md-button>
+            <md-button aria-label="update prices" class="md-fab md-raised md-mini md-accent" ng-click="updatePrices()">
+              <i class="material-icons">settings</i>
+              <md-tooltip  md-direction="bottom">
+                Update Prices
+              </md-tooltip>
+            </md-button>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+      </md-toolbar>
+  <!-- Toolbar ---------------------------------------------------------->
+
+  <div>
+      <div flex>
+        <md-input-container>
+          <strong>Square Footage</strong>
+
+        </md-input-container>
+      </div>
+
+      <div flex>
+        <md-input-container>
+          <strong>10,000+ sq ft</strong>
+        </md-input-container>
+      </div>
+
+      <!-- ADD ONS -->
+      <div flex>
+        <md-input-container>
+          <strong>After Dark</strong>
+          
+        </md-input-container>
+      </div>
+
+      <div flex>
+        <md-input-container>
+          <strong>Lakeshore and Acreage</strong>
+        </md-input-container>
+      </div>
+
+      <md-button class="md-raised md-primary">Update</md-button>
+    </form>
+  </div>
+</div>
+</md-card>

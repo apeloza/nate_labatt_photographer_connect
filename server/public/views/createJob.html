@@ -4,7 +4,7 @@
 
   <!-- Toolbar ---------------------------------------------------------->
       <md-toolbar layout="row">
-        <h1 class="toolbarText" flex="80">Job List</h1>
+        <h1 class="toolbarText" flex="80">Create a Job</h1>
         <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
                            ng-class="fab.selectedMode" flex="22">
           <md-fab-trigger>
@@ -23,6 +23,12 @@
               <i class="material-icons">add_circle_outline</i>
               <md-tooltip  md-direction="bottom">
                 Create a Job
+              </md-tooltip>
+            </md-button>
+            <md-button aria-label="update prices" class="md-fab md-raised md-mini md-accent" ng-click="updatePrices()">
+              <i class="material-icons">settings</i>
+              <md-tooltip  md-direction="bottom">
+                Update Prices
               </md-tooltip>
             </md-button>
           </md-fab-actions>
