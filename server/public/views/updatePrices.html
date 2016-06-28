@@ -1,6 +1,6 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 
-<md-card class="createJob" ng-controller="FabCtrl as fab">
+<div class="createJob" ng-controller="FabCtrl as fab">
 
   <!-- Toolbar ---------------------------------------------------------->
       <md-toolbar layout="row">
@@ -36,36 +36,36 @@
       </md-toolbar>
   <!-- Toolbar ---------------------------------------------------------->
 
-  <div>
+  <form class="updatePricesForm">
       <div flex>
-        <md-input-container>
-          <strong>Square Footage</strong>
-
+        <strong>Square Footage</strong>
+        <md-input-container ng-repeat>
+          <input value={{}}/>
         </md-input-container>
       </div>
 
       <div flex>
         <md-input-container>
-          <strong>10,000+ sq ft</strong>
-        </md-input-container>
-      </div>
-
-      <!-- ADD ONS -->
-      <div flex>
-        <md-input-container>
-          <strong>After Dark</strong>
-          
+          <label><strong>10,000+ sq ft</strong></label>
+          <input type="text" value={{}}/>
         </md-input-container>
       </div>
 
       <div flex>
-        <md-input-container>
-          <strong>Lakeshore and Acreage</strong>
+        <strong>After Dark</strong>
+        <md-input-container ng-repeat>
+          <input value={{}}/>
         </md-input-container>
       </div>
 
-      <md-button class="md-raised md-primary">Update</md-button>
-    </form>
-  </div>
+      <div flex>
+        <md-input-container>
+          <label><strong>Lakeshore and Acreage</strong></label>
+          <input type="text" value={{}}/>
+        </md-input-container>
+      </div>
+
+      <md-button class="md-raised md-primary" ng-click="updatePrices()">Update</md-button>
+  </form>
 </div>
-</md-card>
+</div>
