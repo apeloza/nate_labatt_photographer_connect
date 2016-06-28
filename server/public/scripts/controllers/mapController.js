@@ -46,7 +46,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         due: '',
         time: '',
         date: '',
-        jobID: ''
+        jobID: '',
+        link: ''
     };
     console.log('Map Controller running');
     $scope.showData = function(event, mapmarker) {
@@ -58,6 +59,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
         $scope.selectedPin.jobID = mapmarker.jobID;
+        $scope.selectedPin.link = encodeURI(mapmarker.position);
     };
     $scope.closeModal = function() {
         $scope.pinSelected = false;
