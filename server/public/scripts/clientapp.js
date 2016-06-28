@@ -33,6 +33,10 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/landingPage.html',
             controller: 'LandingController'
         })
+        .when('/mail', {
+          templateUrl: '/views/mail.html',
+          controller: "MailController"
+        })
         .when('/', {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
