@@ -52,8 +52,7 @@ router.delete('/:id', function(req, res) {
     }
 });
 
-router.put('/update/:id', function(req, res) {
-    if (req.isAuthenticated()) {
+router.put('/update/:id', function(req, res) {    if (req.isAuthenticated()) {
         User.findOne({
             _id: req.params.id
         }, function(err, user) {
@@ -66,6 +65,34 @@ console.log(req.body);
             user.email = req.body.email;
             user.phoneNumber = req.body.phone;
 
+            user.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                console.log("/PUT user");
+                res.send(user);
+            });
+        });
+    } else {
+        res.send(false);
+    }
+});
+
+router.put('/approve/:id', function(req, res) {    if (req.isAuthenticated()) {
+        User.findOne({
+            _id: req.params.id
+        }, function(err, user) {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+            }
+console.log(req.body);
+            user.username = req.body.username;
+            user.email = req.body.email;
+            user.phoneNumber = req.body.phone;
+            user.level = 'user';
+            
             user.save(function(err) {
                 if (err) {
                     console.log(err);
