@@ -45,10 +45,6 @@
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
 
-      <div flex class="repeatStatus">
-        <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open' && job.jobStatus!='finished'" > by {{job.jobAcceptedBy}}</span></p>
-      </div>
-
       <!-- FAB ------------------------------------------>
       <md-fab-speed-dial md-open="false" md-direction="left"
                          ng-class="fab.selectedMode">
