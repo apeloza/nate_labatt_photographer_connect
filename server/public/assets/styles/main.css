@@ -171,10 +171,6 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
-.repeatJobsList {
-
-}
-
 .repeatClientInfo {
   margin-left:20px;
 }
@@ -183,20 +179,6 @@ md-toolbar {
   margin-left:20px;
 }
 
-.repeatJobButtons {
-  margin-top: 1em;
-}
-
-.jobsListArrow {
-  margin-top:3em;
-  color:#00BFA5;
-  transition:2s;
-  margin-right:10px;
-}
-.jobsListArrow:hover {
-  color:#00695C;
-  cursor:pointer;
-}
 .open p {
   background-color: #E57373;
   width:100px;
@@ -232,10 +214,6 @@ md-toolbar {
   text-align:center;
 }
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
-.adminUserListNavButtons {
-  display: inline-block;
-}
-
 
 .userListCards > div {
   display: inline-block;
@@ -251,10 +229,12 @@ md-toolbar {
 
 .userDeleteButton {
   float: right;
+  margin-top:30px;
 }
 
 .userUpdateButton {
   float: right;
+  margin-top:30px;
 }
 
 .adminUserPage {
@@ -267,7 +247,6 @@ md-toolbar {
 .createUserCard {
   background-color: #E0F7FA;
 }
-
 
 /*----------------------------------------------------User Jobs Page----------------------------------------------------*/
 
