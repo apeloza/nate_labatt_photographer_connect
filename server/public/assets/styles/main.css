@@ -1,4 +1,8 @@
 /*----------------------------------------------------All Pages----------------------------------------------------*/
+body, h1 {
+  font-family:Open Sans;
+  font-weight: 300;
+}
 
 .md-raised {
   color: white !important;
