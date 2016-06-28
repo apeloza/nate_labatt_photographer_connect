@@ -44,11 +44,8 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/user', user);
 app.use('/jobs', jobs);
-<<<<<<< HEAD
 app.use('/chats', chats);
-=======
 app.use('/mail', mail);
->>>>>>> 5ac9a847ee6172f7290d34ea0c68a1086e449387
 app.use('/*', index);
 
 //Mongo Connection
