@@ -1,6 +1,5 @@
 app.controller('UserController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
-    console.log('Create User Controller running');
     $scope.loggedUser = {};
     $scope.allUsers = [];
 

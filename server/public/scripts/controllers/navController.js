@@ -1,5 +1,4 @@
 app.controller('NavController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-  console.log('Nav Controller running');
 
   $scope.userLevel = {level: ''};
 
