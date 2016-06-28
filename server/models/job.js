@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var EmailSchema = require('./email').schema;//for when we have an array of emails
 var AddressSchema = require('./address').schema;
+var ChatSchema = require('./chat').schema;
 
 
 // Mongoose Schema
@@ -20,6 +21,7 @@ var JobSchema = new Schema({
     entryMethod: {type: String},
     jobStatus: {type: String},
     jobAcceptedBy: {type: String},
+    chat: ChatSchema
 
 });
 
