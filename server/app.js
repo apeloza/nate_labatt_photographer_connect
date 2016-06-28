@@ -12,7 +12,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var jobs = require('./routes/jobs');
-
+var mail = require('./routes/mail');
 
 //Body Parser
 app.use(bodyParser.json());
@@ -42,6 +42,7 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/user', user);
 app.use('/jobs', jobs);
+app.use('/mail', mail);
 app.use('/*', index);
 
 //Mongo Connection
