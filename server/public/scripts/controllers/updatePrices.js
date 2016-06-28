@@ -1,4 +1,4 @@
-app.controller('UpdatePrices', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
   console.log('UpdatePrices Controller');
 
   DataFactory.authenticate().then(function(){
