@@ -58,6 +58,12 @@
           </md-button>
         </md-fab-trigger>
         <md-fab-actions>
+          <md-button aria-label="more" class="md-fab md-raised md-mini md-accent">
+            <i class="material-icons">keyboard_arrow_down</i>
+            <md-tooltip  md-direction="bottom">
+              View chat
+            </md-tooltip>
+          </md-button>
           <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
             <i class="material-icons">done</i>
             <md-tooltip  md-direction="bottom">
@@ -80,8 +86,6 @@
       </md-fab-speed-dial>
 
       <!-- FAB ------------------------------------------>
-
-      <i class="material-icons jobsListArrow">keyboard_arrow_down</i>
     </md-card>
   </div>
 </md-card>
