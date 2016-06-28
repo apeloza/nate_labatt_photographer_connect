@@ -14,7 +14,7 @@ router.get('/:id', function(req, res) {
                 res.send(err);
             }
             console.log(job);
-            res.send(job.chat);
+            res.send(job);
         });
     } else {
         res.send(false);

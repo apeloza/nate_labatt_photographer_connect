@@ -6,6 +6,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.messageObject = {};
     $scope.messages = [];
     $scope.messageContainer = {};
+
+    //email vars
+    $scope.email = {};
+    $scope.allMessageInfo = [];
+    $scope.allMessages = [];
+    $scope.message = '';
+
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
@@ -75,21 +82,71 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             $scope.userJobs = DataFactory.findUserJobs();
         });
     };
+
     $scope.submitMessage = function(id) {
         console.log(id);
-        console.log($scope.messageContainer.message);
+        console.log('message container', $scope.messageContainer);
 
-        $http.get('/chats/' + id).then(function(response) {
-            console.log(response);
-            $scope.messages = response.data.messages;
+        $http.get('/mail/messages').then(function(response) {
+            if (response.data) {
+                console.log('mail data', response.data);
+                $scope.allMessageInfo = response.data.items;
+
+                $scope.allMessageInfo.forEach(function(item, index) {
+
+                    $http.post('/mail/messages/item', item).then(function(response1) {
+
+                        $scope.message = response1.data;
+                        $scope.message.timestamp = item.timestamp;
+                        $scope.message.event = item.event;
+                        $scope.allMessages.push($scope.message);
+
+                        if ($scope.allMessageInfo.length == index + 1) {
+                            console.log('Message Data: ', $scope.allMessages);
+                        }
+
+                    });
+
+                });
+
+            } else {
+                console.log('error');
+            }
+
+        $http.get('/chats/' + id).then(function(response2) {
+            console.log('chats data', response2);
+
+            $scope.messages = response2.data.chat.messages;
+
+            $scope.email.sendTo = response2.data.emails.toString();
+            $scope.email.subject = "Set a time for a photo session [" + response2.data._id + "]";
+            $scope.email.message = $scope.messageContainer.message;
+
             $scope.messages.push($scope.messageContainer.message);
             $scope.messageObject = {
                 messages: $scope.messages
             };
+
             $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
                 console.log('Success');
+                sendEmail();
+                $scope.email = {};
+            });
             });
         });
+
+        //gets email from mailgun
+        function getEmail() {
+
+        };
+
+        //sends an email to recipients
+        function sendEmail() {
+            console.log($scope.email);
+            $http.post('/mail', $scope.email).then(function(response) {
+                console.log(response);
+            });
+        };
 
     };
 }]);
