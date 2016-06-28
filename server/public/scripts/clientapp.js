@@ -29,15 +29,12 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/createJob.html',
             controller: 'CreateJobController'
         })
-<<<<<<< HEAD
         .when('/landingPage', {
             templateUrl: 'views/landingPage.html',
             controller: 'LandingController'
-=======
         .when('/mail', {
           templateUrl: '/views/mail.html',
           controller: "MailController"
->>>>>>> email-feature
         })
         .when('/', {
             templateUrl: 'views/login.html',
