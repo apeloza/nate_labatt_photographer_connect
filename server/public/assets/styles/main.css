@@ -330,3 +330,16 @@ md-toolbar {
 .photoshootTimeSetButton {
   margin-left: 80px;
 }
+
+
+/*----------------------------------------------------Landing Page----------------------------------------------------*/
+
+
+.jk-carousel img{
+  width: 1400px;
+  height: 600;
+}
+
+.landingPageMapImage img {
+  width: 100%;
+}

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap']);
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel']);
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
@@ -29,11 +29,15 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/createJob.html',
             controller: 'CreateJobController'
         })
-        .when('/landingPage', {
+        .when('/', {
             templateUrl: 'views/landingPage.html',
             controller: 'LandingController'
         })
-        .when('/', {
+        .when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'LandingController'
+        })
+        .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         });
