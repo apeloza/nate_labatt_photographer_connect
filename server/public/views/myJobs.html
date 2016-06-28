@@ -40,8 +40,7 @@
             <h3>Homeowner Chat</h3>
             <div class="chatBox">
               <div class="chatText">
-                <p>Photographer: Would 6:30 PM work for you?</p>
-                <p>Homeowner: That would work. Key code is 1234.</p>
+                {{messages}}
               </div>
             </div>
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
@@ -64,9 +63,9 @@
               <form>
                 <md-input-container class="md-block messageTextArea">
                   <label>Send Message</label>
-                  <textarea type="text"></textarea>
+                  <textarea type="text" ng-model="messageContainer.message"></textarea>
                 </md-input-container>
-                  <md-button class="md-raised md-primary sendMessageUser" type="submit" name="sendUserMessage">Send</md-button>
+                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job.id)" type="submit" name="sendUserMessage">Send</md-button>
                 </form>
               </div>
           </div>
