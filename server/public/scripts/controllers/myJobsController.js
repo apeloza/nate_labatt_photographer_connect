@@ -77,15 +77,20 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         });
     };
     $scope.submitMessage = function(id) {
-      console.log(id);
-      console.log($scope.messageContainer.message);
-      $scope.messages.push($scope.messageObject.message);
-      $scope.messageObject = {
-        messages: $scope.messages,
-        jobID: id
-      };
-        $http.post('/chats', $scope.messageObject).then(function(req, res) {
+        console.log(id);
+        console.log($scope.messageContainer.message);
 
+        $http.get('/chats/' + id).then(function(response) {
+            console.log(response);
+            $scope.messages = response.data.messages;
+            $scope.messages.push($scope.messageContainer.message);
+            $scope.messageObject = {
+                messages: $scope.messages
+            };
+            $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
+                console.log('Success');
+            });
         });
+
     };
 }]);

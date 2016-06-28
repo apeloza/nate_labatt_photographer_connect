@@ -40,7 +40,7 @@
             <h3>Homeowner Chat</h3>
             <div class="chatBox">
               <div class="chatText">
-                {{messages}}
+                {{job.chat.messages}}
               </div>
             </div>
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
@@ -65,7 +65,7 @@
                   <label>Send Message</label>
                   <textarea type="text" ng-model="messageContainer.message"></textarea>
                 </md-input-container>
-                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job.id)" type="submit" name="sendUserMessage">Send</md-button>
+                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job._id)" type="submit" name="sendUserMessage">Send</md-button>
                 </form>
               </div>
           </div>
