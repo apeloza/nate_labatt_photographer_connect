@@ -19,27 +19,18 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth(),
     $scope.myDate.getDate());
-
-  //$scope.name = '';
-  $scope.phone = '';
-  $scope.address = '';
-  $scope.squareFeet = '';
-  $scope.dueDate = 0;
-  $scope.preferredDate = 0;
-  $scope.timeFrame = '';
-  $scope.afterDark = '';
-  $scope.totalPrice = 0;
-  $scope.tenThousandSqFt = false;
-  $scope.lakeAndAcreage = false;
-  $scope.notes = '';
-  $scope.entryMethod = '';
-  $scope.zip = '';
-  $scope.state = '';
-  $scope.city = '';
-  $scope.chat = {};
+    $scope.newJob = {
+      jobStatus  : "open",
+      chat: {
+        messages: [],
+        date: '',
+        time: ''
+      }
+    };
 
 
   $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
+
 
   $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
                {option: 'Front and Back (6 - 10 images) - $300', price: 300}];
@@ -63,12 +54,10 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 // Add up total price
 $scope.total = function () {
 console.log($scope.totalPrice);
-console.log($scope.squareFeet);
-  $scope.totalPrice = $scope.squareFeet.price;
-  if ($scope.afterDark.price != undefined) {
-    $scope.totalPrice += $scope.afterDark.price;
-  } else {
-    $scope.totalPrice;
+console.log($scope.sf);
+  $scope.newJob.totalPrice = $scope.sf.price;
+  if ($scope.newJob.afterDark.price != undefined) {
+    $scope.totalPrice += $scope.newJob.afterDark.price;
   }
 
   if ($scope.lakeAndAcreage == true) {
@@ -96,34 +85,10 @@ $scope.addEmail = function () {
 
 
 $scope.saveNewJob = function () {
-  var newJob = {
-    name      : $scope.name,
-    emails    : $scope.emails,
-    phone     : $scope.phone,
-    address: {
-                  line1: $scope.address,
-                  city: $scope.city,
-                  zip: $scope.zip,
-                  state: $scope.state
-                },
-    dueDate   : $scope.dueDate,
-    timeFrame : $scope.timeFrame,
-    squareFeet: $scope.squareFeet.sqft,
-    afterDark : $scope.afterDark.option,
-    totalPrice: $scope.totalPrice,
-    preferredDate: $scope.preferredDate,
-    notes      : $scope.notes,
-    entryMethod: $scope.entryMethod,
-    jobStatus  : "open",
-    chat: {
-      messages: [],
-      date: '',
-      time: ''
-    }
-  };
-  console.log("newJobData: ", newJob);
 
-  $http.post('/jobs', newJob).then(function (req, res) {
+  console.log("newJobData: ", $scope.newJob);
+
+  $http.post('/jobs', $scope.newJob).then(function (req, res) {
     $location.path('/jobsList');
   });
 }
