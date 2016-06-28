@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel']);
-=======
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'ngMessages']);
->>>>>>> 664f29fe554441c9ced71a89bda4212ecb6be0c9
+
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel', 'ngMessages']);
+
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
