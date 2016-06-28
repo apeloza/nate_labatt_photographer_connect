@@ -1,18 +1,35 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 <div class="userListPageDiv">
 
-<div class="adminUserListNavButtons">
-<md-button class="md-raised md-primary userListButton" href="#userList"> User List </md-button>
-<md-button class="md-raised md-primary createUserButton" href="#createUser"> Create User </md-button>
-</div>
+<md-card class="adminUserPage" ng-controller="FabCtrl as fab">
 
-<md-card class="adminUserPage">
-
-  <div>
-    <md-toolbar>
-      <h1 class="toolbarText">Users</h1>
-    </md-toolbar>
-  </div>
+  <!-- Toolbar ---------------------------------------------------------->
+      <md-toolbar layout="row">
+        <h1 class="toolbarText" flex="80">Users</h1>
+        <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
+                           ng-class="fab.selectedMode" flex="22">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-accent">
+              <i class="material-icons">menu</i>
+            </md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <md-button aria-label="User list" class="md-fab md-raised md-mini md-accent" ng-click="userList()">
+              <i class="material-icons">list</i>
+              <md-tooltip  md-direction="bottom">
+                User List
+              </md-tooltip>
+            </md-button>
+            <md-button aria-label="create user" class="md-fab md-raised md-mini md-accent" ng-click="createUser()">
+              <i class="material-icons">add_circle_outline</i>
+              <md-tooltip  md-direction="bottom">
+                Create User
+              </md-tooltip>
+            </md-button>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+      </md-toolbar>
+  <!-- Toolbar ---------------------------------------------------------->
 
     <md-card ng-repeat="user in allUsers">
       <div ng-click="setActive(user)" class="userListCards">
@@ -32,9 +49,19 @@
           <input type="text" value="{{user.phoneNumber}}" ng-model="user.phoneNumber"/>
         </md-input-container>
 
-          <md-button class="md-raised md-primary userUpdateButton" ng-if="user.level=='applicant'" ng-click="approveUser(user._id)">Approve New User</md-button>
-        <md-button class="md-raised md-primary userUpdateButton" ng-click="updateUser(user._id)">Update User</md-button>
-        <md-button class="md-raised md-warn userDeleteButton" ng-click="deleteUser(user._id)">Delete User</md-button>
+        <md-button class="md-raised md-primary userUpdateButton" ng-if="user.level=='applicant'" ng-click="approveUser(user._id)">Approve New User</md-button>
+        <md-button class="md-fab md-primary userUpdateButton" ng-click="updateUser(user._id)">
+          <i class="material-icons">control_point</i>
+          <md-tooltip  md-direction="bottom">
+            Update user
+          </md-tooltip>
+        </md-button>
+        <md-button class="md-fab md-warn userDeleteButton" ng-click="deleteUser(user._id)">
+          <i class="material-icons">delete_forever</i>
+          <md-tooltip  md-direction="bottom">
+            Delete user
+          </md-tooltip>
+        </md-button>
       </div>
     </md-card>
 </md-card>
