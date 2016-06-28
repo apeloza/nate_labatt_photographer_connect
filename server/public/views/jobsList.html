@@ -24,15 +24,10 @@
         <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
-<<<<<<< HEAD
-      <!-- <div flex class="repeatStatus">
-        <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
-      </div> -->
-=======
+
       <div flex class="repeatStatus">
         <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open' && job.jobStatus!='finished'" > by {{job.jobAcceptedBy}}</span></p>
       </div>
->>>>>>> 611db7de9127da9ff66806327d69a68c7c16f19a
       <div flex class="repeatJobButtons">
         <md-button class="md-raised md-primary" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">Finish</md-button>
         <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">Re-Open</md-button>
