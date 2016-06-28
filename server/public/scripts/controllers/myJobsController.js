@@ -72,7 +72,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             time: $scope.timeFrame.time
         };
         $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
-            $scope.userJobs = DataFactory.findUserJobs();
+          DataFactory.getAllJobs().then(function() {
+              $scope.userJobs = DataFactory.findUserJobs();
+
+          });
         });
     };
     $scope.submitMessage = function(id) {

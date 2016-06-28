@@ -19,8 +19,15 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth(),
     $scope.myDate.getDate());
-
-  //$scope.name = '';
+    $scope.newJob = {
+      jobStatus  : "open",
+      chat: {
+        messages: [],
+        date: '',
+        time: ''
+      }
+    };
+  /*$scope.name = '';
   $scope.phone = '';
   $scope.address = '';
   $scope.squareFeet = '';
@@ -36,6 +43,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.zip = '';
   $scope.state = '';
   $scope.city = '';
+  */
 
   $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
                {option: 'Front and Back (6 - 10 images) - $300', price: 300}];
@@ -60,9 +68,9 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 $scope.total = function () {
 console.log($scope.totalPrice);
 console.log($scope.squareFeet);
-  $scope.totalPrice = $scope.squareFeet.price;
-  if ($scope.afterDark.price != undefined) {
-    $scope.totalPrice += $scope.afterDark.price;
+  $scope.newJob.totalPrice = $scope.squareFeet.price;
+  if ($scope.newJob.afterDark.price != undefined) {
+    $scope.totalPrice += $scope.newJob.afterDark.price;
   }
 
   if ($scope.lakeAndAcreage == true) {
@@ -90,34 +98,10 @@ $scope.addEmail = function () {
 
 
 $scope.saveNewJob = function () {
-  var newJob = {
-    name      : $scope.name,
-    emails    : $scope.emails,
-    phone     : $scope.phone,
-    address: {
-                  line1: $scope.address,
-                  city: $scope.city,
-                  zip: $scope.zip,
-                  state: $scope.state
-                },
-    dueDate   : $scope.dueDate,
-    timeFrame : $scope.timeFrame,
-    squareFeet: $scope.squareFeet.sqft,
-    afterDark : $scope.afterDark.option,
-    totalPrice: $scope.totalPrice,
-    preferredDate: $scope.preferredDate,
-    notes      : $scope.notes,
-    entryMethod: $scope.entryMethod,
-    jobStatus  : "open",
-    chat: {
-      messages: [],
-      date: '',
-      time: ''
-    }
-  };
-  console.log("newJobData: ", newJob);
 
-  $http.post('/jobs', newJob).then(function (req, res) {
+  console.log("newJobData: ", $scope.newJob);
+
+  $http.post('/jobs', $scope.newJob).then(function (req, res) {
     $location.path('/jobsList');
   });
 }
