@@ -48,14 +48,9 @@
       <div flex class="repeatStatus">
         <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open' && job.jobStatus!='finished'" > by {{job.jobAcceptedBy}}</span></p>
       </div>
-      <div flex class="repeatJobButtons">
-        <md-button class="md-raised md-primary" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">Finish</md-button>
-        <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">Re-Open</md-button>
-        <md-button class="md-raised md-warn" ng-click="delete(job._id)">Delete</md-button>
-      </div>
 
       <!-- FAB ------------------------------------------>
-      <!-- <md-fab-speed-dial md-open="false" md-direction="left"
+      <md-fab-speed-dial md-open="false" md-direction="left"
                          ng-class="fab.selectedMode">
         <md-fab-trigger>
           <md-button aria-label="menu" class="md-fab md-accent">
@@ -63,26 +58,26 @@
           </md-button>
         </md-fab-trigger>
         <md-fab-actions>
-          <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent">
+          <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
             <i class="material-icons">done</i>
             <md-tooltip  md-direction="bottom">
               Finish job
             </md-tooltip>
           </md-button>
-          <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent">
+          <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">
             <i class="material-icons">visibility</i>
             <md-tooltip  md-direction="bottom">
               Re Open
             </md-tooltip>
           </md-button>
-          <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn">
+          <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
             <i class="material-icons">delete_forever</i>
             <md-tooltip  md-direction="bottom">
               Delete job
             </md-tooltip>
           </md-button>
         </md-fab-actions>
-      </md-fab-speed-dial> -->
+      </md-fab-speed-dial>
 
       <!-- FAB ------------------------------------------>
 
