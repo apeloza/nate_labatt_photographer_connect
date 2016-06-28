@@ -51,6 +51,9 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         '8:30 PM',
         '9:00 PM'
     ];
+    function combineDateAndTime (){
+      
+    }
     $scope.submitDate = function() {
         console.log($scope.timeFrame.time);
         console.log($scope.timeFrame.date);
