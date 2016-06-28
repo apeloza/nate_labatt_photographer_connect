@@ -229,10 +229,12 @@ md-toolbar {
 
 .userDeleteButton {
   float: right;
+  margin-top:30px;
 }
 
 .userUpdateButton {
   float: right;
+  margin-top:30px;
 }
 
 .adminUserPage {
