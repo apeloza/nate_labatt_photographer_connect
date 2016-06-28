@@ -1,11 +1,34 @@
 <div ng-include="'/views/templates/nav.html'"></div>
-<md-button class="md-raised md-primary jobListButton" href="#jobsList"> Job List </md-button>
-<md-button class="md-raised md-primary createJobButton" href="#createJob"> Create a Job </md-button>
 
-<md-card class="createJob">
-  <md-toolbar>
-    <h1 class="toolbarText">New Job</h1>
-  </md-toolbar>
+<md-card class="createJob" ng-controller="FabCtrl as fab">
+
+  <!-- Toolbar ---------------------------------------------------------->
+      <md-toolbar layout="row">
+        <h1 class="toolbarText" flex="80">Job List</h1>
+        <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
+                           ng-class="fab.selectedMode" flex="22">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-accent">
+              <i class="material-icons">menu</i>
+            </md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <md-button aria-label="Job list" class="md-fab md-raised md-mini md-accent" ng-click="jobsList()">
+              <i class="material-icons">list</i>
+              <md-tooltip  md-direction="bottom">
+                Job List
+              </md-tooltip>
+            </md-button>
+            <md-button aria-label="create a job" class="md-fab md-raised md-mini md-accent" ng-click="createJob()">
+              <i class="material-icons">add_circle_outline</i>
+              <md-tooltip  md-direction="bottom">
+                Create a Job
+              </md-tooltip>
+            </md-button>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+      </md-toolbar>
+  <!-- Toolbar ---------------------------------------------------------->
 
   <div layout="row">
   <div layout="column">

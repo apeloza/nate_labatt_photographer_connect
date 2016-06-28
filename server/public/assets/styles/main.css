@@ -13,6 +13,11 @@ html, body {
   background-color:#E1F5FE;
 }
 
+.material-icons {
+  color: white;
+}
+
+
 /*----------------------------------------------------Map Page----------------------------------------------------*/
 
 .mapmodal {
