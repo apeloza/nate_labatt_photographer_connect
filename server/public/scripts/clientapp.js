@@ -44,10 +44,10 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('teal',{
-      'default': 'A700'
+      'default': '300'
     })
     .accentPalette('light-blue', {
-      'default': 'A400'
+      'default': '300'
     })
     .warnPalette('red', {
       'default': 'A200'
