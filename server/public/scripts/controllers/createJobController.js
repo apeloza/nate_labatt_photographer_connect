@@ -20,7 +20,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.myDate.getMonth(),
     $scope.myDate.getDate());
 
-  $scope.name = '';
+  //$scope.name = '';
   $scope.phone = '';
   $scope.address = '';
   $scope.squareFeet = '';
@@ -112,7 +112,12 @@ $scope.saveNewJob = function () {
     preferredDate: $scope.preferredDate,
     notes      : $scope.notes,
     entryMethod: $scope.entryMethod,
-    jobStatus  : "open"
+    jobStatus  : "open",
+    chat: {
+      messages: [],
+      date: '',
+      time: ''
+    }
   };
   console.log("newJobData: ", newJob);
 

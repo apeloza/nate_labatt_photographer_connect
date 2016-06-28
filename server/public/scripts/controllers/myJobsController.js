@@ -67,13 +67,12 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     }
     $scope.submitDate = function(id) {
 
-        var combinedDate = combineDateAndTime($scope.timeFrame.date, $scope.timeFrame.time);
-        console.log(combinedDate);
         var dateHolder = {
-            date: combinedDate
+            date: $scope.timeFrame.date,
+            time: $scope.timeFrame.time
         };
         $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
-            console.log(res);
+            $scope.userJobs = DataFactory.findUserJobs();
         });
     };
     $scope.submitMessage = function(id) {

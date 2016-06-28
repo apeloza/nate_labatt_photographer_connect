@@ -55,8 +55,14 @@
                     <md-option ng-repeat="item in preferredTime">{{item}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate()" type="submit" name="setTimeAndDate">Confirm</md-button>
+                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
+              <div ng-show="job.chat.date != undefined">
+<p>CURRENTLY CONFIRMED</p>
+                <p>{{job.chat.date | date : format : longDate}}</p>
+                <p>{{job.chat.time}}</p>
+              </div>
+
             </div>
               <!-- ******************************************** -->
             <div class="sendUserMessageDiv">

@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var ChatSchema = new Schema({
 messages: {type: Array},
-date: {type: Date}
+date: {type: String},
+time: {type: String}
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);
