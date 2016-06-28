@@ -1,13 +1,33 @@
 <div ng-include="'/views/templates/nav.html'"></div>
-<md-button class="md-raised md-primary jobListButton" href="#jobsList"> Job List </md-button>
-<md-button class="md-raised md-primary createJobButton" href="#createJob"> Create a Job </md-button>
 
-<md-card class="jobsListCard">
-
-    <md-toolbar>
-      <h1 class="toolbarText">Job List</h1>
+<md-card class="jobsListCard" ng-controller="FabCtrl as fab">
+<!-- Toolbar ---------------------------------------------------------->
+    <md-toolbar layout="row">
+      <h1 class="toolbarText" flex="80">Job List</h1>
+      <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
+                         ng-class="fab.selectedMode" flex="22">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-accent">
+            <i class="material-icons">menu</i>
+          </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+          <md-button aria-label="Job list" class="md-fab md-raised md-mini md-accent" ng-click="jobsList()">
+            <i class="material-icons">list</i>
+            <md-tooltip  md-direction="bottom">
+              Job List
+            </md-tooltip>
+          </md-button>
+          <md-button aria-label="create a job" class="md-fab md-raised md-mini md-accent" ng-click="createJob()">
+            <i class="material-icons">add_circle_outline</i>
+            <md-tooltip  md-direction="bottom">
+              Create a Job
+            </md-tooltip>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
     </md-toolbar>
-
+<!-- Toolbar ---------------------------------------------------------->
     <!-- sortable searchable -->
 
   <div class="repeatJobsList">
@@ -25,15 +45,43 @@
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
 
-      <div flex class="repeatStatus">
-        <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open' && job.jobStatus!='finished'" > by {{job.jobAcceptedBy}}</span></p>
-      </div>
-      <div flex class="repeatJobButtons">
-        <md-button class="md-raised md-primary" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">Finish</md-button>
-        <md-button class="md-raised md-primary" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">Re-Open</md-button>
-        <md-button class="md-raised md-warn" ng-click="delete(job._id)">Delete</md-button>
-      </div>
-      <i class="material-icons jobsListArrow">keyboard_arrow_down</i>
+      <!-- FAB ------------------------------------------>
+      <md-fab-speed-dial md-open="false" md-direction="left"
+                         ng-class="fab.selectedMode">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-accent">
+            <i class="material-icons">menu</i>
+          </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+          <md-button aria-label="more" class="md-fab md-raised md-mini md-accent">
+            <i class="material-icons">keyboard_arrow_down</i>
+            <md-tooltip  md-direction="bottom">
+              View chat
+            </md-tooltip>
+          </md-button>
+          <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
+            <i class="material-icons">done</i>
+            <md-tooltip  md-direction="bottom">
+              Finish job
+            </md-tooltip>
+          </md-button>
+          <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">
+            <i class="material-icons">visibility</i>
+            <md-tooltip  md-direction="bottom">
+              Re Open
+            </md-tooltip>
+          </md-button>
+          <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
+            <i class="material-icons">delete_forever</i>
+            <md-tooltip  md-direction="bottom">
+              Delete job
+            </md-tooltip>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
+
+      <!-- FAB ------------------------------------------>
     </md-card>
   </div>
 </md-card>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel']);
+=======
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'ngMessages']);
+>>>>>>> 664f29fe554441c9ced71a89bda4212ecb6be0c9
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
@@ -37,24 +41,53 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/register.html',
             controller: 'LandingController'
         })
+        .when('/mail', {
+          templateUrl: '/views/mail.html',
+          controller: "MailController"
+        })
         .when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'LoginController'
-        });
-
+          templateUrl: 'views/login.html',
+          controller: 'LoginController'
+      });
 }]);
 
 // Theme palette
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('teal',{
-      'default': 'A700'
+    .primaryPalette('blue-grey',{
+      'default': '300'
     })
-    .accentPalette('cyan', {
-      'default': 'A700'
+    .accentPalette('grey', {
+      'default': '400'
     })
     .warnPalette('red', {
-      'default': 'A200'
+      'default': '200'
     });
-
 });
+
+// FAB
+app.controller('FabCtrl', ['$scope', '$location', function ($scope, $location) {
+  this.topDirections = ['left', 'up'];
+  this.bottomDirections = ['down', 'right'];
+  this.isOpen = false;
+  this.availableModes = ['md-fling', 'md-scale'];
+  this.selectedMode = 'md-scale';
+  this.availableDirections = ['up', 'down', 'left', 'right'];
+  this.selectedDirection = 'right';
+
+  $scope.jobsList = function () {
+    $location.path('/jobsList');
+  }
+
+  $scope.createJob = function () {
+    $location.path('/createJob');
+  }
+
+  $scope.userList = function () {
+    $location.path('/userList');
+  }
+
+  $scope.createUser = function () {
+    $location.path('/createUser');
+  }
+}]);
