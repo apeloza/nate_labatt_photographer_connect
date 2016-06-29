@@ -28,8 +28,13 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
       }
     };
 
-
-  $scope.totalPrice = $scope.squareFeet + $scope.afterDark;
+    $scope.newJob.totalPrice = 0;
+    $scope.lakeshoreAndAcreage = {
+      value1: false
+    };
+    $scope.tenThousandSqFt = {
+      value1: false
+    };
 
 
   $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
@@ -50,23 +55,24 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
                {sqft: '8,001-9,000 sq ft - $500', price: 500},
                {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
-
+console.log($scope.newJob.squareFeet);
 // Add up total price
 $scope.total = function () {
-console.log($scope.totalPrice);
-console.log($scope.sf);
-  $scope.newJob.totalPrice = $scope.sf.price;
-  if ($scope.newJob.afterDark.price != undefined) {
-    $scope.totalPrice += $scope.newJob.afterDark.price;
-  }
+    if ($scope.newJob.squareFeet != undefined) {
+      $scope.newJob.totalPrice = $scope.newJob.squareFeet.price;
+    }
+    if ($scope.ad.afterDark != undefined) {
+      $scope.newJob.totalPrice += $scope.ad.afterDark.price;
+    }
 
-  if ($scope.lakeAndAcreage == true) {
-    $scope.totalPrice += 100;
-  }
+    if ($scope.lakeshoreAndAcreage.value1 == true) {
+      $scope.newJob.totalPrice += 100;
+    }
 
-  if ($scope.tenThousandSqFt == true) {
-    $scope.totalPrice = 'Call for price';
-  }
+    if ($scope.tenThousandSqFt.value1 == true) {
+      console.log($scope.tenThousandSqFt.value1);
+      $scope.newJob.totalPrice = 'Call for price';
+    }
 };
 
 $scope.emails = [''];
@@ -87,7 +93,8 @@ $scope.addEmail = function () {
 $scope.saveNewJob = function () {
 
   console.log("newJobData: ", $scope.newJob);
-
+  $scope.newJob.squareFeet = $scope.newJob.squareFeet.price;
+  $scope.newJob.afterDark = $scope.ad.afterDark.option;
   $http.post('/jobs', $scope.newJob).then(function (req, res) {
     $location.path('/jobsList');
   });

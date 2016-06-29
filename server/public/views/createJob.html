@@ -91,7 +91,7 @@
       <div flex>
         <md-input-container>
           Square Footage
-          <select ng-model="newJob.sf.price" aria-label="squareFeet"
+          <select ng-model="newJob.squareFeet" aria-label="squareFeet"
                   ng-options="item.sqft for item in sf" ng-change="total()">
           </select>
         </md-input-container>
@@ -99,7 +99,7 @@
 
       <div flex>
         <md-input-container>
-          <md-checkbox ng-model="tenThousandSqFt" ng-change="total()">10,000+ sq ft</md-checkbox>
+          <md-checkbox ng-model="tenThousandSqFt.value1" ng-change="total()">10,000+ sq ft</md-checkbox>
         </md-input-container>
       </div>
 
@@ -123,14 +123,14 @@
       <div flex>
         <md-input-container>
           After Dark
-          <select ng-model="newJob.afterDark" aria-label="afterDark"
+          <select ng-model="ad.afterDark" aria-label="afterDark"
                   ng-options="item.option for item in ad" ng-change="total()">
           </select>
         </md-input-container>
       </div>
       <div flex>
         <md-input-container>
-          <md-checkbox ng-model="newJob.lakeAndAcreage" ng-change="total()">Lakeshore and Acreage - $100</md-checkbox>
+          <md-checkbox ng-model="lakeshoreAndAcreage.value1" ng-change="total()">Lakeshore and Acreage - $100</md-checkbox>
         </md-input-container>
       </div>
 
