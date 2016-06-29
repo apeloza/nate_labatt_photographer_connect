@@ -1,6 +1,7 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 
 <div class="jobsListCard" ng-controller="FabCtrl as fab">
+  <md-card>
 <!-- Toolbar ---------------------------------------------------------->
     <md-toolbar layout="row">
       <h1 class="toolbarText" flex="80">Job List</h1>
@@ -51,8 +52,8 @@
 </md-subheader>
 <!-- Sort and Search -------------------------------------------------->
 
-  <div class="repeatJobsList">
-    <md-card ng-repeat="job in jobs track by $index" layout="row">
+  <div>
+    <md-card ng-repeat="job in jobs track by $index" class="repeatJobsList">
       <div class="repeatStatus" ng-class="job.jobStatus">
         <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
       </div>
@@ -66,6 +67,7 @@
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
 
+
       <!-- FAB ------------------------------------------>
       <md-fab-speed-dial md-open="false" md-direction="left"
                          ng-class="fab.selectedMode">
@@ -77,7 +79,7 @@
         <md-fab-actions>
 
           <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" ng-show="job.jobStatus!='open'" class="md-fab md-raised md-mini md-accent">
-            <i class="material-icons"  >keyboard_arrow_down</i>
+            <i class="material-icons">keyboard_arrow_down</i>
 
             <md-tooltip  md-direction="bottom">
               View chat
@@ -113,7 +115,7 @@
 
       <!-- FAB ------------------------------------------>
       <div ng-show="showme" class="adminChatCard">
-        <md-card class="chatContainer">
+        <md-card>
           <div class="chatFeatures">
             <h3>Homeowner Chat</h3>
             <div class="adminChatBox">
@@ -121,7 +123,11 @@
                 {{job.chat.messages}}
               </div>
             </div>
+            </div>
           </md-card>
-        </div>
       </div>
+
   </md-card>
+  </div>
+  </md-card>
+  </div>

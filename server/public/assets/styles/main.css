@@ -226,14 +226,16 @@ md-toolbar {
 
 
 .repeatJobsList {
-  
+
 }
 
 .adminChatCard {
-    width: 100%;
-    border: 1px solid black;
+  border-top: 1px dotted black;
 }
 
+.adminChatBox {
+  width: 800px;
+}
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {
