@@ -175,14 +175,17 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
-
+.adminJobClientName {
+  margin-left: 30px;
+  vertical-align: top;
+}
 
 .repeatClientInfo {
-  margin-left:20px;
+  margin-left: 30px;
 }
 
 .repeatJobInfo {
-  margin-left:20px;
+  margin-left: 30px;
 }
 
 .open p {
@@ -236,6 +239,24 @@ md-toolbar {
 .adminChatBox {
   width: 800px;
 }
+
+.repeatedJobsAdmin > div {
+  display: inline-block;
+  
+}
+
+.repeatJobFabButtons {
+
+
+}
+
+
+.fabSpeedDialAdminJob {
+
+
+
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {

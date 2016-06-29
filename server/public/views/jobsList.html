@@ -53,24 +53,35 @@
 <!-- Sort and Search -------------------------------------------------->
 
   <div>
-    <md-card ng-repeat="job in jobs track by $index" class="repeatJobsList">
-      <div class="repeatStatus" ng-class="job.jobStatus">
-        <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
-      </div>
-      <div class="repeatClientInfo">
-        <p>Client: <strong>{{job.name}}</strong></p>
-        <p>Address: <strong>{{job.address.line1}} </strong></p>
-        <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
-      </div>
-      <div class="repeatJobInfo">
-        <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
-        <p>Price: <strong>${{job.totalPrice}}</strong></p>
-      </div>
 
+
+    <md-card ng-repeat="job in jobs track by $index" class="repeatJobsList">
+<div layout="row">
+
+
+      <div class="repeatedJobsAdmin" flex>
+        <div class="repeatStatus" ng-class="job.jobStatus">
+          <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
+        </div>
+        <div class="adminJobClientName">
+          <p>Client: <strong>{{job.name}}</strong></p>
+        </div>
+        <div class="repeatClientInfo">
+          <p>Address: <strong>{{job.address.line1}} </strong></p>
+          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+        </div>
+        <div class="repeatJobInfo">
+          <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
+          <p>Price: <strong>${{job.totalPrice}}</strong></p>
+        </div>
+      </div>
 
       <!-- FAB ------------------------------------------>
-      <md-fab-speed-dial md-open="false" md-direction="left"
+
+      <div class="repeatJobFabButtons">
+      <md-fab-speed-dial md-open="false" md-direction="left" class="fabSpeedDialAdminJob"
                          ng-class="fab.selectedMode">
+
         <md-fab-trigger>
           <md-button aria-label="menu" class="md-fab md-accent">
             <i class="material-icons">menu</i>
@@ -112,6 +123,9 @@
         </md-fab-actions>
 
       </md-fab-speed-dial>
+
+    </div>
+  </div>
 
       <!-- FAB ------------------------------------------>
       <div ng-show="showme" class="adminChatCard">
