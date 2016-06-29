@@ -34,7 +34,22 @@
       </md-fab-speed-dial>
     </md-toolbar>
 <!-- Toolbar ---------------------------------------------------------->
-    <!-- sortable searchable -->
+
+<!-- Sort and Search -------------------------------------------------->
+<md-subheader layout="row">
+    <strong>State:</strong>
+    <select>
+      <option>Open</option>
+      <option>Accepted</option>
+      <option>Finalized</option>
+      <option>Finished</option>
+    </select>
+
+    <input type="text" placeholder="Search"/>
+    <i class="material-icons searchIcon">search</i>
+
+</md-subheader>
+<!-- Sort and Search -------------------------------------------------->
 
   <div class="repeatJobsList">
     <md-card ng-repeat="job in jobs track by $index" layout="row">
@@ -60,10 +75,18 @@
           </md-button>
         </md-fab-trigger>
         <md-fab-actions>
-          <md-button aria-label="more" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='open'">
-            <i class="material-icons">comment</i>
+          
+          <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" ng-show="job.jobStatus!='open'" class="md-fab md-raised md-mini md-accent">
+            <i class="material-icons"  >keyboard_arrow_down</i>
+
             <md-tooltip  md-direction="bottom">
               View chat
+            </md-tooltip>
+          </md-button>
+          <md-button aria-label="hide" ng-show="showme" ng-click="showme=false" class="md-fab md-raised md-mini md-accent">
+            <i class="material-icons">keyboard_arrow_up</i>
+            <md-tooltip md-direction="bottom">
+              Hide chat
             </md-tooltip>
           </md-button>
           <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
@@ -85,9 +108,19 @@
             </md-tooltip>
           </md-button>
         </md-fab-actions>
+
       </md-fab-speed-dial>
 
       <!-- FAB ------------------------------------------>
+      <div ng-show="showme" class="chatCard">
+        <md-card>
+          <div class="chatFeatures">
+            <h3>Homeowner Chat</h3>
+            <div class="chatBox">
+              <div class="chatText">
+                {{messages}}
+              </div>
+            </div>
     </md-card>
   </div>
 </div>
