@@ -34,7 +34,22 @@
       </md-fab-speed-dial>
     </md-toolbar>
 <!-- Toolbar ---------------------------------------------------------->
-    <!-- sortable searchable -->
+
+<!-- Sort and Search -------------------------------------------------->
+<md-subheader layout="row">
+    <strong>State:</strong>
+    <select>
+      <option>Open</option>
+      <option>Accepted</option>
+      <option>Finalized</option>
+      <option>Finished</option>
+    </select>
+
+    <input type="text" placeholder="Search"/>
+    <i class="material-icons searchIcon">search</i>
+
+</md-subheader>
+<!-- Sort and Search -------------------------------------------------->
 
   <div class="repeatJobsList">
     <md-card ng-repeat="job in jobs track by $index" layout="row">

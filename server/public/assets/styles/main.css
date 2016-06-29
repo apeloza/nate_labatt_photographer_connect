@@ -217,6 +217,10 @@ md-toolbar {
   border-radius: 3px;
   text-align:center;
 }
+
+.searchIcon {
+  color: #78909C;
+}
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {
