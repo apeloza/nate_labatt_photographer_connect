@@ -356,13 +356,17 @@ md-toolbar {
 .chatDatePicker, .chatTimePicker {
   margin-left: auto;
   margin-right: auto;
-  /*border: 1px solid black;*/
+
 }
 
 .photoshootTimeSetButton {
   margin-left: 80px;
 }
 
+.userJobListRepeatJobs > div {
+  margin-left: 20px;
+  float: left;
+}
 
 /*----------------------------------------------------Landing Page----------------------------------------------------*/
 
