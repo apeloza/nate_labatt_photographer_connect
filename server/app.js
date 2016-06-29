@@ -14,6 +14,7 @@ var register = require('./routes/register');
 var jobs = require('./routes/jobs');
 var chats = require('./routes/chats');
 var mail = require('./routes/mail');
+var prices = require('./routes/prices');
 
 
 //Body Parser
@@ -46,6 +47,7 @@ app.use('/user', user);
 app.use('/jobs', jobs);
 app.use('/chats', chats);
 app.use('/mail', mail);
+app.use('/prices', prices);
 app.use('/*', index);
 
 //Mongo Connection
