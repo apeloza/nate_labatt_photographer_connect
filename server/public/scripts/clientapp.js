@@ -49,7 +49,7 @@ app.config(['$routeProvider', function($routeProvider) {
         .when('/updatePrices', {
           templateUrl: 'views/updatePrices.html',
           controller: 'UpdatePrices'
-        })
+        });
 }]);
 
 // Theme palette
