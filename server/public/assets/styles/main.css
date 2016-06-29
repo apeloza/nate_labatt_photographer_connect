@@ -98,6 +98,10 @@ ng-map {
 .jobsCardMapPage {
   background-color: #E0F7FA;
 }
+
+.mapAddress {
+  margin-left: 20px;
+}
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 
 .signIn {
@@ -242,7 +246,7 @@ md-toolbar {
 
 .repeatedJobsAdmin > div {
   display: inline-block;
-  
+
 }
 
 .repeatJobFabButtons {
