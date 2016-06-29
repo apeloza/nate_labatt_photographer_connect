@@ -175,6 +175,8 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
+
+
 .repeatClientInfo {
   margin-left:20px;
 }
@@ -221,6 +223,17 @@ md-toolbar {
 .searchIcon {
   color: #78909C;
 }
+
+
+.repeatJobsList {
+  
+}
+
+.adminChatCard {
+    width: 100%;
+    border: 1px solid black;
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {

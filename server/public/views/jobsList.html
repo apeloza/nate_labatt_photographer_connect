@@ -53,15 +53,15 @@
 
   <div class="repeatJobsList">
     <md-card ng-repeat="job in jobs track by $index" layout="row">
-      <div flex class="repeatStatus" ng-class="job.jobStatus">
+      <div class="repeatStatus" ng-class="job.jobStatus">
         <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
       </div>
-      <div flex class="repeatClientInfo">
+      <div class="repeatClientInfo">
         <p>Client: <strong>{{job.name}}</strong></p>
         <p>Address: <strong>{{job.address.line1}} </strong></p>
         <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
       </div>
-      <div flex class="repeatJobInfo">
+      <div class="repeatJobInfo">
         <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
         <p>Price: <strong>${{job.totalPrice}}</strong></p>
       </div>
@@ -112,15 +112,16 @@
       </md-fab-speed-dial>
 
       <!-- FAB ------------------------------------------>
-      <div ng-show="showme" class="chatCard">
+      <div ng-show="showme" class="adminChatCard">
         <md-card class="chatContainer">
           <div class="chatFeatures">
             <h3>Homeowner Chat</h3>
-            <div class="chatBox">
-              <div class="chatText">
+            <div class="adminChatBox">
+              <div class="adminChatText">
                 {{job.chat.messages}}
               </div>
             </div>
-    </md-card>
-  </div>
-</div>
+          </md-card>
+        </div>
+      </div>
+  </md-card>
