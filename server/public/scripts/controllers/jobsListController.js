@@ -57,6 +57,5 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         });
     };
 
-    console.log('Jobs list Controller running');
     console.log($location.path());
 }]);

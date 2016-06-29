@@ -217,6 +217,10 @@ md-toolbar {
   border-radius: 3px;
   text-align:center;
 }
+
+.searchIcon {
+  color: #78909C;
+}
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {
@@ -357,4 +361,11 @@ md-toolbar {
   vertical-align: top;
   display: inline-block;
   border: 1px solid black;
+}
+
+/* ---------------------- update prices view  --------------------------*/
+.updatePricesForm {
+  width:400px;
+  margin:auto;
+  margin-top: 30px;
 }

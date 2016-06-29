@@ -1,5 +1,4 @@
 app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
-  console.log('UpdatePrices Controller');
 
   DataFactory.authenticate().then(function(){
     $scope.user.username = DataFactory.storeUsername();
@@ -13,5 +12,7 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
       $location.path('/');
     }
   });
+
+
 
 }]);

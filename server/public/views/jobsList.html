@@ -1,6 +1,6 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 
-<md-card class="jobsListCard" ng-controller="FabCtrl as fab">
+<div class="jobsListCard" ng-controller="FabCtrl as fab">
 <!-- Toolbar ---------------------------------------------------------->
     <md-toolbar layout="row">
       <h1 class="toolbarText" flex="80">Job List</h1>
@@ -34,7 +34,22 @@
       </md-fab-speed-dial>
     </md-toolbar>
 <!-- Toolbar ---------------------------------------------------------->
-    <!-- sortable searchable -->
+
+<!-- Sort and Search -------------------------------------------------->
+<md-subheader layout="row">
+    <strong>State:</strong>
+    <select>
+      <option>Open</option>
+      <option>Accepted</option>
+      <option>Finalized</option>
+      <option>Finished</option>
+    </select>
+
+    <input type="text" placeholder="Search"/>
+    <i class="material-icons searchIcon">search</i>
+
+</md-subheader>
+<!-- Sort and Search -------------------------------------------------->
 
   <div class="repeatJobsList">
     <md-card ng-repeat="job in jobs track by $index" layout="row">
@@ -60,8 +75,10 @@
           </md-button>
         </md-fab-trigger>
         <md-fab-actions>
-          <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" class="md-fab md-raised md-mini md-accent">
+          
+          <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" ng-show="job.jobStatus!='open'" class="md-fab md-raised md-mini md-accent">
             <i class="material-icons"  >keyboard_arrow_down</i>
+
             <md-tooltip  md-direction="bottom">
               View chat
             </md-tooltip>
@@ -106,4 +123,4 @@
             </div>
     </md-card>
   </div>
-</md-card>
+</div>
