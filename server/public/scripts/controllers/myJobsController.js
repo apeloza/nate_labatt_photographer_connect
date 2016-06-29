@@ -1,5 +1,5 @@
 app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
-    console.log('My Jobs Controller running');
+  
     $scope.loggedUser = {};
     $scope.userJobs = {};
     $scope.timeFrame = {};

@@ -1,7 +1,7 @@
 <div ng-controller="NavController">
 
   <div ng-show="userLevel.level == 'user'">
-    <md-nav-bar md-selected-nav-item="currentNavItem">
+    <md-nav-bar md-selected-nav-item="currentNavItem" aria-label="selected item">
       <img src="../assets/images/logo.png" alt="Pixel House" height="42" width="55"/>
 
       <md-nav-item md-nav-href="#user" name="map">Job Map</md-nav-item>
@@ -11,7 +11,7 @@
   </div>
 
   <div ng-show="userLevel.level == 'admin'">
-    <md-nav-bar md-selected-nav-item="currentNavItem">
+    <md-nav-bar md-selected-nav-item="currentNavItem" aria-label="selected item">
       <img src="../assets/images/logo.png" alt="Pixel House" height="42" width="55"/>
       <md-nav-item md-nav-href="#user" name="map">Job Map</md-nav-item>
       <md-nav-item md-nav-href="#jobsList" name="jobslist">Jobs</md-nav-item>

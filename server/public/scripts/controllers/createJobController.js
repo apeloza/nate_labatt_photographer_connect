@@ -1,5 +1,5 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
-  console.log('Create Job Controller running');
+
   $scope.user = {};
 
   DataFactory.authenticate().then(function(){
