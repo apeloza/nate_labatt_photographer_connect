@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var EmailSchema = require('./email').schema;//for when we have an array of emails
 var AddressSchema = require('./address').schema;
 var ChatSchema = require('./chat').schema;
+var MessageSchema = require('./message').schema;
 
 
 // Mongoose Schema

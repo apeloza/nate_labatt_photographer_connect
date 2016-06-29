@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
     }
 });
 
-router.put('/date/:id', function(req, res, next) {
+router.put('/date/:id', function(req, res) {
     if (req.isAuthenticated()) {
         Job.findOne({
             _id: req.params.id
@@ -32,7 +32,7 @@ router.put('/date/:id', function(req, res, next) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(job);
+                res.sendStatus(200);
             });
         });
     } else {
@@ -40,24 +40,29 @@ router.put('/date/:id', function(req, res, next) {
     }
 });
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function (req, res) {
     if (req.isAuthenticated()) {
-        console.log(req.body);
-        Job.findOne({
-            _id: req.params.id
-        }, function(err, job) {
-            job.chat.messages = req.body.messages;
-            job.save(function(err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.send(job);
-            });
-        });
-    } else {
-        console.log("False!");
-        res.send(false);
+  var id = req.params.id;
+  var message = req.body; // {object}
+console.log('req.body', req.body);
+ Job.findById(id, function (err, job) {
+    if (err) {
+      res.sendStatus(500);
+      return;
     }
+
+    job.chat.messages.push(message);
+
+    job.save(function (err) {
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+
+      res.sendStatus(204);
+    });
+  });
+  }
 });
 
 module.exports = router;

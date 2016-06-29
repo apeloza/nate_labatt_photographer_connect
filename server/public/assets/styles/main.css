@@ -358,3 +358,8 @@ md-toolbar {
   display: inline-block;
   border: 1px solid black;
 }
+
+.user {
+  color:red;
+
+}

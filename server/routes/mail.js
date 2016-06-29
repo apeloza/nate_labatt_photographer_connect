@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var nodemailer = require('nodemailer');
+//var nodemailer = require('nodemailer');
 var request = require('request');
 var domain = process.env.MAILGUN_DOMAIN || 'sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org';
 var key = process.env.MAILGUN_API_KEY || 'key-e8598fe5ada73e92e6f692b19e43f14f';
@@ -11,7 +11,7 @@ var mailgun = require('mailgun-js')({
 
 
 //sends an email
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
 
     var sendTo = req.body.sendTo;
     var subject = req.body.subject;
@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
-        to: 'apeloza@alumni.uwo.ca',//test email, change to var sendTo when deployed
+        to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
         text: message
             //attachment: filepath
@@ -52,10 +52,12 @@ router.post('/', function(req, res, next) {
     //         res.json({yo: info.response});
     //     };
     // });
-
+    console.log("before sending mailgun");
     //send mailgun
     mailgun.messages().send(data, function(error, body) {
-        console.log(body);
+        console.log(data);
+        console.log(Date.now());
+        res.sendStatus(200);
     });
 });
 //get mailgun email info from api
@@ -76,7 +78,7 @@ router.get('/messages', function(req, res) {
 
 });
 
-router.post('/messages/item', function(req, res, next) {
+router.post('/messages/item', function(req, res) {
 
     var item = req.body;
         if (item.storage.key) {

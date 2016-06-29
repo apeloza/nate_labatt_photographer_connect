@@ -5,6 +5,9 @@
   </md-toolbar>
   <div>
     <md-card ng-repeat="job in userJobs">
+      <div ng-click="setActive(job)">
+
+
       <div>
         <p>Address: <strong>{{job.address.line1}} </strong></p>
         <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
@@ -29,20 +32,36 @@
       </div>
 
       <div class="showmeButtons">
-          <md-button class="md-raised md-primary showMeFalse" ng-click="showme=false">Hide Chat</md-button>
-          <md-button class="md-raised md-primary showMeTrue" ng-click="showme=true">Show Chat</md-button>
+
+          <md-button class="md-raised md-primary showMeTrue" ng-click="showMe=!showMe">show/hide</md-button>
       </div>
 
 <!-- ***************************** CHAT BOX **************************************** -->
-      <div ng-show="showme" class="chatCard">
+      <div ng-show="showMe" class="chatCard">
         <md-card>
           <div class="chatFeatures">
             <h3>Homeowner Chat</h3>
             <div class="chatBox">
-              <div class="chatText">
-                {{job.chat.messages}}
+              <div class="chatText" ng-repeat="message in messages">
+                <p class="chatLine">
+              On {{message.timestamp | date:'short'}} {{message.username}} said:  <strong> {{message.message}} </strong>
+                 </p>
+
+
               </div>
+              <p ng-repeat="msg in allMessages">
+                On {{msg.timestamp*1000 |  date:'short'}} {{msg.sender}} said: <strong>{{msg['stripped-text']}}</strong>
+              </p>
             </div>
+            <div class="sendUserMessageDiv">
+              <form>
+                <md-input-container class="md-block messageTextArea">
+                  <label>Message</label>
+                  <textarea type="text" ng-model="messageContainer.message"></textarea>
+                </md-input-container>
+                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job._id)" type="submit" name="sendUserMessage">Send</md-button>
+                </form>
+              </div>
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
             <div class="chatTimeSet">
               <form>
@@ -64,16 +83,9 @@
               </div>
 
             </div>
-              <!-- ******************************************** -->
-            <div class="sendUserMessageDiv">
-              <form>
-                <md-input-container class="md-block messageTextArea">
-                  <label>Send Message</label>
-                  <textarea type="text" ng-model="messageContainer.message"></textarea>
-                </md-input-container>
-                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job._id)" type="submit" name="sendUserMessage">Send</md-button>
-                </form>
               </div>
+              <!-- ******************************************** -->
+
           </div>
 
 

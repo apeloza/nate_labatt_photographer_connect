@@ -13,6 +13,8 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.allMessages = [];
     $scope.message = '';
 
+    $scope.activeJob = {};
+
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
@@ -25,10 +27,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             $location.path('/');
         }
     });
+
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
+        console.log($scope.userJobs);
 
     });
+
     $scope.preferredTime = ['6:00 AM',
         '6:30 AM',
         '7:00 AM',
@@ -83,70 +88,94 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         });
     };
 
+    $scope.setActive = function(obj) {
+        $scope.activeJob = obj;
+        $scope.messages = $scope.activeJob.chat.messages;
+    };
+
     $scope.submitMessage = function(id) {
-        console.log(id);
-        console.log('message container', $scope.messageContainer);
 
-        $http.get('/mail/messages').then(function(response) {
-            if (response.data) {
-                console.log('mail data', response.data);
-                $scope.allMessageInfo = response.data.items;
+        if ($scope.activeJob._id == id) {
+            console.log(id);
+            console.log('message container', $scope.messageContainer);
 
-                $scope.allMessageInfo.forEach(function(item, index) {
+            $http.get('/mail/messages').then(function(response) {
+                if (response.data) {
+                    console.log('mail data', response.data);
+                    $scope.allMessageInfo = response.data.items;
+                    $scope.allMessages = [];
+                    $scope.allMessageInfo.forEach(function(item, index) {
 
-                    $http.post('/mail/messages/item', item).then(function(response1) {
+                        $http.post('/mail/messages/item', item).then(function(response1) {
 
-                        $scope.message = response1.data;
-                        $scope.message.timestamp = item.timestamp;
-                        $scope.message.event = item.event;
-                        $scope.allMessages.push($scope.message);
+                            $scope.message = response1.data;
 
-                        if ($scope.allMessageInfo.length == index + 1) {
-                            console.log('Message Data: ', $scope.allMessages);
-                        }
+
+                                var matches = $scope.message.Subject.match(/\[(.*?)\]/);
+
+                                if (matches) {
+                                    var submatch = matches[1];
+                                    //console.log("submatch", submatch);
+                                    if (submatch == $scope.activeJob._id && item.event == 'stored'){
+                                        $scope.message.timestamp = item.timestamp;
+                                        $scope.message.event = item.event;
+                                        console.log('message matched to subject', $scope.message);
+                                        $scope.allMessages.push($scope.message);
+                                }
+                                }
+
+                        });
 
                     });
 
+                } else {
+                    console.log('error');
+                }
+
+                $http.get('/chats/' + id).then(function(response2) {
+                    console.log('chats data', response2);
+
+                    $scope.messages = response2.data.chat.messages;
+
+                    $scope.email.sendTo = response2.data.emails.toString();
+                    $scope.email.subject = "Set a time for a photo session [" + response2.data._id + "]";
+                    $scope.email.message = $scope.messageContainer.message;
+
+                    $scope.messages.push($scope.messageContainer.message);
+                    $scope.messageObject = {
+                        message: $scope.email.message,
+                        timestamp: Date.now(),
+                        username: $scope.loggedUser.username
+                    };
+
+                    $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
+                        console.log('Success');
+                        sendEmail();
+                        $scope.email = {};
+                        DataFactory.getAllJobs().then(function() {
+                            $scope.userJobs = DataFactory.findUserJobs();
+
+                        });
+                        $scope.messageContainer = {};
+                    });
                 });
 
-            } else {
-                console.log('error');
-            }
-
-        $http.get('/chats/' + id).then(function(response2) {
-            console.log('chats data', response2);
-
-            $scope.messages = response2.data.chat.messages;
-
-            $scope.email.sendTo = response2.data.emails.toString();
-            $scope.email.subject = "Set a time for a photo session [" + response2.data._id + "]";
-            $scope.email.message = $scope.messageContainer.message;
-
-            $scope.messages.push($scope.messageContainer.message);
-            $scope.messageObject = {
-                messages: $scope.messages
-            };
-
-            $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
-                console.log('Success');
-                sendEmail();
-                $scope.email = {};
             });
-            });
-        });
+        }
+    };
 
-        //gets email from mailgun
-        function getEmail() {
-
-        };
-
-        //sends an email to recipients
-        function sendEmail() {
-            console.log($scope.email);
-            $http.post('/mail', $scope.email).then(function(response) {
-                console.log(response);
-            });
-        };
+    //gets email from mailgun
+    function getEmail() {
 
     };
+
+    //sends an email to recipients
+    function sendEmail() {
+        console.log($scope.email);
+        $http.post('/mail', $scope.email).then(function(response) {
+            console.log(response);
+        });
+    };
+
+
 }]);
