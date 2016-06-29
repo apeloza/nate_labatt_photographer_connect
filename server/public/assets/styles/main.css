@@ -348,7 +348,6 @@ md-toolbar {
   height: auto;
   display: inline-block;
   width: 50%;
-  border: 1px solid black;
 }
 
 .landingPageAbout {
@@ -357,6 +356,10 @@ md-toolbar {
   vertical-align: top;
   display: inline-block;
   border: 1px solid black;
+}
+
+.landingPagePixelHouse {
+  font-weight: bold;
 }
 
 /* ---------------------- update prices view  --------------------------*/
