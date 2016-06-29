@@ -356,10 +356,10 @@ md-toolbar {
 
 .landingPageAbout {
   margin-top: 50px;
-  margin-left: 10px;
+  margin-left: 20px;
+  max-width: 40%;
   vertical-align: top;
   display: inline-block;
-  border: 1px solid black;
 }
 
 .landingPagePixelHouse {
