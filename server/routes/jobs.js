@@ -4,7 +4,7 @@ var passport = require('passport');
 var Job = require('../models/job');
 var path = require('path');
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     if (req.isAuthenticated()) {
         Job.find({}, function(err, jobs) {
             res.send(jobs);
