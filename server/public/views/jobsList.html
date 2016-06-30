@@ -37,16 +37,14 @@
 
 <!-- Sort and Search -------------------------------------------------->
 <md-subheader layout="row">
-    <strong>State:</strong>
-    <select>
-      <option>Open</option>
-      <option>Accepted</option>
-      <option>Finalized</option>
-      <option>Finished</option>
-    </select>
 
-    <input type="text" placeholder="Search"/>
-    <i class="material-icons searchIcon">search</i>
+    <md-button ng-click="sort('open')">Open<i class="material-icons searchIcon">arrow_drop_up</i></md-button>
+    <md-button ng-click="sort('accepted')">Accepted<i class="material-icons searchIcon">arrow_drop_up</i></md-button>
+    <md-button ng-click="sort('finalized')">Finalized<i class="material-icons searchIcon">arrow_drop_up</i></md-button>
+    <md-button ng-click="sort('finished')">Finished<i class="material-icons searchIcon">arrow_drop_up</i></md-button>
+
+    <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
+    <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
 
 </md-subheader>
 <!-- Sort and Search -------------------------------------------------->

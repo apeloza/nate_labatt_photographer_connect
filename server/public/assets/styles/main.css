@@ -221,6 +221,10 @@ md-toolbar {
 .searchIcon {
   color: #78909C;
 }
+.searchIcon:hover {
+  cursor: pointer;
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {
