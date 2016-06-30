@@ -1,6 +1,7 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
 
   $scope.user = {};
+  $scope.prices = {};
 
   DataFactory.authenticate().then(function(){
     $scope.user.username = DataFactory.storeUsername();
@@ -10,6 +11,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     }
     if($scope.user.username){
       console.log('User Data: ', $scope.username);
+      getPrices();
     } else {
       $location.path('/');
     }
@@ -106,6 +108,12 @@ $scope.saveNewJob = function () {
   $http.post('/jobs', $scope.newJob).then(function (req, res) {
     $location.path('/jobsList');
   });
-}
+};
 
+function getPrices() {
+    $http.get('/prices').then(function(response) {
+        $scope.prices = response.data;
+        console.log($scope.prices);
+    });
+}
 }]);
