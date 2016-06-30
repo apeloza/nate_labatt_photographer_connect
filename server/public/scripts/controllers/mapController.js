@@ -18,7 +18,6 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
 
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
-        console.log($scope.openJobs);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address.line1 + ' ' +
@@ -36,7 +35,6 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
             mapmarker.date = mapmarker.date.toLocaleDateString("en-US");
             $scope.mapMarkers.push(mapmarker);
         }
-        console.log($scope.mapMarkers);
     });
 
 
@@ -46,9 +44,10 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         due: '',
         time: '',
         date: '',
-        jobID: ''
+        jobID: '',
+        link: ''
     };
-    console.log('Map Controller running');
+
     $scope.showData = function(event, mapmarker) {
       console.log($scope.selectedPin);
         $scope.pinSelected = true;
@@ -58,6 +57,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
         $scope.selectedPin.jobID = mapmarker.jobID;
+        $scope.selectedPin.link = encodeURI(mapmarker.position);
     };
     $scope.closeModal = function() {
         $scope.pinSelected = false;

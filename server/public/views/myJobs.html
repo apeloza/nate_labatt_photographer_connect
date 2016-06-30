@@ -5,30 +5,29 @@
   </md-toolbar>
   <div>
     <md-card ng-repeat="job in userJobs">
+<<<<<<< HEAD
       <div ng-click="setActive(job)">
 
 
+=======
+      <div class="userJobListRepeatJobs">
+>>>>>>> master
       <div>
         <p>Address: <strong>{{job.address.line1}} </strong></p>
         <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
       </div>
       <div>
-        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
-      </div>
-      <div>
         <p>Primary Email: <strong>{{job.emails[0]}}</strong></p>
-      </div>
-      <div>
         <p>Phone: <strong>{{job.phone}}</strong></p>
       </div>
       <div>
         <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
-      </div>
-      <div>
         <p>TimeFrame: <strong>{{job.timeFrame}}</strong></p>
       </div>
       <div>
+        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
         <p>Pay: <strong>${{job.totalPrice}}</strong></p>
+      </div>
       </div>
 
       <div class="showmeButtons">
@@ -42,6 +41,7 @@
           <div class="chatFeatures">
             <h3>Homeowner Chat</h3>
             <div class="chatBox">
+
               <div class="chatText" ng-repeat="message in messages">
                 <p class="chatLine">
               On {{message.timestamp | date:'short'}} {{message.username}} said:  <strong> {{message.message}} </strong>

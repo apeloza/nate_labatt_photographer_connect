@@ -98,6 +98,10 @@ ng-map {
 .jobsCardMapPage {
   background-color: #E0F7FA;
 }
+
+.mapAddress {
+  margin-left: 20px;
+}
 /*----------------------------------------------------Login Page----------------------------------------------------*/
 
 .signIn {
@@ -175,12 +179,17 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
+.adminJobClientName {
+  margin-left: 30px;
+  vertical-align: top;
+}
+
 .repeatClientInfo {
-  margin-left:20px;
+  margin-left: 30px;
 }
 
 .repeatJobInfo {
-  margin-left:20px;
+  margin-left: 30px;
 }
 
 .open p {
@@ -217,6 +226,41 @@ md-toolbar {
   border-radius: 3px;
   text-align:center;
 }
+
+.searchIcon {
+  color: #78909C;
+}
+
+
+.repeatJobsList {
+
+}
+
+.adminChatCard {
+  border-top: 1px dotted black;
+}
+
+.adminChatBox {
+  width: 800px;
+}
+
+.repeatedJobsAdmin > div {
+  display: inline-block;
+
+}
+
+.repeatJobFabButtons {
+
+
+}
+
+
+.fabSpeedDialAdminJob {
+
+
+
+}
+
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 
 .userListCards > div {
@@ -312,13 +356,17 @@ md-toolbar {
 .chatDatePicker, .chatTimePicker {
   margin-left: auto;
   margin-right: auto;
-  /*border: 1px solid black;*/
+
 }
 
 .photoshootTimeSetButton {
   margin-left: 80px;
 }
 
+.userJobListRepeatJobs > div {
+  margin-left: 20px;
+  float: left;
+}
 
 /*----------------------------------------------------Landing Page----------------------------------------------------*/
 
@@ -348,15 +396,25 @@ md-toolbar {
   height: auto;
   display: inline-block;
   width: 50%;
-  border: 1px solid black;
 }
 
 .landingPageAbout {
   margin-top: 50px;
-  margin-left: 10px;
+  margin-left: 20px;
+  max-width: 40%;
   vertical-align: top;
   display: inline-block;
-  border: 1px solid black;
+}
+
+.landingPagePixelHouse {
+  font-weight: bold;
+}
+
+/* ---------------------- update prices view  --------------------------*/
+.updatePricesForm {
+  width:400px;
+  margin:auto;
+  margin-top: 30px;
 }
 
 .user {

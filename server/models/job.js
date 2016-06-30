@@ -22,7 +22,7 @@ var JobSchema = new Schema({
     entryMethod: {type: String},
     jobStatus: {type: String},
     jobAcceptedBy: {type: String},
-    chat: ChatSchema
+    chat: ChatSchema,
 
 });
 

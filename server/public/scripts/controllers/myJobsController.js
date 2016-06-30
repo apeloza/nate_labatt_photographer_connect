@@ -1,5 +1,5 @@
 app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
-    console.log('My Jobs Controller running');
+  
     $scope.loggedUser = {};
     $scope.userJobs = {};
     $scope.timeFrame = {};
@@ -84,7 +84,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             time: $scope.timeFrame.time
         };
         $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
-            $scope.userJobs = DataFactory.findUserJobs();
+          DataFactory.getAllJobs().then(function() {
+              $scope.userJobs = DataFactory.findUserJobs();
+
+          });
         });
     };
 

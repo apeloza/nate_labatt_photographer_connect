@@ -1,11 +1,12 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 <div class="userListPageDiv">
 
-<md-card class="adminUserPage" ng-controller="FabCtrl as fab">
+<div class="adminUserPage" ng-controller="FabCtrl as fab">
 
   <!-- Toolbar ---------------------------------------------------------->
+  <md-card>
       <md-toolbar layout="row">
-        <h1 class="toolbarText" flex="80">Users</h1>
+        <h1 class="toolbarText" flex=>Users</h1>
         <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
                            ng-class="fab.selectedMode" flex="22">
           <md-fab-trigger>
@@ -64,5 +65,6 @@
         </md-button>
       </div>
     </md-card>
-</md-card>
+    </md-card>
+</div>
 </div>
