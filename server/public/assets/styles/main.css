@@ -192,6 +192,11 @@ md-toolbar {
   margin-left: 30px;
 }
 
+.repeatJobDetails {
+  margin-left: 30px;
+  vertical-align: top;
+}
+
 .open p {
   background-color: #E57373;
   width:100px;
@@ -255,7 +260,6 @@ md-toolbar {
 
 .repeatedJobsAdmin > div {
   display: inline-block;
-
 }
 
 .repeatJobFabButtons {

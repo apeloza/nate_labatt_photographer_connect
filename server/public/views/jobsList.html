@@ -59,14 +59,17 @@
         </div>
         <div class="adminJobClientName">
           <p>Client: <strong>{{job.name}}</strong></p>
-        </div>
-        <div class="repeatClientInfo">
-          <p>Address: <strong>{{job.address.line1}} </strong></p>
-          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
-        </div>
-        <div class="repeatJobInfo">
           <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
           <p>Price: <strong>${{job.totalPrice}}</strong></p>
+        </div>
+        <div class="repeatClientInfo">
+          <!-- <p>Address: </p> -->
+          <p><strong>{{job.address.line1}}</strong></p>
+          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+        </div>
+        <div class="repeatJobDetails">
+          <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+          <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
         </div>
       </div>
 
