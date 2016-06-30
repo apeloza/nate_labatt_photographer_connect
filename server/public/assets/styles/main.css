@@ -229,11 +229,16 @@ md-toolbar {
 
 .searchIcon {
   color: #78909C;
+  float:right;
 }
-<<<<<<< HEAD
+
 .searchIcon:hover {
   cursor: pointer;
-=======
+}
+
+.jobSearch {
+  float: right;
+}
 
 
 .repeatJobsList {
@@ -263,7 +268,7 @@ md-toolbar {
 
 
 
->>>>>>> e1fe3959fc6bd507be2101554016f17b2f9d125f
+
 }
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
