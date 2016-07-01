@@ -40,19 +40,13 @@
         <md-card>
           <div class="chatFeatures">
             <h3>Homeowner Chat</h3>
-            <div class="chatBox">
 
-              <div class="chatText" ng-repeat="message in messages">
-                <p class="chatLine">
+            <div class="chatBox">
+                <p class="chatLine" ng-repeat="message in messages">
               On {{message.timestamp | date:'short'}} {{message.username}} said:  <strong> {{message.message}} </strong>
                  </p>
-
-
-              </div>
-              <p ng-repeat="msg in allMessages">
-                On {{msg.timestamp |  date:'short'}} {{msg.sender}} said: <strong>{{msg['stripped-text']}}</strong>
-              </p>
             </div>
+
             <div class="sendUserMessageDiv">
               <form>
                 <md-input-container class="md-block messageTextArea">
@@ -76,6 +70,7 @@
                 </md-input-container>
                 <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
+
               <div ng-show="job.chat.date != undefined">
                 <p>CURRENTLY CONFIRMED</p>
                 <p>{{job.chat.date | date : format : longDate}}</p>

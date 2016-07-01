@@ -20,7 +20,7 @@ router.post('/', function(req, res) {
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
-        to: 'apeloza@alumni.uwo.ca',//test email, change to var sendTo when deployed
+        to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
         text: message
             //attachment: filepath
