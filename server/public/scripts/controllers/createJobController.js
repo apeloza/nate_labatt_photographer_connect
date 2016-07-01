@@ -43,6 +43,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         }
     };
     $scope.newJob.addons = [];
+    $scope.newJob.emails = [];
     $scope.newJob.totalPrice = 0;
     $scope.newJob.lakeshoreAndAcreage = {
         value1: false
@@ -62,9 +63,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
     // Add up total price
     $scope.total = function() {
-        console.log($scope.newJob.squareFeet);
-        console.log($scope.newJob.addons);
-        console.log($scope.newJob.afterDark);
+
         if($scope.tenThousandSqFt.value1 === false){
         $scope.newJob.totalPrice = $scope.newJob.squareFeet.value + $scope.newJob.afterDark.value + $scope.addonPrice;
       } else {
@@ -110,10 +109,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.saveNewJob = function() {
 
         console.log("newJobData: ", $scope.newJob);
-        $scope.newJob.squareFeet = $scope.newJob.squareFeet.sqft;
-        $scope.newJob.lakeshoreAndAcreage = $scope.lakeshoreAndAcreage;
-        console.log($scope.newJob.lakeshoreAndAcreage);
-        $scope.newJob.afterDark = $scope.ad.afterDark.option;
+
         $http.post('/jobs', $scope.newJob).then(function(req, res) {
             $location.path('/jobsList');
         });
