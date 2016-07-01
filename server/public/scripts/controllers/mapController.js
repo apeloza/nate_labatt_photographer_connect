@@ -27,7 +27,10 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
                 date: $scope.openJobs[i].preferredDate,
-                jobID: $scope.openJobs[i]._id
+                jobID: $scope.openJobs[i]._id,
+                squareFeet: $scope.openJobs[i].squareFeet,
+                shoreAndAcre: $scope.openJobs[i].lakeshoreAndAcreage,
+                afterDark: $scope.openJobs[i].afterDark
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");

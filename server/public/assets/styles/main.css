@@ -66,6 +66,10 @@ ng-map {
   text-align:center;
 }
 
+.mapPrice {
+  margin-left: 15px;
+}
+
 .jobbtn {
   margin-left:100px;
 }

@@ -104,10 +104,10 @@
       </div>
 
       <div flex>
-          <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="minDate">
-          </md-datepicker>
+        <md-datepicker ng-model="newJob.preferredDate" md-placeholder="Preferred Date" md-min-date="minDate" md-max-date="dueDate">
+        </md-datepicker>
 
-          <md-datepicker ng-model="newJob.preferredDate" md-placeholder="Preferred Date" md-min-date="minDate" md-max-date="dueDate">
+          <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="minDate">
           </md-datepicker>
 
         <md-input-container>
