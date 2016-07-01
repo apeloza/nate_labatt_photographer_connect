@@ -7,7 +7,7 @@
     <div class="mapmodal" ng-show="pinSelected">
         <i class="material-icons closebtn" ng-click="closeModal()">clear</i>
         <div class="modalText">
-          <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}">{{selectedPin.address}}</a>   </p>
+          <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}" target="_blank">{{selectedPin.address}}</a>   </p>
           <p><strong>Square Feet:</strong> {{selectedPin.feet}}</p>
           <p><strong>After Dark:</strong> {{selectedPin.dark}}</p>
           <p><strong>Addons:</strong> {{selectedPin.addons.name}}</p>
