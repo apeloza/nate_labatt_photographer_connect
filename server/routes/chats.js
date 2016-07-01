@@ -84,22 +84,7 @@ router.put('/:id', function(req, res) {
     }
   });
 
-  if(!exists){
-    job.chat.messages.push(message);
-    console.log('does not exist!');
-}
-    job.save(function (err) {
-      if (err) {
-        res.sendStatus(500);
-        return;
-      }
-      console.log("/put a message");
-      res.sendStatus(204);
-    });
-  }
-  });
-  }
-});
+
 
 
 module.exports = router;

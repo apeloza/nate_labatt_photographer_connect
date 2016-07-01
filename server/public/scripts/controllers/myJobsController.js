@@ -95,8 +95,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                 $scope.userJobs = DataFactory.findUserJobs();
 
             });
-<<<<<<< HEAD
-=======
+
         });
     };
     $scope.submitPhotoURL = function(id) {
@@ -104,7 +103,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             DataFactory.getAllJobs().then(function() {
                 $scope.userJobs = DataFactory.findUserJobs();
             });
->>>>>>> master
+
         });
     };
 
