@@ -132,7 +132,7 @@
                     <div ng-repeat="addon in prices.addons">
                         <div flex>
                             <md-input-container>
-                                <md-checkbox ng-model="lakeshoreAndAcreage.value1" ng-change="total()">{{addon.name}} - ${{addon.value}}</md-checkbox>
+                                <md-checkbox ng-model="confirmed[$index]"  ng-change="addAddons($index, addon)">{{addon.name}} - ${{addon.value}}</md-checkbox>
                             </md-input-container>
                         </div>
 

@@ -1,7 +1,7 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.user = {};
-    $scope.prices = {};
+
 
 
     DataFactory.authenticate().then(function() {
@@ -12,6 +12,10 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         }
         if ($scope.user.username) {
             console.log('User Data: ', $scope.user.username);
+            $scope.prices = {};
+            $scope.chosenAddons = [];
+            $scope.confirmed = [];
+            $scope.addonPrice = 0;
             getPrices();
         } else {
             $location.path('/');
@@ -29,16 +33,16 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             date: '',
             time: ''
         },
-        afterDark: {
+        squareFeet: {
           name: '',
           value: 0
         },
-        addons: {
-          name: '',
-          value: 0
+        afterDark: {
+            name: '',
+            value: 0
         }
     };
-
+    $scope.newJob.addons = [];
     $scope.newJob.totalPrice = 0;
     $scope.newJob.lakeshoreAndAcreage = {
         value1: false
@@ -48,7 +52,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     };
 
 
-  
+
 
     $scope.time = ['Morning', 'Afternoon', 'Evening'];
 
@@ -61,7 +65,11 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         console.log($scope.newJob.squareFeet);
         console.log($scope.newJob.addons);
         console.log($scope.newJob.afterDark);
-        $scope.newJob.totalPrice = $scope.newJob.squareFeet.value + $scope.newJob.afterDark.value + $scope.newJob.addons.value;
+        if($scope.tenThousandSqFt.value1 === false){
+        $scope.newJob.totalPrice = $scope.newJob.squareFeet.value + $scope.newJob.afterDark.value + $scope.addonPrice;
+      } else {
+        $scope.newJob.totalPrice = "Please call me!";
+      }
     };
 
     $scope.emails = [''];
@@ -77,7 +85,27 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         console.log($scope.emails);
     };
 
+    $scope.addAddons = function(index, addon) {
 
+
+        if ($scope.confirmed[index] === true) {
+            console.log('true');
+            $scope.newJob.addons.push(addon);
+            $scope.addonPrice += addon.value;
+            $scope.total();
+            console.log($scope.addonPrice);
+            console.log($scope.newJob.addons);
+        } else {
+            console.log('false');
+            for (var i = 0; i < $scope.newJob.addons.length; i++) {
+                if (addon.name == $scope.newJob.addons[i].name) {
+                    index = i;
+                    $scope.addonPrice -= addon.value;
+                    $scope.newJob.addons.splice(index, 1);
+                }
+            }
+        }
+    };
 
     $scope.saveNewJob = function() {
 
