@@ -66,10 +66,15 @@
             <label>Due Date</label>
             <input type="text" value='{{job.dueDate | date : format : longDate}}' />
           </md-input-container>
+
         <md-input-container>
           <label>Price</label>
           <input type="text" value={{job.totalPrice}} />
         </md-input-container>
+
+          <p ng-if="job.photoURL !=''">Photos Submitted: {{job.photoURL}}</p>
+          <p>Price: <strong>${{job.totalPrice}}</strong></p>
+
         </div>
         <div class="repeatClientInfo">
           <md-input-container>
@@ -159,5 +164,6 @@
               <div class="adminChatText">
                 {{job.chat.messages}}
               </div>
+
 
     <md-card>

@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var MessageSchema = require('./message').schema;
 
 var ChatSchema = new Schema({
-messages: {type: Array},
+messages: [MessageSchema],
 date: {type: String},
 time: {type: String}
 });
