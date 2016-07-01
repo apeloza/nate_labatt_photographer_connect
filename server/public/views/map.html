@@ -10,7 +10,7 @@
           <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}">{{selectedPin.address}}</a>   </p>
           <p><strong>Square Feet:</strong> {{selectedPin.feet}}</p>
           <p><strong>After Dark:</strong> {{selectedPin.dark}}</p>
-          <p><strong>Lakeshore:</strong> {{selectedPin.lake}}</p>
+          <p><strong>Addons:</strong> {{selectedPin.addons.name}}</p>
           <p><strong>Preferred Time:</strong> {{selectedPin.date}}, {{selectedPin.time}}</p>
           <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
           <p class="pay"><strong>Pay:</strong> ${{selectedPin.price}}</p>
@@ -34,7 +34,7 @@
             <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
           </div>
           <div>
-            <p>Lakeshore and Acreage: <strong>{{job.shoreAndAcre}}</strong></p>
+            <p>Addons: <strong>{{job.addons}}</strong></p>
           </div>
           <div>
             <p>After Dark: <strong>{{job.afterDark}}</strong></p>
