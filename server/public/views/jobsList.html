@@ -46,11 +46,13 @@
     <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
     <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
 
+    <!-- <input ng-model="searchText" class="form-control librarySearch" placeholder="Search by Title, Genre, or System" />
+    <div class="row rowGames" ng-repeat="games in games | filter : searchText"> -->
+
 </md-subheader>
 <!-- Sort and Search -------------------------------------------------->
 
-  <div>
-    <md-card ng-repeat="job in jobs" class="repeatJobsList">
+    <md-card ng-repeat="job in sortedJobs" class="repeatJobsList">
 <div layout="row">
 
       <div class="repeatedJobsAdmin" flex>
