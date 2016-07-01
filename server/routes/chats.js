@@ -28,6 +28,7 @@ router.put('/date/:id', function(req, res, next) {
         }, function(err, job) {
             job.chat.date = req.body.date;
             job.chat.time = req.body.time;
+            job.jobStatus = 'finalized';
             job.save(function(err) {
                 if (err) {
                     res.send(err);
