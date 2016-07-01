@@ -48,6 +48,9 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         time: '',
         date: '',
         jobID: '',
+        lake: '',
+        dark: '',
+        feet: '',
         link: ''
     };
 
@@ -59,6 +62,9 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
+        $scope.selectedPin.lake = mapmarker.shoreAndAcre;
+        $scope.selectedPin.dark = mapmarker.afterDark;
+        $scope.selectedPin.feet = mapmarker.squareFeet;
         $scope.selectedPin.jobID = mapmarker.jobID;
         $scope.selectedPin.link = encodeURI(mapmarker.position);
     };

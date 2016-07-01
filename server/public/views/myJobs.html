@@ -14,12 +14,15 @@
         <p>Primary Email: <strong>{{job.emails[0][0]}}</strong></p>
         <p>Phone: <strong>{{job.phone}}</strong></p>
       </div>
+
+      <div>
+        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
+        <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+        <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
+      </div>
       <div>
         <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
         <p>TimeFrame: <strong>{{job.timeFrame}}</strong></p>
-      </div>
-      <div>
-        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
         <p>Pay: <strong>${{job.totalPrice}}</strong></p>
       </div>
       </div>
