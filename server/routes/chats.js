@@ -54,21 +54,26 @@ console.log('req.body', req.body);
     }
 console.log('job', job);
 if (job){
+
   job.chat.messages.forEach(function(item,index){
-    if (item.timestamp==message.timestamp) {
+
+    console.log('in db', item.timestamp);
+    console.log('new msg', message.timestamp);
+    if (item.message==message.message) {
       exists = true;
     }
   });
 
   if(!exists){
     job.chat.messages.push(message);
+    console.log('does not exist!');
 }
     job.save(function (err) {
       if (err) {
         res.sendStatus(500);
         return;
       }
-
+      console.log("/put a message");
       res.sendStatus(204);
     });
   }
