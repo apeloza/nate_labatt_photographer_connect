@@ -1,144 +1,145 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 
 <div class="jobsListCard" ng-controller="FabCtrl as fab">
-  <md-card>
-<!-- Toolbar ---------------------------------------------------------->
-    <md-toolbar layout="row">
-      <h1 class="toolbarText" flex="80">Job List</h1>
-      <md-fab-speed-dial md-open="fab.isOpen" md-direction="left"
-                         ng-class="fab.selectedMode" flex="22">
-        <md-fab-trigger>
-          <md-button aria-label="menu" class="md-fab md-accent">
-            <i class="material-icons">menu</i>
-          </md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
-          <md-button aria-label="Job list" class="md-fab md-raised md-mini md-accent" ng-click="jobsList()">
-            <i class="material-icons">list</i>
-            <md-tooltip  md-direction="bottom">
-              Job List
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="create a job" class="md-fab md-raised md-mini md-accent" ng-click="createJob()">
-            <i class="material-icons">add_circle_outline</i>
-            <md-tooltip  md-direction="bottom">
-              Create a Job
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="update prices" class="md-fab md-raised md-mini md-accent" ng-click="updatePrices()">
-            <i class="material-icons">settings</i>
-            <md-tooltip  md-direction="bottom">
-              Update Prices
-            </md-tooltip>
-          </md-button>
-        </md-fab-actions>
-      </md-fab-speed-dial>
-    </md-toolbar>
-<!-- Toolbar ---------------------------------------------------------->
+    <md-card>
+        <!-- Toolbar ---------------------------------------------------------->
+        <md-toolbar layout="row">
+            <h1 class="toolbarText" flex="80">Job List</h1>
+            <md-fab-speed-dial md-open="fab.isOpen" md-direction="left" ng-class="fab.selectedMode" flex="22">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-accent">
+                        <i class="material-icons">menu</i>
+                    </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                    <md-button aria-label="Job list" class="md-fab md-raised md-mini md-accent" ng-click="jobsList()">
+                        <i class="material-icons">list</i>
+                        <md-tooltip md-direction="bottom">
+                            Job List
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="create a job" class="md-fab md-raised md-mini md-accent" ng-click="createJob()">
+                        <i class="material-icons">add_circle_outline</i>
+                        <md-tooltip md-direction="bottom">
+                            Create a Job
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="update prices" class="md-fab md-raised md-mini md-accent" ng-click="updatePrices()">
+                        <i class="material-icons">settings</i>
+                        <md-tooltip md-direction="bottom">
+                            Update Prices
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </md-toolbar>
+        <!-- Toolbar ---------------------------------------------------------->
 
-<!-- Sort and Search -------------------------------------------------->
-<md-subheader>
+        <!-- Sort and Search -------------------------------------------------->
+        <md-subheader>
 
-    <strong>Show me</strong>
-    <select ng-model="order" ng-options="prop for prop in ['all','open', 'accepted', 'finalized', 'finished']" ng-change="sort(order)"></select>
-    <strong>jobs</strong>
+            <strong>Show me</strong>
+            <select ng-model="order" ng-options="prop for prop in ['all','open', 'accepted', 'finalized', 'finished']" ng-change="sort(order)"></select>
+            <strong>jobs</strong>
 
-    <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
-    <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
+            <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText" />
+            <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
 
-</md-subheader>
-<!-- Sort and Search -------------------------------------------------->
+        </md-subheader>
+        <!-- Sort and Search -------------------------------------------------->
 
-    <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList">
-<div layout="row">
+        <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList">
+            <div layout="row">
 
-      <div class="repeatedJobsAdmin" flex>
-        <div class="repeatStatus" ng-class="job.jobStatus">
-          <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'" > by {{job.jobAcceptedBy}}</span></p>
-        </div>
-        <div class="adminJobClientName">
-          <p>Client: <strong>{{job.name}}</strong></p>
-          <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
-          <p>Price: <strong>${{job.totalPrice}}</strong></p>
-        </div>
-        <div class="repeatClientInfo">
-          <!-- <p>Address: </p> -->
-          <p>Address: <strong>{{job.address.line1}}</strong></p>
-          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
-        </div>
-        <div class="repeatJobDetails">
-          <p>After Dark: <strong>{{job.afterDark.name}} - $ {{job.afterDark.value}}</strong></p>
-          <p>Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
-        </div>
-      </div>
+                <div class="repeatedJobsAdmin" flex>
+                    <div class="repeatStatus" ng-class="job.jobStatus">
+                        <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'"> by {{job.jobAcceptedBy}}</span></p>
+                    </div>
+                    <div class="adminJobClientName">
+                        <p>Client: <strong>{{job.name}}</strong></p>
+                        <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
+                        <p>Price: <strong>${{job.totalPrice}}</strong></p>
+                    </div>
+                    <div class="repeatClientInfo">
+                        <!-- <p>Address: </p> -->
+                        <p>Address: <strong>{{job.address.line1}}</strong></p>
+                        <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+                    </div>
+                    <div class="repeatJobDetails">
+                        <p>After Dark: <strong>{{job.afterDark.name}} - $ {{job.afterDark.value}}</strong></p>
+                        <p>Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
+                    </div>
+                    <div ng-if="job.photoURL!=''" class="repeatPhotoURL">
+                        <p>Photos Submitted: {{job.photoURL}}</p>
+                    </div>
+                </div>
 
-      <!-- FAB ------------------------------------------>
+                <!-- FAB ------------------------------------------>
 
-      <div class="repeatJobFabButtons">
-      <md-fab-speed-dial md-open="false" md-direction="left" class="fabSpeedDialAdminJob"
-                         ng-class="fab.selectedMode">
+                <div class="repeatJobFabButtons">
+                    <md-fab-speed-dial md-open="false" md-direction="left" class="fabSpeedDialAdminJob" ng-class="fab.selectedMode">
 
-        <md-fab-trigger>
-          <md-button aria-label="menu" class="md-fab md-accent">
-            <i class="material-icons">menu</i>
-          </md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
+                        <md-fab-trigger>
+                            <md-button aria-label="menu" class="md-fab md-accent">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
 
-          <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" ng-show="job.jobStatus!='open'" class="md-fab md-raised md-mini md-accent">
-            <i class="material-icons">keyboard_arrow_down</i>
+                            <md-button aria-label="more" ng-hide="showme" ng-click="showme=true" ng-show="job.jobStatus!='open'" class="md-fab md-raised md-mini md-accent">
+                                <i class="material-icons">keyboard_arrow_down</i>
 
-            <md-tooltip  md-direction="bottom">
-              View chat
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="hide" ng-show="showme" ng-click="showme=false" class="md-fab md-raised md-mini md-accent">
-            <i class="material-icons">keyboard_arrow_up</i>
-            <md-tooltip md-direction="bottom">
-              Hide chat
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
-            <i class="material-icons">done</i>
-            <md-tooltip  md-direction="bottom">
-              Finish job
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">
-            <i class="material-icons">visibility</i>
-            <md-tooltip  md-direction="bottom">
-              Re Open
-            </md-tooltip>
-          </md-button>
-          <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
-            <i class="material-icons">delete_forever</i>
-            <md-tooltip  md-direction="bottom">
-              Delete job
-            </md-tooltip>
-          </md-button>
-        </md-fab-actions>
+                                <md-tooltip md-direction="bottom">
+                                    View chat
+                                </md-tooltip>
+                            </md-button>
+                            <md-button aria-label="hide" ng-show="showme" ng-click="showme=false" class="md-fab md-raised md-mini md-accent">
+                                <i class="material-icons">keyboard_arrow_up</i>
+                                <md-tooltip md-direction="bottom">
+                                    Hide chat
+                                </md-tooltip>
+                            </md-button>
+                            <md-button aria-label="finish" class="md-fab md-raised md-mini md-accent" ng-show="job.jobStatus!='finished'" ng-click="finish(job._id)">
+                                <i class="material-icons">done</i>
+                                <md-tooltip md-direction="bottom">
+                                    Finish job
+                                </md-tooltip>
+                            </md-button>
+                            <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent" ng-click="reopen(job._id)" ng-show="job.jobStatus!='open'">
+                                <i class="material-icons">visibility</i>
+                                <md-tooltip md-direction="bottom">
+                                    Re Open
+                                </md-tooltip>
+                            </md-button>
+                            <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
+                                <i class="material-icons">delete_forever</i>
+                                <md-tooltip md-direction="bottom">
+                                    Delete job
+                                </md-tooltip>
+                            </md-button>
+                        </md-fab-actions>
 
-      </md-fab-speed-dial>
+                    </md-fab-speed-dial>
 
-    </div>
-  </div>
-
-      <!-- FAB ------------------------------------------>
-      <div ng-show="showme" class="adminChatCard">
-        <md-card>
-          <div class="chatFeatures">
-            <h3>Homeowner Chat</h3>
-            <div class="adminChatBox">
-              <div class="adminChatText">
-                {{job.chat.messages}}
-              </div>
+                </div>
             </div>
+
+            <!-- FAB ------------------------------------------>
+            <div ng-show="showme" class="adminChatCard">
+                <md-card>
+                    <div class="chatFeatures">
+                        <h3>Homeowner Chat</h3>
+                        <div class="adminChatBox">
+                            <div class="adminChatText">
+                                {{job.chat.messages}}
+                            </div>
+                        </div>
+                    </div>
+                </md-card>
             </div>
-          </md-card>
-      </div>
 
-  </md-card>
-  </div>
-  </md-card>
+        </md-card>
+</div>
+</md-card>
 
-  </div>
+</div>

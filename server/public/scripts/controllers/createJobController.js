@@ -44,6 +44,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     };
     $scope.newJob.addons = [];
     $scope.newJob.emails = [];
+    $scope.newJob.photoURL = '';
     $scope.newJob.totalPrice = 0;
     $scope.newJob.lakeshoreAndAcreage = {
         value1: false
@@ -144,7 +145,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.saveNewJob = function () {
 
     console.log("newJobData: ", $scope.newJob);
-    
+
     $http.post('/jobs', $scope.newJob).then(function (req, res) {
       $location.path('/jobsList');
     });

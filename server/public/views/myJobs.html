@@ -61,6 +61,10 @@
                 <p>{{job.chat.date | date : format : longDate}}</p>
                 <p>{{job.chat.time}}</p>
                 <p>Method of Entry: {{job.entryMethod}}</p>
+                <p ng-if="job.photoURL != ''">CURRENT PHOTO LINK: {{job.photoURL}}</p>
+                <label for="photos">Drop Photo Link Here</label>
+                <input ng-model="photoURL.url" type="text" name="photos" />
+                <md-button class="md-raised md-primary md-block" ng-click="submitPhotoURL(job._id)">Submit Photos</md-button>
               </div>
 
             </div>
