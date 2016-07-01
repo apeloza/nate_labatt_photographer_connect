@@ -16,8 +16,8 @@
       </div>
 
       <div>
-        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
-        <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+        <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
+        <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
         <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
       </div>
       <div>
@@ -36,7 +36,7 @@
       <div ng-show="showme" class="chatCard">
         <md-card>
           <div class="chatFeatures">
-            <h3>Homeowner Chat</h3>
+            <h3 class="chatHeader">Homeowner Chat</h3>
             <div class="chatBox">
               <div class="chatText">
                 {{messages}}

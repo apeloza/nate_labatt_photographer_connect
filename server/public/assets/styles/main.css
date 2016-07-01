@@ -25,8 +25,7 @@ html, body {
 /*----------------------------------------------------Map Page----------------------------------------------------*/
 
 .mapmodal {
-  width: 300px;
-  height: 300px;
+  width: 350px;
   background-color: white;
   position: fixed;
   left: 40%;
@@ -337,6 +336,7 @@ md-toolbar {
   display: inline-block;
   vertical-align:top;
   border: 2px solid black;
+  border-radius:3px;
   margin-left: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -384,6 +384,10 @@ md-toolbar {
 .userJobListRepeatJobs > div {
   margin-left: 20px;
   float: left;
+}
+
+.chatHeader {
+  margin-left: 20px;
 }
 
 /*----------------------------------------------------Landing Page----------------------------------------------------*/
