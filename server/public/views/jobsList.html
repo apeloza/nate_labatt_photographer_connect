@@ -63,12 +63,12 @@
         </div>
         <div class="repeatClientInfo">
           <!-- <p>Address: </p> -->
-          <p><strong>{{job.address.line1}}</strong></p>
+          <p>Address: <strong>{{job.address.line1}}</strong></p>
           <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
         </div>
         <div class="repeatJobDetails">
           <p>After Dark: <strong>{{job.afterDark.name}} - $ {{job.afterDark.value}}</strong></p>
-          <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
+          <p>Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
         </div>
       </div>
 
