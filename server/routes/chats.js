@@ -28,6 +28,7 @@ router.put('/date/:id', function(req, res) {
         }, function(err, job) {
             job.chat.date = req.body.date;
             job.chat.time = req.body.time;
+            job.jobStatus = 'finalized';
             job.save(function(err) {
                 if (err) {
                     res.send(err);
@@ -44,6 +45,7 @@ router.put('/:id', function (req, res) {
     if (req.isAuthenticated()) {
   var id = req.params.id;
   var message = req.body; // {object}
+  var exists = false;
 console.log('req.body', req.body);
  Job.findById(id, function (err, job) {
     if (err) {
@@ -52,8 +54,15 @@ console.log('req.body', req.body);
     }
 console.log('job', job);
 if (job){
-    job.chat.messages.push(message);
+  job.chat.messages.forEach(function(item,index){
+    if (item.timestamp==message.timestamp) {
+      exists = true;
+    }
+  });
 
+  if(!exists){
+    job.chat.messages.push(message);
+}
     job.save(function (err) {
       if (err) {
         res.sendStatus(500);
@@ -66,5 +75,6 @@ if (job){
   });
   }
 });
+
 
 module.exports = router;

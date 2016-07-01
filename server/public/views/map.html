@@ -7,10 +7,14 @@
     <div class="mapmodal" ng-show="pinSelected">
         <i class="material-icons closebtn" ng-click="closeModal()">clear</i>
         <div class="modalText">
-          <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}">{{selectedPin.address}}</a>   </p>
+          <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}" target="_blank" class="mapsLink">{{selectedPin.address}}</a>   </p>
+          <p><strong>Square Feet:</strong> {{selectedPin.feet.name}} - ${{selectedPin.feet.value}}</p>
+          <p><strong>After Dark:</strong> {{selectedPin.dark.name}} - ${{selectedPin.dark.value}}</p>
+          <p><strong>Lakeshore:</strong> {{selectedPin.lake}}</p>
           <p><strong>Preferred Time:</strong> {{selectedPin.date}}, {{selectedPin.time}}</p>
           <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
           <p class="pay"><strong>Pay:</strong> ${{selectedPin.price}}</p>
+
         </div>
         <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.jobID)">Accept Job</md-button>
     </div>
@@ -27,13 +31,13 @@
             <p>Address: <strong>{{job.position}}</strong></p>
           </div>
           <div>
-            <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
+            <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
           </div>
           <div>
             <p>Lakeshore and Acreage: <strong>{{job.shoreAndAcre}}</strong></p>
           </div>
           <div>
-            <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+            <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
           </div>
           <div class="mapPrice">
             <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>

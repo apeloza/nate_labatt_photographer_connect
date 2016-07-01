@@ -7,9 +7,6 @@
     <md-card ng-repeat="job in userJobs">
 
       <div ng-click="setActive(job)">
-
-
-
       <div class="userJobListRepeatJobs">
 
       <div>
@@ -20,12 +17,15 @@
         <p>Primary Email: <strong>{{job.emails[0][0]}}</strong></p>
         <p>Phone: <strong>{{job.phone}}</strong></p>
       </div>
+
+      <div>
+        <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
+        <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
+        <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
+      </div>
       <div>
         <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
         <p>TimeFrame: <strong>{{job.timeFrame}}</strong></p>
-      </div>
-      <div>
-        <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
         <p>Pay: <strong>${{job.totalPrice}}</strong></p>
       </div>
       </div>
@@ -39,6 +39,7 @@
       <div ng-show="showMe" class="chatCard">
         <md-card>
           <div class="chatFeatures">
+
             <h3>Homeowner Chat</h3>
 
             <div class="chatBox">

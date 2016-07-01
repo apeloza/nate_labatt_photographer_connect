@@ -23,6 +23,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         }
         if ($scope.loggedUser.username) {
             console.log('User Data: ', $scope.loggedUser.username);
+            getEmail();
 
         } else {
             $location.path('/');
@@ -32,7 +33,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
         console.log('user jobs:', $scope.userJobs);
-        getEmail();
+
 
     });
 
@@ -139,6 +140,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         }
     };
 
+
     //gets email from mailgun
     function getEmail() {
         $http.get('/mail/messages').then(function(response) {
@@ -189,5 +191,6 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             console.log(response);
         });
     }
+
 
 }]);

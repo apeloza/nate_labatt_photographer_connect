@@ -1,4 +1,4 @@
-app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
+app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast', 'DataFactory', function($scope, $http, $location, $mdToast, DataFactory) {
     $scope.user = {};
     $scope.jobs = [];
     $scope.sortedJobs = [];
@@ -51,15 +51,27 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         });
     };
 
-    // Delete job
     $scope.delete = function(id) {
-        $http.delete('/jobs/' + id).then(function(response) {
-            if (response === 204) {
-                console.log("Job deleted");
-            }
-            updateJobs();
-        });
-    };
+                    var toast = $mdToast.simple()
+                       .textContent('Did you want to do that?')
+                       .action('UNDO')
+                       .position('top')
+                       .hideDelay(5000)
+                       .highlightAction(false);
+                    $mdToast.show(toast).then(function(response) {
+                       if ( response == 'ok' ) {
+                          console.log('dont delete');
+                       } else {
+                         console.log('job deleted');
+                         $http.delete('/jobs/' + id).then(function(response) {
+                                 if (response === 204) {
+                                     console.log("Job deleted");
+                                 }
+                                 updateJobs();
+                             });
+                       }
+                    });
+                 }
 
   // Sort function
   $scope.sort = function (order = 'all') {
