@@ -92,6 +92,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             $scope.newJob.addons.push(addon);
             $scope.addonPrice += addon.value;
             $scope.total();
+            console.log($scope.newJob.addons);
             console.log($scope.addonPrice);
             console.log($scope.newJob.addons);
         } else {
