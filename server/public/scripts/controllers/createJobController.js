@@ -3,8 +3,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
     $scope.user = {};
 
-
-
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
         $scope.user.userLevel = DataFactory.storeUserLevel();
@@ -27,6 +25,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         $scope.myDate.getFullYear(),
         $scope.myDate.getMonth(),
         $scope.myDate.getDate());
+
     $scope.newJob = {
         jobStatus: "open",
         chat: {
@@ -124,6 +123,38 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
             console.log($scope.prices);
         });
+
+    };
+
+  $scope.emails = [''];
+  $scope.addEmailField = function () {
+    $scope.emails.push('');
+  };
+
+  // Push entered emails into emails array
+  $scope.addEmail = function () {
+    for (var i = 0; i < $scope.emails.length; i++){
+      $scope.emails[i] = push($scope.emails[$index]);
     }
+    console.log($scope.emails);
+  };
+
+
+
+  $scope.saveNewJob = function () {
+
+    console.log("newJobData: ", $scope.newJob);
+    
+    $http.post('/jobs', $scope.newJob).then(function (req, res) {
+      $location.path('/jobsList');
+    });
+  };
+
+  function getPrices() {
+      $http.get('/prices').then(function(response) {
+          $scope.prices = response.data;
+          console.log($scope.prices);
+      });
+  }
 
 }]);

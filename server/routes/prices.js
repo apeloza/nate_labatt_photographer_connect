@@ -5,7 +5,7 @@ var Price = require('../models/price');
 
 router.get('/', function(req, res) {
     if (req.isAuthenticated()) {
-        Price.find({}, function(err, price) {
+        Price.findOne({}, function(err, price) {
             if (err) {
                 res.send(err);
             }

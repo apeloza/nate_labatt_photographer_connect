@@ -7,10 +7,17 @@
     <div class="mapmodal" ng-show="pinSelected">
         <i class="material-icons closebtn" ng-click="closeModal()">clear</i>
         <div class="modalText">
+<<<<<<< HEAD
           <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}" target="_blank">{{selectedPin.address}}</a>   </p>
           <p><strong>Square Feet:</strong> {{selectedPin.feet}}</p>
           <p><strong>After Dark:</strong> {{selectedPin.dark}}</p>
           <p><strong>Addons:</strong> {{selectedPin.addons}}</p>
+=======
+          <p><strong>Address:</strong> <a ng-href="http://www.google.com/maps/place/{{selectedPin.link}}" target="_blank" class="mapsLink">{{selectedPin.address}}</a>   </p>
+          <p><strong>Square Feet:</strong> {{selectedPin.feet.name}} - ${{selectedPin.feet.value}}</p>
+          <p><strong>After Dark:</strong> {{selectedPin.dark.name}} - ${{selectedPin.dark.value}}</p>
+          <p><strong>Lakeshore:</strong> {{selectedPin.lake}}</p>
+>>>>>>> db58b496a5b84744e0339230b260eb60980385a7
           <p><strong>Preferred Time:</strong> {{selectedPin.date}}, {{selectedPin.time}}</p>
           <p class="due"><strong>Due:</strong> {{selectedPin.due}}</p>
           <p class="pay"><strong>Pay:</strong> ${{selectedPin.price}}</p>
@@ -31,13 +38,13 @@
             <p>Address: <strong>{{job.position}}</strong></p>
           </div>
           <div>
-            <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
+            <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
           </div>
           <div>
             <p>Addons: <strong>{{job.addons}}</strong></p>
           </div>
           <div>
-            <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+            <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
           </div>
           <div class="mapPrice">
             <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>

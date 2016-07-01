@@ -95,4 +95,5 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         });
 
     };
+
 }]);
