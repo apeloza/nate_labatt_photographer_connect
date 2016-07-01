@@ -1,5 +1,5 @@
 app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
-  
+
     $scope.loggedUser = {};
     $scope.userJobs = {};
     $scope.timeFrame = {};
@@ -20,7 +20,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     });
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
-
+        console.log($scope.userJobs);
     });
     $scope.preferredTime = ['6:00 AM',
         '6:30 AM',
