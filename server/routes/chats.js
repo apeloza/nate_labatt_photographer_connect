@@ -50,7 +50,8 @@ console.log('req.body', req.body);
       res.sendStatus(500);
       return;
     }
-
+console.log('job', job);
+if (job){
     job.chat.messages.push(message);
 
     job.save(function (err) {
@@ -61,6 +62,7 @@ console.log('req.body', req.body);
 
       res.sendStatus(204);
     });
+  }
   });
   }
 });

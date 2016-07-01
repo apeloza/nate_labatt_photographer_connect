@@ -5,13 +5,13 @@
   </md-toolbar>
   <div>
     <md-card ng-repeat="job in userJobs">
-<<<<<<< HEAD
+
       <div ng-click="setActive(job)">
 
 
-=======
+
       <div class="userJobListRepeatJobs">
->>>>>>> master
+
       <div>
         <p>Address: <strong>{{job.address.line1}} </strong></p>
         <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
@@ -50,7 +50,7 @@
 
               </div>
               <p ng-repeat="msg in allMessages">
-                On {{msg.timestamp*1000 |  date:'short'}} {{msg.sender}} said: <strong>{{msg['stripped-text']}}</strong>
+                On {{msg.timestamp |  date:'short'}} {{msg.sender}} said: <strong>{{msg['stripped-text']}}</strong>
               </p>
             </div>
             <div class="sendUserMessageDiv">
@@ -77,7 +77,7 @@
                 <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
               <div ng-show="job.chat.date != undefined">
-<p>CURRENTLY CONFIRMED</p>
+                <p>CURRENTLY CONFIRMED</p>
                 <p>{{job.chat.date | date : format : longDate}}</p>
                 <p>{{job.chat.time}}</p>
               </div>
