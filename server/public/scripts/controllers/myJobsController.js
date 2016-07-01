@@ -31,8 +31,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
+
         console.log('user jobs:', $scope.userJobs);
         getEmail();
+
     });
 
     $scope.preferredTime = ['6:00 AM',

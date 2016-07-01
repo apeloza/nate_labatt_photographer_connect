@@ -1,6 +1,7 @@
 app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
     $scope.user = {};
     $scope.jobs = [];
+    $scope.sortedJobs = [];
 
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
@@ -20,6 +21,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         DataFactory.getAllJobs().then(function() {
 
             $scope.jobs = DataFactory.findAllJobs();
+            $scope.sortedJobs = DataFactory.findAllJobs();
             if ($scope.jobs === undefined) {
                 alert("No Jobs in Database");
             } else {
@@ -59,18 +61,37 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         });
     };
 
-  // Sort and search functions
+  // Sort function
+  $scope.sort = function (order = 'all') {
+    $scope.sortedJobs = [];
 
-  $scope.sort = function (order) {
-    $http.get('/jobs/' + order).then(function(res) {
-      if (res === 200){
-      console.log(res.data);
+    if (order === 'open') {
+      $scope.jobs.forEach(function (i) {
+        if (i.jobStatus === 'open'){
+        $scope.sortedJobs.push(i);
+      }
+      });
+    } else if (order === 'accepted') {
+      $scope.jobs.forEach(function (i) {
+        if (i.jobStatus === 'accepted'){
+        $scope.sortedJobs.push(i);
+      }
+      });
+    } else if (order === 'finalized') {
+      $scope.jobs.forEach(function (i) {
+        if (i.jobStatus === 'finalized'){
+        $scope.sortedJobs.push(i);
+      }
+      });
+    } else if (order === 'finished') {
+      $scope.jobs.forEach(function (i) {
+        if (i.jobStatus === 'finished'){
+        $scope.sortedJobs.push(i);
+      }
+      });
+    } else if (order === 'all') {
+      $scope.sortedJobs = $scope.jobs;
     }
-    });
-  };
-
-  $scope.search = function (searchText) {
-
   }
 
 }]);
