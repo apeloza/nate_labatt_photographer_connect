@@ -1,5 +1,5 @@
 <div ng-include="'/views/templates/nav.html'"></div>
-
+<md-card>
 <div class="createJob" ng-controller="FabCtrl as fab">
 
     <!-- Toolbar ---------------------------------------------------------->
@@ -35,13 +35,14 @@
     </md-toolbar>
 </div>
 <!-- Toolbar ---------------------------------------------------------->
+
 <form class="updatePricesForm">
-    <h3>Create A New Service</h3>
+    <h3>Create A New Addon</h3>
 
     <div flex>
         <strong>Name</strong>
         <md-input-container>
-            <input type="text" ng-model="newPrice.name" />
+            <input type="text" ng-model="newAddon.name" />
         </md-input-container>
     </div>
 
@@ -49,30 +50,59 @@
     <div flex>
         <strong>Value</strong>
         <md-input-container>
-            <input type="number" ng-model="newPrice.value" />
+            <input type="number" ng-model="newAddon.value" />
         </md-input-container>
     </div>
 
     <div flex>
         <md-input-container>
-            <label><strong>Group(Optional)</strong></label>
-            <input type="text" ng-model="newPrice.group" />
+            <label><strong>ID(Unique)</strong></label>
+            <input type="text" ng-model="newAddon.id" />
         </md-input-container>
     </div>
-    <md-button class="md-raised md-primary" ng-click="createPrice()">Create</md-button>
+    <md-button class="md-raised md-primary" ng-click="createAddon()">Create</md-button>
 
 </form>
+
 <form>
-    <div ng-repeat="price in prices">
+  <h2>Square Feet</h2>
+    <div ng-repeat="item in sqft">
         <md-input-container>
             <label>Name</label>
-            <input type="text" ng-value="price.name" ng-model="price.name" />
+            <input type="text" ng-value="item.name" ng-model="item.name" />
         </md-input-container>
         <md-input-container>
-          <label>Price</label>
-          <input type="text" ng-value="price.value" ng-model="price.value" />
+            <label>Price</label>
+            <input type="text" ng-value="item.value" ng-model="item.value" />
         </md-input-container>
-        <md-button class="md-raised md-primary" ng-click="updatePrices(price._id, price)">Update</md-button>
-<md-button class="md-raised md-warn" ng-click="deletePrice(price._id)">Delete</md-button>
+
     </div>
+    <h2>After Dark</h2>
+    <div ng-repeat="item in afterDark">
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" ng-value="item.name" ng-model="item.name" />
+      </md-input-container>
+      <md-input-container>
+        <label>Value</label>
+        <input type="text" ng-value="item.value" ng-model="item.value" />
+      </md-input-container>
+    </div>
+    <h2>Addons</h2>
+    <div ng-repeat="item in addons">
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" ng-value="item.name" ng-model="item.name" />
+      </md-input-container>
+      <md-input-container>
+        <label>Value</label>
+        <input type="text" ng-value="item.value" ng-model="item.value" />
+      </md-input-container>
+      <md-button class="md-raised md-warn" ng-click="deleteAddon(item.id)">Delete</md-button>
+
+    </div>
+    <md-button class="md-raised md-primary" ng-click="updatePrices()">Update Services</md-button>
+
 </form>
+
+</md-card>

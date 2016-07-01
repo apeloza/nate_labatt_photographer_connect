@@ -1,6 +1,7 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
 
   $scope.user = {};
+  $scope.prices = {};
 
   DataFactory.authenticate().then(function(){
     $scope.user.username = DataFactory.storeUsername();
@@ -10,6 +11,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     }
     if($scope.user.username){
       console.log('User Data: ', $scope.username);
+      getPrices();
     } else {
       $location.path('/');
     }
@@ -29,7 +31,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     };
 
     $scope.newJob.totalPrice = 0;
-    $scope.lakeshoreAndAcreage = {
+    $scope.newJob.lakeshoreAndAcreage = {
       value1: false
     };
     $scope.tenThousandSqFt = {
@@ -58,6 +60,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 console.log($scope.newJob.squareFeet);
 // Add up total price
 $scope.total = function () {
+
     if ($scope.newJob.squareFeet != undefined) {
       $scope.newJob.totalPrice = $scope.newJob.squareFeet.price;
     }
@@ -65,8 +68,13 @@ $scope.total = function () {
       $scope.newJob.totalPrice += $scope.ad.afterDark.price;
     }
 
-    if ($scope.lakeshoreAndAcreage.value1 == true) {
+    if ($scope.newJob.lakeshoreAndAcreage.value1 == true) {
       $scope.newJob.totalPrice += 100;
+      $scope.lakeshoreAndAcreage = 'Yes';
+      console.log($scope.lakeshoreAndAcreage);
+    } else {
+      $scope.lakeshoreAndAcreage = 'No';
+      console.log($scope.lakeshoreAndAcreage);
     }
 
     if ($scope.tenThousandSqFt.value1 == true) {
@@ -94,10 +102,18 @@ $scope.saveNewJob = function () {
 
   console.log("newJobData: ", $scope.newJob);
   $scope.newJob.squareFeet = $scope.newJob.squareFeet.price;
+  $scope.newJob.lakeshoreAndAcreage = $scope.lakeshoreAndAcreage;
+  console.log($scope.newJob.lakeshoreAndAcreage);
   $scope.newJob.afterDark = $scope.ad.afterDark.option;
   $http.post('/jobs', $scope.newJob).then(function (req, res) {
     $location.path('/jobsList');
   });
-}
+};
 
+function getPrices() {
+    $http.get('/prices').then(function(response) {
+        $scope.prices = response.data;
+        console.log($scope.prices);
+    });
+}
 }]);

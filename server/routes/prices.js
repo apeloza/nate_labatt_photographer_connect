@@ -15,14 +15,18 @@ router.get('/', function(req, res) {
         res.send(false);
     }
 });
-router.post('/', function(req, res) {
+router.put('/addons', function(req, res) {
     if (req.isAuthenticated()) {
-        var price = new Price(req.body);
-        price.save(function(err) {
-            if (err) {
-                console.log(err);
-                return;
-            }
+        Price.findOne({}, function(err, price) {
+            console.log(price);
+            price.addons = req.body;
+            price.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+            });
+
             res.sendStatus(201);
         });
     } else {
@@ -30,17 +34,16 @@ router.post('/', function(req, res) {
     }
 });
 
-router.put('/:id', function(req, res) {
+router.put('/', function(req, res) {
     if (req.isAuthenticated()) {
         console.log("Hello");
-        Price.findOne({
-            _id: req.params.id
-        }, function(err, price) {
+        Price.findOne({}, function(err, price) {
             if (err) {
                 console.log(err);
             }
-            price.name = req.body.name;
-            price.value = req.body.value;
+            price.sqft = req.body.sqft;
+            price.afterDark = req.body.afterDark;
+            price.addons = req.body.addons;
             console.log(price);
             price.save(function(err) {
                 if (err) {
@@ -54,14 +57,22 @@ router.put('/:id', function(req, res) {
         res.send(false);
     }
 });
-router.delete('/:id', function(req, res) {
+router.delete('/', function(req, res) {
     if (req.isAuthenticated()) {
-        Price.findByIdAndRemove(req.params.id, function(err) {
+      console.log('Body: ' + req.body);
+        Price.findOne({}, function(err, price) {
             if (err) {
                 console.log(err);
-                res.sendStatus(500);
             }
-            res.sendStatus(204);
+            price.addons = req.body;
+            price.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                res.sendStatus(201);
+
+            });
         });
     } else {
         res.send(false);

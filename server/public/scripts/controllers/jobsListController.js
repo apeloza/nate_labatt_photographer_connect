@@ -20,10 +20,12 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         DataFactory.getAllJobs().then(function() {
 
             $scope.jobs = DataFactory.findAllJobs();
-            console.log($scope.jobs);
             if ($scope.jobs === undefined) {
                 alert("No Jobs in Database");
+            } else {
+              console.log($scope.jobs);
             }
+
         });
     }
 
@@ -57,5 +59,18 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         });
     };
 
-    console.log($location.path());
+  // Sort and search functions
+
+  $scope.sort = function (order) {
+    $http.get('/jobs/' + order).then(function(res) {
+      if (res === 200){
+      console.log(res.data);
+    }
+    });
+  };
+
+  $scope.search = function (searchText) {
+
+  }
+
 }]);

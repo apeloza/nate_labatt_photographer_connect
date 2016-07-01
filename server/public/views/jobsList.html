@@ -37,27 +37,21 @@
 <!-- Toolbar ---------------------------------------------------------->
 
 <!-- Sort and Search -------------------------------------------------->
-<md-subheader layout="row">
-    <strong>State:</strong>
-    <select>
-      <option>Open</option>
-      <option>Accepted</option>
-      <option>Finalized</option>
-      <option>Finished</option>
-    </select>
+<md-subheader>
 
-    <input type="text" placeholder="Search"/>
-    <i class="material-icons searchIcon">search</i>
+    <strong>Show me</strong>
+    <select ng-model="order" ng-options="prop for prop in ['all','open', 'accepted', 'finalized', 'finished']" ng-change="sort(order)"></select>
+    <strong>jobs</strong>
+
+    <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
+    <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
 
 </md-subheader>
 <!-- Sort and Search -------------------------------------------------->
 
   <div>
-
-
-    <md-card ng-repeat="job in jobs track by $index" class="repeatJobsList">
+    <md-card ng-repeat="job in jobs" class="repeatJobsList">
 <div layout="row">
-
 
       <div class="repeatedJobsAdmin" flex>
         <div class="repeatStatus" ng-class="job.jobStatus">
@@ -65,14 +59,17 @@
         </div>
         <div class="adminJobClientName">
           <p>Client: <strong>{{job.name}}</strong></p>
-        </div>
-        <div class="repeatClientInfo">
-          <p>Address: <strong>{{job.address.line1}} </strong></p>
-          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
-        </div>
-        <div class="repeatJobInfo">
           <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
           <p>Price: <strong>${{job.totalPrice}}</strong></p>
+        </div>
+        <div class="repeatClientInfo">
+          <!-- <p>Address: </p> -->
+          <p><strong>{{job.address.line1}}</strong></p>
+          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+        </div>
+        <div class="repeatJobDetails">
+          <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+          <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
         </div>
       </div>
 

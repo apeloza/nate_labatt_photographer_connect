@@ -192,6 +192,11 @@ md-toolbar {
   margin-left: 30px;
 }
 
+.repeatJobDetails {
+  margin-left: 30px;
+  vertical-align: top;
+}
+
 .open p {
   background-color: #E57373;
   width:100px;
@@ -229,6 +234,15 @@ md-toolbar {
 
 .searchIcon {
   color: #78909C;
+  float:right;
+}
+
+.searchIcon:hover {
+  cursor: pointer;
+}
+
+.jobSearch {
+  float: right;
 }
 
 
@@ -246,7 +260,6 @@ md-toolbar {
 
 .repeatedJobsAdmin > div {
   display: inline-block;
-
 }
 
 .repeatJobFabButtons {
@@ -256,6 +269,7 @@ md-toolbar {
 
 
 .fabSpeedDialAdminJob {
+
 
 
 

@@ -20,6 +20,7 @@ var JobSchema = new Schema({
     preferredDate: {type: Date},
     notes: {type: String},
     entryMethod: {type: String},
+    lakeshoreAndAcreage: {type: String},
     jobStatus: {type: String},
     jobAcceptedBy: {type: String},
     chat: ChatSchema,
