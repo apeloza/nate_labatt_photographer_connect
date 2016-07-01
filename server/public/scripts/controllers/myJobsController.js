@@ -6,6 +6,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.messageObject = {};
     $scope.messages = [];
     $scope.messageContainer = {};
+<<<<<<< HEAD
 
     //email vars
     $scope.email = {};
@@ -15,6 +16,9 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     $scope.activeJob = {};
 
+=======
+    $scope.photoURL = {};
+>>>>>>> master
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
@@ -91,6 +95,16 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                 $scope.userJobs = DataFactory.findUserJobs();
 
             });
+<<<<<<< HEAD
+=======
+        });
+    };
+    $scope.submitPhotoURL = function(id) {
+        $http.put('/chats/photos/' + id, $scope.photoURL).then(function(response) {
+            DataFactory.getAllJobs().then(function() {
+                $scope.userJobs = DataFactory.findUserJobs();
+            });
+>>>>>>> master
         });
     };
 
