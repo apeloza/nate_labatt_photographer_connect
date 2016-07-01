@@ -35,6 +35,7 @@ html, body {
 
 
 .mapmodal {
+  height: 400px;
   width: 350px;
   background-color: white;
   position: fixed;
@@ -57,7 +58,7 @@ ng-map {
   cursor:pointer;
   margin: 3px;
   color:#00BFA5;
-  transition:2s;
+  transition:.2s;
 }
 
 .closebtn:hover {

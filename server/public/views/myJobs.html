@@ -14,14 +14,14 @@
         <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
       </div>
       <div>
-        <p>Primary Email: <strong>{{job.emails[0][0]}}</strong></p>
+        <p>Primary Email: <strong>{{job.emails[0]}}</strong></p>
         <p>Phone: <strong>{{job.phone}}</strong></p>
       </div>
 
       <div>
         <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
         <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
-        <p>Lakeshore and Acreage: <strong>{{job.lakeshoreAndAcreage}}</strong></p>
+        <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
       </div>
       <div>
         <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
@@ -60,16 +60,16 @@
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
             <div class="chatTimeSet">
               <form>
-                <md-datepicker  class="chatDatePicker md-block" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
+                <md-datepicker   ng-if="job.jobStatus != 'finished'" class="chatDatePicker md-block" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
                 </md-datepicker>
 
-                <md-input-container class="chatTimePicker md-block">
+                <md-input-container ng-if="job.jobStatus != 'finished'" class="chatTimePicker md-block">
                   <label>Preferred Time</label>
-                  <md-select ng-model="timeFrame.time" aria-label="Timeframe">
+                  <md-select  ng-model="timeFrame.time" aria-label="Timeframe">
                     <md-option ng-repeat="item in preferredTime">{{item}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
+                <md-button ng-if="job.jobStatus != 'finished'" class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
 
               <div ng-show="job.chat.date != ''">
@@ -80,6 +80,17 @@
               </div>
 
             </div>
+
+              <!-- ******************************************** -->
+            <div class="sendUserMessageDiv" ng-if="job.jobStatus != 'finished'">
+              <form>
+                <md-input-container class="md-block messageTextArea">
+                  <label>Send Message</label>
+                  <textarea type="text" ng-model="messageContainer.message"></textarea>
+                </md-input-container>
+                  <md-button class="md-raised md-primary sendMessageUser" ng-click="submitMessage(job._id)" type="submit" name="sendUserMessage">Send</md-button>
+                </form>
+
               </div>
               <!-- ******************************************** -->
 
