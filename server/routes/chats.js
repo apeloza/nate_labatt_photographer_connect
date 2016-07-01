@@ -14,34 +14,14 @@ router.get('/:id', function(req, res) {
                 res.send(err);
             }
             console.log(job);
-            res.send(job.chat);
+            res.send(job);
         });
     } else {
         res.send(false);
     }
 });
 
-router.put('/photos/:id', function(req, res) {
-    if (req.isAuthenticated()) {
-        Job.findOne({
-            _id: req.params.id
-        }, function(err, job) {
-            if (err) {
-                res.send(err);
-            }
-            job.photoURL = req.body.url;
-            job.save(function(err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.send(job);
-            });
-        });
-    } else {
-        res.send(false);
-    }
-});
-router.put('/date/:id', function(req, res, next) {
+router.put('/date/:id', function(req, res) {
     if (req.isAuthenticated()) {
         Job.findOne({
             _id: req.params.id
@@ -53,7 +33,7 @@ router.put('/date/:id', function(req, res, next) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(job);
+                res.sendStatus(200);
             });
         });
     } else {
@@ -61,24 +41,46 @@ router.put('/date/:id', function(req, res, next) {
     }
 });
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function(req, res) {
     if (req.isAuthenticated()) {
-        console.log(req.body);
-        Job.findOne({
-            _id: req.params.id
-        }, function(err, job) {
-            job.chat.messages = req.body.messages;
-            job.save(function(err) {
-                if (err) {
-                    res.send(err);
+        var id = req.params.id;
+        var message = req.body; // {object}
+        var exists = false;
+        console.log('req.body', req.body);
+        Job.findById(id, function(err, job) {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            console.log('job', job);
+            if (job) {
+
+                job.chat.messages.forEach(function(item, index) {
+
+                    console.log('in db', item.timestamp);
+                    console.log('new msg', message.timestamp);
+                    if (item.message == message.message) {
+                        exists = true;
+                    }
+                });
+
+                if (!exists) {
+                    job.chat.messages.push(message);
+                    console.log('does not exist!');
+
+                    job.save(function(err) {
+                        if (err) {
+                            res.sendStatus(500);
+                            return;
+                        }
+                        console.log("/put a message");
+                        res.sendStatus(204);
+                    });
                 }
-                res.send(job);
-            });
+            }
         });
-    } else {
-        console.log("False!");
-        res.send(false);
     }
 });
+
 
 module.exports = router;
