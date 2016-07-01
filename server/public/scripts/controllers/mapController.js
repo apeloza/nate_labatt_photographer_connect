@@ -36,9 +36,16 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
             mapmarker.date = new Date(mapmarker.date);
             mapmarker.date = mapmarker.date.toLocaleDateString("en-US");
+            if (mapmarker.addons[0] == undefined) {
+              mapmarker.addons.push({ name: "None"}) ;
+            }
+            if (mapmarker.afterDark == '') {
+              mapmarker.afterDark = "None" ;
+            }
             $scope.mapMarkers.push(mapmarker);
+            console.log(mapmarker.afterDark);
         }
-        console.log(mapmarker.addons);
+
     });
 
 
