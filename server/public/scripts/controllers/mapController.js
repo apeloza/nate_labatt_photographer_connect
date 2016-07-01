@@ -63,16 +63,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
-
-          // if (mapmarker.addons != undefined) {
-          //   for (var i = 0; i < mapmarker.addons.length; i++) {
-          //     mapmarker.addons = mapmarker.addons[i].name;
-          //   }
-          // } else if (mapmarker.addons == undefined) {
-          //   mapmarker.addons.push("None");
-          // }
-          $scope.selectedPin.addons = mapmarker.addons;
-
+        $scope.selectedPin.addons = mapmarker.addons;
         $scope.selectedPin.dark = mapmarker.afterDark;
         $scope.selectedPin.feet = mapmarker.squareFeet;
         $scope.selectedPin.jobID = mapmarker.jobID;
