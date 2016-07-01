@@ -1,3 +1,4 @@
+
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.user = {};
@@ -100,6 +101,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
                     index = i;
                     $scope.addonPrice -= addon.value;
                     $scope.newJob.addons.splice(index, 1);
+                    $scope.total();
                 }
             }
         }
@@ -120,6 +122,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
             console.log($scope.prices);
         });
+
     };
 
   $scope.emails = [''];
