@@ -143,10 +143,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
   $scope.saveNewJob = function () {
 
     console.log("newJobData: ", $scope.newJob);
-    $scope.newJob.squareFeet = $scope.newJob.squareFeet.sqft;
-    $scope.newJob.lakeshoreAndAcreage = $scope.lakeshoreAndAcreage;
-    console.log($scope.newJob.lakeshoreAndAcreage);
-    $scope.newJob.afterDark = $scope.ad.afterDark.option;
+    
     $http.post('/jobs', $scope.newJob).then(function (req, res) {
       $location.path('/jobsList');
     });
