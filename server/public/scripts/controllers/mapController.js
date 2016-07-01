@@ -27,7 +27,10 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
                 date: $scope.openJobs[i].preferredDate,
-                jobID: $scope.openJobs[i]._id
+                jobID: $scope.openJobs[i]._id,
+                squareFeet: $scope.openJobs[i].squareFeet,
+                shoreAndAcre: $scope.openJobs[i].lakeshoreAndAcreage,
+                afterDark: $scope.openJobs[i].afterDark
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
@@ -45,6 +48,9 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         time: '',
         date: '',
         jobID: '',
+        lake: '',
+        dark: '',
+        feet: '',
         link: ''
     };
 
@@ -56,6 +62,9 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
+        $scope.selectedPin.lake = mapmarker.shoreAndAcre;
+        $scope.selectedPin.dark = mapmarker.afterDark;
+        $scope.selectedPin.feet = mapmarker.squareFeet;
         $scope.selectedPin.jobID = mapmarker.jobID;
         $scope.selectedPin.link = encodeURI(mapmarker.position);
     };

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app.controller('CreateJobController', ['$scope', '$http', '$location', '$mdToast','DataFactory', function ($scope, $http, $location, $mdToast, DataFactory) {
 
   $scope.user = {};
@@ -21,67 +22,133 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', '$mdToast
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth(),
     $scope.myDate.getDate());
+=======
+app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
+
+    $scope.user = {};
+
+
+
+    DataFactory.authenticate().then(function() {
+        $scope.user.username = DataFactory.storeUsername();
+        $scope.user.userLevel = DataFactory.storeUserLevel();
+        if ($scope.user.userLevel == 'user') {
+            $location.path('/user');
+        }
+        if ($scope.user.username) {
+            console.log('User Data: ', $scope.user.username);
+            $scope.prices = {};
+            $scope.chosenAddons = [];
+            $scope.confirmed = [];
+            $scope.addonPrice = 0;
+            getPrices();
+        } else {
+            $location.path('/');
+        }
+    });
+    $scope.myDate = new Date();
+    $scope.minDate = new Date(
+        $scope.myDate.getFullYear(),
+        $scope.myDate.getMonth(),
+        $scope.myDate.getDate());
+>>>>>>> 7ecb6a79f6239e658bfff93ddff0073176ac5d55
     $scope.newJob = {
-      jobStatus  : "open",
-      chat: {
-        messages: [],
-        date: '',
-        time: ''
+        jobStatus: "open",
+        chat: {
+            messages: [],
+            date: '',
+            time: ''
+        },
+        squareFeet: {
+          name: '',
+          value: 0
+        },
+        afterDark: {
+            name: '',
+            value: 0
+        }
+    };
+    $scope.newJob.addons = [];
+    $scope.newJob.emails = [];
+    $scope.newJob.totalPrice = 0;
+    $scope.newJob.lakeshoreAndAcreage = {
+        value1: false
+    };
+    $scope.tenThousandSqFt = {
+        value1: false
+    };
+
+
+
+
+    $scope.time = ['Morning', 'Afternoon', 'Evening'];
+
+    $scope.states = ['MN', 'WI'];
+
+
+
+    // Add up total price
+    $scope.total = function() {
+
+        if($scope.tenThousandSqFt.value1 === false){
+        $scope.newJob.totalPrice = $scope.newJob.squareFeet.value + $scope.newJob.afterDark.value + $scope.addonPrice;
+      } else {
+        $scope.newJob.totalPrice = "Please call me!";
       }
     };
 
-    $scope.newJob.totalPrice = 0;
-    $scope.newJob.lakeshoreAndAcreage = {
-      value1: false
-    };
-    $scope.tenThousandSqFt = {
-      value1: false
+    $scope.emails = [''];
+    $scope.addEmailField = function() {
+        $scope.emails.push('');
     };
 
+    // Push entered emails into emails array
+    $scope.addEmail = function() {
+        for (var i = 0; i < $scope.emails.length; i++) {
+            $scope.emails[i] = push($scope.emails[$index]);
+        }
+        console.log($scope.emails);
+    };
 
-  $scope.ad = [{option: 'Front Only (4 - 6 images) - $200', price: 200},
-               {option: 'Front and Back (6 - 10 images) - $300', price: 300}];
-
-  $scope.time = ['Morning', 'Afternoon', 'Evening'];
-
-  $scope.states = ['MN', 'WI'];
-
-  $scope.sf = [{sqft: '1,000 sq ft - $175', price: 175},
-               {sqft: '1,001-2,000 sq ft - $200', price: 200},
-               {sqft: '2,001-3,000 sq ft - $235', price: 235},
-               {sqft: '3,001-4,000 sq ft - $260', price: 260},
-               {sqft: '4,001-5,000 sq ft - $300', price: 300},
-               {sqft: '5,001-6,000 sq ft - $350', price: 350},
-               {sqft: '6,001-7,000 sq ft - $400', price: 400},
-               {sqft: '7,001-8,000 sq ft - $450', price: 450},
-               {sqft: '8,001-9,000 sq ft - $500', price: 500},
-               {sqft: '9,001-10,000 sq ft - $550', price: 550}];
+    $scope.addAddons = function(index, addon) {
 
 
-// Add up total price
-$scope.total = function () {
+        if ($scope.confirmed[index] === true) {
+            console.log('true');
+            $scope.newJob.addons.push(addon);
+            $scope.addonPrice += addon.value;
+            $scope.total();
+            console.log($scope.addonPrice);
+            console.log($scope.newJob.addons);
+        } else {
+            console.log('false');
+            for (var i = 0; i < $scope.newJob.addons.length; i++) {
+                if (addon.name == $scope.newJob.addons[i].name) {
+                    index = i;
+                    $scope.addonPrice -= addon.value;
+                    $scope.newJob.addons.splice(index, 1);
+                }
+            }
+        }
+    };
 
-    if ($scope.newJob.squareFeet != undefined) {
-      $scope.newJob.totalPrice = $scope.newJob.squareFeet.price;
-      console.log($scope.newJob.squareFeet);
+    $scope.saveNewJob = function() {
+
+        console.log("newJobData: ", $scope.newJob);
+
+        $http.post('/jobs', $scope.newJob).then(function(req, res) {
+            $location.path('/jobsList');
+        });
+    };
+
+    function getPrices() {
+        $http.get('/prices').then(function(response) {
+            $scope.prices = response.data[0];
+
+            console.log($scope.prices);
+        });
     }
-    if ($scope.ad.afterDark != undefined) {
-      $scope.newJob.totalPrice += $scope.ad.afterDark.price;
-    }
-
-    if ($scope.newJob.lakeshoreAndAcreage.value1 == true) {
-      $scope.newJob.totalPrice += 100;
-      $scope.lakeshoreAndAcreage = 'Yes';
-      console.log($scope.lakeshoreAndAcreage);
-    } else {
-      $scope.lakeshoreAndAcreage = 'No';
-      console.log($scope.lakeshoreAndAcreage);
-    }
-
-    if ($scope.tenThousandSqFt.value1 == true) {
-      console.log($scope.tenThousandSqFt.value1);
-      $scope.newJob.totalPrice = 'Call for price';
-    }
+<<<<<<< HEAD
 };
 
 $scope.emails = [''];
@@ -118,4 +185,6 @@ function getPrices() {
     });
 }
 
+=======
+>>>>>>> 7ecb6a79f6239e658bfff93ddff0073176ac5d55
 }]);
