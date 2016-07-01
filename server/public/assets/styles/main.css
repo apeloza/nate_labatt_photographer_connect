@@ -35,6 +35,7 @@ html, body {
 
 
 .mapmodal {
+  height: 400px;
   width: 350px;
   background-color: white;
   position: fixed;
