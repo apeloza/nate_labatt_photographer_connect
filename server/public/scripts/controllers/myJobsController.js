@@ -31,7 +31,6 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
-
         console.log('user jobs:', $scope.userJobs);
         getEmail();
 
@@ -158,7 +157,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                         if (matches) {
                             var id = matches[1];
                             console.log("submatch", id);
-                            if (item.event == 'stored'&&id!='5771791ef58cdb6b85ca9b5d'&&id!='577170b48bd315919e40d2d2') {
+                            if (item.event == 'stored') {
 
                                 console.log('message matched to subject', $scope.message);
                                 $scope.messageObject = {
