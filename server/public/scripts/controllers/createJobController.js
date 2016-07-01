@@ -10,7 +10,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
       $location.path('/user');
     }
     if($scope.user.username){
-      console.log('User Data: ', $scope.username);
+      console.log('User Data: ', $scope.user.username);
       getPrices();
     } else {
       $location.path('/');
@@ -46,16 +46,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
   $scope.states = ['MN', 'WI'];
 
-  $scope.sf = [{sqft: '1,000 sq ft - $175', price: 175},
-               {sqft: '1,001-2,000 sq ft - $200', price: 200},
-               {sqft: '2,001-3,000 sq ft - $235', price: 235},
-               {sqft: '3,001-4,000 sq ft - $260', price: 260},
-               {sqft: '4,001-5,000 sq ft - $300', price: 300},
-               {sqft: '5,001-6,000 sq ft - $350', price: 350},
-               {sqft: '6,001-7,000 sq ft - $400', price: 400},
-               {sqft: '7,001-8,000 sq ft - $450', price: 450},
-               {sqft: '8,001-9,000 sq ft - $500', price: 500},
-               {sqft: '9,001-10,000 sq ft - $550', price: 550}];
 
 
 // Add up total price
@@ -113,8 +103,10 @@ $scope.saveNewJob = function () {
 
 function getPrices() {
     $http.get('/prices').then(function(response) {
-        $scope.prices = response.data;
+        $scope.prices = response.data[0];
+
         console.log($scope.prices);
+        console.log($scope.sqft);
     });
 }
 }]);
