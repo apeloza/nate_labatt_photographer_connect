@@ -29,8 +29,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
                 date: $scope.openJobs[i].preferredDate,
                 jobID: $scope.openJobs[i]._id,
                 squareFeet: $scope.openJobs[i].squareFeet.name,
-                addons: $scope.openJobs[i].addons,
-                afterDark: $scope.openJobs[i].afterDark.name
+                afterDark: $scope.openJobs[i].afterDark.name,
+                addons: $scope.openJobs[i].addons
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
@@ -63,7 +63,16 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.due = mapmarker.due;
         $scope.selectedPin.time = mapmarker.time;
         $scope.selectedPin.date = mapmarker.date;
-        $scope.selectedPin.addons = mapmarker.addons;
+
+          if (mapmarker.addons != undefined) {
+            for (var i = 0; i < mapmarker.addons.length; i++) {
+              mapmarker.addons = mapmarker.addons[i].name;
+            }
+          } else if (mapmarker.addons == undefined) {
+            mapmarker.addons.push("None");
+          }
+          $scope.selectedPin.addons = mapmarker.addons;
+
         $scope.selectedPin.dark = mapmarker.afterDark;
         $scope.selectedPin.feet = mapmarker.squareFeet;
         $scope.selectedPin.jobID = mapmarker.jobID;
