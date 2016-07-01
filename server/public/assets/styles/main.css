@@ -234,6 +234,15 @@ md-toolbar {
 
 .searchIcon {
   color: #78909C;
+  float:right;
+}
+
+.searchIcon:hover {
+  cursor: pointer;
+}
+
+.jobSearch {
+  float: right;
 }
 
 
@@ -260,6 +269,7 @@ md-toolbar {
 
 
 .fabSpeedDialAdminJob {
+
 
 
 

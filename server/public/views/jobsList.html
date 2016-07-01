@@ -37,27 +37,23 @@
 <!-- Toolbar ---------------------------------------------------------->
 
 <!-- Sort and Search -------------------------------------------------->
-<md-subheader layout="row">
-    <strong>State:</strong>
-    <select>
-      <option>Open</option>
-      <option>Accepted</option>
-      <option>Finalized</option>
-      <option>Finished</option>
-    </select>
+<md-subheader>
 
-    <input type="text" placeholder="Search"/>
-    <i class="material-icons searchIcon">search</i>
+    <strong>Show me</strong>
+    <select ng-model="order" ng-options="prop for prop in ['all','open', 'accepted', 'finalized', 'finished']" ng-change="sort(order)"></select>
+    <strong>jobs</strong>
+
+    <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
+    <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
+
+    <!-- <input ng-model="searchText" class="form-control librarySearch" placeholder="Search by Title, Genre, or System" />
+    <div class="row rowGames" ng-repeat="games in games | filter : searchText"> -->
 
 </md-subheader>
 <!-- Sort and Search -------------------------------------------------->
 
-  <div>
-
-
-    <md-card ng-repeat="job in jobs track by $index" class="repeatJobsList">
+    <md-card ng-repeat="job in sortedJobs" class="repeatJobsList">
 <div layout="row">
-
 
       <div class="repeatedJobsAdmin" flex>
         <div class="repeatStatus" ng-class="job.jobStatus">
