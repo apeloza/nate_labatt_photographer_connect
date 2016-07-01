@@ -1,4 +1,4 @@
-app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function ($scope, $http, $location, DataFactory) {
+app.controller('CreateJobController', ['$scope', '$http', '$location', '$mdToast','DataFactory', function ($scope, $http, $location, $mdToast, DataFactory) {
 
   $scope.user = {};
   $scope.prices = {};
@@ -117,4 +117,5 @@ function getPrices() {
         console.log($scope.prices);
     });
 }
+
 }]);
