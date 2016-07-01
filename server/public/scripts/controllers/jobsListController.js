@@ -61,7 +61,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
         });
     };
 
-  // Sort and search functions
+  // Sort function
   $scope.sort = function (order = 'all') {
     $scope.sortedJobs = [];
 
@@ -92,19 +92,6 @@ app.controller('JobsListController', ['$scope', '$http', '$location', 'DataFacto
     } else if (order === 'all') {
       $scope.sortedJobs = $scope.jobs;
     }
-  }
-
-
-  // $scope.sort = function (order) {
-  //   $http.get('/jobs/' + order).then(function(res) {
-  //     if (res === 200){
-  //     console.log(res.data);
-  //   }
-  //   });
-  // };
-
-  $scope.search = function (searchText) {
-
   }
 
 }]);
