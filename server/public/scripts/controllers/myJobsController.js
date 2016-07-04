@@ -112,7 +112,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         $scope.messages = $scope.activeJob.chat.messages;
     }
 
-    $scope.showMe  = function (id){
+    $scope.showMessages  = function (id){
         if (id == $scope.activeJob._id) {
             $scope.showMe = true;
         }
