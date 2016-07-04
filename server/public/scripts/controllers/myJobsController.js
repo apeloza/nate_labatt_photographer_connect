@@ -13,12 +13,15 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.allMessageInfo = [];
     $scope.allMessages = [];
     $scope.message = '';
-
     $scope.activeJob = {};
+<<<<<<< HEAD
     $scope.showMe = false;
 
     $scope.photoURL = {};
 
+=======
+    $scope.photoURL = {};
+>>>>>>> master
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
