@@ -16,13 +16,17 @@ router.post('/', function(req, res) {
     var sendTo = req.body.sendTo;
     var subject = req.body.subject;
     var message = req.body.message;
+    var jobID = req.body.jobID;
     var sender = '"Pixel Houz" <' + process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org' + '>';
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
         to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
-        text: message
+        text: message,
+        'X-Mailgun-Variables': {
+            jobID: jobID
+        }
             //attachment: filepath
     };
 

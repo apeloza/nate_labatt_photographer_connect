@@ -6,7 +6,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.messageObject = {};
     $scope.messages = [];
     $scope.messageContainer = {};
-<<<<<<< HEAD
+
 
     //email vars
     $scope.email = {};
@@ -15,10 +15,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.message = '';
 
     $scope.activeJob = {};
+    $scope.showMe = false;
 
-=======
     $scope.photoURL = {};
->>>>>>> master
+
     DataFactory.authenticate().then(function() {
         $scope.loggedUser.username = DataFactory.storeUsername();
         $scope.loggedUser.userLevel = DataFactory.storeUserLevel();
@@ -27,7 +27,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         }
         if ($scope.loggedUser.username) {
             console.log('User Data: ', $scope.loggedUser.username);
-            getEmail();
+
 
         } else {
             $location.path('/');
@@ -37,7 +37,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
         console.log('user jobs:', $scope.userJobs);
-
+//getEmail();
 
     });
 
@@ -110,7 +110,14 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.setActive = function(obj) {
         $scope.activeJob = obj;
         $scope.messages = $scope.activeJob.chat.messages;
-    };
+    }
+
+    $scope.showMe  = function (id){
+        if (id == $scope.activeJob._id) {
+            $scope.showMe = true;
+        }
+
+    }
 
     $scope.submitMessage = function(id) {
 
@@ -128,6 +135,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                 $scope.email.sendTo = response2.data.emails.toString();
                 $scope.email.subject = "Set a time for a photo session [" + response2.data._id + "]";
                 $scope.email.message = $scope.messageContainer.message;
+                $scope.email.jobID = id;
                 console.log($scope.email);
                 $scope.messages.push($scope.messageContainer.message);
                 $scope.messageObject = {
@@ -166,6 +174,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     $http.post('/mail/messages/item', item).then(function(response1) {
 
                         $scope.message = response1.data;
+                        console.log($scope.message['X-Mailgun-Variables']);
                         //console.log($scope.message);
                         var matches = $scope.message.Subject.match(/\[(.*?)\]/);
 
@@ -199,9 +208,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     }
     //sends an email to recipients
     function sendEmail() {
-        console.log($scope.email);
+        console.log('EMAIL sending', $scope.email);
         $http.post('/mail', $scope.email).then(function(response) {
-            console.log(response);
+            console.log('email response', response);
+
         });
     }
 
