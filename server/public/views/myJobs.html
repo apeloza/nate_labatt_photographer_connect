@@ -37,7 +37,7 @@
           <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
           <p>Pay: <strong>${{job.totalPrice}}</strong></p>
         </div>
-          <md-button class="md-raised md-primary showMeTrue" ng-click="showMessages(job._id)">show messages</md-button>
+          <md-button class="md-raised md-primary showMeTrue" ng-click="showMessages(job)">show messages</md-button>
       </div>
 
 
@@ -74,7 +74,7 @@
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
             <div class="chatTimeSet"  >
               <form ng-show="job.jobStatus == 'accepted'">
-                <md-datepicker   class="chatDatePicker md-block"  md-max-date="job.dueDate" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
+                <md-datepicker   class="chatDatePicker md-block"  md-max-date="maxDate" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
                 </md-datepicker>
 
                 <md-input-container  class="chatTimePicker md-block">
