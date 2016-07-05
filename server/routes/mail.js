@@ -78,7 +78,7 @@ router.post('/messages/item', function(req, res) {
 
             mailgun.messages(item.storage.key).info(function(error, body) {
                 console.log(error);
-                //console.log('MESSAGE', body);
+                console.log('MESSAGE', body);
                 res.send(body);
             });
 
@@ -91,7 +91,7 @@ router.post('/messages/received', function(req, res) {
     console.log(req.body);
 
 if (body) {
-    console.log(body);
+    console.log('received from mailgun post', body);
     res.sendStatus(200);
 } else {
     res.sendStatus(406);
