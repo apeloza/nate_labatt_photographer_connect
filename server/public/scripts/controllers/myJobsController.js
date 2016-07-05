@@ -36,6 +36,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     DataFactory.getAllJobs().then(function() {
         $scope.userJobs = DataFactory.findUserJobs();
+        $scope.sortedJobs = DataFactory.findUserJobs();
         console.log('user jobs:', $scope.userJobs);
 //getEmail();
 
@@ -174,7 +175,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     $http.post('/mail/messages/item', item).then(function(response1) {
 
                         $scope.message = response1.data;
-                        console.log($scope.message['X-Mailgun-Variables']);
+                        console.log('job id from email: ', $scope.message['X-Mailgun-Variables']);
                         //console.log($scope.message);
                         var matches = $scope.message.Subject.match(/\[(.*?)\]/);
 
@@ -214,6 +215,31 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
         });
     }
+    // Sort function
+    $scope.sort = function (order = 'all') {
+      $scope.sortedJobs = [];
 
+   if (order === 'accepted') {
+        $scope.userJobs.forEach(function (i) {
+          if (i.jobStatus === 'accepted'){
+          $scope.sortedJobs.push(i);
+        }
+        });
+      } else if (order === 'finalized') {
+        $scope.userJobs.forEach(function (i) {
+          if (i.jobStatus === 'finalized'){
+          $scope.sortedJobs.push(i);
+        }
+        });
+      } else if (order === 'finished') {
+        $scope.userJobs.forEach(function (i) {
+          if (i.jobStatus === 'finished'){
+          $scope.sortedJobs.push(i);
+        }
+        });
+      } else if (order === 'all') {
+        $scope.sortedJobs = $scope.userJobs;
+      }
+    };
 
 }]);

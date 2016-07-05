@@ -2,6 +2,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
 
     $scope.user = {};
 
+//The DataFactory checks to see if the user is logged in and an admin. If they aren't, they are redirected.
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
         $scope.user.userLevel = DataFactory.storeUserLevel();
@@ -19,12 +20,14 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             $location.path('/');
         }
     });
+    //The min date is set as the current date. That way a job cannot be created for a day that has already passed.
     $scope.myDate = new Date();
     $scope.minDate = new Date(
         $scope.myDate.getFullYear(),
         $scope.myDate.getMonth(),
         $scope.myDate.getDate());
 
+//The newJob Object is initialized. This will ultimately be sent to the server when a job is posted.
     $scope.newJob = {
         jobStatus: "open",
         chat: {
@@ -46,6 +49,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.newJob.photoURL = '';
     $scope.newJob.totalPrice = 0;
 
+//These times and states are used in dropdowns on the page.
     $scope.time = ['Morning', 'Afternoon', 'Evening'];
 
     $scope.states = ['MN', 'WI'];
@@ -61,6 +65,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     };
 
     $scope.emails = [''];
+
+    //This allows users to add additional e-mails, if they wish.
     $scope.addEmailField = function() {
         $scope.emails.push('');
     };
@@ -73,6 +79,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         console.log($scope.emails);
     };
 
+//This function adds together the aggregate value of all addons, to be used by the $scope.total function.
     $scope.addAddons = function(index, addon) {
 
 
@@ -97,6 +104,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         }
     };
 
+//This function posts a new job to the server.
     $scope.saveNewJob = function() {
 
         console.log("newJobData: ", $scope.newJob);
@@ -106,32 +114,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         });
     };
 
-
-
-    $scope.emails = [''];
-    $scope.addEmailField = function() {
-        $scope.emails.push('');
-    };
-
-    // Push entered emails into emails array
-    $scope.addEmail = function() {
-        for (var i = 0; i < $scope.emails.length; i++) {
-            $scope.emails[i] = push($scope.emails[$index]);
-        }
-        console.log($scope.emails);
-    };
-
-
-
-    $scope.saveNewJob = function() {
-
-        console.log("newJobData: ", $scope.newJob);
-
-        $http.post('/jobs', $scope.newJob).then(function(req, res) {
-            $location.path('/jobsList');
-        });
-    };
-
+//This function gets relevant pricing from the server.
     function getPrices() {
         $http.get('/prices').then(function(response) {
             $scope.prices = response.data;
