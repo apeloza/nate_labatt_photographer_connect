@@ -1,4 +1,3 @@
-
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.user = {};
@@ -34,8 +33,8 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             time: ''
         },
         squareFeet: {
-          name: '',
-          value: 0
+            name: '',
+            value: 0
         },
         afterDark: {
             name: '',
@@ -46,15 +45,6 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     $scope.newJob.emails = [];
     $scope.newJob.photoURL = '';
     $scope.newJob.totalPrice = 0;
-    $scope.newJob.lakeshoreAndAcreage = {
-        value1: false
-    };
-    $scope.tenThousandSqFt = {
-        value1: false
-    };
-
-
-
 
     $scope.time = ['Morning', 'Afternoon', 'Evening'];
 
@@ -65,11 +55,9 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     // Add up total price
     $scope.total = function() {
 
-        if($scope.tenThousandSqFt.value1 === false){
+
         $scope.newJob.totalPrice = $scope.newJob.squareFeet.value + $scope.newJob.afterDark.value + $scope.addonPrice;
-      } else {
-        $scope.newJob.totalPrice = "Please call me!";
-      }
+
     };
 
     $scope.emails = [''];
@@ -118,44 +106,37 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         });
     };
 
-    function getPrices() {
-        $http.get('/prices').then(function(response) {
-            $scope.prices = response.data[0];
 
-            console.log($scope.prices);
-        });
 
+    $scope.emails = [''];
+    $scope.addEmailField = function() {
+        $scope.emails.push('');
     };
 
-  $scope.emails = [''];
-  $scope.addEmailField = function () {
-    $scope.emails.push('');
-  };
+    // Push entered emails into emails array
+    $scope.addEmail = function() {
+        for (var i = 0; i < $scope.emails.length; i++) {
+            $scope.emails[i] = push($scope.emails[$index]);
+        }
+        console.log($scope.emails);
+    };
 
-  // Push entered emails into emails array
-  $scope.addEmail = function () {
-    for (var i = 0; i < $scope.emails.length; i++){
-      $scope.emails[i] = push($scope.emails[$index]);
+
+
+    $scope.saveNewJob = function() {
+
+        console.log("newJobData: ", $scope.newJob);
+
+        $http.post('/jobs', $scope.newJob).then(function(req, res) {
+            $location.path('/jobsList');
+        });
+    };
+
+    function getPrices() {
+        $http.get('/prices').then(function(response) {
+            $scope.prices = response.data;
+            console.log($scope.prices);
+        });
     }
-    console.log($scope.emails);
-  };
-
-
-
-  $scope.saveNewJob = function () {
-
-    console.log("newJobData: ", $scope.newJob);
-
-    $http.post('/jobs', $scope.newJob).then(function (req, res) {
-      $location.path('/jobsList');
-    });
-  };
-
-  function getPrices() {
-      $http.get('/prices').then(function(response) {
-          $scope.prices = response.data;
-          console.log($scope.prices);
-      });
-  }
 
 }]);
