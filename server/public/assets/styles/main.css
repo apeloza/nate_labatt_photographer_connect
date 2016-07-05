@@ -259,6 +259,9 @@ md-toolbar {
   float: right;
 }
 
+.dueDate {
+  margin-left:20px;
+}
 
 .photosSubmitted {
   margin-left: 5%;

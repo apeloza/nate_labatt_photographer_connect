@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
 
 req.body.message + '\n\n' +
 
-'Job # [' + JobID + ']\n' +
+'Job # [' + jobID + ']\n' +
 'Pixel Houz\n' +
 '9999 Road Way\n' +
 'Minneapolis MN 5540\n' +
