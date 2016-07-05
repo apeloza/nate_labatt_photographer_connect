@@ -342,16 +342,33 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
-.showmeButtons {
-  display: inline-block;
+.myJobsAddressRepeat {
+  min-width: 20%;
 }
 
-.showMeFalse, .showMeTrue {
-  float: right;
+.myJobsEmailRepeat {
+  min-width: 25%;
 }
+
+.showMeTrue {
+  border: 1px solid black;
+}
+
+.userJobListRepeatJobs > div {
+  margin-left: 20px;
+  display: inline-block;
+  border: 1px dotted black;
+}
+
+.userJobListRepeatJobs {
+  border: 1px solid black;
+  overflow: auto;
+}
+
 
 .chatCard {
   border-top: 1px dotted black;
+  width: 100%;
 }
 
 .chatBox {
@@ -373,7 +390,14 @@ md-toolbar {
 }
 
 .sendUserMessageDiv {
-  /*border: 2px solid black;*/
+  margin-top: 150px;
+  margin-bottom: -30px;
+  width: 800px;
+  overflow: auto;
+}
+
+.myJobsConfirmed {
+  text-align: center;
 }
 
 .messageTextArea, .sendMessageUser {
@@ -382,15 +406,15 @@ md-toolbar {
 }
 
 .messageTextArea {
-  width: 650px;
+  width: 600px;
 }
 
 .chatTimeSet {
   display: inline-block;
   width: 250px;
   min-height: 300px;
-  margin-left: 65px;
-  /*border: 2px solid black;*/
+  margin-left: 60px;
+  margin-bottom: 20px;
 }
 
 .chatDatePicker, .chatTimePicker {
@@ -400,13 +424,10 @@ md-toolbar {
 }
 
 .photoshootTimeSetButton {
-  margin-left: 80px;
+  margin-left: 70px;
 }
 
-.userJobListRepeatJobs > div {
-  margin-left: 20px;
-  float: left;
-}
+
 
 .chatHeader {
   margin-left: 20px;

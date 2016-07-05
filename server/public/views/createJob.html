@@ -56,7 +56,7 @@
                 <div flex class="email">
                     <md-input-container ng-repeat="email in emails track by $index">
                         <label>Email</label>
-                        <input type="text" ng-model="newJob.emails[$index]" required/>
+                        <input type="email" ng-model="newJob.emails[$index]" required/>
                     </md-input-container>
                 </div>
 
@@ -82,7 +82,7 @@
 
                     <md-input-container>
                         <label>State</label>
-                        <md-select ng-model="newJob.address.state" aria-label="state">
+                        <md-select ng-model="newJob.address.state" aria-label="state" required="true">
                             <md-option ng-repeat="item in states">{{item}}</md-option>
                         </md-select>
                     </md-input-container>
