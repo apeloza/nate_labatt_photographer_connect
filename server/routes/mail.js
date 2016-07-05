@@ -23,10 +23,11 @@ router.post('/', function(req, res) {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
         to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
-        text: message,
-        'X-Mailgun-Variables': {
+        text: message
+    };
+        data['X-Mailgun-Variables'] = {
             jobID: jobID
-        }
+        };
             //attachment: filepath
     };
 
