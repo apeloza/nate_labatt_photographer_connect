@@ -31,7 +31,6 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
         });
     }
 
-<<<<<<< HEAD
     $scope.editJob = function (job) {
       console.log(job);
       $http.put('/jobs/update/' + job._id, job).then(function (response) {
@@ -47,12 +46,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
             }
         });
       });
-=======
-    //
-    $scope.editJob = function (id) {
-
->>>>>>> cdf27f43c07ba5906f15a5cbd350411b21f6dbd6
-    }
+    };
 
     // Change job status to finished
     $scope.finish = function(id) {
