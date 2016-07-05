@@ -1,39 +1,24 @@
 <div ng-include="'/views/templates/landingNav.html'"></div>
 
-<div class="contactUsModal" ng-show="showContactUsModal">
-    <i class="material-icons closebtn" ng-click="closeContactUsModal()">clear</i>
-    <div class="contactUsModalText">
-      <h1>Lakes | Sotheby's International Realty</h1>
-      <h2>Nate Labatt</h2>
-      <p>3217L Galleria</p>
-      <p>Edina, Minnesota 55435</p>
-      <p>nate.labatt@lakesmn.com</p>
-      <p>lakessothebysrealty.com</p>
-      <p>612.743.2975</p>
-    </div>
-</div>
-<!--
-<div ng-show="showContactUsModal">
-  <md-dialog aria-label="Contact us dialog">
-    <md-dialog-content>
-      <md-list>
-        <md-list-item>
-          <h1>Lakes | Sotheby's International Realty</h1>
-          <h2>Nate Labatt</h2>
-          <p>3217L Galleria</p>
-          <p>Edina, Minnesota 55435</p>
-          <p>nate.labatt@lakesmn.com</p>
-          <p>lakessothebysrealty.com</p>
-          <p>612.743.2975</p>
-        </md-list-item>
-      </md-list>
-    </md-dialog-content>
-    <md-dialog-actions>
-      <md-button ng-click="closeContactUsModal()" class="md-primary">Close Dialog</md-button>
-    </md-dialog-actions>
-  </md-dialog>
-</div>
- -->
+<div style="visibility: hidden">
+   <div class="md-dialog-container" id="contactInfo">
+     <md-dialog layout-padding>
+       <h3>Nate Labatt
+        <br />
+        Lakes | Sotheby's International Realty
+       </h3>
+       <p><strong>
+         <br/>
+         3217L Galleria
+         <br/>
+         Edina, Minnesota 55435
+         <br />
+         (612) 743-2975
+       </strong></p>
+     </md-dialog>
+   </div>
+ </div>
+
 
 
 

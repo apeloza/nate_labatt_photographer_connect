@@ -351,17 +351,15 @@ md-toolbar {
 }
 
 .showMeTrue {
-  border: 1px solid black;
 }
 
 .userJobListRepeatJobs > div {
   margin-left: 20px;
   display: inline-block;
-  border: 1px dotted black;
+  vertical-align:top;
 }
 
 .userJobListRepeatJobs {
-  border: 1px solid black;
   overflow: auto;
 }
 
@@ -379,7 +377,7 @@ md-toolbar {
   margin-left: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
-  width: 800px;
+  width: 65%;
   min-height: 300px;
   height: auto;
 }
@@ -392,7 +390,7 @@ md-toolbar {
 .sendUserMessageDiv {
   margin-top: 150px;
   margin-bottom: -30px;
-  width: 800px;
+  width: 100%;
   overflow: auto;
 }
 
@@ -406,7 +404,7 @@ md-toolbar {
 }
 
 .messageTextArea {
-  width: 600px;
+  width: 75%;
 }
 
 .chatTimeSet {
@@ -489,6 +487,13 @@ md-toolbar {
 
 .landingPagePixelHouse {
   font-weight: bold;
+}
+
+#contactInfo {
+  text-align: center;
+}
+#contactInfo, h3 {
+  color: gray;
 }
 
 /* ---------------------- update prices view  --------------------------*/
