@@ -1,7 +1,7 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 
 <div class="jobsListCard" ng-controller="FabCtrl as fab">
-<<<<<<< HEAD
+
   <md-card>
 <!-- Toolbar ---------------------------------------------------------->
     <md-toolbar layout="row">
@@ -60,20 +60,37 @@
         <div class="adminJobClientName">
           <md-input-container>
             <label>Client</label>
-            <input type="text" value={{job.name}}/>
+            <input type="text" value={{job.name}} />
           </md-input-container>
-          <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
           <md-input-container>
             <label>Due Date</label>
-            <input type="text"/>
+            <input type="text" value='{{job.dueDate | date : format : longDate}}' />
           </md-input-container>
+
+        <md-input-container>
+          <label>Price</label>
+          <input type="text" value={{job.totalPrice}} />
+        </md-input-container>
+
           <p ng-if="job.photoURL !=''">Photos Submitted: {{job.photoURL}}</p>
           <p>Price: <strong>${{job.totalPrice}}</strong></p>
+
         </div>
         <div class="repeatClientInfo">
-          <!-- <p>Address: </p> -->
-          <p>Address: <strong>{{job.address.line1}}</strong></p>
-          <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+          <md-input-container>
+            <label>Address Line 1</label>
+            <input type="text" value={{job.address.line1}} />
+          </md-input-container>
+
+          <md-input-container>
+            <label>State</label>
+            <input type="text" value={{job.address.state}} />
+          </md-input-container>
+
+          <md-input-container>
+            <label>Zip</label>
+            <input type="text" value={{job.address.zip}} />
+          </md-input-container>
         </div>
         <div class="repeatJobDetails">
           <p>After Dark: <strong>{{job.afterDark.name}} - $ {{job.afterDark.value}}</strong></p>
@@ -122,7 +139,7 @@
           <md-button aria-label="re open" class="md-fab md-raised md-mini md-accent" ng-click="editJob(job._id)">
             <i class="material-icons">settings</i>
             <md-tooltip  md-direction="bottom">
-              Edit Job
+              Save Updates
             </md-tooltip>
           </md-button>
           <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
@@ -147,3 +164,6 @@
               <div class="adminChatText">
                 {{job.chat.messages}}
               </div>
+
+
+    <md-card>
