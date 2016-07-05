@@ -56,25 +56,19 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'D
     };
 
 
-    $scope.updateUser = function(id) {
-        if ($scope.activeUser._id == id) {
-            $scope.userUpdate = {
-                username: $scope.activeUser.username,
-                email: $scope.activeUser.email,
-                phone: $scope.activeUser.phoneNumber
-            }
-            console.log('sending to server . . .', $scope.userUpdate);
-            $http.put('/user/update/' + id, $scope.userUpdate).then(function(response) {
+    $scope.updateUser = function(user) {
+
+            console.log('sending to server . . .');
+            $http.put('/user/update/' + user._id, user).then(function(response) {
                     console.log('Success!');
-                    $location.path('/userList');
+                    getAllUsers();
                 },
                 function(response) {
                     console.log('Error');
                     $scope.message = 'Please try again.';
                 });
-        }
-        $location.path('/userList');
-    };
+        };
+
 
     $scope.approveUser = function(id) {
             console.log('sending to server . . .');

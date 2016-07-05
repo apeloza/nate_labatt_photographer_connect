@@ -20,6 +20,7 @@ router.get('/', function(req, res) {
     }
 });
 
+//Finds all users except for the admin.
 router.get('/allusers', function(req, res) {
     if (req.isAuthenticated()) {
         User.find({
@@ -37,6 +38,7 @@ router.get('/allusers', function(req, res) {
 
 });
 
+//Deletes a user from the database. Searches by ID.
 router.delete('/:id', function(req, res) {
     if (req.isAuthenticated()) {
         User.findByIdAndRemove(req.params.id, function(err) {
@@ -52,6 +54,7 @@ router.delete('/:id', function(req, res) {
     }
 });
 
+//Updates user information in the database.
 router.put('/update/:id', function(req, res) {
     if (req.isAuthenticated()) {
         User.findOne({
@@ -64,7 +67,7 @@ router.put('/update/:id', function(req, res) {
             console.log(req.body);
             user.username = req.body.username;
             user.email = req.body.email;
-            user.phoneNumber = req.body.phone;
+            user.phoneNumber = req.body.phoneNumber;
 
             user.save(function(err) {
                 if (err) {
@@ -80,6 +83,7 @@ router.put('/update/:id', function(req, res) {
     }
 });
 
+//Approves a user for website use by changing user level.
 router.put('/approve/:id', function(req, res) {
     if (req.isAuthenticated()) {
         User.findOne({

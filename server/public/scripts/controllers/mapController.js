@@ -93,8 +93,11 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
       };
 
         $http.put('/jobs/' + jobID, credentials).then(function(response) {
-
-            $location.path('/myJobs');
+if(response == 500){
+  alert("That job has already been taken. Please refresh and try again.");
+} else {
+  $location.path('/myJobs');
+}
 
         });
     };
