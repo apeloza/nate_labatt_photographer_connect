@@ -4,16 +4,6 @@ var passport = require('passport');
 var Job = require('../models/job');
 var path = require('path');
 
-//Gets a list of all jobs.
-router.get('/', function(req, res) {
-    if (req.isAuthenticated()) {
-        Job.find({}, function(err, jobs) {
-            res.send(jobs);
-        });
-    } else {
-        res.send(false);
-    }
-});
 
 // Handles POST request with job data
 router.post('/', function(req, res, next) {
@@ -65,6 +55,8 @@ router.put('/:id', function(req, res) {
         res.send(false);
     }
 });
+
+//Sets a job's status to 'finished'.
 router.put('/finish/:id', function(req, res) {
     if (req.isAuthenticated()) {
         Job.findOne({
@@ -83,6 +75,8 @@ router.put('/finish/:id', function(req, res) {
         res.send(false);
     }
 });
+
+//Re-opens a job so that photographers can accept it again.
 router.put('/reopen/:id', function(req, res) {
     var id = req.params.id;
     if (req.isAuthenticated()) {
@@ -97,6 +91,7 @@ router.put('/reopen/:id', function(req, res) {
 
                 if (err) {
                     console.log(err);
+                    res.sendStatus(500);
                 }
                 res.sendStatus(204);
 
@@ -107,6 +102,29 @@ router.put('/reopen/:id', function(req, res) {
     }
 });
 
+router.put('/update/:id', function(req, res) {
+    var id = req.params.id;
+    if (req.isAuthenticated()) {
+        Job.findOne({
+            _id: id
+        }, function(err, job) {
+            job.address = req.body.address;
+            job.name = req.body.name;
+            job.totalPrice = req.body.totalPrice;
+            job.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                }
+                res.sendStatus(204);
+            });
+        });
+    } else {
+        res.send(false);
+    }
+});
+
+//Deletes a job, searches by ID.
 router.delete('/:id', function(req, res) {
     if (req.isAuthenticated()) {
         Job.findByIdAndRemove(req.params.id, function(err) {
@@ -120,6 +138,8 @@ router.delete('/:id', function(req, res) {
         res.send(false);
     }
 });
+
+//Gets all jobs.
 router.get('/alljobs', function(req, res) {
     if (req.isAuthenticated()) {
         Job.find({}, function(err, data) {
