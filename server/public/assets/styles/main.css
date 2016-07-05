@@ -489,6 +489,13 @@ md-toolbar {
   font-weight: bold;
 }
 
+#contactInfo {
+  text-align: center;
+}
+#contactInfo, h3 {
+  color: gray;
+}
+
 /* ---------------------- update prices view  --------------------------*/
 .updatePricesForm {
   width:400px;
