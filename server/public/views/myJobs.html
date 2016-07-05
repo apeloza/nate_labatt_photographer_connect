@@ -71,23 +71,23 @@
 
 
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
-            <div class="chatTimeSet">
-              <form>
-                <md-datepicker   ng-show="job.jobStatus != 'finished'" class="chatDatePicker md-block" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
+            <div class="chatTimeSet"  >
+              <form ng-show="job.jobStatus == 'accepted'">
+                <md-datepicker   class="chatDatePicker md-block" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
                 </md-datepicker>
 
-                <md-input-container ng-show="job.jobStatus != 'finished'" class="chatTimePicker md-block">
+                <md-input-container  class="chatTimePicker md-block">
                   <label>Preferred Time</label>
                   <md-select  ng-model="timeFrame.time" aria-label="Timeframe">
                     <md-option ng-repeat="item in preferredTime">{{item}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-button ng-show="job.jobStatus != 'finished'" class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
+                <md-button class="md-raised md-primary md-block photoshootTimeSetButton" ng-click="submitDate(job._id)" type="submit" name="setTimeAndDate">Confirm</md-button>
               </form>
 
               <div class="myJobsConfirmed" ng-show="job.chat.date != ''">
 
-                <p>CURRENTLY CONFIRMED</p>
+                <p><strong>CURRENTLY CONFIRMED</strong></p>
                 <p>{{job.chat.date | date : format : longDate}}</p>
                 <p>{{job.chat.time}}</p>
                 <p>Method of Entry: {{job.entryMethod}}</p>
