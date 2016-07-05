@@ -74,7 +74,7 @@
             <!-- ************* SET TIME WITH HOMEOWNER *************** -->
             <div class="chatTimeSet"  >
               <form ng-show="job.jobStatus == 'accepted'">
-                <md-datepicker   class="chatDatePicker md-block"  md-max-date="maxDate" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
+                <md-datepicker   class="chatDatePicker md-block"  md-max-date="maxDate" md-min-date="minDate" ng-model="timeFrame.date" md-placeholder="Photoshoot Date">
                 </md-datepicker>
 
                 <md-input-container  class="chatTimePicker md-block">

@@ -42,6 +42,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     });
 
+//Gets the current date for a minimum date
+    $scope.myDate = new Date();
+    $scope.minDate = new Date(
+        $scope.myDate.getFullYear(),
+        $scope.myDate.getMonth(),
+        $scope.myDate.getDate());
+
     $scope.preferredTime = ['6:00 AM',
         '6:30 AM',
         '7:00 AM',
