@@ -260,8 +260,17 @@ md-toolbar {
 }
 
 
-.repeatJobsList {
+.photosSubmitted {
+  margin-left: 5%;
+  display:inline-block;
+}
 
+.inlineP {
+  display:inline-block;
+}
+
+.borderRight {
+  margin-right:20px;
 }
 
 .adminChatCard {
@@ -277,7 +286,6 @@ md-toolbar {
 }
 
 .repeatJobFabButtons {
-
 
 }
 

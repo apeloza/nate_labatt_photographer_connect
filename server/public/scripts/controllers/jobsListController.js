@@ -31,9 +31,21 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
         });
     }
 
-    //
-    $scope.editJob = function (id) {
-      
+    $scope.editJob = function (job) {
+      console.log(job);
+      $http.put('/jobs/update/' + job._id, job).then(function (response) {
+        var toast = $mdToast.simple()
+           .textContent('Job updated')
+           .action('Go Away')
+           .position('top')
+           .hideDelay(5000)
+           .highlightAction(false);
+        $mdToast.show(toast).then(function(response) {
+           if ( response == 'ok' ) {
+              console.log('job updated');
+            }
+        });
+      });
     }
 
     // Change job status to finished
