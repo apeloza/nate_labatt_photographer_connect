@@ -21,19 +21,20 @@
         <div class="myJobsAddressRepeat">
           <p>Address: <strong>{{job.address.line1}} </strong></p>
           <p><strong>{{job.address.city}}, {{job.address.state}}  {{job.address.zip}}</strong></p>
+          <p>Phone: <strong>{{job.phone}}</strong></p>
         </div>
         <div class="myJobsEmailRepeat">
           <p>Primary Email: <strong>{{job.emails[0]}}</strong></p>
-          <p>Phone: <strong>{{job.phone}}</strong></p>
+          <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
+          <p>Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
         </div>
         <div>
           <p>Square Feet: <strong>{{job.squareFeet.name}} - ${{job.squareFeet.value}}</strong></p>
           <p>After Dark: <strong>{{job.afterDark.name}} - ${{job.afterDark.value}}</strong></p>
-          <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
-        </div>
-        <div>
-          <p>Preferred Date: <strong>{{job.preferredDate | date : format : longDate}}</strong></p>
           <p>TimeFrame: <strong>{{job.timeFrame}}</strong></p>
+        </div>
+        <div class="myJobsPayRepeat">
+          <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
           <p>Pay: <strong>${{job.totalPrice}}</strong></p>
         </div>
           <md-button class="md-raised md-primary showMeTrue" ng-click="showMessages(job._id)">show messages</md-button>
