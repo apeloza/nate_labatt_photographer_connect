@@ -342,18 +342,27 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
-.showMeTrue {
+.myJobsAddressRepeat {
+  min-width: 20%;
+}
 
+.myJobsEmailRepeat {
+  min-width: 25%;
+}
+
+.showMeTrue {
+  border: 1px solid black;
 }
 
 .userJobListRepeatJobs > div {
   margin-left: 20px;
-  float: left;
+  display: inline-block;
   border: 1px dotted black;
 }
 
 .userJobListRepeatJobs {
-  border: 1px dotted black;
+  border: 1px solid black;
+  overflow: auto;
 }
 
 
@@ -381,7 +390,14 @@ md-toolbar {
 }
 
 .sendUserMessageDiv {
-  /*border: 2px solid black;*/
+  margin-top: 150px;
+  margin-bottom: -30px;
+  width: 800px;
+  overflow: auto;
+}
+
+.myJobsConfirmed {
+  text-align: center;
 }
 
 .messageTextArea, .sendMessageUser {
@@ -390,7 +406,7 @@ md-toolbar {
 }
 
 .messageTextArea {
-  width: 650px;
+  width: 600px;
 }
 
 .chatTimeSet {
@@ -398,7 +414,7 @@ md-toolbar {
   width: 250px;
   min-height: 300px;
   margin-left: 60px;
-  /*border: 2px solid black;*/
+  margin-bottom: 20px;
 }
 
 .chatDatePicker, .chatTimePicker {
