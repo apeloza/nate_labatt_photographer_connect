@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var Price = require('../models/price');
 
+//Returns the entire prices object which contains all set prices.
 router.get('/', function(req, res) {
     if (req.isAuthenticated()) {
         Price.findOne({}, function(err, price) {
@@ -15,10 +16,11 @@ router.get('/', function(req, res) {
         res.send(false);
     }
 });
+
+//Updates addons with new data. Addons is an array of objects with a value and a name.
 router.put('/addons', function(req, res) {
     if (req.isAuthenticated()) {
         Price.findOne({}, function(err, price) {
-            console.log(price);
             price.addons = req.body;
             price.save(function(err) {
                 if (err) {
@@ -34,9 +36,9 @@ router.put('/addons', function(req, res) {
     }
 });
 
+//Updates pricing. All pricing is stored in one large Price object.
 router.put('/', function(req, res) {
     if (req.isAuthenticated()) {
-        console.log("Hello");
         Price.findOne({}, function(err, price) {
             if (err) {
                 console.log(err);
@@ -57,25 +59,6 @@ router.put('/', function(req, res) {
         res.send(false);
     }
 });
-router.delete('/', function(req, res) {
-    if (req.isAuthenticated()) {
-      console.log('Body: ' + req.body);
-        Price.findOne({}, function(err, price) {
-            if (err) {
-                console.log(err);
-            }
-            price.addons = req.body;
-            price.save(function(err) {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-                res.sendStatus(201);
 
-            });
-        });
-    } else {
-        res.send(false);
-    }
-});
+
 module.exports = router;

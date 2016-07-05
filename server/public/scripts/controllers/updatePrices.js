@@ -4,9 +4,11 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
     $scope.prices = {};
     $scope.addons = {};
 
+//The DataFactory ensures the user is logged in, and then the username and user level (e.g. admin, user) is stored.
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
         $scope.user.userLevel = DataFactory.storeUserLevel();
+        //If the user is not an admin, return them to the map page.
         if ($scope.user.userLevel == 'user') {
             $location.path('/user');
         }
@@ -20,17 +22,18 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
 
     $scope.newAddon = {};
 
+//This function fetches all relevant pricing from the server, and then applies them to scoped variables.
     function getPrices() {
         $http.get('/prices').then(function(response) {
             $scope.prices = response.data;
             $scope.addons = response.data[0].addons;
             $scope.sqft = response.data[0].sqft;
             $scope.afterDark = response.data[0].afterDark;
-            console.log($scope.prices);
-            console.log($scope.addons);
-            console.log($scope.sqft);
+
         });
     }
+
+    //This function packages all current pricing into an object, and then sends it to the server.
     $scope.updatePrices = function(id, price) {
         $scope.prices = {
             sqft: $scope.sqft,
@@ -41,10 +44,10 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
 
         });
     };
+
+    //This function creates a new Addon by pushing it onto an array of addons and then sending that array to the server.
     $scope.createAddon = function() {
         $scope.addons.push($scope.newAddon);
-
-        console.log($scope.addons);
         $http.put('/prices/addons', $scope.addons).then(function(response) {
           $scope.newAddon.name = '';
           $scope.newAddon.value = '';
@@ -52,6 +55,8 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
             getPrices();
         });
     };
+
+    //This function deletes an addon by splicing it from the array of addons and then sending the spliced array to the server.
     $scope.deleteAddon = function(id) {
       var index;
         for (var i = 0; i < $scope.addons.length; i++) {
