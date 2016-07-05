@@ -55,10 +55,6 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'D
         }
     };
 
-    $scope.setActive = function(obj) {
-        $scope.activeUser = obj;
-        console.log(obj);
-    }
 
     $scope.updateUser = function(id) {
         if ($scope.activeUser._id == id) {
@@ -81,23 +77,16 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'D
     };
 
     $scope.approveUser = function(id) {
-        if ($scope.activeUser._id == id) {
-            $scope.userUpdate = {
-                username: $scope.activeUser.username,
-                email: $scope.activeUser.email,
-                phone: $scope.activeUser.phoneNumber
-            }
-            console.log('sending to server . . .', $scope.userUpdate);
-            $http.put('/user/approve/' + id, $scope.userUpdate).then(function(response) {
+            console.log('sending to server . . .');
+            $http.put('/user/approve/' + id).then(function(response) {
                     console.log('Success!');
-                    $location.path('/userList');
+                    getAllUsers();
                 },
                 function(response) {
                     console.log('Error');
                     $scope.message = 'Please try again.';
                 });
-        }
-    };
+        };
 
     $scope.deleteUser = function(id) {
       var toast = $mdToast.simple()

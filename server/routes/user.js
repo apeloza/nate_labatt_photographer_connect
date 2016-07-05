@@ -23,7 +23,11 @@ router.get('/', function(req, res) {
 router.get('/allusers', function(req, res) {
     if (req.isAuthenticated()) {
         User.find({
-            level: 'user'
+            $or: [{
+                level: 'user'
+            }, {
+                level: 'applicant'
+            }]
         }, function(err, user) {
             res.send(user);
         });
@@ -32,11 +36,7 @@ router.get('/allusers', function(req, res) {
     }
 
 });
-// } else {
-//   // failure best handled on the server. do redirect here.
-//   console.log('not logged in');
-//   res.send(false);
-//   });
+
 router.delete('/:id', function(req, res) {
     if (req.isAuthenticated()) {
         User.findByIdAndRemove(req.params.id, function(err) {
@@ -48,11 +48,12 @@ router.delete('/:id', function(req, res) {
 
         });
     } else {
-      res.send(false);
+        res.send(false);
     }
 });
 
-router.put('/update/:id', function(req, res) {    if (req.isAuthenticated()) {
+router.put('/update/:id', function(req, res) {
+    if (req.isAuthenticated()) {
         User.findOne({
             _id: req.params.id
         }, function(err, user) {
@@ -60,7 +61,7 @@ router.put('/update/:id', function(req, res) {    if (req.isAuthenticated()) {
                 console.log(err);
                 res.sendStatus(500);
             }
-console.log(req.body);
+            console.log(req.body);
             user.username = req.body.username;
             user.email = req.body.email;
             user.phoneNumber = req.body.phone;
@@ -79,7 +80,8 @@ console.log(req.body);
     }
 });
 
-router.put('/approve/:id', function(req, res) {    if (req.isAuthenticated()) {
+router.put('/approve/:id', function(req, res) {
+    if (req.isAuthenticated()) {
         User.findOne({
             _id: req.params.id
         }, function(err, user) {
@@ -87,12 +89,9 @@ router.put('/approve/:id', function(req, res) {    if (req.isAuthenticated()) {
                 console.log(err);
                 res.sendStatus(500);
             }
-console.log(req.body);
-            user.username = req.body.username;
-            user.email = req.body.email;
-            user.phoneNumber = req.body.phone;
+
             user.level = 'user';
-            
+
             user.save(function(err) {
                 if (err) {
                     console.log(err);

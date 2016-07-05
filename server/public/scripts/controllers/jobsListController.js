@@ -87,7 +87,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
                              });
                        }
                     });
-                 }
+                 };
 
   // Sort function
   $scope.sort = function (order = 'all') {
