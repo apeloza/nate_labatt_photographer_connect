@@ -62,10 +62,12 @@
             <label>Client</label>
             <input type="text" value={{job.name}} ng-model="job.name"/>
           </md-input-container>
-          <md-input-container>
-            <label>Due Date</label>
-            <input type="text" value='{{job.dueDate | date : format : longDate}}' ng-model="job.dueDate"/>
-          </md-input-container>
+
+          <div class="dueDate">
+            <strong>Due Date:
+            {{job.dueDate | date : format : longDate}}
+            </strong>
+          </div>
 
           <strong><p class="photosSubmitted" ng-if="job.photoURL !=''">Photos Submitted: {{job.photoURL}}</p></strong>
 
