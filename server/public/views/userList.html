@@ -51,7 +51,7 @@
         </md-input-container>
 
         <md-button class="md-raised md-primary userUpdateButton" ng-if="user.level=='applicant'" ng-click="approveUser(user._id)">Approve New User</md-button>
-        <md-button class="md-fab md-primary userUpdateButton" ng-click="updateUser(user._id)">
+        <md-button class="md-fab md-primary userUpdateButton" ng-click="updateUser(user)">
           <i class="material-icons">control_point</i>
           <md-tooltip  md-direction="bottom">
             Update user
