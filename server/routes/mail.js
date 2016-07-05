@@ -87,7 +87,7 @@ router.post('/messages/item', function(req, res) {
 });
 
 router.post('/messages/received', function(req, res) {
-    var body = req.body;
+    var body = req;
     console.log(req.body);
 
 if (body) {
