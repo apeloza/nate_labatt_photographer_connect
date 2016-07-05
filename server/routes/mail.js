@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
             jobID: jobID
         };
             //attachment: filepath
-    };
+    
 
     //   var transporter = nodemailer.createTransport({
     //       service: 'Mailgun',
