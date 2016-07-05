@@ -1,4 +1,5 @@
 <div ng-include="'/views/templates/landingNav.html'"></div>
+    <h1 ng-if="message !=''" class="flashMessage">{{message}}</h1>
 <div class="signIn" layout="row">
   <md-card class="loginCard">
     <form class="logInForm" ng-submit="login()">
@@ -14,6 +15,6 @@
         <md-button class="md-raised md-primary loginButton" type="submit" name="submit" value="Log In">Log In</md-button>
       </md-input-container>
     </form>
-    <h1 ng-if="message !=''" class="flashMessage">{{message}}</h1>
+
     </md-card>
   </div>

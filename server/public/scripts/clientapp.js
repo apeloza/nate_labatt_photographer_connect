@@ -36,7 +36,7 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/register', {
             templateUrl: 'views/register.html',
-            controller: 'LandingController'
+            controller: 'LoginController'
         })
         .when('/mail', {
           templateUrl: '/views/mail.html',
