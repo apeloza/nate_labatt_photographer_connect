@@ -7,4 +7,16 @@ app.controller('LandingController', ['$scope', '$http', '$location', function ($
   { src: "../assets/images/homephotos/6.jpg" },
   { src: "../assets/images/homephotos/7.jpg" }
 ];
+
+
+  $scope.contactUs = function() {
+    $scope.showContactUsModal = true;
+  }
+
+  $scope.closeContactUsModal = function() {
+      $scope.showContactUsModal = false;
+  };
+
+
+
   }]);
