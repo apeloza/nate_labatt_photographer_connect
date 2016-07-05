@@ -15,55 +15,43 @@ router.post('/', function(req, res) {
 
     var sendTo = req.body.sendTo;
     var subject = req.body.subject;
-    var message = req.body.message;
     var jobID = req.body.jobID;
+    var message = 'Hello,\n' +
+'You’re receiving this message from a service called Pixel Houz! We help property owners connect with real estate photographers to set a time for a photo session. You indicated to your realtor that your preferred date and time are <strong>$preferred date$ in the $preferred time$ </strong>. \n\n' +
+
+'Reply to this email to communicate directly with the photographer to find a time that works for both of you. \n\n' +
+
+'Message from photographer:\n\n' +
+
+req.body.message + '\n\n' +
+
+'Job # [' + JobID + ']\n' +
+'Pixel Houz\n' +
+'9999 Road Way\n' +
+'Minneapolis MN 5540\n' +
+
+'Pixel Houz does not share your email or use it for anything except direct communication.\n\n';
+
     var sender = '"Pixel Houz" <' + process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org' + '>';
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
         to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
-        text: message
-    };
-        data['X-Mailgun-Variables'] = {
+        text: message,
+        'X-Mailgun-Variables' : {
             jobID: jobID
-        };
+        }
+    };
             //attachment: filepath
-    
 
-    //   var transporter = nodemailer.createTransport({
-    //       service: 'Mailgun',
-    //       auth: {
-    //           user: process.env.MAILGUN_SMTP_LOGIN ||  'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
-    //           pass: process.env.MAILGUN_SMTP_PASSWORD || 'cb28882b6b95bc142d8d415e2096204b',
-    //
-    //       }
-    //   });
-    //
-    //   var mailOptions = {
-    //     from: '"Photo Connect" <' + process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org' + '>', // sender address
-    //     to: sendTo, // list of receivers
-    //     subject: 'nodemailer!!!', // Subject line
-    //     text: message //, // plaintext body
-    //     //html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-    // };
-    //
-    // transporter.sendMail(mailOptions, function(error, info){
-    //     if(error){
-    //         console.log(error);
-    //         res.json({yo: 'error'});
-    //     } else {
-    //         console.log('Message sent: ' + info.response);
-    //         res.json({yo: info.response});
-    //     };
-    // });
-    console.log("before sending mailgun");
+    console.log("before sending mailgun", data);
     //send mailgun
-    mailgun.messages().send(data, function(error, body) {
-        console.log(data);
-        console.log(Date.now());
-        res.sendStatus(200);
-    });
+    // mailgun.messages().send(data, function(error, body) {
+    //     console.log(data);
+    //     console.log(Date.now());
+    //     res.sendStatus(200);
+    // });
 });
 //get mailgun email info from api
 router.get('/messages', function(req, res) {
@@ -98,5 +86,14 @@ router.post('/messages/item', function(req, res) {
 
 });
 
+router.post('/messages/received', function(req, res) {
+    var body = req.body;
+    console.log(req.body);
 
+if (body) {
+    res.sendStatus(200);
+} else {
+    res.sendStatus(406);
+}
+});
 module.exports = router;

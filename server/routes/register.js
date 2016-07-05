@@ -8,18 +8,13 @@ var path = require('path');
 
 // Handles POST request with new user data
 router.post('/', function(req, res, next) {
-    if (req.isAuthenticated()) {
         Users.create(req.body, function(err, post) {
             if (err) {
                 next(err);
             } else {
-
-                res.redirect('/');
+res.sendStatus(200);
             }
         });
-    } else {
-        res.send(false);
-    }
 });
 
 
