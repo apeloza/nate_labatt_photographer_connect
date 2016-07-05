@@ -1,11 +1,50 @@
 <div ng-include="'/views/templates/landingNav.html'"></div>
 
+<div class="contactUsModal" ng-show="showContactUsModal">
+    <i class="material-icons closebtn" ng-click="closeContactUsModal()">clear</i>
+    <div class="contactUsModalText">
+      <h1>Lakes | Sotheby's International Realty</h1>
+      <h2>Nate Labatt</h2>
+      <p>3217L Galleria</p>
+      <p>Edina, Minnesota 55435</p>
+      <p>nate.labatt@lakesmn.com</p>
+      <p>lakessothebysrealty.com</p>
+      <p>612.743.2975</p>
+    </div>
+</div>
+<!--
+<div ng-show="showContactUsModal">
+  <md-dialog aria-label="Contact us dialog">
+    <md-dialog-content>
+      <md-list>
+        <md-list-item>
+          <h1>Lakes | Sotheby's International Realty</h1>
+          <h2>Nate Labatt</h2>
+          <p>3217L Galleria</p>
+          <p>Edina, Minnesota 55435</p>
+          <p>nate.labatt@lakesmn.com</p>
+          <p>lakessothebysrealty.com</p>
+          <p>612.743.2975</p>
+        </md-list-item>
+      </md-list>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button ng-click="closeContactUsModal()" class="md-primary">Close Dialog</md-button>
+    </md-dialog-actions>
+  </md-dialog>
+</div>
+ -->
+
+
+
 <div class="home-carousel">
     <div layout="column" layout-align="center center" >
         <jk-carousel data="arrayData" item-template-url="'/views/item-template.html'"  max-width="2000" max-height="800" auto-slide="true" auto-slide-time="5000">
         </jk-carousel>
     </div>
 </div>
+
+
 
 <div class="landingPageMapImage">
   <img src="../assets/images/homephotos/mapview.png" alt="Find a job visual map representation" />
