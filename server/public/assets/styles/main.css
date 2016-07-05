@@ -350,6 +350,10 @@ md-toolbar {
   min-width: 25%;
 }
 
+.myJobsPayRepeat {
+  min-width: 15%;
+}
+
 .showMeTrue {
 }
 
