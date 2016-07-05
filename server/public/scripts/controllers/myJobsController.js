@@ -174,7 +174,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     $http.post('/mail/messages/item', item).then(function(response1) {
 
                         $scope.message = response1.data;
-                        console.log($scope.message['X-Mailgun-Variables']);
+                        console.log('job id from email: ', $scope.message['X-Mailgun-Variables']);
                         //console.log($scope.message);
                         var matches = $scope.message.Subject.match(/\[(.*?)\]/);
 
