@@ -16,8 +16,8 @@ router.post('/', function(req, res) {
     var sendTo = req.body.sendTo;
     var subject = req.body.subject;
     var jobID = req.body.jobID;
-    var message = 'Hello,\n
-You’re receiving this message from a service called Pixel Houz! We help property owners connect with real estate photographers to set a time for a photo session. You indicated to your realtor that your preferred date and time are <strong>$preferred date$ in the $preferred time$ </strong>. \n\n' +
+    var message = 'Hello,\n' +
+'You’re receiving this message from a service called Pixel Houz! We help property owners connect with real estate photographers to set a time for a photo session. You indicated to your realtor that your preferred date and time are <strong>$preferred date$ in the $preferred time$ </strong>. \n\n' +
 
 'Reply to this email to communicate directly with the photographer to find a time that works for both of you. \n\n' +
 
@@ -38,10 +38,11 @@ req.body.message + '\n\n' +
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
         to: 'anniegtom@yahoo.com',//test email, change to var sendTo when deployed
         subject: subject,
-        text: message
+        text: message,
         'X-Mailgun-Variables' : {
             jobID: jobID
-        };
+        }
+    };
             //attachment: filepath
 
     console.log("before sending mailgun", data);
@@ -87,14 +88,10 @@ router.post('/messages/item', function(req, res) {
 
 router.post('/messages/received', function(req, res) {
     var body = req.body;
-    function(error, body) {
-        if (error) {
-        res.sendStatus(406);
-    }
-    
-    });
 
+
+if (body) {
     res.sendStatus(200);
-
+}
 });
 module.exports = router;
