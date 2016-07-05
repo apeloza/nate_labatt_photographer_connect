@@ -47,11 +47,11 @@ req.body.message + '\n\n' +
 
     console.log("before sending mailgun", data);
     //send mailgun
-    // mailgun.messages().send(data, function(error, body) {
-    //     console.log(data);
-    //     console.log(Date.now());
-    //     res.sendStatus(200);
-    // });
+    mailgun.messages().send(data, function(error, body) {
+        console.log(data);
+        console.log(Date.now());
+        res.sendStatus(200);
+    });
 });
 //get mailgun email info from api
 router.get('/messages', function(req, res) {
