@@ -42,6 +42,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
     });
 
+//Gets the current date for a minimum date
+    $scope.myDate = new Date();
+    $scope.minDate = new Date(
+        $scope.myDate.getFullYear(),
+        $scope.myDate.getMonth(),
+        $scope.myDate.getDate());
+
     $scope.preferredTime = ['6:00 AM',
         '6:30 AM',
         '7:00 AM',
@@ -111,14 +118,14 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.setActive = function(obj) {
         $scope.activeJob = obj;
         $scope.messages = $scope.activeJob.chat.messages;
-    }
+    };
 
-    $scope.showMessages  = function (id){
-        if (id == $scope.activeJob._id) {
-            $scope.showMe = true;
-        }
+    $scope.showMessages  = function (job){
+      $scope.maxDate = new Date(job.dueDate);
+      console.log($scope.maxDate);
+      $scope.showMe = true;
 
-    }
+    };
 
     $scope.submitMessage = function(id) {
 
