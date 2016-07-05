@@ -2,6 +2,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     $scope.user = {};
     $scope.isUser = false;
     $scope.mapMarkers = [];
+
+    //The DataFactory ensures the user is logged in. If they are not, they are sent back to the landing page.
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
         $scope.user.userLevel = DataFactory.storeUserLevel();
@@ -14,8 +16,11 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
             $location.path('/');
         }
     });
+
+    //This array stores mapmarkers fetched from the server.
     $scope.mapMarkers = [];
 
+//The DataFactory gets a list of all jobs (which it then filters to open jobs), and then the mapmarkers for the Google Maps API are created.
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
         for (var i = 0; i < $scope.openJobs.length; i++) {
@@ -48,7 +53,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
 
     });
 
-
+//The selectedPin Object is initialized. It is used to display information in the modal that appears when a marker is clicked.
     $scope.selectedPin = {
         address: '',
         price: '',
@@ -62,8 +67,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         link: ''
     };
 
+//This function fires when a marker is clicked on. It updates the selected pin and displays the modal.
     $scope.showData = function(event, mapmarker) {
-      console.log($scope.selectedPin);
         $scope.pinSelected = true;
         $scope.selectedPin.address = mapmarker.position;
         $scope.selectedPin.price = mapmarker.price;
@@ -76,21 +81,20 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.jobID = mapmarker.jobID;
         $scope.selectedPin.link = encodeURI(mapmarker.position);
     };
+    //This fires when the X is clicked on the modal to hide it.
     $scope.closeModal = function() {
         $scope.pinSelected = false;
     };
+
+    //This function signs out a job to a user.
     $scope.takeJob = function(jobID) {
       var credentials = {
         username: $scope.user.username
       };
-        console.log("Taken!");
-        console.log(jobID);
-        console.log(credentials);
+
         $http.put('/jobs/' + jobID, credentials).then(function(response) {
-            console.log('Updated!');
-            console.log(response);
+
             $location.path('/myJobs');
-            //getAllJobs();
 
         });
     };
