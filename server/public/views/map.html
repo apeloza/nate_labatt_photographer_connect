@@ -40,14 +40,14 @@
           <div>
             <p>After Dark: <strong>{{job.afterDark}}</strong></p>
           </div>
-          <div class="mapPrice">
-            <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
-          </div>
           <div>
             <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
           </div>
           <div>
             <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
+          </div>
+          <div class="mapPrice">
+            <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
           </div>
           <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(job.jobID)">Accept Job</md-button>
         </div>

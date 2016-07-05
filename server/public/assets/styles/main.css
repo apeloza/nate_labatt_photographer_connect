@@ -103,6 +103,7 @@ ng-map {
   display: inline-block;
   width: 20%;
   vertical-align: top;
+  margin-left: 30px;
 }
 
 .jobbtn {
@@ -263,13 +264,13 @@ md-toolbar {
   margin-left:20px;
 }
 
-.photosSubmitted {
+.adminJobViewClientFeld {
   margin-left: 5%;
-  display:inline-block;
 }
 
 .inlineP {
   display:inline-block;
+  margin-left: 20px;
 }
 
 .borderRight {
