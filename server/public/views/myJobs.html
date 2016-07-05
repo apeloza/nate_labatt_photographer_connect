@@ -3,8 +3,18 @@
   <md-toolbar>
     <h1 class="toolbarText">My Jobs</h1>
   </md-toolbar>
+  <md-subheader>
+
+      <strong>Show me</strong>
+      <select ng-model="order" ng-options="prop for prop in ['all', 'accepted', 'finalized', 'finished']" ng-change="sort(order)"></select>
+      <strong>jobs</strong>
+
+      <input type="text" placeholder="Search" class="jobSearch" ng-model="searchText"/>
+      <i class="material-icons searchIcon" ng-click="search(searchText)">search</i>
+
+  </md-subheader>
   <div>
-    <md-card ng-repeat="job in userJobs">
+    <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList">
 
       <div ng-click="setActive(job)">
       <div class="userJobListRepeatJobs">

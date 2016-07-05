@@ -33,7 +33,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
 
     //
     $scope.editJob = function (id) {
-      
+
     }
 
     // Change job status to finished
@@ -108,6 +108,6 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
     } else if (order === 'all') {
       $scope.sortedJobs = $scope.jobs;
     }
-  }
+  };
 
 }]);
