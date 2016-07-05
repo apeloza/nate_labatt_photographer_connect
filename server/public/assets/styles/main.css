@@ -339,16 +339,24 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
-.showmeButtons {
-  display: inline-block;
+.showMeTrue {
+
 }
 
-.showMeFalse, .showMeTrue {
-  float: right;
+.userJobListRepeatJobs > div {
+  margin-left: 20px;
+  float: left;
+  border: 1px dotted black;
 }
+
+.userJobListRepeatJobs {
+  border: 1px dotted black;
+}
+
 
 .chatCard {
   border-top: 1px dotted black;
+  width: 100%;
 }
 
 .chatBox {
@@ -386,7 +394,7 @@ md-toolbar {
   display: inline-block;
   width: 250px;
   min-height: 300px;
-  margin-left: 65px;
+  margin-left: 60px;
   /*border: 2px solid black;*/
 }
 
@@ -397,13 +405,10 @@ md-toolbar {
 }
 
 .photoshootTimeSetButton {
-  margin-left: 80px;
+  margin-left: 70px;
 }
 
-.userJobListRepeatJobs > div {
-  margin-left: 20px;
-  float: left;
-}
+
 
 .chatHeader {
   margin-left: 20px;
