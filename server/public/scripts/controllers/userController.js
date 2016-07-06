@@ -86,7 +86,7 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'D
       var toast = $mdToast.simple()
          .textContent('Do you really want to remove that user?')
          .action('UNDO')
-         .position('top')
+         .position('bottom left right')
          .hideDelay(5000)
          .highlightAction(false);
       $mdToast.show(toast).then(function(response) {

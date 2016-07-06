@@ -42,7 +42,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
         var toast = $mdToast.simple()
            .textContent('Job updated')
            .action('Go Away')
-           .position('top')
+           .position('bottom left right')
            .hideDelay(3000)
            .highlightAction(false);
         $mdToast.show(toast).then(function(response) {
@@ -74,9 +74,9 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
 
     $scope.delete = function(id) {
                     var toast = $mdToast.simple()
-                       .textContent('Did you want to do that?')
+                       .textContent('Did you want to delete that job?')
                        .action('UNDO')
-                       .position('top')
+                       .position('bottom left right')
                        .hideDelay(5000)
                        .highlightAction(false);
                     $mdToast.show(toast).then(function(response) {
@@ -133,5 +133,5 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
       $scope.activeJob = obj;
       $scope.messages = $scope.activeJob.chat.messages;
   };
-  
+
 }]);
