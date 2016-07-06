@@ -22,14 +22,11 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
 
             $scope.jobs = DataFactory.findAllJobs();
             $scope.sortedJobs = DataFactory.findAllJobs();
-<<<<<<< HEAD
             if ($scope.sortedJobs.addons == undefined) {
               $scope.sortedJobs.addons = [];
               $scope.sortedJobs.addons.push({ name: "None"}) ;
             }
-=======
-          
->>>>>>> c861ea82d8c436924d997534fd0ec017f19b18cc
+
             if ($scope.jobs === undefined) {
                 alert("No Jobs in Database");
             } else {
