@@ -18,7 +18,6 @@ var JobSchema = new Schema({
     totalPrice: {type: Number},
     afterDark: {type: Object},
     preferredDate: {type: Date},
-    notes: {type: String},
     entryMethod: {type: String},
     addons: {type: Array},
     jobStatus: {type: String},
