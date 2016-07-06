@@ -86,9 +86,13 @@ router.post('/messages/item', function(req, res) {
 
 });
 
-router.post('/messages/received', function(req, res) {
+router.post('/messages/received/:recipient', function(req, res) {
     var body = req;
     console.log('REQUEST', req.body);
+    console.log('recipient: ', req.params.recipient);
+    console.log('recipient: ', req.params);
+    console.log('query: ', req.query);
+    console.log('route: ', req.route);
     res.sendStatus(201);
 // if (body) {
 //     console.log('received from mailgun post', body);
