@@ -278,6 +278,15 @@ md-toolbar {
 }
 
 .adminChatCard {
+  border-top: 1px dotted black;
+  width: 100%;
+}
+
+.homeownerChat {
+  margin-left: 5%;
+}
+
+.adminChatBox {
   display: inline-block;
   vertical-align:top;
   border: 2px solid black;
@@ -285,13 +294,9 @@ md-toolbar {
   margin-left: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
-  width: 65%;
+  width: 95%;
   min-height: 300px;
   height: auto;
-}
-
-.adminChatBox {
-  width: 800px;
 }
 
 .repeatedJobsAdmin > div {

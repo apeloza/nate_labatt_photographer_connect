@@ -2,7 +2,7 @@
 
 <div class="jobsListCard" ng-controller="FabCtrl as fab">
 
-    <<<<<<< HEAD <md-card>
+     <md-card>
         <!-- Toolbar ---------------------------------------------------------->
         <md-toolbar layout="row">
             <h1 class="toolbarText" flex="80">Job List</h1>
@@ -49,7 +49,7 @@
         </md-subheader>
         <!-- Sort and Search -------------------------------------------------->
 
-        <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList">
+        <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList" ng-click="setActive(job)">
             <div layout="row">
 
                 <div class="repeatedJobsAdmin" flex>
@@ -153,24 +153,35 @@
                                 </md-tooltip>
                             </md-button>
                         </md-fab-actions>
-
                     </md-fab-speed-dial>
-
                 </div>
             </div>
-            <div ng-show="showme" class="adminChatCard">
-                <md-card>
-                    <div class="chatFeatures">
-                        <h3>Homeowner Chat</h3>
-                        <div class="adminChatBox">
-                            <div class="adminChatText">
-                                {{job.chat.messages}}
-                            </div>
-                        </div>
-
-                        <!-- FAB ------------------------------------------>
 
 
+  <!-- START CHAT ------------------------------------------>
 
-                </md-card>
+            <div ng-show="showme && activeJob._id==job._id" class="adminChatCard">
+              <md-card>
+                <div class="chatFeatures">
+                  <h3 class="homeownerChat">Homeowner Chat</h3>
+                  <div class="adminChatBox">
+                      <p class="chatLine" ng-repeat="message in messages">On {{message.timestamp | date:'short'}} {{message.username}} said:  <strong> {{message.message}} </strong></p>
+                  </div>
+
+                    <div class="myJobsConfirmed" ng-show="job.chat.date != ''">
+                      <p><strong>CURRENTLY CONFIRMED</strong></p>
+                      <p>{{job.chat.date | date : format : longDate}}</p>
+                      <p>{{job.chat.time}}</p>
+                      <p>Method of Entry: {{job.entryMethod}}</p>
+                      <p ng-show="job.photoURL != ''">CURRENT PHOTO LINK: {{job.photoURL}}</p>
+                    </div>
+                </div>
+              </md-card>
+            </div>
+                        <!-- END CHAT ------------------------------------------>
+
+
+
+
         </md-card>
+      </md-card>
