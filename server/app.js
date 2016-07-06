@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var multer = require('multer');
 var mongoose = require('mongoose');
 var path = require('path');
 

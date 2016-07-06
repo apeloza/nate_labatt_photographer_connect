@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var multer = require('multer');
+var msg = multer();
 var domain = process.env.MAILGUN_DOMAIN || 'sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org';
 var key = process.env.MAILGUN_API_KEY || 'key-e8598fe5ada73e92e6f692b19e43f14f';
 var mailgun = require('mailgun-js')({
@@ -85,14 +87,16 @@ router.post('/messages/item', function(req, res) {
 
 });
 
-router.post('/messages/received/', function(req, res) {
-    var body = req;
+router.post('/messages/received/', msg.any(), function(req, res) {
+    
     console.log('REQUEST', req.body);
-    // console.log('recipient: ', req.params.recipient);
+console.log('REQ.FILE', req.files);
     console.log('recipient: ', req.params);
     console.log('query: ', req.query);
     console.log('route: ', req.route);
     res.sendStatus(201);
 
 });
+
+
 module.exports = router;
