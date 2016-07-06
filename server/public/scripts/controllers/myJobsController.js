@@ -140,13 +140,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                 $scope.email.message = $scope.messageContainer.message;
                 $scope.email.jobID = id;
                 console.log($scope.email);
-                $scope.messages.push($scope.messageContainer.message);
                 $scope.messageObject = {
                     message: $scope.email.message,
                     timestamp: Date.now(),
                     username: $scope.loggedUser.username,
                     msgType: 'sent'
                 };
+                $scope.messages.push($scope.messageObject);
 
                 $http.put('/chats/' + id, $scope.messageObject).then(function(req, res) {
                     console.log('Success');
@@ -157,6 +157,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     //
                     //     });
                     $scope.messageContainer = {};
+
                 });
             });
 
