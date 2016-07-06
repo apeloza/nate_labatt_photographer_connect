@@ -131,8 +131,8 @@ router.post('/messages/received/', msg.any(), function(req, res) {
                     });
 
                     if (!exists) {
-                        job.chat.messages.push(message);
-                        console.log('does not exist!');
+                        job.chat.messages.push(messageObject);
+                        console.log('does not exist!', messageObject);
 
                         job.save(function(err) {
                             if (err) {
