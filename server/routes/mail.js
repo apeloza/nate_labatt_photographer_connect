@@ -88,13 +88,13 @@ router.post('/messages/item', function(req, res) {
 
 router.post('/messages/received', function(req, res) {
     var body = req;
-    console.log(req.body);
-
-if (body) {
-    console.log('received from mailgun post', body);
-    res.sendStatus(200);
-} else {
-    res.sendStatus(406);
-}
+    console.log('REQUEST', req.body);
+    res.sendStatus(201);
+// if (body) {
+//     console.log('received from mailgun post', body);
+//     res.sendStatus(200);
+// } else {
+//     res.sendStatus(406);
+// }
 });
 module.exports = router;

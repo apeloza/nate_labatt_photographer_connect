@@ -18,8 +18,9 @@ var prices = require('./routes/prices');
 
 
 //Body Parser
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
 
 // Catch direct requests and make sure the user can view this page
 // app.use('/views/user.html', user)
