@@ -82,16 +82,6 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         '9:00 PM'
     ];
 
-    function combineDateAndTime(date, time) {
-        timeString = time;
-        console.log(timeString);
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        var dateString = '' + year + '-' + month + '-' + day;
-        var combined = new Date(dateString + ' ' + timeString);
-        return combined;
-    }
     $scope.submitDate = function(id) {
 
         var dateHolder = {
@@ -123,8 +113,13 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.showMessages  = function (job){
       $scope.maxDate = new Date(job.dueDate);
       console.log($scope.maxDate);
+      job.showMe = true;
       $scope.showMe = true;
 
+    };
+    $scope.hideMessages = function(job){
+      job.showMe = false;
+      $scope.showMe = false;
     };
 
     $scope.submitMessage = function(id) {
