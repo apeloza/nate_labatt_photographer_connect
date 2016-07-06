@@ -127,4 +127,11 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
     }
   };
 
+
+
+  $scope.setActive = function(obj) {
+      $scope.activeJob = obj;
+      $scope.messages = $scope.activeJob.chat.messages;
+  };
+  
 }]);
