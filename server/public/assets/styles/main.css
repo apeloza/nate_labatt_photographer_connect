@@ -194,13 +194,18 @@ md-toolbar {
   background-color: #E0F7FA;
 }
 
+.adminJobListCardAll {
+  /*background-color: #AD9079;*/
+  background-color: lightgrey;
+}
+
 .adminJobClientName {
   margin-left: 30px;
   vertical-align: top;
 }
 
 .repeatClientInfo {
-  margin-left: 30px;
+  margin-left: 15%;
 }
 
 .repeatJobInfo {
@@ -208,8 +213,7 @@ md-toolbar {
 }
 
 .repeatJobDetails {
-  margin-left: 30px;
-  vertical-align: top;
+  margin-left: 15%;
 }
 
 .open p {
@@ -266,6 +270,7 @@ md-toolbar {
 
 .adminJobViewClientFeld {
   margin-left: 5%;
+  margin-top: 20px;
 }
 
 .inlineP {
@@ -286,6 +291,10 @@ md-toolbar {
   margin-left: 5%;
 }
 
+.adminJobsConfirmed {
+  text-align: center;
+}
+
 .adminChatBox {
   display: inline-block;
   vertical-align:top;
@@ -294,7 +303,7 @@ md-toolbar {
   margin-left: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
-  width: 95%;
+  width: 96%;
   min-height: 300px;
   height: auto;
 }
@@ -511,18 +520,55 @@ md-toolbar {
 #contactInfo {
   text-align: center;
 }
-#contactInfo, h3 {
+#contactInfo h3 {
   color: gray;
 }
 
-/* ---------------------- update prices view  --------------------------*/
+/*----------------------------------------------------Update Prices Page----------------------------------------------------*/
 .updatePricesForm {
-  width:400px;
   margin:auto;
   margin-top: 30px;
 }
 
+.updatePricesFormDivs {
+  display: inline-block;
+}
+
 .user {
   color:red;
+}
 
+.updatePricesSquareFeet {
+  display: inline-block;
+  height: 100px;
+  width: 40%;
+  margin-left: 6%;
+}
+
+.updatePricesAfterDark {
+  display: inline-block;
+  height: 100px;
+  width: 40%;
+  margin-left: 6%;
+}
+
+.updatePricesAddons {
+  display: inline-block;
+  height: 100px;
+  width: 40%;
+  margin-left: 6%;
+}
+
+.updateCurrentPricesForm h2{
+  margin-left: 6%;
+  border-top: 1px dotted black;
+}
+
+.updatePricesAddons .md-button {
+  display: inline-block;
+}
+
+.updateServicesButton {
+  text-align: center;
+  margin-top: 20px;
 }

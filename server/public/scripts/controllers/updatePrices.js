@@ -26,10 +26,10 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
     function getPrices() {
         $http.get('/prices').then(function(response) {
             $scope.prices = response.data;
-            $scope.addons = response.data[0].addons;
-            $scope.sqft = response.data[0].sqft;
-            $scope.afterDark = response.data[0].afterDark;
-
+            // $scope.addons = response.data[0].addons;
+            $scope.addons = response.data.addons;
+            $scope.sqft = response.data.sqft;
+            $scope.afterDark = response.data.afterDark;
         });
     }
 
