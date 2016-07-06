@@ -94,6 +94,7 @@ router.post('/messages/item', function(req, res) {
 router.post('/messages/received/', msg.any(), function(req, res) {
 
     var message = req.body;
+    var exists = false;
 
     console.log('REQUEST', req.body);
     console.log('REQ.FILE', req.files);
