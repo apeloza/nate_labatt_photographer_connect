@@ -112,7 +112,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
                 username: message.sender,
                 msgType: 'received'
             };
-
+console.log("MESSAGE OBJECT", messageObject);
             Job.findById(id, function(err, job) {
                 if (err) {
                     res.sendStatus(500);
