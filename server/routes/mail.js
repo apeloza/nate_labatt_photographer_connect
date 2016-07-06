@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//var nodemailer = require('nodemailer');
+var multer = require('multer');
 var request = require('request');
 var domain = process.env.MAILGUN_DOMAIN || 'sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org';
 var key = process.env.MAILGUN_API_KEY || 'key-e8598fe5ada73e92e6f692b19e43f14f';
@@ -94,11 +94,6 @@ router.post('/messages/received/', function(req, res) {
     console.log('query: ', req.query);
     console.log('route: ', req.route);
     res.sendStatus(201);
-// if (body) {
-//     console.log('received from mailgun post', body);
-//     res.sendStatus(200);
-// } else {
-//     res.sendStatus(406);
-// }
+
 });
 module.exports = router;
