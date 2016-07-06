@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var mongoose = require('mongoose');
 var path = require('path');
 
@@ -18,7 +19,7 @@ var prices = require('./routes/prices');
 
 
 //Body Parser
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
