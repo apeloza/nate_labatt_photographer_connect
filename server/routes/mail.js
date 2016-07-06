@@ -70,7 +70,7 @@ router.get('/messages', function(req, res) {
 
 });
 
-router.post('/messages/item', multer.any(), function(req, res) {
+router.post('/messages/item', function(req, res) {
 
     var item = req.body;
         if (item.storage.key) {
