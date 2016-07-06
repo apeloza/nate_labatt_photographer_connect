@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel', 'ngMessages']);
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngMap', 'jkAngularCarousel', 'ngMessages', 'ngAnimate']);
 
 // routing
 app.config(['$routeProvider', function($routeProvider) {
