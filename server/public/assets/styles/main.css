@@ -278,7 +278,16 @@ md-toolbar {
 }
 
 .adminChatCard {
-  border-top: 1px dotted black;
+  display: inline-block;
+  vertical-align:top;
+  border: 2px solid black;
+  border-radius:3px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 65%;
+  min-height: 300px;
+  height: auto;
 }
 
 .adminChatBox {
