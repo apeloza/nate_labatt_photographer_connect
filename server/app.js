@@ -18,7 +18,7 @@ var prices = require('./routes/prices');
 
 
 //Body Parser
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
