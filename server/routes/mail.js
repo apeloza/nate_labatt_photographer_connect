@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var multer = require('multer');
 var request = require('request');
 var domain = process.env.MAILGUN_DOMAIN || 'sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org';
 var key = process.env.MAILGUN_API_KEY || 'key-e8598fe5ada73e92e6f692b19e43f14f';
