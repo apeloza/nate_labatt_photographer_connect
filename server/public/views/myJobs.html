@@ -37,7 +37,8 @@
           <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
           <p>Pay: <strong>${{job.totalPrice}}</strong></p>
         </div>
-          <md-button class="md-raised md-primary showMeTrue" ng-click="showMessages(job)">show messages</md-button>
+          <md-button ng-hide="job.showMe" class="md-raised md-primary showMeTrue" ng-click="showMessages(job)">show messages</md-button>
+          <md-button ng-show="job.showMe" class="md-raised md-primary showMeFalse" ng-click="hideMessages(job)">hide messages</md-button>
       </div>
 
 
