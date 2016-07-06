@@ -38,11 +38,14 @@
 
     <div layout="row">
         <div layout="column">
-            <form>
+            <form name="createJob">
                 <div flex class="clientInfo">
                     <md-input-container required>
                         <label>Client Name</label>
-                        <input type="text" ng-model="newJob.name" required/>
+                        <input type="text" ng-model="newJob.name" name="name" required/>
+                        <div ng-messages="createJob.name.$error">
+                          <div ng-message="required">This is required.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container>
@@ -56,19 +59,28 @@
                 <div flex class="email">
                     <md-input-container ng-repeat="email in emails track by $index">
                         <label>Email</label>
-                        <input type="email" ng-model="newJob.emails[$index]" required/>
+                        <input type="email" ng-model="newJob.emails[$index]" name="email" required/>
+                        <div ng-messages="createJob.email.$error">
+                          <div ng-message="required">At least one email is required.</div>
+                        </div>
                     </md-input-container>
                 </div>
 
                 <div flex>
                     <md-input-container>
                         <label>Address</label>
-                        <input type="text" ng-model="newJob.address.line1" required/>
+                        <input type="text" ng-model="newJob.address.line1" name="line1" required/>
+                        <div ng-messages="createJob.line1.$error">
+                          <div ng-message="required">An address is required.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container>
                         <label>Zip Code</label>
-                        <input type="text" ng-model="newJob.address.zip" required md-maxlength="5" />
+                        <input type="text" ng-model="newJob.address.zip" name="zip" required md-maxlength="5" />
+                        <div ng-messages="createJob.zip.$error">
+                          <div ng-message="required">Zipcode is required.</div>
+                        </div>
 
                     </md-input-container>
 
@@ -77,7 +89,10 @@
                 <div flex>
                     <md-input-container>
                         <label>City</label>
-                        <input type="text" ng-model="newJob.address.city" required/>
+                        <input type="text" ng-model="newJob.address.city" name="city" required/>
+                        <div ng-messages="createJob.city.$error">
+                          <div ng-message="required">You need to enter a city.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container>
