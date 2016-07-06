@@ -43,7 +43,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
            .textContent('Job updated')
            .action('Go Away')
            .position('top')
-           .hideDelay(5000)
+           .hideDelay(3000)
            .highlightAction(false);
         $mdToast.show(toast).then(function(response) {
            if ( response == 'ok' ) {
