@@ -143,6 +143,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
                             res.sendStatus(204);
                         });
                     }
+                    res.sendStatus(200);
                 }
             });
     }
