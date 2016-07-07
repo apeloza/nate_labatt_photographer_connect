@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
-//var nodemailer = require('nodemailer');
 var request = require('request');
+
+var multer = require('multer');
+var msg = multer();
+
+var Job = require('../models/job');
+
 var domain = process.env.MAILGUN_DOMAIN || 'sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org';
 var key = process.env.MAILGUN_API_KEY || 'key-e8598fe5ada73e92e6f692b19e43f14f';
 var mailgun = require('mailgun-js')({
@@ -86,15 +91,63 @@ router.post('/messages/item', function(req, res) {
 
 });
 
-router.post('/messages/received', function(req, res) {
-    var body = req;
-    console.log(req.body);
+router.post('/messages/received/', msg.any(), function(req, res) {
 
-if (body) {
-    console.log('received from mailgun post', body);
-    res.sendStatus(200);
-} else {
-    res.sendStatus(406);
-}
+    var message = req.body;
+    var exists = false;
+
+    console.log('REQUEST', req.body);
+    console.log('REQ.FILE', req.files);
+
+    var matches = message.Subject.match(/\[(.*?)\]/);
+
+    if (matches) {
+        var id = matches[1];
+        console.log("submatch", id);
+
+            console.log('message matched to subject', message);
+            var messageObject = {
+                message: message['stripped-text'],
+                timestamp: Date.now(),
+                username: message.sender,
+                msgType: 'received'
+            };
+console.log("MESSAGE OBJECT", messageObject);
+            Job.findById(id, function(err, job) {
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+
+                if (job) {
+
+                    job.chat.messages.forEach(function(item, index) {
+
+                        console.log('in db', item.timestamp);
+                        console.log('new msg', message.timestamp);
+                        if (item.message == messageObject.message) {
+                            exists = true;
+                        }
+                    });
+
+                    if (!exists) {
+                        job.chat.messages.push(messageObject);
+                        console.log('does not exist!', messageObject);
+
+                        job.save(function(err) {
+                            if (err) {
+                                res.sendStatus(500);
+                                return;
+                            }
+                            console.log("/put a message");
+                            res.sendStatus(204);
+                        });
+                    }
+
+                }
+            });
+    }
 });
+
+
 module.exports = router;

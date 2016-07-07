@@ -4,7 +4,7 @@
 
 
 
- <md-card>
+ <md-card class="adminJobListCardAll">
 
 
         <!-- Toolbar ---------------------------------------------------------->
@@ -102,8 +102,9 @@
                     <div class="repeatJobDetails">
                         <p class="inlineP borderRight">After Dark: <strong>{{job.afterDark.name}} - $ {{job.afterDark.value}}</strong></p>
                         <p class="inlineP">Due Date: <strong>{{job.dueDate | date : format : longDate}}</strong></p>
-                        <p class="inlineP">Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
+                        <p class="inlineP" ng-if="job.addons !=''">Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
                         <p class="inlineP photosSubmitted" ng-if="job.photoURL !=''">Photos Submitted: <strong>{{job.photoURL}}</strong></p>
+                        <p class="inlineP entryMethodAdminView" ng-if="job.entryMethod != undefined">Entry Method: <strong>{{job.entryMethod}}</strong></p>
                     </div>
                 </div>
 
@@ -172,7 +173,7 @@
                       <p class="chatLine" ng-repeat="message in messages">On {{message.timestamp | date:'short'}} {{message.username}} said:  <strong> {{message.message}} </strong></p>
                   </div>
 
-                    <div class="myJobsConfirmed" ng-show="job.chat.date != ''">
+                    <div class="adminJobsConfirmed" ng-show="job.chat.date != ''">
                       <p><strong>CURRENTLY CONFIRMED</strong></p>
                       <p>{{job.chat.date | date : format : longDate}}</p>
                       <p>{{job.chat.time}}</p>
