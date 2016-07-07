@@ -38,11 +38,11 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         $scope.userJobs = DataFactory.findUserJobs();
         $scope.sortedJobs = DataFactory.findUserJobs();
         console.log('user jobs:', $scope.userJobs);
-//getEmail();
+        //getEmail();
 
     });
 
-//Gets the current date for a minimum date
+    //Gets the current date for a minimum date
     $scope.myDate = new Date();
     $scope.minDate = new Date(
         $scope.myDate.getFullYear(),
@@ -108,18 +108,19 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     $scope.setActive = function(obj) {
         $scope.activeJob = obj;
         $scope.messages = $scope.activeJob.chat.messages;
+        $scope.maxDate = new Date($scope.activeJob.dueDate);
+        $scope.showMe = true;
     };
 
-    $scope.showMessages  = function (job){
-      $scope.maxDate = new Date(job.dueDate);
-      console.log($scope.maxDate);
-      job.showMe = true;
-      $scope.showMe = true;
+    $scope.showMessages = function(job) {
+        console.log($scope.maxDate);
+        job.showMe = true;
+        $scope.showMe = true;
 
     };
-    $scope.hideMessages = function(job){
-      job.showMe = false;
-      $scope.showMe = false;
+    $scope.hideMessages = function(job) {
+        job.showMe = false;
+        $scope.showMe = false;
     };
 
     $scope.submitMessage = function(id) {
@@ -190,7 +191,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                                 console.log('message matched to subject', $scope.message);
                                 $scope.messageObject = {
                                     message: $scope.message['stripped-text'],
-                                    timestamp: item.timestamp*1000,
+                                    timestamp: item.timestamp * 1000,
                                     username: $scope.message.sender,
                                     msgType: 'received'
                                 };
@@ -219,30 +220,30 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         });
     }
     // Sort function
-    $scope.sort = function (order = 'all') {
-      $scope.sortedJobs = [];
+    $scope.sort = function(order = 'all') {
+        $scope.sortedJobs = [];
 
-   if (order === 'accepted') {
-        $scope.userJobs.forEach(function (i) {
-          if (i.jobStatus === 'accepted'){
-          $scope.sortedJobs.push(i);
+        if (order === 'accepted') {
+            $scope.userJobs.forEach(function(i) {
+                if (i.jobStatus === 'accepted') {
+                    $scope.sortedJobs.push(i);
+                }
+            });
+        } else if (order === 'finalized') {
+            $scope.userJobs.forEach(function(i) {
+                if (i.jobStatus === 'finalized') {
+                    $scope.sortedJobs.push(i);
+                }
+            });
+        } else if (order === 'finished') {
+            $scope.userJobs.forEach(function(i) {
+                if (i.jobStatus === 'finished') {
+                    $scope.sortedJobs.push(i);
+                }
+            });
+        } else if (order === 'all') {
+            $scope.sortedJobs = $scope.userJobs;
         }
-        });
-      } else if (order === 'finalized') {
-        $scope.userJobs.forEach(function (i) {
-          if (i.jobStatus === 'finalized'){
-          $scope.sortedJobs.push(i);
-        }
-        });
-      } else if (order === 'finished') {
-        $scope.userJobs.forEach(function (i) {
-          if (i.jobStatus === 'finished'){
-          $scope.sortedJobs.push(i);
-        }
-        });
-      } else if (order === 'all') {
-        $scope.sortedJobs = $scope.userJobs;
-      }
     };
 
 }]);
