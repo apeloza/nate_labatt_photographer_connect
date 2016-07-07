@@ -69,7 +69,7 @@ router.post('/finalized', function(req, res) {
             res.sendStatus(500);
             return;
         }
-    }
+    });
     if (job) {
     var sendTo = job.emails;
     var subject = 'Your Pixel Houz Photo Session Time';
