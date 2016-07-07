@@ -125,7 +125,7 @@ console.log("MESSAGE OBJECT", messageObject);
 
                         console.log('in db', item.timestamp);
                         console.log('new msg', message.timestamp);
-                        if (item.message == message.message) {
+                        if (item.message == messageObject.message) {
                             exists = true;
                         }
                     });
