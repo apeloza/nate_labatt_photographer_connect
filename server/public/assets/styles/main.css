@@ -250,6 +250,24 @@ md-toolbar {
   text-align:center;
 }
 
+.accepted {
+  background-color: #FFF176;
+  padding:5px;
+  border-radius: 3px;
+}
+
+.finalized {
+  background-color: #81C784;;
+  padding:5px;
+  border-radius: 3px;
+}
+
+.finished {
+  background-color: #E0E0E0;
+  padding:5px;
+  border-radius: 3px;
+}
+
 .searchIcon {
   color: #78909C;
   float:right;
