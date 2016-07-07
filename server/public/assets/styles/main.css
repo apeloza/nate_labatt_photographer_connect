@@ -195,7 +195,6 @@ md-toolbar {
 }
 
 .adminJobListCardAll {
-  /*background-color: #AD9079;*/
   background-color: lightgrey;
 }
 
@@ -325,6 +324,9 @@ md-toolbar {
 }
 
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
+.userList {
+  background-color: lightgrey;
+}
 
 .userListCards > div {
   display: inline-block;
