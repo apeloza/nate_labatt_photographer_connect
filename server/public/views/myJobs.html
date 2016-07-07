@@ -37,7 +37,10 @@
           <p>Job Status: <strong>{{job.jobStatus}}</strong></p>
           <p>Pay: <strong>${{job.totalPrice}}</strong></p>
         </div>
+        <div>
+          <p>Shoot Date: <strong>{{job.chat.date | date : format : longDate}} at {{job.chat.time}}</strong></p>
           <p><strong>Click to show messages . . .</strong></p>
+        </div>
       </div>
 
 
