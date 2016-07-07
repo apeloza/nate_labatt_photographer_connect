@@ -158,7 +158,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     //
                     //     });
                     $scope.messageContainer = {};
-
+                    $scope.activeJob.chat.messages = $scope.messages;
                 });
             });
 
