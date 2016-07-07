@@ -41,7 +41,7 @@
 
         <div class="updatePricesFormDivs">
             <md-input-container>
-                <label><strong>Name</strong></label>
+                <label><strong>Name (Unique)</strong></label>
                 <input type="text" ng-model="newAddon.name" />
             </md-input-container>
         </div>
@@ -54,12 +54,6 @@
             </md-input-container>
         </div>
 
-        <div class="updatePricesFormDivs">
-            <md-input-container>
-                <label><strong>ID(Unique)</strong></label>
-                <input type="text" ng-model="newAddon.id" />
-            </md-input-container>
-        </div>
         <md-button class="md-raised md-primary" ng-click="createAddon()">Create</md-button>
 
     </form>
@@ -99,14 +93,15 @@
             <md-input-container>
                 <label>Value</label>
                 <input type="number" ng-value="item.value" ng-model="item.value" />
-            </md-input-container>
 
-            <md-button aria-label="menu" class="md-fab md-mini md-warn" ng-click="deleteAddon(item.id)">
+            </md-input-container>
+            <md-button aria-label="menu" class="md-fab md-mini md-warn" ng-click="deleteAddon(item.name)">
                 <i class="material-icons deleteForever">delete_forever</i>
                 <md-tooltip md-direction="top">
                     Delete Addon
                 </md-tooltip>
             </md-button>
+
 
         </div>
         <div class="updateServicesButton">

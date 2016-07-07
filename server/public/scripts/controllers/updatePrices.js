@@ -57,10 +57,10 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
     };
 
     //This function deletes an addon by splicing it from the array of addons and then sending the spliced array to the server.
-    $scope.deleteAddon = function(id) {
+    $scope.deleteAddon = function(name) {
       var index;
         for (var i = 0; i < $scope.addons.length; i++) {
-            if ($scope.addons[i].id == id) {
+            if ($scope.addons[i].name == name) {
                  index = i;
             }
         }
