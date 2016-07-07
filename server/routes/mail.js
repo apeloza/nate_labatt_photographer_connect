@@ -106,7 +106,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
         console.log("submatch", id);
 
             console.log('message matched to subject', message);
-            messageObject = {
+            var messageObject = {
                 message: message['stripped-text'],
                 timestamp: Date.now(),
                 username: message.sender,
@@ -143,7 +143,7 @@ console.log("MESSAGE OBJECT", messageObject);
                             res.sendStatus(204);
                         });
                     }
-                    res.sendStatus(200);
+
                 }
             });
     }
