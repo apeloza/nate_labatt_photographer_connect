@@ -41,6 +41,24 @@ router.put('/date/:id', function(req, res) {
     }
 });
 
+router.put('/photos/:id', function(req, res){
+  if(req.isAuthenticated()) {
+    Job.findOne({
+      _id: req.params.id
+    }, function(err, job) {
+      job.photoURL = req.body.url;
+      job.save(function(err) {
+        if(err) {
+          res.send(err);
+        }
+        res.send(job);
+      });
+    });
+  } else {
+    res.send(false);
+  }
+});
+
 
 router.put('/:id', function(req, res) {
     if (req.isAuthenticated()) {

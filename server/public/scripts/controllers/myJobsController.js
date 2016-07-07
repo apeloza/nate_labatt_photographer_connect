@@ -91,6 +91,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
             DataFactory.getAllJobs().then(function() {
                 $scope.userJobs = DataFactory.findUserJobs();
+                $scope.sortedJobs = DataFactory.findUserJobs();
 
             });
 
@@ -98,8 +99,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     };
     $scope.submitPhotoURL = function(id) {
         $http.put('/chats/photos/' + id, $scope.photoURL).then(function(response) {
+          console.log('updated');
             DataFactory.getAllJobs().then(function() {
                 $scope.userJobs = DataFactory.findUserJobs();
+                $scope.sortedJobs = DataFactory.findUserJobs();
             });
 
         });
