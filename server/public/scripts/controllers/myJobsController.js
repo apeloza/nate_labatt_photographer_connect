@@ -92,7 +92,9 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             DataFactory.getAllJobs().then(function() {
                 $scope.userJobs = DataFactory.findUserJobs();
                 $scope.sortedJobs = DataFactory.findUserJobs();
-
+                $http.post('mail/finalized/' + id, dateHolder).then(function(req1, res1) {
+                    console.log('email sent to clients');
+                    });
             });
 
         });
@@ -143,6 +145,10 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                 $scope.email.subject = "Set a time for a photo session [" + response2.data._id + "]";
                 $scope.email.message = $scope.messageContainer.message;
                 $scope.email.jobID = id;
+
+                $scope.email.preferredDate = response2.data.preferredDate;
+                $scope.email.preferredTime = response2.data.timeFrame;
+
                 console.log($scope.email);
                 $scope.messageObject = {
                     message: $scope.email.message,
@@ -156,10 +162,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     console.log('Success');
                     sendEmail();
                     $scope.email = {};
-                    //     DataFactory.getAllJobs().then(function() {
-                    //         $scope.userJobs = DataFactory.findUserJobs();
-                    //
-                    //     });
+
                     $scope.messageContainer = {};
                     $scope.activeJob.chat.messages = $scope.messages;
                 });
