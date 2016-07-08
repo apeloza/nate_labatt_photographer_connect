@@ -179,7 +179,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
             console.log('message matched to subject', message);
             var messageObject = {
                 message: message['stripped-text'],
-                timestamp: message.timestamp,
+                timestamp: message.timestamp*1000,
                 username: message.sender,
                 msgType: 'received'
             };
@@ -198,7 +198,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
                       var inDBTime = new Date(item.timestamp);
                       console.log('in db', inDBTime);
 
-                      var emailTime = new Date(message.timestamp);
+                      var emailTime = new Date(message.timestamp*1000);
                       console.log('new msg', emailTime);
                         if (inDBTime == emailTime) {
                             exists = true;
