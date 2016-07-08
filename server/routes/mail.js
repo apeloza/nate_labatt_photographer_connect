@@ -13,7 +13,9 @@ var mailgun = require('mailgun-js')({
     apiKey: key,
     domain: domain
 });
-
+var orgName = 'Pixel Houz';
+var orgAddress = '9999 Road Way';
+var orgCityStateZip = 'Minneapolis, MN 55401';
 
 //sends an email to clients
 router.post('/', function(req, res) {
@@ -35,9 +37,9 @@ router.post('/', function(req, res) {
 req.body.message + '\n\n' +
 '-------------------------------------------\n\n' +
 'Job # [' + jobID + ']\n' +
-'Pixel Houz\n' +
-'9999 Road Way\n' +
-'Minneapolis MN 55401\n' +
+orgName + '\n' +
+orgAddress + '\n' +
+orgCityStateZip + '\n\n' +
 
 'Pixel Houz does not share your email or use it for anything except direct communication.\n\n';
 
@@ -97,9 +99,9 @@ router.post('/finalized', function(req, res) {
 'into the subject of an email to postmaster@mg.pixelhouz.com and you should get a response.\n\n' +
 
 'Job # [' + jobID + ']\n' +
-'Pixel Houz\n' +
-'9999 Road Way\n' +
-'Minneapolis MN 55401\n\n' +
+orgName + '\n' +
+orgAddress + '\n' +
+orgCityStateZip + '\n\n' +
 
 'Pixel Houz does not share your email or use it for anything except direct communication.';
 
@@ -114,7 +116,7 @@ router.post('/finalized', function(req, res) {
             jobID: jobID
         }
     };
-            //attachment: filepath
+        
 
     console.log("before sending mailgun", data);
     //send mailgun
@@ -127,7 +129,7 @@ router.post('/finalized', function(req, res) {
 });
 
 
-//get mailgun email info from api
+//get mailgun email info from Mailgun API
 router.get('/messages', function(req, res) {
     console.log("get mail");
     console.log(domain);
@@ -161,7 +163,7 @@ router.post('/messages/item', function(req, res) {
 
 });
 
-//receives messages from mailgun by POST
+//receives messages from Mailgun by POST
 router.post('/messages/received/', msg.any(), function(req, res) {
 
     var message = req.body;
@@ -169,7 +171,7 @@ router.post('/messages/received/', msg.any(), function(req, res) {
 
     console.log('REQUEST', req.body);
     console.log('REQ.FILE', req.files);
-
+    //match the message subject to the job ID
     var matches = message.Subject.match(/\[(.*?)\]/);
 
     if (matches) {

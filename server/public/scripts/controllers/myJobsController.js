@@ -173,7 +173,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     };
 
 
-    //gets email from mailgun
+    //gets stored email from Mailgun, should only need this in case post not functioning
     function getEmail() {
         $http.get('/mail/messages').then(function(response) {
             if (response.data) {
