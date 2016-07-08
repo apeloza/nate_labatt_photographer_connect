@@ -73,15 +73,9 @@ router.put('/:id', function(req, res) {
             }
             console.log('job', job);
             if (job) {
-
-                job.chat.messages.forEach(function(item, index) {
-
-                  var inDBTime = new Date(item.timestamp);
-                  console.log('in db', inDBTime);
-
-                  var emailTime = new Date(message.timestamp);
-                  console.log('new msg', emailTime);
-                    if (inDBTime == emailTime) {
+              //avoid repeats
+                var lastIndex = job.chat.messages.length - 1;
+                    if (job.chat.messages[lastIndex] == message.message) {
                         exists = true;
                     }
                 });
