@@ -21,7 +21,8 @@ router.post('/', function(req, res) {
     var sendTo = req.body.sendTo;
     var subject = req.body.subject;
     var jobID = req.body.jobID;
-    var preferredDate = req.body.preferredDate;
+    var preferredDate = new Date(req.body.preferredDate);
+    preferredDate.toDateString();
     var preferredTime = req.body.preferredTime;
 
     var message = 'Hello,\n' +
@@ -75,7 +76,8 @@ router.post('/finalized', function(req, res) {
     var subject = 'Your Pixel Houz Photo Session Time';
     var jobID = job.jobID;
 
-    var date = req.body.date;
+    var date = new Date(req.body.date);
+    date.toDateString();
     var time = req.body.time;
     var address = job.address.line1;
 
@@ -97,9 +99,9 @@ router.post('/finalized', function(req, res) {
 'Job # [' + jobID + ']\n' +
 'Pixel Houz\n' +
 '9999 Road Way\n' +
-'Minneapolis MN 55401\n' +
+'Minneapolis MN 55401\n\n' +
 
-'Pixel Houz does not share your email or use it for anything except direct communication.\n\n';
+'Pixel Houz does not share your email or use it for anything except direct communication.';
 
     var sender = '"Pixel Houz" <' + process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org' + '>';
 
@@ -117,7 +119,7 @@ router.post('/finalized', function(req, res) {
     console.log("before sending mailgun", data);
     //send mailgun
     mailgun.messages().send(data, function(error, body) {
-        console.log(data);
+        console.log('message sent for seesion time', data);
         console.log(Date.now());
         res.sendStatus(200);
     });
@@ -143,6 +145,7 @@ router.get('/messages', function(req, res) {
 
 });
 
+//get one stored message
 router.post('/messages/item', function(req, res) {
 
     var item = req.body;
@@ -158,6 +161,7 @@ router.post('/messages/item', function(req, res) {
 
 });
 
+//receives messages from mailgun by POST
 router.post('/messages/received/', msg.any(), function(req, res) {
 
     var message = req.body;
@@ -175,11 +179,12 @@ router.post('/messages/received/', msg.any(), function(req, res) {
             console.log('message matched to subject', message);
             var messageObject = {
                 message: message['stripped-text'],
-                timestamp: Date.now(),
+                timestamp: message.timestamp,
                 username: message.sender,
                 msgType: 'received'
             };
-console.log("MESSAGE OBJECT", messageObject);
+
+            console.log("MESSAGE OBJECT", messageObject);
             Job.findById(id, function(err, job) {
                 if (err) {
                     res.sendStatus(500);
@@ -190,9 +195,12 @@ console.log("MESSAGE OBJECT", messageObject);
 
                     job.chat.messages.forEach(function(item, index) {
 
-                        console.log('in db', item.timestamp);
-                        console.log('new msg', message.timestamp);
-                        if (item.message == messageObject.message) {
+                      var inDBTime = new Date(item.timestamp);
+                      console.log('in db', inDBTime);
+
+                      var emailTime = new Date(message.timestamp);
+                      console.log('new msg', emailTime);
+                        if (inDBTime == emailTime) {
                             exists = true;
                         }
                     });
