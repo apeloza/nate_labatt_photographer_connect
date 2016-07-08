@@ -160,6 +160,10 @@ md-input-container {
   padding: 20px;
 }
 
+.jobInfo{
+  width:50%;
+}
+
 .email {
   width: 80%;
   margin-left:20px;
@@ -454,6 +458,15 @@ md-toolbar {
 
 .messageTextArea {
   width: 75%;
+}
+
+.textAreaContainer {
+  width:50%;
+}
+
+.textAreaContainer textarea {
+  width:80%;
+  margin: auto;
 }
 
 .chatTimeSet {
