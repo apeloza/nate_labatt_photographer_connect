@@ -78,7 +78,7 @@ router.put('/:id', function(req, res) {
                     if (job.chat.messages[lastIndex] == message.message) {
                         exists = true;
                     }
-                });
+              
 
                 if (!exists) {
                     job.chat.messages.push(message);
