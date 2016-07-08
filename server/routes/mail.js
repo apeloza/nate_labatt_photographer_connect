@@ -47,7 +47,7 @@ orgCityStateZip + '\n\n' +
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
-        to: 'annetomassoni@gmail.com',//test email, change to var sendTo when deployed
+        to: 'happyhomeowner2016@gmail.com',//test email, change to var sendTo when deployed
         subject: subject,
         text: message,
         'X-Mailgun-Variables' : {
@@ -109,14 +109,14 @@ orgCityStateZip + '\n\n' +
 
     var data = {
         from: process.env.MAILGUN_SMTP_LOGIN || 'postmaster@sandboxdb893f19ba9346f68004491a7dd09e59.mailgun.org',
-        to: 'annetomassoni@gmail.com',//test email, change to var sendTo when deployed
+        to: 'happyhomeowner2016@gmail.com',//test email, change to var sendTo when deployed
         subject: subject,
         text: message,
         'X-Mailgun-Variables' : {
             jobID: jobID
         }
     };
-        
+
 
     console.log("before sending mailgun", data);
     //send mailgun
