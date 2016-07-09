@@ -55,10 +55,9 @@
 
         <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList" ng-click="setActive(job)">
             <div layout="row">
-
                 <div class="repeatedJobsAdmin" flex>
                     <div class="repeatStatus" ng-class="job.jobStatus">
-                        <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'"> by {{job.jobAcceptedBy}}</span></p>
+                        <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'"> by {{job.jobAcceptedBy}}</span></p>
                     </div>
 
                     <div class="adminJobViewClientFeld">

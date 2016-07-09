@@ -8,7 +8,6 @@ body, h1 {
 body, p {
   font-weight:600;
   color:#4d4d4d;
-
 }
 
 .md-raised {
@@ -228,8 +227,6 @@ md-toolbar {
 
 .open p {
   background-color: #E57373;
-  width:100px;
-  margin-left:10px;
   padding:5px;
   border-radius: 3px;
   text-align:center;
@@ -237,16 +234,12 @@ md-toolbar {
 }
 .accepted p {
   background-color: #FFF176;
-  width:100px;
-  margin-left:10px;
   padding:5px;
   border-radius: 3px;
   text-align:center;
 }
 .finalized p {
   background-color: #81C784;
-  width:100px;
-  margin-left:10px;
   padding:5px;
   border-radius: 3px;
   text-align:center;
@@ -254,8 +247,6 @@ md-toolbar {
 }
 .finished p {
   background-color: #E0E0E0;
-  width:100px;
-  margin-left:10px;
   padding:5px;
   border-radius: 3px;
   text-align:center;
@@ -268,16 +259,23 @@ md-toolbar {
 }
 
 .finalized {
-  background-color: #81C784;;
+  background-color: #81C784;
   padding:5px;
   border-radius: 3px;
   color:white;
+  text-align:center;
 }
 
 .finished {
   background-color: #E0E0E0;
   padding:5px;
   border-radius: 3px;
+  text-align:center;
+}
+
+.repeatStatus {
+ float:left;
+  width:30%;
 }
 
 .searchIcon {
@@ -340,19 +338,6 @@ md-toolbar {
 .repeatedJobsAdmin > div {
   display: inline-block;
 }
-
-.repeatJobFabButtons {
-
-}
-
-
-.fabSpeedDialAdminJob {
-
-
-
-
-}
-
 /*----------------------------------------------------Admin User List Page----------------------------------------------------*/
 .userList {
   background-color: lightgrey;
