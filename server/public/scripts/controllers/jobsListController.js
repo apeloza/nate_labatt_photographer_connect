@@ -93,25 +93,25 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdDialog
     //                 });
     //              };
 $scope.delete = function(id, ev) {
-                 var confirm = $mdDialog.confirm()
-                         .title('Are you sure?')
-                         .ariaLabel('delet job')
-                         .targetEvent(ev)
-                         .ok('Yes')
-                         .cancel('No');
-                   $mdDialog.show(confirm).then(function() {
-                     $scope.status = 'deleted.';
-                     console.log('job deleted');
-                     $http.delete('/jobs/' + id).then(function(response) {
-                        if (response === 204) {
-                          console.log("Job deleted");
-                        }
-                        updateJobs();
-                    });
-                   }, function() {
-                     $scope.status = 'not deleted.';
-                   });
-                 }
+  var confirm = $mdDialog.confirm()
+    .title('Are you sure?')
+    .ariaLabel('delet job')
+    .targetEvent(ev)
+    .ok('Yes')
+    .cancel('No');
+  $mdDialog.show(confirm).then(function() {
+    $scope.status = 'deleted.';
+    console.log('job deleted');
+    $http.delete('/jobs/' + id).then(function(response) {
+      if (response === 204) {
+        console.log("Job deleted");
+      }
+      updateJobs();
+    });
+    }, function() {
+      $scope.status = 'not deleted.';
+    });
+  }
 
   // Sort function
   $scope.sort = function (order = 'all') {
