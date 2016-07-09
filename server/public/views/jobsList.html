@@ -151,7 +151,7 @@
                                     Save Updates
                                 </md-tooltip>
                             </md-button>
-                            <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
+                            <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id, $event)">
                                 <i class="material-icons">delete_forever</i>
                                 <md-tooltip md-direction="left">
                                     Delete job
@@ -185,8 +185,15 @@
             </div>
                         <!-- END CHAT ------------------------------------------>
 
+            <!-- Dialog divs -->
 
-
+            <div style="visibility: hidden">
+              <div class="md-dialog-container" id="confirmEdit">
+                <md-dialog layout-padding>
+                  <h3>Updates Saved</h3>
+                </md-dialog>
+              </div>
+            </div>
 
         </md-card>
       </md-card>
