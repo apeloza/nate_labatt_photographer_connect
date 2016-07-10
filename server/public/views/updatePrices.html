@@ -42,7 +42,10 @@
         <div class="updatePricesFormDivs">
             <md-input-container>
                 <label><strong>Name (Unique)</strong></label>
-                <input type="text" ng-model="newAddon.name" />
+                <input type="text" ng-model="newAddon.name" required/>
+                <div ng-messages="createJob.name.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
             </md-input-container>
         </div>
 
@@ -54,7 +57,7 @@
             </md-input-container>
         </div>
 
-        <md-button class="md-raised md-primary" ng-click="createAddon()">Create</md-button>
+        <md-button class="md-raised md-primary" type="submit" ng-click="createAddon()">Create</md-button>
 
     </form>
 
@@ -104,7 +107,7 @@
 
         </div>
         <div class="updateServicesButton">
-            <md-button class="md-raised md-primary" ng-click="updatePrices()">Update Services</md-button>
+            <md-button class="md-raised md-primary" type="submit" ng-click="updatePrices()">Update Services</md-button>
         </div>
     </form>
 
