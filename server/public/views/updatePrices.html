@@ -39,11 +39,11 @@
     <form class="updatePricesForm">
         <h2>Create A New Addon</h2>
 
-        <div class="updatePricesFormDivs">
+        <div class="updatePricesFormDivs newAddOn">
             <md-input-container>
                 <label><strong>Name (Unique)</strong></label>
                 <input type="text" ng-model="newAddon.name" required/>
-                <div ng-messages="createJob.name.$error">
+                <div ng-messages="newAddOn.name.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>
