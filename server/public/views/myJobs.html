@@ -38,7 +38,7 @@
           <p>Pay: <strong>${{job.totalPrice}}</strong></p>
         </div>
         <div>
-          <p ng-class="job.jobStatus">Shoot Date: <strong>{{job.chat.date | date : format : longDate}} at {{job.chat.time}}</strong></p>
+          <p  ng-show="job.jobStatus == 'finalized'" ng-class="job.jobStatus">Shoot Date: <strong>{{job.chat.date | date : format : longDate}} at {{job.chat.time}}</strong></p>
           <p><strong>Click to show messages . . .</strong></p>
         </div>
       </div>

@@ -76,7 +76,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
                     var toast = $mdToast.simple()
                        .textContent('Did you want to delete that job?')
                        .action('UNDO')
-                       .position('bottom left right')
+                       .position('bottom')
                        .hideDelay(5000)
                        .highlightAction(false);
                     $mdToast.show(toast).then(function(response) {
