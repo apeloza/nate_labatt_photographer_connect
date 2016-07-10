@@ -377,7 +377,9 @@ md-toolbar {
 }
 
 /*----------------------------------------------------User Jobs Page----------------------------------------------------*/
-
+.repeatJobsList:hover {
+  cursor: pointer;
+}
 
 .myJobsCard {
   background-color: #E0F7FA;
