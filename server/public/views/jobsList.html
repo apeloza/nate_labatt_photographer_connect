@@ -55,10 +55,9 @@
 
         <md-card ng-repeat="job in sortedJobs | filter: searchText" class="repeatJobsList" ng-click="setActive(job)">
             <div layout="row">
-
                 <div class="repeatedJobsAdmin" flex>
                     <div class="repeatStatus" ng-class="job.jobStatus">
-                        <p ng-class="job.jobStatus"><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'"> by {{job.jobAcceptedBy}}</span></p>
+                        <p><strong>{{job.jobStatus}}</strong><span ng-if="job.jobStatus!='open'"> by {{job.jobAcceptedBy}}</span></p>
                     </div>
 
                     <div class="adminJobViewClientFeld">
@@ -151,7 +150,7 @@
                                     Save Updates
                                 </md-tooltip>
                             </md-button>
-                            <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id)">
+                            <md-button aria-label="delete" class="md-fab md-raised md-mini md-warn" ng-click="delete(job._id, $event)">
                                 <i class="material-icons">delete_forever</i>
                                 <md-tooltip md-direction="left">
                                     Delete job
@@ -185,8 +184,15 @@
             </div>
                         <!-- END CHAT ------------------------------------------>
 
+            <!-- Dialog divs -->
 
-
+            <div style="visibility: hidden">
+              <div class="md-dialog-container" id="confirmEdit">
+                <md-dialog layout-padding>
+                  <h3>Updates Saved</h3>
+                </md-dialog>
+              </div>
+            </div>
 
         </md-card>
       </md-card>

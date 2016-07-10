@@ -27,25 +27,25 @@
     <md-card  ng-repeat="job in mapMarkers">
       <div class="mapJobList">
           <div class="mapAddress">
-            <p>Address: <strong>{{job.position}}</strong></p>
+            <p>Address: <br /><strong>{{job.position}}</strong></p>
           </div>
           <div>
-            <p>Square Feet: <strong>{{job.squareFeet}}</strong></p>
+            <p>Square Feet: <br /><strong>{{job.squareFeet}}</strong></p>
           </div>
           <div>
-            <p>Addons: <strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
+            <p>Addons: <br /><strong><span ng-repeat="addon in job.addons"> {{addon.name}} </span></strong></p>
           </div>
           <div>
-            <p>After Dark: <strong>{{job.afterDark}}</strong></p>
+            <p>After Dark: <br /><strong>{{job.afterDark}}</strong></p>
           </div>
           <div>
-            <p>Preferred Date: <span style="font-weight: bold">{{job.date}}</span></p>
+            <p>Preferred Date: <br /><span style="font-weight: bold">{{job.date}}</span></p>
           </div>
           <div>
-            <p>Done By: <span style="font-weight: bold">{{job.due}}</span></p>
+            <p>Done By: <br /><span style="font-weight: bold">{{job.due}}</span></p>
           </div>
           <div class="mapPrice">
-            <p>Price: <span style="font-weight: bold">${{job.price}}</span></p>
+            <p>Price: <br /><span style="font-weight: bold">${{job.price}}</span></p>
           </div>
           <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(job.jobID)">Accept Job</md-button>
         </div>

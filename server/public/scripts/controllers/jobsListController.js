@@ -1,7 +1,8 @@
-app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast', 'DataFactory', function($scope, $http, $location, $mdToast, DataFactory) {
+app.controller('JobsListController', ['$scope', '$http', '$location', '$mdDialog', 'DataFactory', function($scope, $http, $location, $mdDialog, DataFactory) {
     $scope.user = {};
     $scope.jobs = [];
     $scope.sortedJobs = [];
+    $scope.status = '';
 
     DataFactory.authenticate().then(function() {
         $scope.user.username = DataFactory.storeUsername();
@@ -37,19 +38,17 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
     }
 
     $scope.editJob = function (job) {
-      console.log(job);
       $http.put('/jobs/update/' + job._id, job).then(function (response) {
-        var toast = $mdToast.simple()
-           .textContent('Job updated')
-           .action('Go Away')
-           .position('bottom left right')
-           .hideDelay(3000)
-           .highlightAction(false);
-        $mdToast.show(toast).then(function(response) {
-           if ( response == 'ok' ) {
-              console.log('job updated');
-            }
-        });
+        $scope.showAlert = function(ev) {
+          console.log('updated');
+          $mdDialog.show({
+            controller: DialogController,
+            contentElement: '#confirmEdit',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true
+          });
+        }();
       });
     };
 
@@ -72,6 +71,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
         });
     };
 
+<<<<<<< HEAD
     $scope.delete = function(id) {
                     var toast = $mdToast.simple()
                        .textContent('Did you want to delete that job?')
@@ -93,6 +93,49 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
                        }
                     });
                  };
+=======
+    // $scope.delete = function(id, ev) {
+    //                 var toast = $mdToast.simple()
+    //                    .textContent('Did you want to delete that job?')
+    //                    .action('UNDO')
+    //                    .position('bottom left right')
+    //                    .hideDelay(5000)
+    //                    .highlightAction(false);
+    //                 $mdToast.show(toast).then(function(response) {
+    //                    if ( response == 'ok' ) {
+    //                       console.log('dont delete');
+    //                    } else {
+    //                      console.log('job deleted');
+    //                      $http.delete('/jobs/' + id).then(function(response) {
+    //                              if (response === 204) {
+    //                                  console.log("Job deleted");
+    //                              }
+    //                              updateJobs();
+    //                          });
+    //                    }
+    //                 });
+    //              };
+$scope.delete = function(id, ev) {
+  var confirm = $mdDialog.confirm()
+    .title('Are you sure?')
+    .ariaLabel('delet job')
+    .targetEvent(ev)
+    .ok('Yes')
+    .cancel('No');
+  $mdDialog.show(confirm).then(function() {
+    $scope.status = 'deleted.';
+    console.log('job deleted');
+    $http.delete('/jobs/' + id).then(function(response) {
+      if (response === 204) {
+        console.log("Job deleted");
+      }
+      updateJobs();
+    });
+    }, function() {
+      $scope.status = 'not deleted.';
+    });
+  }
+>>>>>>> 5cbe8dba38149bd3ababbad49576da3847420451
 
   // Sort function
   $scope.sort = function (order = 'all') {
@@ -133,5 +176,17 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdToast'
       $scope.activeJob = obj;
       $scope.messages = $scope.activeJob.chat.messages;
   };
+
+  function DialogController($scope, $mdDialog) {
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(answer) {
+    $mdDialog.hide(answer);
+  };
+};
 
 }]);

@@ -1,4 +1,4 @@
-app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'DataFactory', function($scope, $http, $location, $mdToast, DataFactory) {
+app.controller('UserController', ['$scope', '$http', '$location', '$mdDialog', 'DataFactory', function($scope, $http, $location, $mdDialog, DataFactory) {
 
     $scope.loggedUser = {};
     $scope.allUsers = [];
@@ -82,24 +82,23 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdToast', 'D
                 });
         };
 
-    $scope.deleteUser = function(id) {
-      var toast = $mdToast.simple()
-         .textContent('Do you really want to remove that user?')
-         .action('UNDO')
-         .position('bottom left right')
-         .hideDelay(5000)
-         .highlightAction(false);
-      $mdToast.show(toast).then(function(response) {
-         if ( response == 'ok' ) {
-            console.log('dont delete');
-         } else {
-           console.log('user deleted');
-           $http.delete('/user/' + id)
-               .then(function(response) {
-                   getAllUsers();
-               });
-         }
-      });
+    $scope.deleteUser = function(id, ev) {
+      var confirm = $mdDialog.confirm()
+        .title('Are you sure?')
+        .ariaLabel('delete user')
+        .targetEvent(ev)
+        .ok('Yes')
+        .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $scope.status = 'deleted.';
+        console.log('user deleted');
+        $http.delete('/user/' + id)
+            .then(function(response) {
+                getAllUsers();
+            });
+        }, function() {
+          $scope.status = 'not deleted.';
+        });
     };
 
 }]);
