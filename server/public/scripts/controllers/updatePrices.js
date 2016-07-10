@@ -28,6 +28,7 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
             $scope.prices = response.data;
             // $scope.addons = response.data[0].addons;
             $scope.addons = response.data.addons;
+            console.log($scope.addons);
             $scope.sqft = response.data.sqft;
             $scope.afterDark = response.data.afterDark;
         });
@@ -47,13 +48,17 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
 
     //This function creates a new Addon by pushing it onto an array of addons and then sending that array to the server.
     $scope.createAddon = function() {
+      console.log($scope.newAddon.name);
+      if($scope.newAddon.name === undefined){
+        return;
+      } else {
         $scope.addons.push($scope.newAddon);
         $http.put('/prices/addons', $scope.addons).then(function(response) {
           $scope.newAddon.name = '';
           $scope.newAddon.value = '';
-          $scope.newAddon.id = '';
             getPrices();
         });
+      }
     };
 
     //This function deletes an addon by splicing it from the array of addons and then sending the spliced array to the server.
