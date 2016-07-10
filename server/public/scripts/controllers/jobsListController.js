@@ -71,7 +71,6 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdDialog
         });
     };
 
-<<<<<<< HEAD
     $scope.delete = function(id) {
                     var toast = $mdToast.simple()
                        .textContent('Did you want to delete that job?')
@@ -93,28 +92,7 @@ app.controller('JobsListController', ['$scope', '$http', '$location', '$mdDialog
                        }
                     });
                  };
-=======
-    // $scope.delete = function(id, ev) {
-    //                 var toast = $mdToast.simple()
-    //                    .textContent('Did you want to delete that job?')
-    //                    .action('UNDO')
-    //                    .position('bottom left right')
-    //                    .hideDelay(5000)
-    //                    .highlightAction(false);
-    //                 $mdToast.show(toast).then(function(response) {
-    //                    if ( response == 'ok' ) {
-    //                       console.log('dont delete');
-    //                    } else {
-    //                      console.log('job deleted');
-    //                      $http.delete('/jobs/' + id).then(function(response) {
-    //                              if (response === 204) {
-    //                                  console.log("Job deleted");
-    //                              }
-    //                              updateJobs();
-    //                          });
-    //                    }
-    //                 });
-    //              };
+
 $scope.delete = function(id, ev) {
   var confirm = $mdDialog.confirm()
     .title('Are you sure?')
@@ -135,7 +113,6 @@ $scope.delete = function(id, ev) {
       $scope.status = 'not deleted.';
     });
   }
->>>>>>> 5cbe8dba38149bd3ababbad49576da3847420451
 
   // Sort function
   $scope.sort = function (order = 'all') {
