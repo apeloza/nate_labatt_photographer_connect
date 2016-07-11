@@ -65,8 +65,8 @@ orgCityStateZip + '\n\n' +
     });
 });
 
-router.post('/finalized', function(req, res) {
-
+router.post('/finalized/:id', function(req, res) {
+    var id = req.params.id;
     Job.findById(id, function(err, job) {
         if (err) {
             res.sendStatus(500);
