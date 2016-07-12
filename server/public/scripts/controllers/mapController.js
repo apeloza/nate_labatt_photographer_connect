@@ -23,6 +23,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
 //The DataFactory gets a list of all jobs (which it then filters to open jobs), and then the mapmarkers for the Google Maps API are created.
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
+        console.log($scope.openJobs);
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address.line1 + ' ' +
@@ -32,10 +33,11 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
                 date: $scope.openJobs[i].preferredDate,
-                jobID: $scope.openJobs[i]._id,
+                jobid: $scope.openJobs[i]._id,
                 squareFeet: $scope.openJobs[i].squareFeet.name,
                 afterDark: $scope.openJobs[i].afterDark.name,
-                addons: $scope.openJobs[i].addons
+                addons: $scope.openJobs[i].addons,
+                idKey: $scope.openJobs[i]._id
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");
@@ -48,9 +50,8 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
               mapmarker.afterDark = "None" ;
             }
             $scope.mapMarkers.push(mapmarker);
-            console.log(mapmarker.afterDark);
         }
-
+        console.log($scope.mapMarkers);
     });
 
 //The selectedPin Object is initialized. It is used to display information in the modal that appears when a marker is clicked.
@@ -78,7 +79,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         $scope.selectedPin.addons = mapmarker.addons;
         $scope.selectedPin.dark = mapmarker.afterDark;
         $scope.selectedPin.feet = mapmarker.squareFeet;
-        $scope.selectedPin.jobID = mapmarker.jobID;
+        $scope.selectedPin.jobid = mapmarker.jobid;
         $scope.selectedPin.link = encodeURI(mapmarker.position);
     };
     //This fires when the X is clicked on the modal to hide it.
@@ -87,12 +88,12 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     };
 
     //This function signs out a job to a user.
-    $scope.takeJob = function(jobID) {
+    $scope.takeJob = function(jobid) {
       var credentials = {
         username: $scope.user.username
       };
 
-        $http.put('/jobs/' + jobID, credentials).then(function(response) {
+        $http.put('/jobs/' + jobid, credentials).then(function(response) {
 if(response == 500){
   alert("That job has already been taken. Please refresh and try again.");
 } else {
