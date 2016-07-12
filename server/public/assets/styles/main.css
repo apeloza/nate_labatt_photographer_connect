@@ -158,10 +158,6 @@ ng-map {
   margin: 20px;
 }
 
-.createJob {
-  background-color: #E0F7FA;
-}
-
 md-input-container {
   padding: 20px;
 }
@@ -186,7 +182,7 @@ md-input-container {
   height: 50%;
   width: 200%;
   border-radius:5px;
-  border: 2px solid #E0F2F1;
+  border: 2px solid lightgray;
   background-color: white;
 }
 
