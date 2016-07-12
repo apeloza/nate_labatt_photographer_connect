@@ -20,15 +20,30 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     //This array stores mapmarkers fetched from the server.
     $scope.mapMarkers = [];
 
-//The DataFactory gets a list of all jobs (which it then filters to open jobs), and then the mapmarkers for the Google Maps API are created.
+    //The DataFactory gets a list of all jobs (which it then filters to open jobs), and then the mapmarkers for the Google Maps API are created.
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
         console.log($scope.openJobs);
+        //var map = new google.maps.Map(document.getElementById("jobmap"));
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+            'address': '9401 James Ave S Bloomington MN 55431'
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log("Yep");
+                console.log(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: document.getElementById("jobmap"),
+                    title: "A title"
+                });
+            }
+        });
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address.line1 + ' ' +
-                $scope.openJobs[i].address.city + ' ' + $scope.openJobs[i].address.state + ' ' +
-                 $scope.openJobs[i].address.zip,
+                    $scope.openJobs[i].address.city + ' ' + $scope.openJobs[i].address.state + ' ' +
+                    $scope.openJobs[i].address.zip,
                 price: $scope.openJobs[i].totalPrice,
                 due: $scope.openJobs[i].dueDate,
                 time: $scope.openJobs[i].timeFrame,
@@ -44,17 +59,19 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
             mapmarker.date = new Date(mapmarker.date);
             mapmarker.date = mapmarker.date.toLocaleDateString("en-US");
             if (mapmarker.addons[0] == undefined) {
-              mapmarker.addons.push({ name: "None"}) ;
+                mapmarker.addons.push({
+                    name: "None"
+                });
             }
             if (mapmarker.afterDark == '') {
-              mapmarker.afterDark = "None" ;
+                mapmarker.afterDark = "None";
             }
             $scope.mapMarkers.push(mapmarker);
         }
         console.log($scope.mapMarkers);
     });
 
-//The selectedPin Object is initialized. It is used to display information in the modal that appears when a marker is clicked.
+    //The selectedPin Object is initialized. It is used to display information in the modal that appears when a marker is clicked.
     $scope.selectedPin = {
         address: '',
         price: '',
@@ -68,7 +85,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
         link: ''
     };
 
-//This function fires when a marker is clicked on. It updates the selected pin and displays the modal.
+    //This function fires when a marker is clicked on. It updates the selected pin and displays the modal.
     $scope.showData = function(event, mapmarker) {
         $scope.pinSelected = true;
         $scope.selectedPin.address = mapmarker.position;
@@ -89,16 +106,16 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
 
     //This function signs out a job to a user.
     $scope.takeJob = function(jobid) {
-      var credentials = {
-        username: $scope.user.username
-      };
+        var credentials = {
+            username: $scope.user.username
+        };
 
         $http.put('/jobs/' + jobid, credentials).then(function(response) {
-if(response == 500){
-  alert("That job has already been taken. Please refresh and try again.");
-} else {
-  $location.path('/myJobs');
-}
+            if (response == 500) {
+                alert("That job has already been taken. Please refresh and try again.");
+            } else {
+                $location.path('/myJobs');
+            }
 
         });
     };

@@ -15,6 +15,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             $scope.chosenAddons = [];
             $scope.confirmed = [];
             $scope.addonPrice = 0;
+            var geocoder = new google.maps.Geocoder();
             getPrices();
         } else {
             $location.path('/');
