@@ -105,7 +105,7 @@
 
                 <!-- <div flex> -->
                 <md-datepicker ng-model="newJob.preferredDate" md-placeholder="Preferred Date" md-min-date="minDate" md-max-date="newJob.dueDate"></md-datepicker>
-                <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="minDate"></md-datepicker>
+                <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="newJob.preferredDate ? newJob.preferredDate : minDate"></md-datepicker>
                 <div class="preferred">
                 <md-input-container>
                     <label>Preferred Timeframe</label>
