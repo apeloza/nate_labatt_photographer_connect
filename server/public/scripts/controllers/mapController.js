@@ -24,21 +24,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
     DataFactory.getAllJobs().then(function() {
         $scope.openJobs = DataFactory.findOpenJobs();
         console.log($scope.openJobs);
-        //var map = new google.maps.Map(document.getElementById("jobmap"));
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-            'address': '9401 James Ave S Bloomington MN 55431'
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                console.log("Yep");
-                console.log(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    position: results[0].geometry.location,
-                    map: document.getElementById("jobmap"),
-                    title: "A title"
-                });
-            }
-        });
+
         for (var i = 0; i < $scope.openJobs.length; i++) {
             var mapmarker = {
                 position: $scope.openJobs[i].address.line1 + ' ' +
@@ -52,7 +38,7 @@ app.controller('MapController', ['$scope', '$http', '$location', '$timeout', 'Da
                 squareFeet: $scope.openJobs[i].squareFeet.name,
                 afterDark: $scope.openJobs[i].afterDark.name,
                 addons: $scope.openJobs[i].addons,
-                idKey: $scope.openJobs[i]._id
+                latLng: $scope.openJobs[i].latLng
             };
             mapmarker.due = new Date(mapmarker.due);
             mapmarker.due = mapmarker.due.toLocaleDateString("en-US");

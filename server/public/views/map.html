@@ -19,7 +19,7 @@
         </div>
         <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.jobid)">Accept Job</md-button>
     </div>
-    <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
+    <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.latLng.lat}}, {{mapmarker.latLng.lng}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
 
 <md-card class="jobsCardMapPage">
