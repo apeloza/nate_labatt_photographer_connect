@@ -4,6 +4,7 @@ var passport = require('passport');
 var path = require('path');
 var User = require('../models/user');
 
+
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
     console.log('get /user route');

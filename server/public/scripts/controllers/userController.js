@@ -58,46 +58,49 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdDialog', '
 
     $scope.updateUser = function(user) {
 
-            console.log('sending to server . . .');
-            $http.put('/user/update/' + user._id, user).then(function(response) {
-                    console.log('Success!');
-                    getAllUsers();
-                },
-                function(response) {
-                    console.log('Error');
-                    $scope.message = 'Please try again.';
-                });
-        };
+        console.log('sending to server . . .');
+        $http.put('/user/update/' + user._id, user).then(function(response) {
+                console.log('Success!');
+                getAllUsers();
+            },
+            function(response) {
+                console.log('Error');
+                $scope.message = 'Please try again.';
+            });
+    };
 
 
-    $scope.approveUser = function(id) {
-            console.log('sending to server . . .');
-            $http.put('/user/approve/' + id).then(function(response) {
+    $scope.approveUser = function(user) {
+        console.log('sending to server . . .');
+        $http.put('/user/approve/' + user._id).then(function(response) {
+                $http.post('/mail/addphotographer/', user).then(function(response1) {
                     console.log('Success!');
+
                     getAllUsers();
-                },
-                function(response) {
-                    console.log('Error');
-                    $scope.message = 'Please try again.';
                 });
-        };
+            },
+            function(response) {
+                console.log('Error');
+                $scope.message = 'Please try again.';
+            });
+    };
 
     $scope.deleteUser = function(id, ev) {
-      var confirm = $mdDialog.confirm()
-        .title('Are you sure?')
-        .ariaLabel('delete user')
-        .targetEvent(ev)
-        .ok('Yes')
-        .cancel('No');
-      $mdDialog.show(confirm).then(function() {
-        $scope.status = 'deleted.';
-        console.log('user deleted');
-        $http.delete('/user/' + id)
-            .then(function(response) {
-                getAllUsers();
-            });
+        var confirm = $mdDialog.confirm()
+            .title('Are you sure?')
+            .ariaLabel('delete user')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+        $mdDialog.show(confirm).then(function() {
+            $scope.status = 'deleted.';
+            console.log('user deleted');
+            $http.delete('/user/' + id)
+                .then(function(response) {
+                    getAllUsers();
+                });
         }, function() {
-          $scope.status = 'not deleted.';
+            $scope.status = 'not deleted.';
         });
     };
 

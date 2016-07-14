@@ -17,6 +17,8 @@ var orgName = 'Pixel Houz';
 var orgAddress = '9999 Road Way';
 var orgCityStateZip = 'Minneapolis, MN 55401';
 
+var list = mailgun.lists('photographers@mg.pixelhouz.com');
+
 //sends an email to clients
 router.post('/', function(req, res) {
 
@@ -84,13 +86,13 @@ router.post('/finalized/:id', function(req, res) {
     var address = job.address.line1;
 
     var message = 'Hello,\n' +
-'You’re receiving this message from a service called Pixel Houz! We help property owners connect with real estate photographers to set a time for a photo session. You have finalized a time with your photographer\n\n' +
+'You’re receiving this message from a service called Pixel Houz! We help property owners connect with real estate photographers to set a time for a photo session. You have finalized a time with your photographer.\n\n' +
 
 'Photo Session\n' +
 '-------------------------------------------\n' +
-'Date:' + date + '\n' +
-'Time:' + time + '\n' +
-'Address:' + address + '\n' +
+'Date: ' + date + '\n' +
+'Time: ' + time + '\n' +
+'Address: ' + address + '\n' +
 
 '-------------------------------------------\n\n' +
 
@@ -227,5 +229,42 @@ router.post('/messages/received/', msg.any(), function(req, res) {
     }
 });
 
+
+
+// list.info(function (err, data) {
+//   // `data` is mailing list info
+//   console.log(data);
+// });
+
+router.post('/addphotographer', function(req, res) {
+var photographer = {
+  subscribed: true,
+  address: req.body.email,
+  name: req.body.username,
+  vars: {phone: req.body.phone}
+};
+
+
+list.members().create(photographer, function (err, data) {
+  // `data` is the member details
+  if(err) {
+      res.sendStatus(500);
+      console.log(err);
+  } else {
+  res.send(data);
+  console.log('added a user email successfully');
+  list.members().list(function (err, members) {
+    // `members` is the list of members
+    console.log(members);
+  });
+  }
+});
+});
+
+
+//
+// list.members('bob@gmail.com').update({ name: 'Foo Bar' }, function (err, body) {
+//   console.log(body);
+// });
 
 module.exports = router;

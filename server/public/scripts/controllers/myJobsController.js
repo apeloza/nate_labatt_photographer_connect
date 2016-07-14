@@ -136,8 +136,6 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
             console.log(id);
             console.log('message container', $scope.messageContainer);
 
-
-
             $http.get('/chats/' + id).then(function(response2) {
                 console.log('chats data', response2);
 
