@@ -72,11 +72,11 @@ router.post('/finalized/:id', function(req, res) {
             res.sendStatus(500);
             return;
         }
-    });
+
     if (job) {
     var sendTo = job.emails;
     var subject = 'Your Pixel Houz Photo Session Time';
-    var jobID = job.jobID;
+    var jobID = id;
 
     var date = new Date(req.body.date);
     date.toDateString();
@@ -125,9 +125,10 @@ orgCityStateZip + '\n\n' +
         console.log(Date.now());
         res.sendStatus(200);
     });
+
 }
 });
-
+});
 
 //get mailgun email info from Mailgun API
 router.get('/messages', function(req, res) {

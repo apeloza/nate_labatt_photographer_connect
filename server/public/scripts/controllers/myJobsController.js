@@ -100,6 +100,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
 
         });
     };
+
     $scope.submitPhotoURL = function(id) {
         $http.put('/chats/photos/' + id, $scope.photoURL).then(function(response) {
           console.log('updated');
