@@ -112,6 +112,11 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
     };
 
     $scope.setActive = function(obj) {
+      if($scope.activeJob != obj){
+        $scope.messageContainer.message = '';
+        $scope.timeFrame.date = '';
+        $scope.timeFrame.time = '';
+      }
         $scope.activeJob = obj;
         $scope.messages = $scope.activeJob.chat.messages;
         $scope.maxDate = new Date($scope.activeJob.dueDate);
@@ -165,6 +170,7 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
                     $scope.email = {};
 
                     $scope.messageContainer = {};
+                    $scope.messageContainer.message = '';
                     $scope.activeJob.chat.messages = $scope.messages;
                 });
             });
