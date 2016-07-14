@@ -1,6 +1,7 @@
 app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.user = {};
+    var geocoder;
 
 //The DataFactory checks to see if the user is logged in and an admin. If they aren't, they are redirected.
     DataFactory.authenticate().then(function() {
@@ -15,6 +16,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
             $scope.chosenAddons = [];
             $scope.confirmed = [];
             $scope.addonPrice = 0;
+            geocoder = new google.maps.Geocoder();
             getPrices();
         } else {
             $location.path('/');
@@ -46,6 +48,7 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
     };
     $scope.newJob.addons = [];
     $scope.newJob.emails = [];
+    $scope.newJob.latLng = {};
     $scope.newJob.photoURL = '';
     $scope.newJob.totalPrice = 0;
 
@@ -104,14 +107,23 @@ app.controller('CreateJobController', ['$scope', '$http', '$location', 'DataFact
         }
     };
 
-//This function posts a new job to the server.
+//This function posts a new job to the server. The address provided is geocoded at this time and the resulting coordinates are stored on the job object.
     $scope.saveNewJob = function() {
+geocoder.geocode({
+  'address': $scope.newJob.address.line1 + ' ' +
+      $scope.newJob.address.city + ' ' + $scope.newJob.address.state + ' ' +
+      $scope.newJob.address.zip
+}, function(results, status){
+  if (status == google.maps.GeocoderStatus.OK) {
 
-        console.log("newJobData: ", $scope.newJob);
+      $scope.newJob.latLng = results[0].geometry.location;
+      $http.post('/jobs', $scope.newJob).then(function(req, res) {
+          $location.path('/jobsList');
+      });
+    }
+});
 
-        $http.post('/jobs', $scope.newJob).then(function(req, res) {
-            $location.path('/jobsList');
-        });
+
     };
 
 //This function gets relevant pricing from the server.

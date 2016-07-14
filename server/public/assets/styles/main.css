@@ -154,20 +154,28 @@ ng-map {
 }
 
 /*----------------------------------------------------New Job Page----------------------------------------------------*/
-.createJob md-input-container {
-  margin: 20px;
-}
-
 .createJob {
-  background-color: #E0F7FA;
+  margin:auto;
 }
 
-md-input-container {
-  padding: 20px;
+.createJob md-input-container {
+  margin: 4%;
+  width: 40%;
 }
 
-.jobInfo{
-  width:50%;
+md-datepicker {
+  margin: 2%;
+}
+
+.dates {
+  border-bottom: 3px dotted lightgray;
+  margin-top:4%;
+  margin-bottom:4%
+}
+
+.clientInfo {
+  background-color:#f7f7f7;
+  border-radius:5px;
 }
 
 .email {
@@ -183,11 +191,24 @@ md-input-container {
   margin-top:30px;
   margin-bottom:30px;
   margin-right:30px;
-  height: 50%;
+  height: 25%;
   width: 200%;
   border-radius:5px;
-  border: 2px solid #E0F2F1;
+  border: none;
   background-color: white;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(87,87,87,1);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(87,87,87,1);
+  box-shadow: 0px 0px 9px 0px rgba(87,87,87,1);
+}
+
+.textAreaContainer{
+  margin:auto;
+  margin-bottom:4%;
+}
+
+.addOnCheck {
+  margin-top:3%;
+  margin-left:4%;
 }
 
 md-toolbar {
@@ -198,6 +219,22 @@ md-toolbar {
   color:white;
   text-align: center;
 }
+
+.preferred {
+  text-align: center;
+}
+
+.addOns {
+  margin-top:4%;
+  margin-bottom:4%
+}
+
+.totalPrice {
+  border-top: 3px dotted lightgray;
+  padding-top:4%;
+  text-align: center;
+}
+
 
 /*----------------------------------------------------Admin Job List Page----------------------------------------------------*/
 .jobsListCard {

@@ -23,7 +23,8 @@ var JobSchema = new Schema({
     jobStatus: {type: String},
     jobAcceptedBy: {type: String},
     chat: ChatSchema,
-    photoURL: {type: String}
+    photoURL: {type: String},
+    latLng: {type: Object}
 
 });
 

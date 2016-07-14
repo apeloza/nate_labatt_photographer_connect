@@ -1,6 +1,6 @@
 <div ng-include="'/views/templates/nav.html'"></div>
 <md-card>
-    <div class="createJob" ng-controller="FabCtrl as fab">
+    <div ng-controller="FabCtrl as fab">
 
         <!-- Toolbar ---------------------------------------------------------->
         <md-toolbar layout="row">
@@ -36,14 +36,14 @@
     </div>
     <!-- Toolbar ---------------------------------------------------------->
 
-    <form class="updatePricesForm">
+    <form class="updatePricesForm" name="addonForm">
         <h2>Create A New Addon</h2>
 
-        <div class="updatePricesFormDivs">
+        <div class="updatePricesFormDivs newAddOn">
             <md-input-container>
                 <label><strong>Name (Unique)</strong></label>
                 <input type="text" ng-model="newAddon.name" required/>
-                <div ng-messages="createJob.name.$error">
+                <div ng-messages="newAddOn.name.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>

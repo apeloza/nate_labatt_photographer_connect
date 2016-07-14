@@ -17,9 +17,9 @@
           <p class="pay"><strong>Pay:</strong> ${{selectedPin.price}}</p>
 
         </div>
-        <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.jobID)">Accept Job</md-button>
+        <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(selectedPin.jobid)">Accept Job</md-button>
     </div>
-    <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.position}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
+    <marker ng-repeat="mapmarker in mapMarkers" position="{{mapmarker.latLng.lat}}, {{mapmarker.latLng.lng}}" title="{{mapmarker.title}}" on-click="showData(mapmarker)"></marker>
 </ng-map>
 
 <md-card class="jobsCardMapPage">
@@ -47,7 +47,7 @@
           <div class="mapPrice">
             <p>Price: <br /><span style="font-weight: bold">${{job.price}}</span></p>
           </div>
-          <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(job.jobID)">Accept Job</md-button>
+          <md-button ng-show="isUser" class="jobbtn md-raised md-primary" ng-click="takeJob(job.jobid)">Accept Job</md-button>
         </div>
       </md-card>
 </md-card>

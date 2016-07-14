@@ -56,6 +56,8 @@ app.controller('UpdatePrices', ['$scope', '$http', '$location', 'DataFactory', f
         $http.put('/prices/addons', $scope.addons).then(function(response) {
           $scope.newAddon.name = '';
           $scope.newAddon.value = '';
+          $scope.addonForm.$setUntouched();
+          $scope.addonForm.$setPristine();
             getPrices();
         });
       }

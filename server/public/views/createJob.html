@@ -37,129 +37,114 @@
     <!-- Toolbar ---------------------------------------------------------->
 
     <div layout="row">
-        <div layout="column" class="jobInfo">
-            <form name="createJob">
-                <div flex class="clientInfo">
-                    <md-input-container required>
-                        <label>Client Name</label>
-                        <input type="text" ng-model="newJob.name" name="name" required/>
-                        <div ng-messages="createJob.name.$error">
-                          <div ng-message="required">This is required.</div>
-                        </div>
-                    </md-input-container>
+        <form name="createJob" class="createJob">
+            <div flex class="clientInfo">
+                <md-input-container required>
+                    <label>Client Name</label>
+                    <input type="text" ng-model="newJob.name" name="name" required/>
+                    <div ng-messages="createJob.name.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
 
-                    <md-input-container>
-                        <label>Phone #</label>
-                        <input type="number" ng-model="newJob.phone" />
-                    </md-input-container>
-                </div>
+                <md-input-container>
+                    <label>Phone #</label>
+                    <input type="number" ng-model="newJob.phone"/>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Address</label>
+                    <input type="text" ng-model="newJob.address.line1" name="line1" required/>
+                    <div ng-messages="createJob.line1.$error">
+                        <div ng-message="required">An address is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Zip Code</label>
+                    <input type="text" ng-model="newJob.address.zip" name="zip" required md-maxlength="5"/>
+                    <div ng-messages="createJob.zip.$error">
+                        <div ng-message="required">Zipcode is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>City</label>
+                    <input type="text" ng-model="newJob.address.city" name="city" required/>
+                    <div ng-messages="createJob.city.$error">
+                        <div ng-message="required">You need to enter a city.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>State</label>
+                    <md-select ng-model="newJob.address.state" aria-label="state" required="true">
+                        <md-option ng-repeat="item in states">{{item}}</md-option>
+                    </md-select>
+                </md-input-container>
 
                 <!-- Email fields -------------------------------------------------->
-                <md-button class="md-raised md-primary addEmail" ng-click="addEmailField()">Add Email</md-button>
                 <div flex class="email">
+                    <md-button class="md-raised md-primary addEmail" ng-click="addEmailField()">Add Email</md-button>
+                    <br/>
                     <md-input-container ng-repeat="email in emails track by $index">
                         <label>Email</label>
                         <input type="email" ng-model="newJob.emails[$index]" name="email" required/>
                         <div ng-messages="createJob.email.$error">
-                          <div ng-message="required">At least one email is required.</div>
+                            <div ng-message="required">At least one email is required.</div>
                         </div>
                     </md-input-container>
                 </div>
+            </div>
+            <div class="dates">
 
-                <div flex>
-                    <md-input-container>
-                        <label>Address</label>
-                        <input type="text" ng-model="newJob.address.line1" name="line1" required/>
-                        <div ng-messages="createJob.line1.$error">
-                          <div ng-message="required">An address is required.</div>
-                        </div>
-                    </md-input-container>
+                <md-input-container>
+                    Square Footage: <br />
+                    <select ng-model="newJob.squareFeet" aria-label="squareFeet" ng-options="item.name + ' $' + item.value for item in prices.sqft" ng-change="total()"></select>
+                </md-input-container>
 
-                    <md-input-container>
-                        <label>Zip Code</label>
-                        <input type="text" ng-model="newJob.address.zip" name="zip" required md-maxlength="5" />
-                        <div ng-messages="createJob.zip.$error">
-                          <div ng-message="required">Zipcode is required.</div>
-                        </div>
-
-                    </md-input-container>
-
+                <!-- <div flex> -->
+                <md-datepicker ng-model="newJob.preferredDate" md-placeholder="Preferred Date" md-min-date="minDate" md-max-date="newJob.dueDate"></md-datepicker>
+                <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="newJob.preferredDate ? newJob.preferredDate : minDate"></md-datepicker>
+                <div class="preferred">
+                <md-input-container>
+                    <label>Preferred Timeframe</label>
+                    <md-select ng-model="newJob.timeFrame" aria-label="Timeframe">
+                        <md-option ng-repeat="item in time">{{item}}</md-option>
+                    </md-select>
+                </md-input-container>
                 </div>
+            </div>
 
-                <div flex>
-                    <md-input-container>
-                        <label>City</label>
-                        <input type="text" ng-model="newJob.address.city" name="city" required/>
-                        <div ng-messages="createJob.city.$error">
-                          <div ng-message="required">You need to enter a city.</div>
-                        </div>
-                    </md-input-container>
+            <!-- ADD ONS -->
 
+            <div class="addOns" layout="row" layout-wrap>
+                <div>
                     <md-input-container>
-                        <label>State</label>
-                        <md-select ng-model="newJob.address.state" aria-label="state" required="true">
-                            <md-option ng-repeat="item in states">{{item}}</md-option>
-                        </md-select>
+                        After Dark:
+                        <select ng-model="newJob.afterDark" aria-label="afterDark" ng-options="item.name + ' $' + item.value for item in prices.afterDark" ng-change="total()"></select>
                     </md-input-container>
                 </div>
 
-                <div flex>
-                    <md-input-container>
-                        Square Footage
-                        <select ng-model="newJob.squareFeet" aria-label="squareFeet" ng-options="item.name + ' $' + item.value for item in prices.sqft" ng-change="total()">
-                        </select>
-                    </md-input-container>
+                <div ng-repeat="addon in prices.addons" class="addOnCheck">
+                    <md-checkbox ng-model="confirmed[$index]" ng-change="addAddons($index, addon)">
+                      {{addon.name}} - ${{addon.value}}
+                    </md-checkbox>
                 </div>
 
-                <div flex>
-                  <md-datepicker ng-model="newJob.preferredDate" md-placeholder="Preferred Date" md-min-date="minDate" md-max-date="newJob.dueDate">
-                  </md-datepicker>
-                    <md-datepicker ng-model="newJob.dueDate" md-placeholder="Due Date" md-min-date="minDate">
-                    </md-datepicker>
+            </div>
 
+            <div class="textareaContainer">
+                <textarea ng-model="newJob.entryMethod" class="notes" placeholder="Entry Method / Notes"></textarea>
+            </div>
 
+            <div flex class="totalPrice">
+                <md-input-container>
+                    <label>Total Price</label>
+                    <input type="text" ng-model="newJob.totalPrice"/>
+                </md-input-container>
+                <md-button class="md-raised md-primary" type="submit" ng-click="saveNewJob()">Create Job</md-button>
+            </div>
 
-                    <md-input-container>
-                        <label>Preferred Timeframe</label>
-                        <md-select ng-model="newJob.timeFrame" aria-label="Timeframe">
-                            <md-option ng-repeat="item in time">{{item}}</md-option>
-                        </md-select>
-                    </md-input-container>
-
-                </div>
-
-                <!-- ADD ONS -->
-
-
-                    <div flex>
-                        <md-input-container>
-                            After Dark
-                            <select ng-model="newJob.afterDark" aria-label="afterDark" ng-options="item.name + ' $' + item.value for item in prices.afterDark" ng-change="total()">
-                            </select>
-                        </md-input-container>
-                    </div>
-
-                    <div ng-repeat="addon in prices.addons">
-                        <div flex>
-                            <md-input-container>
-                                <md-checkbox ng-model="confirmed[$index]"  ng-change="addAddons($index, addon)">{{addon.name}} - ${{addon.value}}</md-checkbox>
-                            </md-input-container>
-                        </div>
-
-                    </div>
-
-                    <div flex>
-                        <md-input-container>
-                            <label>Total Price</label>
-                            <input type="text" ng-model="newJob.totalPrice" | currency />
-                        </md-input-container>
-                        <md-button class="md-raised md-primary" type="submit" ng-click="saveNewJob()">Create Job</md-button>
-                    </div>
-        </div>
-
-        <div layout="column" class="textareaContainer">
-          <textarea ng-model="newJob.entryMethod" class="notes" placeholder="Entry Method"></textarea>
-            </form>
-        </div>
-    </div>
-</md-card>
+        </form>
+    </md-card>
