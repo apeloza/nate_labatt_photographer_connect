@@ -121,7 +121,7 @@ orgCityStateZip + '\n\n' +
     console.log("before sending mailgun", data);
     //send mailgun
     mailgun.messages().send(data, function(error, body) {
-        console.log('message sent for seesion time', data);
+        console.log('message sent for session time', data);
         console.log(Date.now());
         res.sendStatus(200);
     });

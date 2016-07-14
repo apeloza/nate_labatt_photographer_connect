@@ -91,11 +91,11 @@ app.controller('MyJobsController', ['$scope', '$http', '$location', 'DataFactory
         $http.put('/chats/date/' + id, dateHolder).then(function(req, res) {
             $http.post('mail/finalized/' + id, dateHolder).then(function(req1, res1) {
                 console.log('email sent to clients');
-                });
+
             DataFactory.getAllJobs().then(function() {
                 $scope.userJobs = DataFactory.findUserJobs();
                 $scope.sortedJobs = DataFactory.findUserJobs();
-
+    });
             });
 
         });
