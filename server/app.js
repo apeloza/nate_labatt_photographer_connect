@@ -53,7 +53,11 @@ app.use('/prices', prices);
 app.use('/*', index);
 
 //Mongo Connection
-var databaseURI = 'mongodb://admin:natelabatt@ds011873.mlab.com:11873/photographerconnectusers';
+if(process.env.MONGODB_URI!= undefined) {
+  var databaseURI = process.env.MONGODB_URI;
+} else {
+  var databaseURI =   'mongodb://pixeltest:pixel@ds059634.mlab.com:59634/heroku_732mnxr5';
+}
 mongoose.connect(databaseURI);
 mongoose.connection.on('connected', function () {
   console.log('Mongoose connection open ', databaseURI);
