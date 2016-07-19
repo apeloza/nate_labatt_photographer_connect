@@ -15,7 +15,7 @@ username: photographer
 password: 1
 
 #Application Overview
-Photographer Connect is a web application that allows freelance photographers to connect with Nate’s real estate clients to schedule photo sessions. It has a messaging feature that allows clients and photographers to discuss schedules and verify times for the sessions, without going through the realtor. A map of available jobs allows photographers to take jobs that work for them geographically. Nate will be able to add jobs, read conversations and view schedules. 
+Pixel Houz is a web application that allows freelance photographers to connect with a realtor’s real estate clients to schedule photo sessions. It has a messaging feature that allows clients and photographers to discuss schedules and verify times for the sessions, without going through the realtor. A map of available jobs allows photographers to take jobs that work for them geographically. Realtors are able to add jobs, read conversations and view schedules. 
 
 #Application Features
 There are three main users: Admin, photographer (“user”), and client.
