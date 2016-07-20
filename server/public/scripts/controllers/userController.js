@@ -45,8 +45,12 @@ app.controller('UserController', ['$scope', '$http', '$location', '$mdDialog', '
             $scope.user.level = level;
             console.log('sending to server . . .', $scope.user);
             $http.post('/register', $scope.user).then(function(response) {
-                    console.log('Success!');
-                    $location.path('/userList');
+
+                    $http.post('/mail/addphotographer/', $scope.user).then(function(response1) {
+                        console.log("added user email to list");
+                        $location.path('/userList');
+                    });
+
                 },
                 function(response) {
                     console.log('Error');
