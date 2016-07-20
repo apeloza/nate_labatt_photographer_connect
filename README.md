@@ -2,9 +2,20 @@
 ##Adam Hefnider, Anne Tomassoni, Anthony Peloza, Brandon Gladen
 ##June 21, 2016 | Version 1.0
 
+#Link
+##https://fierce-tundra-63876.herokuapp.com/#/
+This is a sandbox mirror of the actual site so that others can look at it themselves. For testing purposes, you may login with the following credentials.
+
+ADMIN
+username: admin
+password: 1
+
+PHOTOGRAPHER
+username: photographer
+password: 1
 
 #Application Overview
-Photographer Connect is a web application that allows freelance photographers to connect with Nate’s real estate clients to schedule photo sessions. It has a messaging feature that allows clients and photographers to discuss schedules and verify times for the sessions, without going through the realtor. A map of available jobs allows photographers to take jobs that work for them geographically. Nate will be able to add jobs, read conversations and view schedules. 
+Pixel Houz is a web application that allows freelance photographers to connect with a realtor’s real estate clients to schedule photo sessions. It has a messaging feature that allows clients and photographers to discuss schedules and verify times for the sessions, without going through the realtor. A map of available jobs allows photographers to take jobs that work for them geographically. Realtors are able to add jobs, read conversations and view schedules. 
 
 #Application Features
 There are three main users: Admin, photographer (“user”), and client.
