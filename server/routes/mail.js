@@ -67,6 +67,45 @@ router.post('/', function(req, res) {
     });
 });
 
+//sends an email to photographers about a new job
+router.post('/newjob', function(req, res) {
+
+    var sendTo = 'photographers@mg.pixelhouz.com';
+    var subject = 'New job posted to Pixel Houz';
+    var jobID = req.body.jobID;
+    var address = req.body.address;
+
+    var message = 'Hi,\n' +
+        'A new job at ' + address + ' has been posted to Pixel Houz. If you\'d like more details please log in to Pixel Houz and go to http://www.pixelhouz.com/#/user \n\n' +
+        'Job # [' + jobID + ']\n' +
+        orgName + '\n' +
+        orgAddress + '\n' +
+        orgCityStateZip + '\n\n' +
+
+        'Pixel Houz does not share your email or use it for anything except direct communication.\n\n';
+
+    var sender = '"Pixel Houz" <' + process.env.MAILGUN_SMTP_LOGIN + '>';
+
+    var data = {
+        from: process.env.MAILGUN_SMTP_LOGIN,
+        to: sendTo,
+        subject: subject,
+        text: message,
+        'X-Mailgun-Variables': {
+            jobID: jobID
+        }
+    };
+    //attachment: filepath
+
+
+    //send mailgun
+    mailgun.messages().send(data, function(error, body) {
+        console.log(data);
+        console.log(Date.now());
+        res.sendStatus(200);
+    });
+});
+
 router.post('/finalized/:id', function(req, res) {
     var id = req.params.id;
     Job.findById(id, function(err, job) {
