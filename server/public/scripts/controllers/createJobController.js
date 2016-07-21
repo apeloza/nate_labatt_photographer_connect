@@ -118,7 +118,12 @@ geocoder.geocode({
 
       $scope.newJob.latLng = results[0].geometry.location;
       $http.post('/jobs', $scope.newJob).then(function(req, res) {
-          $location.path('/jobsList');
+          $http.post('/mail/newjob', $scope.newJob).then(function(response) {
+
+              $location.path('/jobsList');
+        
+          });
+
       });
     }
 });

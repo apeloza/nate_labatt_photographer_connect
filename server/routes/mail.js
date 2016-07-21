@@ -70,7 +70,7 @@ router.post('/', function(req, res) {
 //sends an email to photographers about a new job
 router.post('/newjob', function(req, res) {
 
-    var sendTo = 'photographers@mg.pixelhouz.com';
+    var sendTo = list;
     var subject = 'New job posted to Pixel Houz';
     var jobID = req.body.jobID;
     var address = req.body.address;
